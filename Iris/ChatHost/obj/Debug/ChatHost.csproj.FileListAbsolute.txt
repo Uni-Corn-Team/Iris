@@ -1,0 +1,11 @@
+C:\Users\maksi\source\repos\Iris\ChatHost\bin\Debug\ChatHost.exe.config
+C:\Users\maksi\source\repos\Iris\ChatHost\bin\Debug\ChatHost.exe
+C:\Users\maksi\source\repos\Iris\ChatHost\bin\Debug\ChatHost.pdb
+C:\Users\maksi\source\repos\Iris\ChatHost\bin\Debug\Iris.dll
+C:\Users\maksi\source\repos\Iris\ChatHost\bin\Debug\Iris.pdb
+C:\Users\maksi\source\repos\Iris\ChatHost\bin\Debug\Iris.dll.config
+C:\Users\maksi\source\repos\Iris\ChatHost\obj\Debug\ChatHost.csprojAssemblyReference.cache
+C:\Users\maksi\source\repos\Iris\ChatHost\obj\Debug\ChatHost.csproj.CoreCompileInputs.cache
+C:\Users\maksi\source\repos\Iris\ChatHost\obj\Debug\ChatHost.csproj.CopyComplete
+C:\Users\maksi\source\repos\Iris\ChatHost\obj\Debug\ChatHost.exe
+C:\Users\maksi\source\repos\Iris\ChatHost\obj\Debug\ChatHost.pdb

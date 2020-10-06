@@ -1,0 +1,16 @@
+﻿<Window x:Class="ChatClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="bConnectDisconnect" Click="Button_Click" Content="Connect" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="147" Height="29"/>
+        <TextBox x:Name="tbUserName" Height="59" Margin="253,20,44,0" TextWrapping="Wrap" Text="UserName" VerticalAlignment="Top"/>
+        <ListBox x:Name="lbChat" Height="213" Margin="38,99,44,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbMessage" KeyDown="tbMessage_KeyDown" Height="60" Margin="39,333,44,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

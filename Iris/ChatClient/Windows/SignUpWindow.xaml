@@ -1,0 +1,18 @@
+﻿<Window x:Class="ChatClient.SignUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatClient"
+        mc:Ignorable="d"
+        Title="SignUpWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="bSignUp" Content="Sign up" Click="Button_Click" HorizontalAlignment="Left" Height="47" Margin="252,337,0,0" VerticalAlignment="Top" Width="290"/>
+        <TextBox x:Name="tbName" Height="25" Margin="84,24,512,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="196"/>
+        <TextBox x:Name="tbSurname" Height="24" Margin="84,66,512,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="196" />
+        <TextBox x:Name="tbNickname" Height="24" Margin="84,110,512,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="196"/>
+        <TextBox x:Name="tbAge" Height="24" Margin="84,153,512,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" Width="196"/>
+        <TextBox x:Name="tbPassword" Height="24" Margin="84,196,512,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="196"/>
+
+    </Grid>
+</Window>
