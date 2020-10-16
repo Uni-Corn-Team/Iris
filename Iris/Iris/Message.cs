@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Iris
 {
+    [Serializable]
     public class Message
     {
         public User Sender { get; set; }

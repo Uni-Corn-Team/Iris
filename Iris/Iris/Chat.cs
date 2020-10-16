@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Iris
 {
-    class Chat
+    [Serializable]
+    public class Chat
     {
         public string Name { get; set; }
         public int ID { get; set; }

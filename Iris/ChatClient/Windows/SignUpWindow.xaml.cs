@@ -26,6 +26,8 @@ namespace ChatClient
         public SignUpWindow()
         {
             InitializeComponent();
+
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,15 +43,17 @@ namespace ChatClient
             }
             if(isUniqueNickname)
             {
-                Database.Users.Add(new User()
+                SignIn.user = new User()
                 {
                     Name = tbName.Text,
                     Surname = tbSurname.Text,
                     Nickname = tbNickname.Text,
                     Age = int.Parse(tbAge.Text),
                     Password = tbPassword.Text,
-                    ID = Database.Users.Last<User>().ID + 1
-                });
+                    ID = Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1
+                };
+                Database.Users.Add(SignIn.user);
+                Database.Save();
                 (new MainWindow()).Show();
                 this.Close();
             }

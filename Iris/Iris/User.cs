@@ -1,7 +1,10 @@
 ﻿using System.ServiceModel;
+using System.Runtime.Serialization;
+using System;
 
 namespace Iris
 {
+    [Serializable]
     public class User
     {
         public string Name { get; set; }
@@ -16,6 +19,8 @@ namespace Iris
         /// user's id
         /// </summary>
         public int ID { get; set; }
+
+        public Chat CurrentChat { get; set; }
 
 
         /// <summary>

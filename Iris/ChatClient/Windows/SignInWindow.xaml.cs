@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Iris;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace ChatClient
     /// </summary>
     public partial class SignIn : Window
     {
+        public static User user;
+
         public SignIn()
         {
             InitializeComponent();
+            Iris.Database.Load();
+            user = new User();
+
+            foreach (User user in Database.Users)
+            {
+                lbUncorects.Items.Add(user.Nickname + " " + user.Password);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -35,8 +45,16 @@ namespace ChatClient
             {
                 if (sender.Equals(bSignIn)) 
                 {
-                    (new MainWindow()).Show();
-                    this.Close();
+                    foreach(User user in Database.Users)
+                    {
+                        if(user.Nickname.Equals(tbNickname.Text) && user.Password.Equals(tbPassword.Text))
+                        {
+                            (new MainWindow()).Show();
+                            this.Close();
+                        }
+                    }
+                    lbUncorects.Items.Add(DateTime.Now.ToString() + ": uncorect");
+
                 }
                 if (sender.Equals(bSignUp))
                 {

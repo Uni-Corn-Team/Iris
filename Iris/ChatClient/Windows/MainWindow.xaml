@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="bConnectDisconnect" Click="Button_Click" Content="Connect" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="147" Height="29"/>
-        <TextBox x:Name="tbUserName" Height="59" Margin="253,20,44,0" TextWrapping="Wrap" Text="UserName" VerticalAlignment="Top"/>
-        <ListBox x:Name="lbChat" Height="213" Margin="38,99,44,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbMessage" KeyDown="tbMessage_KeyDown" Height="60" Margin="39,333,44,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <ListBox x:Name="lbChat" Height="211" Margin="417,99,44,0" VerticalAlignment="Top"/>
+        <Button x:Name="bNewDialog" Click="New_Dialog" Content="New dialog" HorizontalAlignment="Left" Height="55" Margin="417,335,0,0" VerticalAlignment="Top" Width="132"/>
+        <Button x:Name="bOpenDialog" Click="Open_Dialog" Content="Open dialog" HorizontalAlignment="Left" Height="58" Margin="616,335,0,0" VerticalAlignment="Top" Width="132"/>
+        <ListBox x:Name="lbUserInfo" HorizontalAlignment="Left" Height="193" Margin="48,51,0,0" VerticalAlignment="Top" Width="208"/>
 
     </Grid>
 </Window>

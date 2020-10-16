@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ChatClient.ServiceChat;
+using Iris;
 
 namespace ChatClient
 {
@@ -29,6 +30,9 @@ namespace ChatClient
         public MainWindow()
         {
             InitializeComponent();
+            lbUserInfo.Items.Add(SignIn.user.Surname + " " + SignIn.user.Name);
+            lbUserInfo.Items.Add(SignIn.user.Nickname);
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -36,7 +40,7 @@ namespace ChatClient
 
         }
 
-        void ConnectUser()
+        /*void ConnectUser()
         {
             if (!isConnected)
             {
@@ -46,9 +50,9 @@ namespace ChatClient
                 bConnectDisconnect.Content = "Disconnect";
                 isConnected = true;
             }
-        }
+        }*/
 
-        void DisconnectUser()
+        /*void DisconnectUser()
         {
             if (isConnected)
             {
@@ -59,9 +63,9 @@ namespace ChatClient
                 isConnected = false;
             }
 
-        }
+        }*/
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /*private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (isConnected)
             {
@@ -72,6 +76,16 @@ namespace ChatClient
                 ConnectUser();
             }
 
+        }*/
+
+        private void New_Dialog(object sender, RoutedEventArgs e)
+        {
+            lbChat.Items.Add("dialog-=-\n");
+        }
+
+        private void Open_Dialog(object sender, RoutedEventArgs e)
+        {
+            lbChat.Items.Add("dialog-=-\n");
         }
 
         public void MessageCallback(string message)
@@ -80,12 +94,12 @@ namespace ChatClient
             lbChat.ScrollIntoView(lbChat.Items[lbChat.Items.Count - 1]);
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        /*private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             DisconnectUser();
-        }
+        }*/
 
-        private void tbMessage_KeyDown(object sender, KeyEventArgs e)
+        /*private void tbMessage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -95,7 +109,7 @@ namespace ChatClient
                     tbMessage.Text = string.Empty;
                 }
             }
-        }
+        }*/
 
 
     }

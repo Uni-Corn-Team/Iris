@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\maksi\source\repos\Iris\ChatClient\obj\Debug\
+C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\
 ChatClient
 none
 false
 DEBUG;TRACE
-C:\Users\maksi\source\repos\Iris\ChatClient\App.xaml
+C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\App.xaml
 31546673129
 
 81552813116
-16-1526929018
+161201823527
 Windows\MainWindow.xaml;Windows\SignInWindow.xaml;Windows\SignUpWindow.xaml;
 
 False

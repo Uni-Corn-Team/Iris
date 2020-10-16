@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Iris
 {
+    [Serializable]
     public class File
     {
-        public String Name { get; set; }
+        public string Name { get; set; }
         public FileStream fs { get; set; }
         public int Size { get; set; }
     }
