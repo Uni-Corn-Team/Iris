@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ChatClient.ServiceChat;
+using ChatClient.Windows;
 using Iris;
 
 namespace ChatClient
@@ -30,8 +31,8 @@ namespace ChatClient
         public MainWindow()
         {
             InitializeComponent();
-            lbUserInfo.Items.Add(SignIn.user.Surname + " " + SignIn.user.Name);
-            lbUserInfo.Items.Add(SignIn.user.Nickname);
+           // lbUserInfo.Items.Add(SignIn.user.Surname + " " + SignIn.user.Name);
+            //lbUserInfo.Items.Add(SignIn.user.Nickname);
 
         }
 
@@ -80,7 +81,7 @@ namespace ChatClient
 
         private void New_Dialog(object sender, RoutedEventArgs e)
         {
-            lbChat.Items.Add("dialog-=-\n");
+            new CreateChat().Show();
         }
 
         private void Open_Dialog(object sender, RoutedEventArgs e)
@@ -92,6 +93,12 @@ namespace ChatClient
         {
             lbChat.Items.Add(message);
             lbChat.ScrollIntoView(lbChat.Items[lbChat.Items.Count - 1]);
+        }
+
+        private void Button_Click_EditProfile(object sender, RoutedEventArgs e)
+        {
+            new EditProfile().Show();
+            //this.Close();
         }
 
         /*private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

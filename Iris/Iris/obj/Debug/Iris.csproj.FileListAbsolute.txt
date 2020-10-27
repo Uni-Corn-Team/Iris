@@ -12,3 +12,10 @@ C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.csprojAssemblyRefe
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.csproj.CoreCompileInputs.cache
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.dll
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.pdb
+C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\Iris\bin\Debug\Iris.dll.config
+C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\Iris\bin\Debug\Iris.dll
+C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\Iris\bin\Debug\Iris.pdb
+C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\Iris\obj\Debug\Iris.csprojAssemblyReference.cache
+C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\Iris\obj\Debug\Iris.csproj.CoreCompileInputs.cache
+C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\Iris\obj\Debug\Iris.dll
+C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\Iris\obj\Debug\Iris.pdb

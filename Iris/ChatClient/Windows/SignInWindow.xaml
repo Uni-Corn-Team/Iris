@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatClient"
         mc:Ignorable="d"
-        Title="SignIn" Height="450" Width="800">
+        Title="SignIn" Height="450" Width="350">
     <Grid>
-        <Label x:Name="lSignIn" Content="Sign in" HorizontalAlignment="Left" Margin="244,55,0,0" VerticalAlignment="Top" Width="214" Height="25"/>
-        <Button x:Name="bSignIn" Content="Sign in" Click="Button_Click" HorizontalAlignment="Left" Height="42" Margin="244,192,0,0" VerticalAlignment="Top" Width="184"/>
-        <TextBox x:Name="tbNickname" Height="22" Margin="244,104,428,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbPassword" Height="22" Margin="244,146,428,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="bSignUp" Content="Sign up" Click="Button_Click" HorizontalAlignment="Left" Height="42" Margin="244,254,0,0" VerticalAlignment="Top" Width="184"/>
-        <ListBox x:Name="lbUncorects" HorizontalAlignment="Left" Height="112" Margin="22,43,0,0" VerticalAlignment="Top" Width="194"/>
+        <Label x:Name="lSignIn" Content="     Sign in" HorizontalAlignment="Left" Margin="100,55,0,0" VerticalAlignment="Top" Width="120" Height="30" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="bSignIn" Content="Sign in" Click="Button_Click_SignIn" HorizontalAlignment="Left" Height="42" Margin="100,192,0,0" VerticalAlignment="Top" Width="120"/>
+
+        <Button x:Name="bSignUp" Content="Sign up" Click="Button_Click_SignUp" HorizontalAlignment="Left" Height="42" Margin="100,254,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbNickname" HorizontalAlignment="Left" Height="23" Margin="104,105,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbPassword" HorizontalAlignment="Left" Height="23" Margin="104,150,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

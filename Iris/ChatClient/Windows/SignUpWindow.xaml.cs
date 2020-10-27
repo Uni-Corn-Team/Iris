@@ -63,6 +63,10 @@ namespace ChatClient
             }
         }
 
-
+        private void Button_Click_SignUp(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
     }
 }

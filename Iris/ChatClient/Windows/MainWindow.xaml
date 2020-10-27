@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="lbChat" Height="211" Margin="417,99,44,0" VerticalAlignment="Top"/>
-        <Button x:Name="bNewDialog" Click="New_Dialog" Content="New dialog" HorizontalAlignment="Left" Height="55" Margin="417,335,0,0" VerticalAlignment="Top" Width="132"/>
-        <Button x:Name="bOpenDialog" Click="Open_Dialog" Content="Open dialog" HorizontalAlignment="Left" Height="58" Margin="616,335,0,0" VerticalAlignment="Top" Width="132"/>
-        <ListBox x:Name="lbUserInfo" HorizontalAlignment="Left" Height="193" Margin="48,51,0,0" VerticalAlignment="Top" Width="208"/>
+        <ListBox x:Name="lbChat" Height="299" Margin="417,48,43.6,0" VerticalAlignment="Top"/>
+        <Button x:Name="bNewDialog" Click="New_Dialog" Content="New chat" HorizontalAlignment="Left" Height= "29" Margin="51,181,0,0" VerticalAlignment="Top" Width="146"/>
+        <Button x:Name="bOpenDialog" Click="Open_Dialog" Content="Open Chat" HorizontalAlignment="Left" Height= "29" Margin="51,227,0,0" VerticalAlignment="Top" Width="146"/>
+        <ListBox x:Name="lbUserInfo" HorizontalAlignment="Left" Height="44" Margin="48,51,0,0" VerticalAlignment="Top" Width="208"/>
+        <Button Content="Редактировать профиль" HorizontalAlignment="Left" Margin="51,124,0,0" VerticalAlignment="Top" Width="146" Height="29" Click="Button_Click_EditProfile"/>
 
     </Grid>
 </Window>

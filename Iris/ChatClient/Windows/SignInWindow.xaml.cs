@@ -28,10 +28,10 @@ namespace ChatClient
             Iris.Database.Load();
             user = new User();
 
-            foreach (User user in Database.Users)
-            {
-                lbUncorects.Items.Add(user.Nickname + " " + user.Password);
-            }
+           // foreach (User user in Database.Users)
+            //{
+                //lbUncorects.Items.Add(user.Nickname + " " + user.Password);
+           // }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -39,34 +39,27 @@ namespace ChatClient
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_SignIn(object sender, RoutedEventArgs e)
         {
-            if(sender is Button)
+            if (sender is Button)
             {
-                if (sender.Equals(bSignIn)) 
+
+                foreach (User user in Database.Users)
                 {
-                    foreach(User user in Database.Users)
+                    if (user.Nickname.Equals(tbNickname.Text) && user.Password.Equals(tbPassword.Text))
                     {
-                        if(user.Nickname.Equals(tbNickname.Text) && user.Password.Equals(tbPassword.Text))
-                        {
-                            (new MainWindow()).Show();
-                            this.Close();
-                        }
+                        (new MainWindow()).Show();
+                        this.Close();
                     }
-                    lbUncorects.Items.Add(DateTime.Now.ToString() + ": uncorect");
-
                 }
-                if (sender.Equals(bSignUp))
-                {
-                    (new SignUpWindow()).Show();
-                    this.Close();
-                }
+                // lbUncorects.Items.Add(DateTime.Now.ToString() + ": uncorect");
 
             }
-            else
-            {
-                throw new Exception("new exception");
-            }
+        }
+        private void Button_Click_SignUp(object sender, RoutedEventArgs e)
+        {
+           (new SignUpWindow()).Show();
+            this.Close();
         }
     }
 }
