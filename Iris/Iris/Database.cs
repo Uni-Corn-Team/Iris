@@ -29,7 +29,7 @@ namespace Iris
             Chats = new List<Chat>();
         }
 
-        public static bool getUsers()
+        public static bool getUsersFromDB()
         {
             Console.Out.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
             try
@@ -56,6 +56,7 @@ namespace Iris
                                 reader.GetString(3), reader.GetInt32(4), reader.GetString(5), reader.GetString(6)));
                         }
                     }
+                    connection.Close();
                 }
                 return true;
             }
@@ -67,7 +68,7 @@ namespace Iris
         }
     
 
-        public static bool addUser(User user)
+        public static bool addUserToDB(User user)
         {
             try
             {
@@ -80,8 +81,8 @@ namespace Iris
                     command.CommandText =
                      @"
                     INSERT OR IGNORE 
-                    INTO 'Users'('name','surname','nickname','age','login','password') 
-                    VALUES (@name, @surname, @nickname, @age, @login, @password)
+                    INTO 'Users'('User_id','Name','Surname','Nickname','Age','Login','Password') 
+                    VALUES (@id, @name, @surname, @nickname, @age, @login, @password)
                     ";
                     command.Parameters.AddWithValue("@id", user.ID);
                     command.Parameters.AddWithValue("@name", user.Name);
@@ -91,6 +92,7 @@ namespace Iris
                     command.Parameters.AddWithValue("@login", user.Login);
                     command.Parameters.AddWithValue("@password", user.Password);
                     command.ExecuteNonQuery();
+                    connection.Close();
                 }
                 return true;
             }
@@ -101,7 +103,16 @@ namespace Iris
             }
         }
 
-        public static bool getChats()
+        public static User getUserFromList(int id)
+        {
+            for (int i = 0; i < Users.Count(); i++)
+            {
+                if (Users[i].ID == id)
+                    return Users[i];
+            }
+            return null;
+        }
+        public static bool getChatsFromDB()
         {
             try
             {
@@ -127,7 +138,7 @@ namespace Iris
                         }
                     }
 
-                    for (int i=0; i < Chats.Count(); i++)
+                    for (int i = 0; i < Chats.Count(); i++)
                     {
                         int id = Chats[i].ID;
                         command = connection.CreateCommand();
@@ -135,16 +146,18 @@ namespace Iris
                         @"
                          SELECT *
                          FROM Messages
-                         WHERE Chat_id = @id
+                         WHERE Chat_id = 'id'
                         ";
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                //Chats[i].Messages.Add(new Message(;
+                                if (reader.GetString(4) == null)
+                                    Chats[i].Messages.Add(new Message(reader.GetInt32(0), getUserFromList(reader.GetInt32(2)), reader.GetString(3)));
                             }
                         }
                     }
+                    connection.Close();
                 }
                 return true;
             }
@@ -157,7 +170,7 @@ namespace Iris
 
 
 
-        public static bool addChat(Chat chat)
+        public static bool addChatToDB(Chat chat)
         {
             try
             {
@@ -168,12 +181,14 @@ namespace Iris
 
                     var command = connection.CreateCommand();
                     command.CommandText =
-                     @"
+                    @"
                     INSERT OR IGNORE 
-//TODO
+                    INTO 'Chats'('Chat_id','surname','nickname','age','login','password') 
+                    VALUES (@name, @surname, @nickname, @age, @login, @password)
                     ";
-//TODO
+                    //TODO
                     command.ExecuteNonQuery();
+                    connection.Close();
                 }
                 return true;
             }
@@ -184,11 +199,12 @@ namespace Iris
             }
         }
 
-        public static bool Load()
+        public static bool Update()
         {
-            if (getUsers()&& getChats())
+            if (getUsersFromDB() && getChatsFromDB())
                 return true;
             return false;
         }
     }
 }
+
