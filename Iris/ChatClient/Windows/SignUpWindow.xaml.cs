@@ -53,7 +53,7 @@ namespace ChatClient
                     ID = Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1
                 };
                 Database.Users.Add(SignIn.user);
-                Database.Save();
+                //Database.Save();
                 (new MainWindow()).Show();
                 this.Close();
             }

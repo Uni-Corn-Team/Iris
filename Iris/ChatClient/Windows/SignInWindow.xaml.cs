@@ -25,7 +25,7 @@ namespace ChatClient
         public SignIn()
         {
             InitializeComponent();
-            Iris.Database.Load();
+            //Iris.Database.Update();
             user = new User();
 
            // foreach (User user in Database.Users)
@@ -60,6 +60,11 @@ namespace ChatClient
         {
            (new SignUpWindow()).Show();
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
