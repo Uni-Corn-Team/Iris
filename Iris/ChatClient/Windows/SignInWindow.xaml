@@ -39,7 +39,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="12" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -81,7 +81,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" CornerRadius="0" BorderBrush="Gray" BorderThickness="2" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Border x:Name="border" CornerRadius="0" BorderBrush="#FF840DE0" BorderThickness="2" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -108,26 +108,20 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+
+
+
+
     </Window.Resources>
 
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF22082C" Offset="0"/>
-                <GradientStop Color="#FF4D0093" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Grid Background="#FFB383FF">
 
-        <Label x:Name="lNickname" Content="Nickname" Height="25" Width="125" Foreground="White" Margin="140,24,79,371" FontFamily="Bookman Old Style" TabIndex="2147483646" />
-        <Label x:Name="lPassword" Content="Password" Height="25" Width="125" Foreground="White" Margin="142,95,77,300" FontFamily="Bookman Old Style" />
 
-        <Button x:Name="bSignIn" Style="{DynamicResource ButtonBorderStyle}"  Foreground="White"  Background="#FF9E00F9" Content="Sign in" Click="Button_Click_SignIn" HorizontalAlignment="Left" Height="30" Margin="110,225,0,0" VerticalAlignment="Top" Width="125" BorderThickness="0" FontFamily="Bookman Old Style"/>
-        <Button x:Name="bSignUp" Style="{DynamicResource ButtonBorderStyle}"  Foreground="White"  Background="#FF9E00F9" Content="Sign up" Click="Button_Click_SignUp" HorizontalAlignment="Left" Height="30" Margin="110,265,0,0" VerticalAlignment="Top" Width="125" FontFamily="Bookman Old Style"/>
-        <TextBox Style="{DynamicResource TextBoxStyle1}"  x:Name="tbNickname" Background="#FF9E00F9" HorizontalAlignment="Left" Height="30" Margin="110,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="125" BorderThickness="0" ClipToBounds="True" />
-        <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="tbPassword" Background="#FF9E00F9"  HorizontalAlignment="Left"  Height="30" Margin="110,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" BorderThickness="0" ClipToBounds="True" />
-
-        <Image Width="95" Height="95" Source="/Source/Unicorn_2.png" Margin="118,309,126,11" />
-
+        <Button x:Name="bSignIn" Style="{DynamicResource ResourceKey =ButtonBorderStyle}"  Foreground="White"  Background="#FF9E00F9" Content="Sign in" Click="Button_Click_SignIn" HorizontalAlignment="Left" Height="30" Margin="50,229,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" FontFamily="Bookman Old Style"/>
+        <Button x:Name="bSignUp"   Foreground="White"  Background="#FF9E00F9" Content="Sign up" Click="Button_Click_SignUp" HorizontalAlignment="Left" Height="27" Margin="16,373,0,0" VerticalAlignment="Top" Width="61" FontFamily="Bookman Old Style"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}"  x:Name="tblogin" Text="login" Foreground="Gray" Background="White" HorizontalAlignment="Left" Height="30" Margin="50,135,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="250"  ClipToBounds="True" MouseDoubleClick="RemoveTextLogin"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="tbPassword" Background="White"  HorizontalAlignment="Left"  Height="30" Margin="50,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" BorderThickness="0" ClipToBounds="True" Foreground="Gray" Text="Password" MouseDoubleClick="RemoveTextPassword" />
+        <Label x:Name="lableLoginError" Content="Wrong login or password" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="100,271,0,0" VerticalAlignment="Top" Width="161" Visibility="Hidden"/>
     </Grid>
 
 </Window>

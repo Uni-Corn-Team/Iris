@@ -1,0 +1,15 @@
+﻿<Window x:Class="ChatClient.Windows.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatClient.Windows"
+        mc:Ignorable="d"
+        Title="AddUserWindow" Height="450" Width="350">
+    <Grid>
+        <Label Content="Nickname"  Margin="107,44,137,350" Width="100"  Height="26"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="109,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="bAdd"  Content="Add" HorizontalAlignment="Left" Margin="98,130,0,0" VerticalAlignment="Top" Width="131" Height="35"/>
+
+    </Grid>
+</Window>

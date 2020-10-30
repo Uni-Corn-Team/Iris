@@ -7,12 +7,13 @@
         mc:Ignorable="d"
         Title="EditProfile" Height="450" Width="350">
     <Grid>
-        <TextBox  Name ="tbName" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" Margin="112,50,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name ="tbSurname" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" Margin="112,100,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name ="tbNickname" HorizontalAlignment="Left" Height="25" Margin="113,150,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox Name ="tbAge" HorizontalAlignment="Left" Height="25" Margin="111,200,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="113,250,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <Button Grid.ColumnSpan="2" Content="Change" HorizontalAlignment="Left" Margin="113,312,0,0" VerticalAlignment="Top" Width="117" Height="25"/>
+
+
+        <TextBox Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="113,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="113,179,0,0" VerticalAlignment="Top" Width="117" Height="25"/>
+        <Label x:Name="tbLasPassword" Content="Last password" HorizontalAlignment="Left" Margin="118,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.145,-2.08" Width="100"/>
+        <Label Content="New password" HorizontalAlignment="Left" Margin="117,90,0,0" VerticalAlignment="Top" Width="113"/>
+        <TextBox x:Name="tbNewPassword" HorizontalAlignment="Left" Height="23" Margin="112,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
