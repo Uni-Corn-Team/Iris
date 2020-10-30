@@ -35,6 +35,10 @@ namespace Iris
             this.Password = password;
         }
 
+        public override string ToString()
+        {
+            return "User Id: " + this.ID +" Name: "+ this.Name + " Surname: " + this.Surname + " Nickname: " + this.Nickname + " Login: " + this.Login + " Password: " + this.Password + "\n";
+        }
         /// <summary>
         /// information about connection user to server
         /// </summary>

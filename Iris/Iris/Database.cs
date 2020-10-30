@@ -29,6 +29,46 @@ namespace Iris
             Chats = new List<Chat>();
         }
 
+        public static User getUserFromList(string login)
+        {
+            for (int i = 0; i < Users.Count(); i++)
+            {
+                if (Users[i].Login.Equals(login))
+                    return Users[i];
+            }
+            return null;
+        }
+
+        public static User getUserFromList(int id)
+        {
+            for (int i = 0; i < Users.Count(); i++)
+            {
+                if (Users[i].ID == id)
+                    return Users[i];
+            }
+            return null;
+        }
+
+        public static Chat getChatFromList(int id)
+        {
+            for (int i = 0; i < Chats.Count(); i++)
+            {
+                if (Chats[i].ID == id)
+                    return Chats[i];
+            }
+            return null;
+        }
+
+        public static Chat getChatFromList(string name)
+        {
+            for (int i = 0; i < Chats.Count(); i++)
+            {
+                if (Chats[i].Name.Equals(name))
+                    return Chats[i];
+            }
+            return null;
+        }
+
         public static bool getUsersFromDB()
         {
             Console.Out.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
@@ -103,15 +143,6 @@ namespace Iris
             }
         }
 
-        public static User getUserFromList(int id)
-        {
-            for (int i = 0; i < Users.Count(); i++)
-            {
-                if (Users[i].ID == id)
-                    return Users[i];
-            }
-            return null;
-        }
         public static bool getChatsFromDB()
         {
             try
@@ -137,26 +168,49 @@ namespace Iris
                             Chats.Add(new Chat(reader.GetInt32(0), reader.GetString(1)));
                         }
                     }
-
+                    connection.Close();
+                    connection.Open();
                     for (int i = 0; i < Chats.Count(); i++)
                     {
-                        int id = Chats[i].ID;
                         command = connection.CreateCommand();
                         command.CommandText =
                         @"
                          SELECT *
                          FROM Messages
-                         WHERE Chat_id = 'id'
+                         WHERE Chat_id LIKE @id
                         ";
+                        command.Parameters.AddWithValue("@id", Chats[i].ID);
+
+
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                if (reader.GetString(4) == null)
                                     Chats[i].Messages.Add(new Message(reader.GetInt32(0), getUserFromList(reader.GetInt32(2)), reader.GetString(3)));
                             }
                         }
+                        
+                        command = connection.CreateCommand();
+                        command.CommandText =
+                        @"
+                         SELECT *
+                         FROM LinkUC
+                         WHERE Chat_id LIKE @id
+                        ";
+                        command.Parameters.AddWithValue("@id", Chats[i].ID);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int tmp = reader.GetInt32(0);
+                                Chats[i].Members.Add(getUserFromList(tmp));
+                                if (reader.GetString(2).Equals("root"))
+                                    Chats[i].RootID = tmp;
+                            }
+                        }
+                        
                     }
+                        
                     connection.Close();
                 }
                 return true;
@@ -183,11 +237,50 @@ namespace Iris
                     command.CommandText =
                     @"
                     INSERT OR IGNORE 
-                    INTO 'Chats'('Chat_id','surname','nickname','age','login','password') 
-                    VALUES (@name, @surname, @nickname, @age, @login, @password)
+                    INTO 'Chats'('Chat_id','name')
+                    VALUES (@Chat_id, @name)
                     ";
-                    //TODO
+                    command.Parameters.AddWithValue("@Chat_id", chat.ID);
+                    command.Parameters.AddWithValue("@name", chat.Name);
+
                     command.ExecuteNonQuery();
+
+                    for (int i = 0; i < chat.Messages.Count(); i++)
+                    {
+                        command = connection.CreateCommand();
+                        command.CommandText =
+                        @"
+                        INSERT OR IGNORE 
+                        INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text')
+                        VALUES (@Mes_id, @Chat_id, @Sender_id, @Text)
+                        ";
+
+                        command.Parameters.AddWithValue("@Mes_id", chat.Messages[i].ID);
+                        command.Parameters.AddWithValue("@Chat_id", chat.ID);
+                        command.Parameters.AddWithValue("@Sender_id", chat.Messages[i].Sender.ID);
+                        command.Parameters.AddWithValue("@Text", chat.Messages[i].Text);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    for (int i = 0; i < chat.Members.Count(); i++)
+                    {
+                        command = connection.CreateCommand();
+                        command.CommandText =
+                        @"
+                        INSERT OR IGNORE 
+                        INTO 'LinkUC'('User_id','Chat_id', 'Rights')
+                        VALUES (@User_id, @Chat_id, @Rights)
+                        ";
+                        command.Parameters.AddWithValue("@User_id", chat.Members[i].ID);
+                        command.Parameters.AddWithValue("@Chat_id", chat.ID);
+                        if (chat.RootID != chat.Members[i].ID)
+                            command.Parameters.AddWithValue("@Rights", "user");
+                        else
+                            command.Parameters.AddWithValue("@Rights", "root");
+                        command.ExecuteNonQuery();
+                    }
+
                     connection.Close();
                 }
                 return true;
@@ -204,6 +297,21 @@ namespace Iris
             if (getUsersFromDB() && getChatsFromDB())
                 return true;
             return false;
+        }
+
+        public new static string ToString()
+        {
+            string str = "Users: \n";
+            for (int i = 0; i < Users.Count(); i++)
+            {
+                str += Users[i].ToString();
+            }
+            str += "\nChats:\n";
+            for (int i = 0; i < Chats.Count(); i++)
+            {
+                str += Chats[i].ToString();
+            }
+            return str;
         }
     }
 }
