@@ -14,7 +14,7 @@ namespace ChatHost
         {
             using (var host = new ServiceHost(typeof(Iris.ServiceChat)))
             {
-                //host.Open();
+                host.Open();
 
                 //Please delete this code in future, when host will work!!!
                 //this code is temporary test for methods of Database

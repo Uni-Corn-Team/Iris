@@ -49,12 +49,12 @@ namespace Iris
             foreach (var item in users)
             {
                 string answer = "===============\n";
-                answer = DateTime.Now.ToString() + "| ";
+                answer = DateTime.Now.ToString() + " | ";
 
                 var user = users.FirstOrDefault(i => i.ID == id);
                 if (user != null)
                 {
-                    answer += user.Nickname + "| " + "\n\t";
+                    answer += user.Nickname + " | " + "\n\t";
                 }
                 answer += msg;
                 item.OperationContext.GetCallbackChannel<IServerChatCallback>().MessageCallback(answer);

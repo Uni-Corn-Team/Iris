@@ -25,24 +25,22 @@ namespace ChatClient
     public partial class MainWindow : Window, IServiceChatCallback
     {
         private bool isConnected;
-        public User CurrentUser { get; set; }
+        //public static User CurrentUser { get; set; }
+        public static User CurrentUser;
         private List<Chat> chats;
         private ServiceChatClient client;
         int ID;
 
         public MainWindow()
         {
-            //temper
-            CurrentUser = new User(427, "Kostya", "Loh", "Gay", 20, "DmitiyStrcuk", "427427");
-
             InitializeComponent();
             client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));
-            ID = client.Connect("KOstyaloh");
+            ID = client.Connect(CurrentUser.Nickname);
             CurrentUser.CurrentChat = null;
             chats = new List<Chat>();
             foreach (Chat dialog in Database.Chats)
             {
-                
+
                 if (dialog.Members.Contains(CurrentUser))
                 {
                     chats.Add(dialog);

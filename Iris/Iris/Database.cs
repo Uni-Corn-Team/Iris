@@ -18,7 +18,7 @@ namespace Iris
     public static class Database
     {
         //Maybe change it when will realese to new path(this path from bin\debug
-        private const string DBPath = "Data Source=..\\..\\..\\Database\\database.db";
+        private const string DBPath = "Data Source=C:\\Users\\Daria\\Desktop\\КПО\\Iris\\Iris\\Database\\database.db";
         public static List<User> Users { get; set; }
 
         public static List<Chat> Chats { get; set; }
@@ -34,7 +34,9 @@ namespace Iris
             for (int i = 0; i < Users.Count(); i++)
             {
                 if (Users[i].Login.Equals(login))
+                {
                     return Users[i];
+                }
             }
             return null;
         }
@@ -76,7 +78,6 @@ namespace Iris
             {
                 using (var connection = new SqliteConnection(DBPath))
                 {
-
                     connection.Open();
 
                     var command = connection.CreateCommand();
