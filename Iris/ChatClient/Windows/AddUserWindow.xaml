@@ -8,8 +8,8 @@
         Title="AddUserWindow" Height="450" Width="350">
     <Grid>
         <Label Content="Nickname"  Margin="107,44,137,350" Width="100"  Height="26"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="109,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="bAdd"  Content="Add" HorizontalAlignment="Left" Margin="98,130,0,0" VerticalAlignment="Top" Width="131" Height="35"/>
+        <TextBox Name="tbNickname" HorizontalAlignment="Left" Height="23" Margin="109,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="bAdd" Click="ButtonClickAddUserToChat" Content="Add" HorizontalAlignment="Left" Margin="98,130,0,0" VerticalAlignment="Top" Width="131" Height="35"/>
 
     </Grid>
 </Window>

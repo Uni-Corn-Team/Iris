@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Iris;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,23 @@ namespace ChatClient.Windows
         public AddUserWindow()
         {
             InitializeComponent();
+        }
+
+        private void ButtonClickAddUserToChat(object sender, RoutedEventArgs e)
+        {
+            if (Database.getUserFromList(tbNickname.Text) != null)
+            {
+                Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(tbNickname.Text));
+                Database.addChatToDB(Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID));
+                new MainWindow().Show();
+                this.Close();
+            }
+            else
+            {
+                //write that user isn't exists and delete next two lines
+                new MainWindow().Show();
+                this.Close();
+            }
         }
     }
 }

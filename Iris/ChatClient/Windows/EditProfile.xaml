@@ -10,7 +10,7 @@
 
 
         <TextBox Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="113,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="113,179,0,0" VerticalAlignment="Top" Width="117" Height="25"/>
+        <Button Content="Save" Click ="ButtonClickChangePassword" HorizontalAlignment="Left" Margin="113,179,0,0" VerticalAlignment="Top" Width="117" Height="25"/>
         <Label x:Name="tbLasPassword" Content="Last password" HorizontalAlignment="Left" Margin="118,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.145,-2.08" Width="100"/>
         <Label Content="New password" HorizontalAlignment="Left" Margin="117,90,0,0" VerticalAlignment="Top" Width="113"/>
         <TextBox x:Name="tbNewPassword" HorizontalAlignment="Left" Height="23" Margin="112,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,23 +49,22 @@ namespace ChatClient
                 }
             }
 
-
             //temper
-            Chat chat1 = new Chat(1, "427");
-            lbDialogs.Items.Add(chat1.Name);
-            chat1.Messages = new List<Message>();
-            Chat chat2 = new Chat(2, "gay-club");
-            lbDialogs.Items.Add(chat2.Name);
-            chat2.Messages = new List<Message>();
-            chat1.Messages.Add(new Message(100, new User(6, "loh", "loh", "loh", 22, "loh", "loh"), "Spartak sosat"));
-            chat2.Messages.Add(new Message(101, new User(6, "loh", "loh", "loh", 22, "loh", "loh"), "Zenit onelove"));
-            chat1.Messages.Add(new Message(102, CurrentUser, "i love deda"));
-            chat2.Messages.Add(new Message(102, CurrentUser, "and dmitiy struckovsy"));
+            //Chat chat1 = new Chat(1, "427");
+            //lbDialogs.Items.Add(chat1.Name);
+            //chat1.Messages = new List<Message>();
+            //Chat chat2 = new Chat(2, "gay-club");
+            //lbDialogs.Items.Add(chat2.Name);
+            //chat2.Messages = new List<Message>();
+            //chat1.Messages.Add(new Message(100, new User(6, "loh", "loh", "loh", 22, "loh", "loh"), "Spartak sosat"));
+            //chat2.Messages.Add(new Message(101, new User(6, "loh", "loh", "loh", 22, "loh", "loh"), "Zenit onelove"));
+            //chat1.Messages.Add(new Message(102, CurrentUser, "i love deda"));
+            //chat2.Messages.Add(new Message(102, CurrentUser, "and dmitiy struckovsy"));
 
-            chats.Add(chat1);
-            chats.Add(chat2);
+            //chats.Add(chat1);
+            //chats.Add(chat2);
 
-            CurrentUser.CurrentChat = chat1;
+            //CurrentUser.CurrentChat = chat1;
 
         }
 
@@ -90,6 +90,8 @@ namespace ChatClient
             if (client != null)
             {
                 client.SendMessage(tbMessage.Text, ID);
+                //uncomment when ID are registered in the database
+                //Database.getChatFromList(CurrentUser.CurrentChat.ID).Messages.Add(new Message(100, CurrentUser, tbMessage.Text));
                 tbMessage.Text = string.Empty;
             }
         }
@@ -102,14 +104,26 @@ namespace ChatClient
         private void Button_Click_EditProfile(object sender, RoutedEventArgs e)
         {
             new EditProfile().Show();
-            //this.Close();
+            this.Close();
+        }
+
+        private void ButtonClickNewChat(object sender, RoutedEventArgs e)
+        {
+            new CreateChat().Show();
+            this.Close();
+        }
+
+        private void ButtonClickAddUser(object sender, RoutedEventArgs e)
+        {
+            new AddUserWindow().Show();
+            this.Close();
         }
 
         private void Selection_Dialog(object sender, RoutedEventArgs e)
         {
             //todo: add exceptions (if currentChat == null will be bad)
-            if (!((String)lbDialogs.SelectedItem).Equals(CurrentUser.CurrentChat.Name))
-            {
+            //if (!((String)lbDialogs.SelectedItem).Equals(CurrentUser.CurrentChat.Name))
+            //{
                 lbCurrentDialog.Items.Clear();
                 foreach (Chat dialog in chats)
                 {
@@ -123,7 +137,7 @@ namespace ChatClient
                 {
                     lbCurrentDialog.Items.Add(message.Sender.Nickname + " " + message.Text);
                 }
-            }
+            //}
         }
 
 

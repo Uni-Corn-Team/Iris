@@ -263,3 +263,7 @@ C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\obj\Debug\Windows\AddUserWindow
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\obj\Debug\Windows\AddUserWindow.baml
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\obj\Debug\Windows\ProfileWindow.g.cs
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\obj\Debug\Windows\ProfileWindow.baml
+C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\AddUserWindow.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\ProfileWindow.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\AddUserWindow.baml
+C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\ProfileWindow.baml

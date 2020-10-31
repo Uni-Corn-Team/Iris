@@ -27,58 +27,19 @@ namespace ChatClient
             InitializeComponent();
         }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    bool isUniqueNickname = true;
-        //    foreach (User user in Database.Users)
-        //    {
-        //        if (tbNickname.Name.Equals(user.Nickname))
-        //        {
-        //            isUniqueNickname = false;
-        //            break;
-        //        }
-        //    }
-        //    if (isUniqueNickname)
-        //    {
-        //        {
-        //            Name = tbName.Text,
-        //            Surname = tbSurname.Text,
-        //            Nickname = tbNickname.Text,
-        //            Login = tbNickname.Text,
-        //            Age = int.Parse(tbAge.Text),
-        //            Password = tbPassword.Text,
-        //            ID = Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1
-        //        };
-        //        Database.Users.Add(MainWindow.CurrentUser);
-        //        //Database.Save();
-        //        (new MainWindow()).Show();
-        //        this.Close();
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("обработай меня");
-        //    }
-        //}
-
-
-       
-
         private void Button_Click_SignUp(object sender, RoutedEventArgs e)
         {
             if (Database.getUserFromList(tbNickname.Text) == null)
             {
                 MainWindow.CurrentUser = new User(Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1,
-                    tbName.Text, tbSurname.Text, tbNickname.Text, int.Parse(tbAge.Text), tbAge.Text, tbPassword.Text);
-                Database.Users.Add(MainWindow.CurrentUser);
+                    tbName.Text, tbSurname.Text, tbNickname.Text, int.Parse(tbAge.Text), tbLogin.Text, tbPassword.Text);
+                Database.addUserToDB(MainWindow.CurrentUser);
                 (new MainWindow()).Show();
                 this.Close();
             }
             else
             {
-                //please write that thic log is already used
                 lErorrMes.Visibility = Visibility.Visible;
-                throw new Exception("обработай меня (скорее всего, такой логин уже есть");
             }
         }
     }

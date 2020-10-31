@@ -23,6 +23,12 @@ namespace Iris
 
         public static List<Chat> Chats { get; set; }
 
+        //we need static indexes of objects to add new objects (i suggest use count as ID; rewrite these 3 fields every time we change the database)
+        //also need rewrite DB (.db file) because ID
+        //public static int UsersCountAsNextID = 0;
+        //public static int ChatsCountAsNextID = 0;
+        //public static int MessagesCountAsNextID = 0;
+
         static Database()
         {
             Users = new List<User>();
@@ -108,9 +114,9 @@ namespace Iris
             }
         }
     
-
         public static bool addUserToDB(User user)
         {
+            Users.Add(user);
             try
             {
                 using (var connection = new SqliteConnection(DBPath))
@@ -223,10 +229,39 @@ namespace Iris
             }
         }
 
+        public static bool changePassword(User user)
+        {
+            try
+            {
+                using (var connection = new SqliteConnection(DBPath))
+                {
 
+                    connection.Open();
+
+                    var command = connection.CreateCommand();
+                    command.CommandText =
+                    @"
+                    UPDATE Users
+                    SET Password = @password
+                    WHERE User_id LIKE @id
+                    ";
+                    command.Parameters.AddWithValue("@id", user.ID);
+                    command.Parameters.AddWithValue("@password", user.Password);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("{0} Exception caught.", e);
+                return false;
+            }
+        }
 
         public static bool addChatToDB(Chat chat)
         {
+            Chats.Add(chat);
             try
             {
                 using (var connection = new SqliteConnection(DBPath))

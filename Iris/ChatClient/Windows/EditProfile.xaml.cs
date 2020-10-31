@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Iris;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,17 @@ namespace ChatClient.Windows
         public EditProfile()
         {
             InitializeComponent();
+        }
+
+        private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
+        {
+            if (MainWindow.CurrentUser.Password.Equals(tbPassword.Text))
+            {
+                MainWindow.CurrentUser.Password = tbNewPassword.Text;
+                Database.changePassword(MainWindow.CurrentUser);
+                (new MainWindow()).Show();
+                this.Close();
+            }
         }
     }
 }

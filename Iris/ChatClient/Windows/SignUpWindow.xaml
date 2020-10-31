@@ -13,7 +13,7 @@
         <TextBox Name ="tbAge" HorizontalAlignment="Left" Height="25" Margin="111,166,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" Width="120"/>
         <TextBox Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="115,256,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
         <Button Grid.ColumnSpan="2" Content="Sign up" HorizontalAlignment="Left" Margin="113,312,0,0" VerticalAlignment="Top" Width="117" Height="25" Click="Button_Click_SignUp"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="113,211,0,0" TextWrapping="Wrap" Text="login" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name ="tbLogin" HorizontalAlignment="Left" Height="23" Margin="113,211,0,0" TextWrapping="Wrap" Text="login" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lErorrMes" Foreground="DarkRed" Content="This user exist" HorizontalAlignment="Left" Margin="119,353,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden"/>
 
     </Grid>

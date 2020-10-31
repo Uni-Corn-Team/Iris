@@ -12,6 +12,6 @@
                   TextWrapping="Wrap" Text=""
                   VerticalAlignment="Top" Width="120"/>
         <Label Content="Name of chat" HorizontalAlignment="Left" Margin="114,107,0,0" VerticalAlignment="Top"/>
-        <Button Content="Create chat" HorizontalAlignment="Left" Margin="111,198,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="-0.885,-1.66" Height="50"/>
+        <Button Content="Create chat" Click="ButtonClickAddChat" HorizontalAlignment="Left" Margin="111,198,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="-0.885,-1.66" Height="50"/>
     </Grid>
 </Window>
