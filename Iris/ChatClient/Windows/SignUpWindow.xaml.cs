@@ -61,6 +61,9 @@ namespace ChatClient
         //    }
         //}
 
+
+       
+
         private void Button_Click_SignUp(object sender, RoutedEventArgs e)
         {
             if (Database.getUserFromList(tbNickname.Text) == null)
@@ -74,6 +77,7 @@ namespace ChatClient
             else
             {
                 //please write that thic log is already used
+                lErorrMes.Visibility = Visibility.Visible;
                 throw new Exception("обработай меня (скорее всего, такой логин уже есть");
             }
         }

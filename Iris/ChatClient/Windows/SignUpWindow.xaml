@@ -7,12 +7,14 @@
         mc:Ignorable="d"
         Title="SignUpWindow" Height="450" Width="350">
     <Grid>
-        <TextBox  Name ="tbName" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" Margin="112,50,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name ="tbSurname" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" Margin="112,100,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name ="tbNickname" HorizontalAlignment="Left" Height="25" Margin="113,150,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox Name ="tbAge" HorizontalAlignment="Left" Height="25" Margin="111,200,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="113,250,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox  Name ="tbName" HorizontalAlignment="Left" Height="25" Margin="109,26,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name ="tbSurname" HorizontalAlignment="Left" Height="25" Margin="114,74,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name ="tbNickname" HorizontalAlignment="Left" Height="25" Margin="111,120,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name ="tbAge" HorizontalAlignment="Left" Height="25" Margin="111,166,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="115,256,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
         <Button Grid.ColumnSpan="2" Content="Sign up" HorizontalAlignment="Left" Margin="113,312,0,0" VerticalAlignment="Top" Width="117" Height="25" Click="Button_Click_SignUp"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="113,211,0,0" TextWrapping="Wrap" Text="login" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lErorrMes" Foreground="DarkRed" Content="This user exist" HorizontalAlignment="Left" Margin="119,353,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden"/>
 
     </Grid>
 </Window>
