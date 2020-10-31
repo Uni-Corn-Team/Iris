@@ -5,24 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinWidth="800" MinHeight="450" Background="White">
+        Title="MainWindow" Height="450" Width="800" MinWidth="800" MinHeight="450" Background="#FF2F1035">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200">
+            <ColumnDefinition Width="190" MaxWidth="190" MinWidth="190">
             </ColumnDefinition>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="lbDialogs" SelectionChanged="Selection_Dialog" Margin="0,35,0,0" RenderTransformOrigin="0.293,0.577" Grid.Row="0" Foreground="#FFA375BD" BorderThickness="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="lbDialogs" SelectionChanged="Selection_Dialog" Margin="0,0,0,0" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Trebuchet MS" Foreground="#FFEBEAC9" BorderThickness="0">
             <ListBox.Background>
-                <SolidColorBrush Color="#FFB385FF" Opacity="0"/>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
             </ListBox.Background>
             <ListBox.BorderBrush>
                 <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <Line X1="200" Y1="0" X2="200" Y2="5000" Stroke="#FFA375BD" StrokeThickness="10" Grid.Row="0"/>
-        <ListBox x:Name="lbCurrentDialog" Margin="0,35,-0.4,50" Grid.Column="1" FontWeight="SemiBold" BorderThickness="0">
+        <ListBox x:Name="lbCurrentDialog" Margin="0,0,-0.4,50" Grid.Column="1" Grid.Row="1" FontSize="14" FontFamily="Consolas" BorderThickness="0" Foreground="#FFEBEAC9" SelectionMode="Extended">
             <ListBox.Background>
                 <SolidColorBrush Color="#FFB383FF" Opacity="0"/>
             </ListBox.Background>
@@ -30,38 +33,73 @@
                 <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <TextBox x:Name="tbMessage" TextWrapping="Wrap" MinWidth="496" MinHeight="49.7" Height="50" VerticalAlignment="Bottom" Margin="0,0,98.6,0" BorderThickness="0,4,4,0" Grid.Column="1" Panel.ZIndex="3" Background="White">
-            <TextBox.BorderBrush>
-                <SolidColorBrush Color="#FFA375BD"/>
-            </TextBox.BorderBrush>
-        </TextBox>
-        <Button x:Name="bSendMessage" Click="Button_Click_SendMessage" Content="Send" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="99.1" Margin="0,0,-0.4,0" BorderBrush="#FFA375BD" Padding="1" BorderThickness="1,4,1,1" Foreground="#FFA375BD"/>
-        <Button x:Name="bCreatchat" Click="ButtonClickNewChat" HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" Margin="50,10,0,0" VerticalAlignment="Top" Width="25" Height="25" RenderTransformOrigin="1.539,0.71 " Grid.Column="0">
-            <Image>
+        <TextBox x:Name="tbMessage" TextWrapping="Wrap" MinWidth="494" MinHeight="50" Height="52" Margin="0,0,97.6,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
+        <Button x:Name="bSendMessage" Click="Button_Click_SendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="0" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="97.6" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="97.6">
+            <Button.Background>
+                <SolidColorBrush Color="#FFFFF2F2" Opacity="0.5"/>
+            </Button.Background>
+            <Button.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.BorderBrush>
+            <Image Height="40" Width="40">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="/Source/add.png"  />
+                        <Setter Property="Source" Value="/Source/email.png"  />
                     </Style>
                 </Image.Style>
             </Image>
         </Button>
-        <Button x:Name="bAddUser" Click ="ButtonClickAddUser" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="0,10,10,0" VerticalAlignment="Top" Width="25" Height="25" RenderTransformOrigin="1.539,0.71" Grid.Column="1">
+        <Button x:Name="bShowChats" HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" Margin="70
+                ,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="/Source/addUSer.png" />
+                        <Setter Property="Source" Value="/Source/message.png"  />
                     </Style>
                 </Image.Style>
             </Image>
         </Button>
-        <Button x:Name="bChangeUser" Click="Button_Click_EditProfile" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="10,10,0,0" VerticalAlignment="Top" Width="25" Height="25" RenderTransformOrigin="1.539,0.71" Grid.Column="0">
-            <Image>
+        <Button x:Name="bCreatchat" HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" Margin="130
+                ,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0">
+            <Image RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="/Source/changeUser.png" />
+                        <Setter Property="Source" Value="/Source/newchat.png"  />
                     </Style>
                 </Image.Style>
             </Image>
         </Button>
+        <Frame Content="" Margin="190,0,-0.4,0" FontFamily="Trebuchet MS" Grid.ColumnSpan="2">
+            <Frame.Background>
+                <SolidColorBrush Color="Black" Opacity="0.1"/>
+            </Frame.Background>
+        </Frame>
+        <Button x:Name="bAddUser" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="0,15,10,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71" Grid.Column="1" Grid.Row="0">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/plus1.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Button>
+        <Button x:Name="bChangeUSer" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="10,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71" Grid.Column="0" Grid.Row="0">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/user.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Button>
+        <Label Content="Label1" Grid.Column="1" Margin="15.6,20,53.6,26" FontSize="20" Foreground="#FFEBEAC9"/>
     </Grid>
 </Window>
