@@ -22,6 +22,8 @@ namespace ChatClient
     /// </summary>
     public partial class SignIn : Window
     {
+         private bool isShowLogin = true;
+         private bool isShowPassword = true;
         public SignIn()
         {
             //SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
@@ -36,15 +38,24 @@ namespace ChatClient
 
         private void RemoveTextLogin(object sender, EventArgs e)//происходит когда элемент стает активным
         {
-            tblogin.Text = null;
-            tblogin.Foreground = Brushes.Black;
-
+            if (isShowLogin)
+            {
+                tblogin.Text = null;
+                tblogin.Foreground = Brushes.Black;
+                isShowLogin = false;
+            }
+  
         }
 
         private void RemoveTextPassword(object sender, EventArgs e)
         {
-            tbPassword.Text = null;
-            tbPassword.Foreground = Brushes.Black;
+            if (isShowPassword)
+            {
+                tbPassword.Text = null;
+                tbPassword.Foreground = Brushes.Black;
+                isShowPassword = false;
+            }
+          
         }
 
         private void Button_Click_SignIn(object sender, RoutedEventArgs e)

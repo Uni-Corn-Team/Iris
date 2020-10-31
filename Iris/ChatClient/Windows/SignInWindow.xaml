@@ -117,10 +117,10 @@
     <Grid Background="#FFB383FF">
 
 
-        <Button x:Name="bSignIn" Style="{DynamicResource ResourceKey =ButtonBorderStyle}"  Foreground="White"  Background="#FF9E00F9" Content="Sign in" Click="Button_Click_SignIn" HorizontalAlignment="Left" Height="30" Margin="50,229,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" FontFamily="Bookman Old Style"/>
-        <Button x:Name="bSignUp"   Foreground="White"  Background="#FF9E00F9" Content="Sign up" Click="Button_Click_SignUp" HorizontalAlignment="Left" Height="27" Margin="16,373,0,0" VerticalAlignment="Top" Width="61" FontFamily="Bookman Old Style"/>
-        <TextBox Style="{DynamicResource TextBoxStyle1}"  x:Name="tblogin" Text="login" Foreground="Gray" Background="White" HorizontalAlignment="Left" Height="30" Margin="50,135,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="250"  ClipToBounds="True" MouseDoubleClick="RemoveTextLogin"/>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="tbPassword" Background="White"  HorizontalAlignment="Left"  Height="30" Margin="50,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" BorderThickness="0" ClipToBounds="True" Foreground="Gray" Text="Password" MouseDoubleClick="RemoveTextPassword" />
+        <Button x:Name="bSignIn" Style="{DynamicResource ResourceKey =ButtonBorderStyle}"  Foreground="White"  Background="#FF9E00F9" Content="Sign in" Click="Button_Click_SignIn" HorizontalAlignment="Left" Height="30" Margin="50,229,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault = "true"/>
+        <Button x:Name="bSignUp"   Foreground="White"  Background="#FF9E00F9" Content="Sign up" Click="Button_Click_SignUp" HorizontalAlignment="Left" Height="30" Margin="16,373,0,0" VerticalAlignment="Top" Width="61" FontFamily="Bookman Old Style"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}"  x:Name="tblogin" Text="Login" Foreground="Gray" Background="White" HorizontalAlignment="Left" Height="30" Margin="50,135,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="250"  ClipToBounds="True" PreviewMouseDown="RemoveTextLogin" FontFamily="Bookman Old Style"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="tbPassword" Background="White"  HorizontalAlignment="Left"  Height="30" Margin="50,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" BorderThickness="0" ClipToBounds="True" Foreground="Gray" Text="Password" PreviewMouseDown="RemoveTextPassword" FontFamily="Bookman Old Style" />
         <Label x:Name="lableLoginError" Content="Wrong login or password" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="100,271,0,0" VerticalAlignment="Top" Width="161" Visibility="Hidden"/>
     </Grid>
 
