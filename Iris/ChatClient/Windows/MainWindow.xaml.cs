@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Linq;
+//using System.Security.Policy;
+//using System.ServiceModel;
+//using System.Text;
+//using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+//using System.Windows.Controls;
+//using System.Windows.Data;
+//using System.Windows.Documents;
+//using System.Windows.Input;
+//using System.Windows.Media;
+//using System.Windows.Media.Imaging;
+//using System.Windows.Navigation;
+//using System.Windows.Shapes;
 using ChatClient.ServiceChat;
 using ChatClient.Windows;
 using Iris;
@@ -48,24 +48,6 @@ namespace ChatClient
                     lbDialogs.Items.Add(dialog.Name);
                 }
             }
-
-            //temper
-            //Chat chat1 = new Chat(1, "427");
-            //lbDialogs.Items.Add(chat1.Name);
-            //chat1.Messages = new List<Message>();
-            //Chat chat2 = new Chat(2, "gay-club");
-            //lbDialogs.Items.Add(chat2.Name);
-            //chat2.Messages = new List<Message>();
-            //chat1.Messages.Add(new Message(100, new User(6, "loh", "loh", "loh", 22, "loh", "loh"), "Spartak sosat"));
-            //chat2.Messages.Add(new Message(101, new User(6, "loh", "loh", "loh", 22, "loh", "loh"), "Zenit onelove"));
-            //chat1.Messages.Add(new Message(102, CurrentUser, "i love deda"));
-            //chat2.Messages.Add(new Message(102, CurrentUser, "and dmitiy struckovsy"));
-
-            //chats.Add(chat1);
-            //chats.Add(chat2);
-
-            //CurrentUser.CurrentChat = chat1;
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -85,13 +67,12 @@ namespace ChatClient
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //DisconnectUser();
-
+            client.Disconnect(ID);
         }
 
         private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
         {
-            if (client != null)
+            if (client != null && CurrentUser.CurrentChat != null && tbMessage.Text != null)
             {
                 client.SendMessage(tbMessage.Text, ID, CurrentUser.CurrentChat.ID);
                 //uncomment when ID are registered in the database
@@ -110,10 +91,17 @@ namespace ChatClient
         {
             // new ProfileWindow().Show();
             //this.Close();
+            //need to do something with how it looks (now it's DISGUSTING!!!!)
             lbDialogs.IsEnabled = false;
             lbDialogs.Visibility = Visibility.Hidden;
             lbProfile.Visibility = Visibility.Visible;
             lbProfile.IsEnabled = true;
+            lbProfile.Items.Clear();
+            lbProfile.Items.Add("ID:\n" + CurrentUser.ID + "\n");
+            lbProfile.Items.Add("Name:\n" + CurrentUser.Name + "\n");
+            lbProfile.Items.Add("Surname:\n" + CurrentUser.Surname + "\n");
+            lbProfile.Items.Add("Nickname:\n" + CurrentUser.Nickname + "\n");
+            lbProfile.Items.Add("Login:\n" + CurrentUser.Login + "\n");
         }
 
         private void ButtonClickNewChat(object sender, RoutedEventArgs e)
@@ -125,6 +113,17 @@ namespace ChatClient
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)
         {
             lbDialogs.IsEnabled = true;
+            lbDialogs.Items.Clear();
+            chats.Clear();
+            foreach (Chat dialog in Database.Chats)
+            {
+
+                if (dialog.Members.Contains(CurrentUser))
+                {
+                    chats.Add(dialog);
+                    lbDialogs.Items.Add(dialog.Name);
+                }
+            }
             lbDialogs.Visibility = Visibility.Visible;
             lbProfile.Visibility = Visibility.Hidden;
             lbProfile.IsEnabled = false;
@@ -146,6 +145,7 @@ namespace ChatClient
                     if (dialog.Name.Equals((String)lbDialogs.SelectedItem))
                     {
                         CurrentUser.CurrentChat = dialog;
+                        lCurrentChatName.Content = CurrentUser.CurrentChat.Name;
                     }
                 }
 

@@ -108,6 +108,6 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Label Content="Label1" Grid.Column="1" Margin="15.6,20,53.6,26" FontSize="20" Foreground="#FFEBEAC9"/>
+        <Label x:Name="lCurrentChatName" Content="" Grid.Column="1" Margin="15.6,20,53.6,26" FontSize="20" Foreground="#FFEBEAC9"/>
     </Grid>
 </Window>

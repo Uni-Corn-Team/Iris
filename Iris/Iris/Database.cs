@@ -295,7 +295,6 @@ namespace Iris
 
         public static bool addChatToDB(Chat chat)
         {
-            Chats.Add(chat);
             try
             {
                 using (var connection = new SqliteConnection(DBPath))
@@ -304,6 +303,7 @@ namespace Iris
                     {
                         ChatsCountAsNextID += 1;
                         chat.ID = ChatsCountAsNextID;
+                        Chats.Add(chat);
                     }
 
 

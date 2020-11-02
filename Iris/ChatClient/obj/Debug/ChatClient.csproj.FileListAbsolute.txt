@@ -50,7 +50,6 @@ C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\ChatClient\obj\Debug\Windows\Creat
 C:\Users\Senjor\Desktop\Project_KPO\Iris\Iris\ChatClient\obj\Debug\Windows\CreateChat.baml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\ChatClient.csprojAssemblyReference.cache
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\CreateChat.g.cs
-C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\EditProfile.g.cs
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\MainWindow.g.cs
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\SignInWindow.g.cs
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\SignUpWindow.g.cs
@@ -80,7 +79,6 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\bin\Debug\System.Numerics.Vec
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\bin\Debug\System.Buffers.xml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\CreateChat.baml
-C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\EditProfile.baml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\MainWindow.baml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\SignInWindow.baml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\SignUpWindow.baml
@@ -440,3 +438,5 @@ C:\Users\Senjor\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.exe
 C:\Users\Senjor\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.pdb
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\obj\Debug\Windows\ChangePasswordWindow.g.cs
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\obj\Debug\Windows\ChangePasswordWindow.baml
+C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\ChangePasswordWindow.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\ChatClient\obj\Debug\Windows\ChangePasswordWindow.baml

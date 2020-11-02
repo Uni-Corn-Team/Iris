@@ -128,7 +128,6 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\bin\Debug\System.Collections.Immutable.xml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\obj\Debug\Iris.csprojAssemblyReference.cache
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll

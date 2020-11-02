@@ -22,18 +22,18 @@ namespace ChatHost
                 Database.getUsersFromDB();
                 Database.getChatsFromDB();
                 Console.WriteLine(Database.ToString());
-                User us_test = new User(8, "test", "test", "test", 13, "test", "test");
-                Database.addUserToDB(us_test);
-                Chat test = new Chat(2, "test");
-                test.Members.Add(us_test);
-                test.Members.Add(Database.Users[0]);
-                test.Members.Add(Database.Users[1]);
-                test.Messages.Add(new Message(4, Database.Users[0], "ssss"));
-                test.Messages.Add(new Message(5, Database.Users[1], "ssdsdsdss"));
-                Database.addChatToDB(test);
-                Database.getUsersFromDB();
-                Database.getChatsFromDB();
-                Console.WriteLine(Database.ToString());
+                //User us_test = new User(8, "test", "test", "test", 13, "test", "test");
+                //Database.addUserToDB(us_test);
+                //Chat test = new Chat(2, "test");
+                //test.Members.Add(us_test);
+                //test.Members.Add(Database.Users[0]);
+                //test.Members.Add(Database.Users[1]);
+                //test.Messages.Add(new Message(4, Database.Users[0], "ssss"));
+                //test.Messages.Add(new Message(5, Database.Users[1], "ssdsdsdss"));
+                //Database.addChatToDB(test);
+                //Database.getUsersFromDB();
+                //Database.getChatsFromDB();
+                //Console.WriteLine(Database.ToString());
                 //end test
 
                 Console.WriteLine("Хост стартовал!");
