@@ -18,12 +18,14 @@ namespace ChatClient.Windows
     /// <summary>
     /// Логика взаимодействия для EditProfile.xaml
     /// </summary>
-    public partial class EditProfile : Window
+    public partial class ChangePasswordWindow : Window
     {
-        public EditProfile()
+
+        public ChangePasswordWindow()
         {
             InitializeComponent();
         }
+         
 
         private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
         {
@@ -34,6 +36,19 @@ namespace ChatClient.Windows
                 (new MainWindow()).Show();
                 this.Close();
             }
+        }
+
+
+        private void ButtonClickBack(object sender, EventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+          //  new MainWindow().Show();
+            
         }
     }
 }

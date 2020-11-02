@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatClient.Windows"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="AddUserWindow" Height="450" Width="350">
     <Grid>
         <Label Content="Nickname"  Margin="107,44,137,350" Width="100"  Height="26"/>

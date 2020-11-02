@@ -93,9 +93,14 @@ namespace ChatClient
             //this.Close();
             //need to do something with how it looks (now it's DISGUSTING!!!!)
             lbDialogs.IsEnabled = false;
-            lbDialogs.Visibility = Visibility.Hidden;
-            lbProfile.Visibility = Visibility.Visible;
+            lbChatParticipant.IsEnabled = false;
             lbProfile.IsEnabled = true;
+            lbDialogs.Visibility = Visibility.Hidden;
+            lbChatParticipant.Visibility = Visibility.Hidden;
+            lbProfile.Visibility = Visibility.Visible;
+            bChangePassword.IsEnabled = true;
+            bChangePassword.Visibility = Visibility.Visible;
+
             lbProfile.Items.Clear();
             lbProfile.Items.Add("ID:\n" + CurrentUser.ID + "\n");
             lbProfile.Items.Add("Name:\n" + CurrentUser.Name + "\n");
@@ -104,15 +109,47 @@ namespace ChatClient
             lbProfile.Items.Add("Login:\n" + CurrentUser.Login + "\n");
         }
 
+        private void Button_Click_Participian(object sender, RoutedEventArgs e)
+        {
+            lbDialogs.IsEnabled = false;
+            lbChatParticipant.IsEnabled = true;
+            lbProfile.IsEnabled = false;
+            lbDialogs.Visibility = Visibility.Hidden;
+            lbProfile.Visibility = Visibility.Hidden;
+            lbChatParticipant.Visibility = Visibility.Visible;
+            bChangePassword.IsEnabled = false;
+            bChangePassword.Visibility = Visibility.Hidden;
+            lbChatParticipant.Items.Clear();
+            if (CurrentUser.CurrentChat != null)
+            {
+                foreach (User member in CurrentUser.CurrentChat.Members)
+                {
+                    lbChatParticipant.Items.Add(member.Nickname+" "+member.ID);
+                }
+            }
+        }
+
         private void ButtonClickNewChat(object sender, RoutedEventArgs e)
         {
             new CreateChat().Show();
             this.Close();
         }
 
+        private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
+        {
+            new ChangePasswordWindow().Show();
+        }
+
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)
         {
             lbDialogs.IsEnabled = true;
+            lbChatParticipant.IsEnabled = false;
+            lbProfile.IsEnabled = false;
+            lbDialogs.Visibility = Visibility.Visible;
+            lbProfile.Visibility = Visibility.Hidden;
+            lbChatParticipant.Visibility = Visibility.Hidden;
+            bChangePassword.IsEnabled = false;
+            bChangePassword.Visibility = Visibility.Hidden;
             lbDialogs.Items.Clear();
             chats.Clear();
             foreach (Chat dialog in Database.Chats)
@@ -125,8 +162,7 @@ namespace ChatClient
                 }
             }
             lbDialogs.Visibility = Visibility.Visible;
-            lbProfile.Visibility = Visibility.Hidden;
-            lbProfile.IsEnabled = false;
+           
         }
         private void ButtonClickAddUser(object sender, RoutedEventArgs e)
         {

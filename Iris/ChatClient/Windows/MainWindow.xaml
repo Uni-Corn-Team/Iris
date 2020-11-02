@@ -25,7 +25,16 @@
                 <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <ListBox x:Name="lbProfile"   IsEnabled="False" Visibility="Hidden"  Margin="0,0,0,0" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Trebuchet MS" Foreground="#FFEBEAC9" BorderThickness="0">
+        <ListBox x:Name="lbProfile"   IsEnabled="False" Visibility="Hidden"
+                 Margin="0,0,0.4,51" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9" BorderThickness="0" FontSize="16">
+            <ListBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
+            </ListBox.Background>
+            <ListBox.BorderBrush>
+                <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
+            </ListBox.BorderBrush>
+        </ListBox>
+        <ListBox x:Name="lbChatParticipant"   IsEnabled="False" Visibility="Hidden"  Margin="0,0,0.4,51" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9" BorderThickness="0" FontSize="16">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </ListBox.Background>
@@ -41,6 +50,7 @@
                 <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
+        <Button x:Name="bChangePassword" Grid.Column="0" Content="Change password" Visibility="Hidden" IsEnabled="False" Margin="33,304,31.4,9" Grid.Row="1" Click="ButtonClickChangePassword"/>
         <TextBox x:Name="tbMessage" TextWrapping="Wrap" MinWidth="494" MinHeight="50" Height="52" Margin="0,0,97.6,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
         <Button x:Name="bSendMessage" Click="Button_Click_SendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="0" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="97.6" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="97.6" IsDefault="True">
             <Button.Background>
@@ -108,6 +118,7 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Label x:Name="lCurrentChatName" Content="" Grid.Column="1" Margin="15.6,20,53.6,26" FontSize="20" Foreground="#FFEBEAC9"/>
+        <Label x:Name="lCurrentChatName" Content="" Grid.Column="1" Margin="15.6,20,160.6,26" FontSize="20" Foreground="#FFEBEAC9"/>
+        <Button x:Name="bChatParticipant" Content="Chat participant" Grid.Column="1" HorizontalAlignment="Left" Margin="478.6,15,0,0" VerticalAlignment="Top" Width="53" Height="45" Click="Button_Click_Participian"/>
     </Grid>
 </Window>

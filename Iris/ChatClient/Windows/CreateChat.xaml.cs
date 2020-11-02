@@ -40,5 +40,11 @@ namespace ChatClient.Windows
             new MainWindow().Show();
             this.Close();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //new MainWindow().Show();
+          
+        }
     }
 }
