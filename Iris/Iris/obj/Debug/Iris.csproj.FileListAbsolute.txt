@@ -350,3 +350,4 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\obj\Debug\Iris.csproj.CoreCompileIn
 C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\obj\Debug\Iris.csproj.CopyComplete
 C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\obj\Debug\Iris.dll
 C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\obj\Debug\Iris.pdb
+C:\Users\Daria\Desktop\КПО\Iris\Iris\Iris\obj\Debug\Iris.csprojAssemblyReference.cache

@@ -63,6 +63,15 @@ namespace ChatClient
                 lbCurrentDialog.Items.Add(message);
                 lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
             }
+            Database.getChatsFromDB();
+            chats.Clear();
+            foreach (Chat dialog in Database.Chats)
+            {
+                if (dialog.Members.Contains(CurrentUser))
+                {
+                    chats.Add(dialog);
+                }
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -74,10 +83,10 @@ namespace ChatClient
         {
             if (client != null && CurrentUser.CurrentChat != null && tbMessage.Text != null)
             {
+                Database.addMessageToChat(new Message(0, CurrentUser, tbMessage.Text), CurrentUser.CurrentChat);
                 client.SendMessage(tbMessage.Text, ID, CurrentUser.CurrentChat.ID);
                 //uncomment when ID are registered in the database
                 //Database.getChatFromList(CurrentUser.CurrentChat.ID).Messages.Add(new Message(100, CurrentUser, tbMessage.Text));
-                Database.addMessageToChat(new Message(0, CurrentUser, tbMessage.Text), CurrentUser.CurrentChat);
                 tbMessage.Text = string.Empty;
             }
         }
@@ -156,7 +165,6 @@ namespace ChatClient
             chats.Clear();
             foreach (Chat dialog in Database.Chats)
             {
-
                 if (dialog.Members.Contains(CurrentUser))
                 {
                     chats.Add(dialog);
