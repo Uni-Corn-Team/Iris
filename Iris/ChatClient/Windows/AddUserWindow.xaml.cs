@@ -5,6 +5,7 @@ using System;
 //using System.Text;
 //using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 //using System.Windows.Controls;
 //using System.Windows.Data;
 //using System.Windows.Documents;
@@ -20,9 +21,10 @@ namespace ChatClient.Windows
     /// </summary>
     public partial class AddUserWindow : Window
     {
+        private bool isShowNickname = true;
         private void ButtonClickBack(object sender, EventArgs e)
         {
-            new MainWindow().Show();
+           // new MainWindow().Show();
             this.Close();
         }
         public AddUserWindow()
@@ -32,24 +34,35 @@ namespace ChatClient.Windows
 
         private void ButtonClickAddUserToChat(object sender, RoutedEventArgs e)
         {
-            if (Database.getUserFromList(int.Parse(tbID.Text)) != null && MainWindow.CurrentUser.CurrentChat != null)
+            if (Database.getUserFromList(tbNickname.Text) != null && MainWindow.CurrentUser.CurrentChat != null)
             {
-                Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(int.Parse(tbID.Text)));
+                Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(tbNickname.Text));
                 Database.addChatToDB(Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID));
-                new MainWindow().Show();
+               // new MainWindow().Show();
                 this.Close();
             }
             else
             {
                 //write that user isn't exists and delete next two lines
-                new MainWindow().Show();
+                //new MainWindow().Show();
                 this.Close();
             }
+
+
         }
 
+        private void RemoveTextNickname(object sender, EventArgs e)
+        {
+            if(isShowNickname)
+            {
+                tbNickname = null;
+                tbNickname.Foreground = Brushes.Black;
+                isShowNickname = false;
+            }
+        }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //new MainWindow().Show();
+            new MainWindow().Show();
             
         }
     }

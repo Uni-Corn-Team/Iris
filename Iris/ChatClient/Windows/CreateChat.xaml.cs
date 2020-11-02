@@ -15,11 +15,13 @@ using System.Windows.Shapes;
 
 namespace ChatClient.Windows
 {
+   
     /// <summary>
     /// Логика взаимодействия для CreateChat.xaml
     /// </summary>
     public partial class CreateChat : Window
     {
+        private bool isShowNameChat = true;
         public CreateChat()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace ChatClient.Windows
 
         private void ButtonClickBack(object sender, EventArgs e)
         {
-            new MainWindow().Show();
+            //new MainWindow().Show();
             this.Close();
         }
 
@@ -43,8 +45,18 @@ namespace ChatClient.Windows
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //new MainWindow().Show();
+            new MainWindow().Show();
           
+        }
+
+        private void RemoveTextNameChat(object sender, RoutedEventArgs e)
+        {
+            if(isShowNameChat)
+            {
+                tbChatName.Text = null;
+                tbChatName.Foreground = Brushes.Black;
+                isShowNameChat = false;
+            }
         }
     }
 }

@@ -138,6 +138,7 @@ namespace ChatClient
         private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
         {
             new ChangePasswordWindow().Show();
+            this.Close();
         }
 
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)

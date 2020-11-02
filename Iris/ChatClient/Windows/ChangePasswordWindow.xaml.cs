@@ -20,16 +20,37 @@ namespace ChatClient.Windows
     /// </summary>
     public partial class ChangePasswordWindow : Window
     {
+        private bool isShowOldPassword = true, isShowNewPassword = true;
 
         public ChangePasswordWindow()
         {
             InitializeComponent();
         }
          
+        private void RemoveTextOldPassword(object sender, RoutedEventArgs e)
+        {
+            if(isShowOldPassword)
+            {
+                tbOldPassword.Text = null;
+                tbOldPassword.Foreground = Brushes.Black;
+                isShowOldPassword = false;
+            }
+        }
+
+
+        private void RemoveTextNewPassword(object sender, RoutedEventArgs e)
+        {
+            if (isShowNewPassword)
+            {
+                tbNewPassword.Text = null;
+                tbNewPassword.Foreground = Brushes.Black;
+                isShowNewPassword = false;
+            }
+        }
 
         private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.CurrentUser.Password.Equals(tbPassword.Text))
+            if (MainWindow.CurrentUser.Password.Equals(tbOldPassword.Text))
             {
                 MainWindow.CurrentUser.Password = tbNewPassword.Text;
                 Database.changePassword(MainWindow.CurrentUser);
@@ -41,14 +62,14 @@ namespace ChatClient.Windows
 
         private void ButtonClickBack(object sender, EventArgs e)
         {
-            new MainWindow().Show();
+            //new MainWindow().Show();
             this.Close();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-          //  new MainWindow().Show();
-            
+              new MainWindow().Show();
+                      
         }
     }
 }
