@@ -54,7 +54,7 @@ namespace ChatClient.Windows
             {
                 MainWindow.CurrentUser.Password = tbNewPassword.Text;
                 Database.changePassword(MainWindow.CurrentUser);
-                (new MainWindow()).Show();
+                //(new MainWindow()).Show();
                 this.Close();
             }
         }

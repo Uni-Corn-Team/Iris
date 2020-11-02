@@ -21,7 +21,7 @@ namespace ChatClient.Windows
     /// </summary>
     public partial class AddUserWindow : Window
     {
-        private bool isShowNickname = true;
+        private bool isShowID = true;
         private void ButtonClickBack(object sender, EventArgs e)
         {
            // new MainWindow().Show();
@@ -34,9 +34,9 @@ namespace ChatClient.Windows
 
         private void ButtonClickAddUserToChat(object sender, RoutedEventArgs e)
         {
-            if (Database.getUserFromList(tbNickname.Text) != null && MainWindow.CurrentUser.CurrentChat != null)
+            if (Database.getUserFromList(int.Parse(tbID.Text)) != null && MainWindow.CurrentUser.CurrentChat != null)
             {
-                Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(tbNickname.Text));
+                Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(int.Parse(tbID.Text)));
                 Database.addChatToDB(Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID));
                // new MainWindow().Show();
                 this.Close();
@@ -51,19 +51,18 @@ namespace ChatClient.Windows
 
         }
 
-        private void RemoveTextNickname(object sender, EventArgs e)
+        private void RemoveTextID(object sender, EventArgs e)
         {
-            if(isShowNickname)
+            if(isShowID)
             {
-                tbNickname = null;
-                tbNickname.Foreground = Brushes.Black;
-                isShowNickname = false;
+                tbID.Text = null;
+                tbID.Foreground = Brushes.Black;
+                isShowID = false;
             }
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             new MainWindow().Show();
-            
         }
     }
 }

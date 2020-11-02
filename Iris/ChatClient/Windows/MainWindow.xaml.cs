@@ -143,6 +143,7 @@ namespace ChatClient
 
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)
         {
+            Database.getChatsFromDB();
             lbDialogs.IsEnabled = true;
             lbChatParticipant.IsEnabled = false;
             lbProfile.IsEnabled = false;

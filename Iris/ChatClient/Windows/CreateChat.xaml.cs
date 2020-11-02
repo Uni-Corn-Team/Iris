@@ -39,7 +39,7 @@ namespace ChatClient.Windows
             newChat.Members.Add(MainWindow.CurrentUser);
             Database.addChatToDB(newChat);
             MainWindow.CurrentUser.CurrentChat = Database.Chats.Last<Chat>();
-            new MainWindow().Show();
+            //new MainWindow().Show();
             this.Close();
         }
 
