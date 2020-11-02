@@ -23,6 +23,17 @@ namespace Iris
             this.Date = DateTime.Now;
             this.HasFile = false;
         }
+
+        public Message(int id, User sender, string text, DateTime time)
+        {
+            this.ID = id;
+            this.Sender = sender;
+            this.Text = text;
+            this.Date = time;
+            this.HasFile = false;
+        }
+
+
         public override string ToString()
         {
             return "Mes Id: " + this.ID + " Text: " + this.Text + "\nSender: " + this.Sender.ToString();

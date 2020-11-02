@@ -202,7 +202,7 @@ namespace Iris
                         {
                             while (reader.Read())
                             {
-                                    Chats[i].Messages.Add(new Message(reader.GetInt32(0), getUserFromList(reader.GetInt32(2)), reader.GetString(3)));
+                                Chats[i].Messages.Add(new Message(reader.GetInt32(0), getUserFromList(reader.GetInt32(2)), reader.GetString(3), DateTime.Parse(reader.GetString(5))));
                             }
                         }
                         
@@ -327,14 +327,15 @@ namespace Iris
                         command.CommandText =
                         @"
                         INSERT OR IGNORE 
-                        INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text')
-                        VALUES (@Mes_id, @Chat_id, @Sender_id, @Text)
+                        INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text','DateTime')
+                        VALUES (@Mes_id, @Chat_id, @Sender_id, @Text, @DateTime)
                         ";
 
                         command.Parameters.AddWithValue("@Mes_id", chat.Messages[i].ID);
                         command.Parameters.AddWithValue("@Chat_id", chat.ID);
                         command.Parameters.AddWithValue("@Sender_id", chat.Messages[i].Sender.ID);
                         command.Parameters.AddWithValue("@Text", chat.Messages[i].Text);
+                        command.Parameters.AddWithValue("@DateTime", chat.Messages[i].Date.ToString());
 
                         command.ExecuteNonQuery();
                     }

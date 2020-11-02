@@ -197,7 +197,7 @@ namespace ChatClient
 
                 foreach (Message message in CurrentUser.CurrentChat.Messages)
                 {
-                    lbCurrentDialog.Items.Add(message.Sender.Nickname + " " + message.Text);
+                    lbCurrentDialog.Items.Add(message.Date + " | " + message.Sender.Nickname + " |\n\t" + message.Text);
                 }
             //}
         }

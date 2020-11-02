@@ -84,13 +84,13 @@
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="180"/>
+                        <RotateTransform Angle="360"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Image.RenderTransform>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="/Source/newchat.png"  />
+                        <Setter Property="Source" Value="/Source/addmes.png"  />
                     </Style>
                 </Image.Style>
             </Image>
@@ -104,7 +104,7 @@
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="/Source/plus1.png" />
+                        <Setter Property="Source" Value="/Source/adduser.png" />
                     </Style>
                 </Image.Style>
             </Image>
@@ -123,7 +123,7 @@
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="/Source/showUSers.png" />
+                        <Setter Property="Source" Value="/Source/members.png" />
                     </Style>
                 </Image.Style>
             </Image>
