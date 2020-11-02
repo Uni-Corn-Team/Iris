@@ -11,5 +11,15 @@
         <TextBox Name="tbNickname" HorizontalAlignment="Left" Height="23" Margin="109,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="bAdd" Click="ButtonClickAddUserToChat" Content="Add" HorizontalAlignment="Left" Margin="98,130,0,0" VerticalAlignment="Top" Width="131" Height="35"/>
 
+        <Button  HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/back-arrow.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
+
+        </Button>
     </Grid>
 </Window>

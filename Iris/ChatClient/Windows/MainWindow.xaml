@@ -34,7 +34,7 @@
             </ListBox.BorderBrush>
         </ListBox>
         <TextBox x:Name="tbMessage" TextWrapping="Wrap" MinWidth="494" MinHeight="50" Height="52" Margin="0,0,97.6,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
-        <Button x:Name="bSendMessage" Click="Button_Click_SendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="0" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="97.6" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="97.6">
+        <Button x:Name="bSendMessage" Click="Button_Click_SendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="0" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="97.6" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="97.6" IsDefault="True">
             <Button.Background>
                 <SolidColorBrush Color="#FFFFF2F2" Opacity="0.5"/>
             </Button.Background>
@@ -50,7 +50,7 @@
             </Image>
         </Button>
         <Button x:Name="bShowChats" HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" Margin="70
-                ,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0">
+                ,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0" >
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -60,7 +60,7 @@
             </Image>
         </Button>
         <Button x:Name="bCreatchat" HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" Margin="130
-                ,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0">
+                ,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0" Click="ButtonClickNewChat">
             <Image RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
@@ -82,7 +82,7 @@
                 <SolidColorBrush Color="Black" Opacity="0.1"/>
             </Frame.Background>
         </Frame>
-        <Button x:Name="bAddUser" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="0,15,10,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71" Grid.Column="1" Grid.Row="0">
+        <Button x:Name="bAddUser" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="0,15,10,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71" Grid.Column="1" Grid.Row="0" Click="ButtonClickAddUser">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -91,7 +91,7 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Button x:Name="bChangeUSer" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="10,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71" Grid.Column="0" Grid.Row="0">
+        <Button x:Name="bProfile" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Margin="10,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71" Grid.Column="0" Grid.Row="0" Click="Button_Click_Profile">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">

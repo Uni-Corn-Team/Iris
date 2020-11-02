@@ -73,10 +73,14 @@ namespace ChatClient
 
         }
 
-        public void MessageCallback(string message)
+        public void MessageCallback(string message, int chatID)
         {
-            lbCurrentDialog.Items.Add(message);
-            lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
+            if(CurrentUser.CurrentChat != null)
+            if(CurrentUser.CurrentChat.ID == chatID)
+            {
+                lbCurrentDialog.Items.Add(message);
+                lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -89,9 +93,10 @@ namespace ChatClient
         {
             if (client != null)
             {
-                client.SendMessage(tbMessage.Text, ID);
+                client.SendMessage(tbMessage.Text, ID, CurrentUser.CurrentChat.ID);
                 //uncomment when ID are registered in the database
                 //Database.getChatFromList(CurrentUser.CurrentChat.ID).Messages.Add(new Message(100, CurrentUser, tbMessage.Text));
+                Database.addMessageToChat(new Message(0, CurrentUser, tbMessage.Text), CurrentUser.CurrentChat);
                 tbMessage.Text = string.Empty;
             }
         }
@@ -101,10 +106,10 @@ namespace ChatClient
             new CreateChat().Show();
         }
 
-        private void Button_Click_EditProfile(object sender, RoutedEventArgs e)
+        private void Button_Click_Profile(object sender, RoutedEventArgs e)
         {
-            new EditProfile().Show();
-            this.Close();
+            new ProfileWindow().Show();
+            //this.Close();
         }
 
         private void ButtonClickNewChat(object sender, RoutedEventArgs e)

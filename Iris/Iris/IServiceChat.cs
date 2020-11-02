@@ -30,8 +30,9 @@ namespace Iris
         /// </summary>
         /// <param name="message">user's message</param>
         /// <param name="id">user's id</param>
+        /// <param name="chat">chat owner of message</param>
         [OperationContract(IsOneWay = true)]
-        void SendMessage(string message, int id);
+        void SendMessage(string message, int id, int chatID);
     }
 
     public interface IServerChatCallback
@@ -40,8 +41,9 @@ namespace Iris
         /// get messages from server
         /// </summary>
         /// <param name="message"></param>
+        /// /// <param name="chat">chat owner of message</param>
         [OperationContract(IsOneWay = true)]
-        void MessageCallback(string message);
+        void MessageCallback(string message, int chatID);
     }
 
 }

@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Iris;
+
 namespace ChatClient.ServiceChat {
     
     
@@ -28,17 +30,17 @@ namespace ChatClient.ServiceChat {
         System.Threading.Tasks.Task DisconnectAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendMessage")]
-        void SendMessage(string message, int id);
+        void SendMessage(string message, int id, int chatID);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendMessage")]
-        System.Threading.Tasks.Task SendMessageAsync(string message, int id);
+        System.Threading.Tasks.Task SendMessageAsync(string message, int id, int chatID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IServiceChatCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/MessageCallback")]
-        void MessageCallback(string message);
+        void MessageCallback(string message, int chatID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -85,12 +87,12 @@ namespace ChatClient.ServiceChat {
             return base.Channel.DisconnectAsync(id);
         }
         
-        public void SendMessage(string message, int id) {
-            base.Channel.SendMessage(message, id);
+        public void SendMessage(string message, int id, int chatID) {
+            base.Channel.SendMessage(message, id, chatID);
         }
         
-        public System.Threading.Tasks.Task SendMessageAsync(string message, int id) {
-            return base.Channel.SendMessageAsync(message, id);
+        public System.Threading.Tasks.Task SendMessageAsync(string message, int id, int chatID) {
+            return base.Channel.SendMessageAsync(message, id, chatID);
         }
     }
 }

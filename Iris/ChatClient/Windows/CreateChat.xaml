@@ -13,5 +13,15 @@
                   VerticalAlignment="Top" Width="120"/>
         <Label Content="Name of chat" HorizontalAlignment="Left" Margin="114,107,0,0" VerticalAlignment="Top"/>
         <Button Content="Create chat" Click="ButtonClickAddChat" HorizontalAlignment="Left" Margin="111,198,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="-0.885,-1.66" Height="50"/>
+        <Button  HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/back-arrow.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
+
+        </Button>
     </Grid>
 </Window>

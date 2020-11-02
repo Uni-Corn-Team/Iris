@@ -124,7 +124,7 @@
         <TextBox Style="{DynamicResource TextBoxStyle1}" Name ="tbLogin" HorizontalAlignment="Left" Height="23" Margin="75,230,0,0" TextWrapping="Wrap" Text="Login" Foreground="Gray" VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" PreviewMouseDown="RemoveTextLogin"/>
         <TextBox Style="{DynamicResource TextBoxStyle1}" Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="75,275,0,0" TextWrapping="Wrap" Text="Password" Foreground="Gray" VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" PreviewMouseDown="RemoveTextPassword" />
         <Button  Style="{DynamicResource ResourceKey =ButtonBorderStyle}" Foreground="White"  Background="#FF9E00F9" Content="Sign up" HorizontalAlignment="Left" Margin="75,320,0,0" VerticalAlignment="Top" Width="200" Height="25" Click="Button_Click_SignUp" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault="True"/>
-        <Label x:Name="lErorrMes" Foreground="DarkRed" Content="This user exist" HorizontalAlignment="Left" Margin="119,353,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden"/>
+        <Label x:Name="lErorrMes" Foreground="DarkRed" Content="This user exist" HorizontalAlignment="Left" Margin="119,353,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden" FontFamily="Bookman Old Style"/>
 
     </Grid>
 </Window>

@@ -25,9 +25,15 @@ namespace ChatClient.Windows
             InitializeComponent();
         }
 
+        private void ButtonClickBack(object sender, EventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
+
         private void ButtonClickAddChat(object sender, RoutedEventArgs e)
         {
-            Chat newChat = new Chat(Database.Chats.Last<Chat>().ID + 1, tbChatName.Text);
+            Chat newChat = new Chat(/*Database.Chats.Last<Chat>().ID + 1*/0, tbChatName.Text);
             newChat.Members.Add(MainWindow.CurrentUser);
             Database.addChatToDB(newChat);
             MainWindow.CurrentUser.CurrentChat = Database.Chats.Last<Chat>();

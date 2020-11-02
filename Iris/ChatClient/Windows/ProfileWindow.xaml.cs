@@ -23,5 +23,11 @@ namespace ChatClient.Windows
         {
             InitializeComponent();
         }
+
+        private void ButtonClickBack(object sender, EventArgs e)
+        {
+             new MainWindow().Show();
+             this.Close();
+        }
     }
 }

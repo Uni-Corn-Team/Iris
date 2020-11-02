@@ -29,7 +29,7 @@ namespace Iris
             //!need upgrade! 
             nextId++;
 
-            SendMessage(user.Nickname + " подключился к чату!", 0);
+            SendMessage(user.Nickname + " подключился к чату!", 0, 0);
             users.Add(user);
             return user.ID;
         }
@@ -40,11 +40,11 @@ namespace Iris
             if (user != null)
             {
                 users.Remove(user);
-                SendMessage(user.Nickname + " покинул чат!", 0);
+                SendMessage(user.Nickname + " покинул чат!", 0, 0);
             }
         }
 
-        public void SendMessage(string msg, int id)
+        public void SendMessage(string msg, int id, int chatID)
         {
             foreach (var item in users)
             {
@@ -57,7 +57,7 @@ namespace Iris
                     answer += user.Nickname + " | " + "\n\t";
                 }
                 answer += msg;
-                item.OperationContext.GetCallbackChannel<IServerChatCallback>().MessageCallback(answer);
+                item.OperationContext.GetCallbackChannel<IServerChatCallback>().MessageCallback(answer, chatID);
             }
         }
 

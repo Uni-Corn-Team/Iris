@@ -97,7 +97,7 @@ namespace ChatClient
         {
             if (Database.getUserFromList(tbNickname.Text) == null)
             {
-                MainWindow.CurrentUser = new User(Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1,
+                MainWindow.CurrentUser = new User(/*Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1*/0,
                     tbName.Text, tbSurname.Text, tbNickname.Text, int.Parse(tbAge.Text), tbLogin.Text, tbPassword.Text);
                 Database.addUserToDB(MainWindow.CurrentUser);
                 (new MainWindow()).Show();

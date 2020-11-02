@@ -25,9 +25,9 @@ namespace Iris
 
         //we need static indexes of objects to add new objects (i suggest use count as ID; rewrite these 3 fields every time we change the database)
         //also need rewrite DB (.db file) because ID
-        //public static int UsersCountAsNextID = 0;
-        //public static int ChatsCountAsNextID = 0;
-        //public static int MessagesCountAsNextID = 0;
+        public static int UsersCountAsNextID;
+        public static int ChatsCountAsNextID;
+        public static int MessagesCountAsNextID;
 
         static Database()
         {
@@ -105,6 +105,9 @@ namespace Iris
                     }
                     connection.Close();
                 }
+
+                UsersCountAsNextID = Users.Count;
+
                 return true;
             }
             catch (Exception e)
@@ -121,6 +124,12 @@ namespace Iris
             {
                 using (var connection = new SqliteConnection(DBPath))
                 {
+                    if(user.ID == 0)
+                    {
+                        UsersCountAsNextID += 1;
+                        user.ID = UsersCountAsNextID;
+                    }
+
 
                     connection.Open();
 
@@ -220,6 +229,14 @@ namespace Iris
                         
                     connection.Close();
                 }
+
+                ChatsCountAsNextID = Chats.Count;
+                MessagesCountAsNextID = 0;
+                foreach (Chat chat in Chats)
+                {
+                    MessagesCountAsNextID += chat.Messages.Count;
+                }
+
                 return true;
             }
             catch (Exception e)
@@ -259,6 +276,23 @@ namespace Iris
             }
         }
 
+        public static bool addMessageToChat(Message message, Chat chat)
+        {
+            try
+            {
+                MessagesCountAsNextID += 1;
+                message.ID = MessagesCountAsNextID;
+                getChatFromList(chat.ID).Messages.Add(message);
+                addChatToDB(getChatFromList(chat.ID));
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            
+        }
+
         public static bool addChatToDB(Chat chat)
         {
             Chats.Add(chat);
@@ -266,6 +300,12 @@ namespace Iris
             {
                 using (var connection = new SqliteConnection(DBPath))
                 {
+                    if(chat.ID == 0)
+                    {
+                        ChatsCountAsNextID += 1;
+                        chat.ID = ChatsCountAsNextID;
+                    }
+
 
                     connection.Open();
 

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\App.xaml
-7-2041726235
+7-464114331
 32048717179
-121977412922
+122026400733
 541084419901
-Windows\AddUserWindow.xaml;Windows\CreateChat.xaml;Windows\EditProfile.xaml;Windows\MainWindow.xaml;Windows\ProfileWindow.xaml;Windows\SignInWindow.xaml;Windows\SignUpWindow.xaml;
+Windows\AddUserWindow.xaml;Windows\CreateChat.xaml;Windows\ChangePasswordWindow.xaml;Windows\MainWindow.xaml;Windows\ProfileWindow.xaml;Windows\SignInWindow.xaml;Windows\SignUpWindow.xaml;
 
 False
 

@@ -20,6 +20,11 @@ namespace ChatClient.Windows
     /// </summary>
     public partial class AddUserWindow : Window
     {
+        private void ButtonClickBack(object sender, EventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
         public AddUserWindow()
         {
             InitializeComponent();
@@ -27,7 +32,7 @@ namespace ChatClient.Windows
 
         private void ButtonClickAddUserToChat(object sender, RoutedEventArgs e)
         {
-            if (Database.getUserFromList(tbNickname.Text) != null)
+            if (Database.getUserFromList(tbNickname.Text) != null && MainWindow.CurrentUser.CurrentChat != null)
             {
                 Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(tbNickname.Text));
                 Database.addChatToDB(Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID));
@@ -40,6 +45,8 @@ namespace ChatClient.Windows
                 new MainWindow().Show();
                 this.Close();
             }
+
+
         }
     }
 }
