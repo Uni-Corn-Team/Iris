@@ -108,8 +108,12 @@ namespace ChatClient
 
         private void Button_Click_Profile(object sender, RoutedEventArgs e)
         {
-            new ProfileWindow().Show();
+            // new ProfileWindow().Show();
             //this.Close();
+            lbDialogs.IsEnabled = false;
+            lbDialogs.Visibility = Visibility.Hidden;
+            lbProfile.Visibility = Visibility.Visible;
+            lbProfile.IsEnabled = true;
         }
 
         private void ButtonClickNewChat(object sender, RoutedEventArgs e)
@@ -118,6 +122,13 @@ namespace ChatClient
             this.Close();
         }
 
+        private void ButtonClickShowChats(object sender, RoutedEventArgs e)
+        {
+            lbDialogs.IsEnabled = true;
+            lbDialogs.Visibility = Visibility.Visible;
+            lbProfile.Visibility = Visibility.Hidden;
+            lbProfile.IsEnabled = false;
+        }
         private void ButtonClickAddUser(object sender, RoutedEventArgs e)
         {
             new AddUserWindow().Show();

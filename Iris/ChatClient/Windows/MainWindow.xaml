@@ -17,7 +17,15 @@
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox x:Name="lbDialogs" SelectionChanged="Selection_Dialog" Margin="0,0,0,0" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Trebuchet MS" Foreground="#FFEBEAC9" BorderThickness="0">
+        <ListBox x:Name="lbDialogs" IsEnabled="False" Visibility="Hidden" SelectionChanged="Selection_Dialog" Margin="0,0,0,0" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Trebuchet MS" Foreground="#FFEBEAC9" BorderThickness="0">
+            <ListBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
+            </ListBox.Background>
+            <ListBox.BorderBrush>
+                <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
+            </ListBox.BorderBrush>
+        </ListBox>
+        <ListBox x:Name="lbProfile"   IsEnabled="False" Visibility="Hidden"  Margin="0,0,0,0" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Trebuchet MS" Foreground="#FFEBEAC9" BorderThickness="0">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </ListBox.Background>
@@ -49,8 +57,8 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Button x:Name="bShowChats" HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" Margin="70
-                ,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0" >
+        <Button x:Name="bShowChats" HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" Margin="70 
+                ,15,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71 " Click="ButtonClickShowChats" Grid.Column="0" Grid.Row="0" >
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
