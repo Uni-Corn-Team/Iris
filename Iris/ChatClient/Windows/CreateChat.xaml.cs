@@ -29,7 +29,6 @@ namespace ChatClient.Windows
 
         private void ButtonClickBack(object sender, EventArgs e)
         {
-            //new MainWindow().Show();
             this.Close();
         }
 
@@ -39,7 +38,6 @@ namespace ChatClient.Windows
             newChat.Members.Add(MainWindow.CurrentUser);
             Database.addChatToDB(newChat);
             MainWindow.CurrentUser.CurrentChat = Database.Chats.Last<Chat>();
-            //new MainWindow().Show();
             this.Close();
         }
 

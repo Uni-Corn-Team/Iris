@@ -38,13 +38,11 @@ namespace ChatClient.Windows
             {
                 Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(int.Parse(tbID.Text)));
                 Database.addChatToDB(Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID));
-               // new MainWindow().Show();
                 this.Close();
             }
             else
             {
                 //write that user isn't exists and delete next two lines
-                //new MainWindow().Show();
                 this.Close();
             }
 

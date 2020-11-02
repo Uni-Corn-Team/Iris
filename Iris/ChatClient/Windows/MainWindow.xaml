@@ -50,7 +50,7 @@
                 <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <Button x:Name="bChangePassword" Foreground="Black" FontFamily="Bookman Old Style" Grid.Column="0" Content="Change password" Visibility="Visible" IsEnabled="False" Margin="33,304,31.4,9" Grid.Row="1" Click="ButtonClickChangePassword"  />
+        <Button x:Name="bChangePassword" Foreground="Black" FontFamily="Bookman Old Style" Grid.Column="0" Content="Change password" Visibility="Hidden" IsEnabled="False" Margin="33,304,31.4,9" Grid.Row="1" Click="ButtonClickChangePassword"  />
         <TextBox x:Name="tbMessage" TextWrapping="Wrap" MinWidth="494" MinHeight="50" Height="52" Margin="0,0,97.6,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
         <Button x:Name="bSendMessage" Click="Button_Click_SendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="0" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="97.6" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="97.6" IsDefault="True">
             <Button.Background>

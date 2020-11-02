@@ -115,7 +115,7 @@ namespace ChatClient
             lbProfile.Items.Add("Name:\n" + CurrentUser.Name + "\n");
             lbProfile.Items.Add("Surname:\n" + CurrentUser.Surname + "\n");
             lbProfile.Items.Add("Nickname:\n" + CurrentUser.Nickname + "\n");
-            lbProfile.Items.Add("Login:\n" + CurrentUser.Login + "\n");
+            //lbProfile.Items.Add("Login:\n" + CurrentUser.Login + "\n");
         }
 
         private void Button_Click_Participian(object sender, RoutedEventArgs e)

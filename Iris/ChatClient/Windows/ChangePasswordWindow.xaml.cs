@@ -37,7 +37,6 @@ namespace ChatClient.Windows
             }
         }
 
-
         private void RemoveTextNewPassword(object sender, RoutedEventArgs e)
         {
             if (isShowNewPassword)
@@ -54,7 +53,6 @@ namespace ChatClient.Windows
             {
                 MainWindow.CurrentUser.Password = tbNewPassword.Text;
                 Database.changePassword(MainWindow.CurrentUser);
-                //(new MainWindow()).Show();
                 this.Close();
             }
         }
@@ -62,7 +60,6 @@ namespace ChatClient.Windows
 
         private void ButtonClickBack(object sender, EventArgs e)
         {
-            //new MainWindow().Show();
             this.Close();
         }
 
