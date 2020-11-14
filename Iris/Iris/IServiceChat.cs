@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -33,6 +34,29 @@ namespace Iris
         /// <param name="chat">chat owner of message</param>
         [OperationContract(IsOneWay = true)]
         void SendMessage(string message, int id, int chatID);
+
+        [OperationContract]
+        ArrayList getUserFromList1(string login);
+        [OperationContract]
+        ArrayList getUserFromList2(int id);
+        [OperationContract]
+        ArrayList getChatFromList1(int id);
+        [OperationContract]
+        ArrayList getChatFromList2(string name);
+        [OperationContract]
+        bool getUsersFromDB();
+        [OperationContract]
+        bool addUserToDB(ArrayList user);
+        [OperationContract]
+        bool getChatsFromDB();
+        [OperationContract]
+        bool changePassword(ArrayList user);
+        [OperationContract]
+        bool addMessageToChat(ArrayList message, ArrayList chat);
+        [OperationContract]
+        bool addChatToDB(ArrayList chat);
+        [OperationContract]
+        bool UpdateDB();
     }
 
     public interface IServerChatCallback

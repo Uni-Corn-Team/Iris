@@ -19,9 +19,9 @@ namespace ChatHost
                 //Please delete this code in future, when host will work!!!
                 //this code is temporary test for methods of Database
                 //start test
-                Database.getUsersFromDB();
+                /*Database.getUsersFromDB();
                 Database.getChatsFromDB();
-                Console.WriteLine(Database.ToString());
+                Console.WriteLine(Database.ToString());*/
                 //User us_test = new User(8, "test", "test", "test", 13, "test", "test");
                 //Database.addUserToDB(us_test);
                 //Chat test = new Chat(2, "test");

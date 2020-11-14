@@ -33,6 +33,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceChat_Connect_InputMessage">
@@ -50,6 +51,72 @@
   <wsdl:message name="IServiceChat_SendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
+  <wsdl:message name="IServiceChat_getUserFromList1_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserFromList1" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getUserFromList1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserFromList1Response" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getUserFromList2_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserFromList2" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getUserFromList2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserFromList2Response" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getChatFromList1_InputMessage">
+    <wsdl:part name="parameters" element="tns:getChatFromList1" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getChatFromList1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getChatFromList1Response" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getChatFromList2_InputMessage">
+    <wsdl:part name="parameters" element="tns:getChatFromList2" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getChatFromList2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getChatFromList2Response" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getUsersFromDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUsersFromDB" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getUsersFromDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUsersFromDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_addUserToDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:addUserToDB" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_addUserToDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addUserToDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getChatsFromDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:getChatsFromDB" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_getChatsFromDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getChatsFromDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_changePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:changePassword" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_changePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:changePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_addMessageToChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:addMessageToChat" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_addMessageToChat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addMessageToChatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_addChatToDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:addChatToDB" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_addChatToDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addChatToDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_UpdateDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDB" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_UpdateDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDBResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceChat_MessageCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:MessageCallback" />
   </wsdl:message>
@@ -64,6 +131,50 @@
     </wsdl:operation>
     <wsdl:operation name="SendMessage">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/SendMessage" message="tns:IServiceChat_SendMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserFromList1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/getUserFromList1" message="tns:IServiceChat_getUserFromList1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/getUserFromList1Response" message="tns:IServiceChat_getUserFromList1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserFromList2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/getUserFromList2" message="tns:IServiceChat_getUserFromList2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/getUserFromList2Response" message="tns:IServiceChat_getUserFromList2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getChatFromList1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/getChatFromList1" message="tns:IServiceChat_getChatFromList1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/getChatFromList1Response" message="tns:IServiceChat_getChatFromList1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getChatFromList2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/getChatFromList2" message="tns:IServiceChat_getChatFromList2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/getChatFromList2Response" message="tns:IServiceChat_getChatFromList2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsersFromDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/getUsersFromDB" message="tns:IServiceChat_getUsersFromDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/getUsersFromDBResponse" message="tns:IServiceChat_getUsersFromDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addUserToDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/addUserToDB" message="tns:IServiceChat_addUserToDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/addUserToDBResponse" message="tns:IServiceChat_addUserToDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getChatsFromDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/getChatsFromDB" message="tns:IServiceChat_getChatsFromDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/getChatsFromDBResponse" message="tns:IServiceChat_getChatsFromDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/changePassword" message="tns:IServiceChat_changePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/changePasswordResponse" message="tns:IServiceChat_changePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addMessageToChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/addMessageToChat" message="tns:IServiceChat_addMessageToChat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/addMessageToChatResponse" message="tns:IServiceChat_addMessageToChat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addChatToDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/addChatToDB" message="tns:IServiceChat_addChatToDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/addChatToDBResponse" message="tns:IServiceChat_addChatToDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/UpdateDB" message="tns:IServiceChat_UpdateDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/UpdateDBResponse" message="tns:IServiceChat_UpdateDB_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="MessageCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/MessageCallback" message="tns:IServiceChat_MessageCallback_OutputCallbackMessage" />
@@ -95,6 +206,105 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFromList1">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/getUserFromList1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFromList2">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/getUserFromList2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getChatFromList1">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/getChatFromList1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getChatFromList2">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/getChatFromList2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsersFromDB">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/getUsersFromDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addUserToDB">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/addUserToDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getChatsFromDB">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/getChatsFromDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/changePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMessageToChat">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/addMessageToChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addChatToDB">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/addChatToDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDB">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/UpdateDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="MessageCallback">
       <soap12:operation soapAction="http://tempuri.org/IServiceChat/MessageCallback" style="document" />

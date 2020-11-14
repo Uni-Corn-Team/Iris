@@ -538,3 +538,4 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.csproj.CoreCo
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.csproj.CopyComplete
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.exe
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.pdb
+C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\ChangePasswordWindow.g.cs

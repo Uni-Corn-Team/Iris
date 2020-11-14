@@ -127,7 +127,6 @@ C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.csproj.CoreCompile
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.csproj.CopyComplete
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.dll
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.pdb
-C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\Iris\obj\Debug\Iris.csprojAssemblyReference.cache
 C:\Users\Senjor\Desktop\KPO_IRIS\Iris\Iris\Iris\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Senjor\Desktop\KPO_IRIS\Iris\Iris\Iris\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Senjor\Desktop\KPO_IRIS\Iris\Iris\Iris\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll

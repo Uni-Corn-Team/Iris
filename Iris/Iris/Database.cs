@@ -15,7 +15,7 @@ using Microsoft.Data.Sqlite;
 namespace Iris
 {
     [Serializable]
-    public static class Database
+    static class Database
     {
         //Maybe change it when will realese to new path(this path from bin\debug
         private const string DBPath = "Data Source=..\\..\\..\\Database\\database.db";
