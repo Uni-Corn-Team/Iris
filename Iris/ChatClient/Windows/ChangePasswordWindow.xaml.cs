@@ -1,4 +1,4 @@
-﻿using Iris;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +52,7 @@ namespace ChatClient.Windows
             if (MainWindow.CurrentUser.Password.Equals(tbOldPassword.Text))
             {
                 MainWindow.CurrentUser.Password = tbNewPassword.Text;
-                Database.changePassword(MainWindow.CurrentUser);
+                Clienter.client.changePassword(MainWindow.CurrentUser.ConvertToArrayList().ToArray());
                 this.Close();
             }
         }

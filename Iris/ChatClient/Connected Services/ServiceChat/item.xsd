@@ -185,6 +185,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getChats">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getChatsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getChatsResult" nillable="true" type="q10:ArrayOfArrayOfanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="MessageCallback">
     <xs:complexType>
       <xs:sequence>

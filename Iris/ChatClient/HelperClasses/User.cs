@@ -1,9 +1,11 @@
-﻿using System.ServiceModel;
-using System.Runtime.Serialization;
-using System;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Iris
+namespace ChatClient.HelperClasses
 {
     [Serializable]
     public class User
@@ -38,12 +40,8 @@ namespace Iris
 
         public override string ToString()
         {
-            return "User Id: " + this.ID +" Name: "+ this.Name + " Surname: " + this.Surname + " Nickname: " + this.Nickname + " Login: " + this.Login + " Password: " + this.Password + "\n";
+            return "User Id: " + this.ID + " Name: " + this.Name + " Surname: " + this.Surname + " Nickname: " + this.Nickname + " Login: " + this.Login + " Password: " + this.Password + "\n";
         }
-        /// <summary>
-        /// information about connection user to server
-        /// </summary>
-        public OperationContext OperationContext { get; set; }
 
         public ArrayList ConvertToArrayList()
         {
@@ -62,7 +60,7 @@ namespace Iris
             return arrayList;
         }
 
-        public static User Disconvert(ArrayList list)
+        public static User Disconvert(object[] list)
         {
             return new User()
             {
@@ -76,6 +74,4 @@ namespace Iris
             };
         }
     }
-
-
 }

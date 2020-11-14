@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Iris
+namespace ChatClient.HelperClasses
 {
     [Serializable]
     public class Message
@@ -58,20 +58,20 @@ namespace Iris
             return arrayList;
         }
 
-        public static Message Disconvert(ArrayList list)
+        public static Message Disconvert(object[] list)
         {
             return new Message()
             {
                 ID = (int)list[0],
                 Sender = new User()
                 {
-                    ID = User.Disconvert((ArrayList)list[1]).ID,
-                    Name = User.Disconvert((ArrayList)list[1]).Name,
-                    Surname = User.Disconvert((ArrayList)list[1]).Surname,
-                    Nickname = User.Disconvert((ArrayList)list[1]).Nickname,
-                    Age = User.Disconvert((ArrayList)list[1]).Age,
-                    Login = User.Disconvert((ArrayList)list[1]).Login,
-                    Password = User.Disconvert((ArrayList)list[1]).Password
+                    ID = User.Disconvert((object[])list[1]).ID,
+                    Name = User.Disconvert((object[])list[1]).Name,
+                    Surname = User.Disconvert((object[])list[1]).Surname,
+                    Nickname = User.Disconvert((object[])list[1]).Nickname,
+                    Age = User.Disconvert((object[])list[1]).Age,
+                    Login = User.Disconvert((object[])list[1]).Login,
+                    Password = User.Disconvert((object[])list[1]).Password
                 },
                 Text = (string)list[2],
                 HasFile = (bool)list[3],

@@ -168,15 +168,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ClassesAsInHostIris\Chat.cs" />
-    <Compile Include="ClassesAsInHostIris\File.cs" />
-    <Compile Include="ClassesAsInHostIris\Message.cs" />
-    <Compile Include="ClassesAsInHostIris\User.cs" />
+    <Compile Include="Clienter.cs" />
     <Compile Include="Connected Services\ServiceChat\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="HelperClasses\Chat.cs" />
+    <Compile Include="HelperClasses\File.cs" />
+    <Compile Include="HelperClasses\Message.cs" />
+    <Compile Include="HelperClasses\User.cs" />
     <Compile Include="Windows\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>

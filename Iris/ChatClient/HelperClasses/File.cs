@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Iris
+namespace ChatClient.HelperClasses
 {
     [Serializable]
     public class File
@@ -27,11 +27,11 @@ namespace Iris
 
         public static File Disconvert(ArrayList list)
         {
-            return new File() 
-            { 
-                Name = (string)list[0], 
-                fs = (FileStream)list[1], 
-                Size = (int)list[2] 
+            return new File()
+            {
+                Name = (string)list[0],
+                fs = (FileStream)list[1],
+                Size = (int)list[2]
             };
         }
     }

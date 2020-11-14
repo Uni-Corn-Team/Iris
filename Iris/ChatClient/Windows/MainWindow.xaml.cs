@@ -16,7 +16,7 @@ using System.Windows;
 //using System.Windows.Shapes;
 using ChatClient.ServiceChat;
 using ChatClient.Windows;
-using Iris;
+using ChatClient.HelperClasses;
 
 namespace ChatClient
 {
@@ -29,17 +29,15 @@ namespace ChatClient
         //public static User CurrentUser { get; set; }
         public static User CurrentUser;
         private List<Chat> chats;
-        private ServiceChatClient client;
         int ID;
 
         public MainWindow()
         {
             InitializeComponent();
-            client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));
-            ID = client.Connect(CurrentUser.Nickname);
+            ID = Clienter.client.Connect(CurrentUser.Nickname);
             CurrentUser.CurrentChat = null;
             chats = new List<Chat>();
-            foreach (Chat dialog in Database.Chats)
+            foreach (Chat dialog in Clienter.ConvertObjectArrArrToListChat(Clienter.client.getChats()))
             {
 
                 if (dialog.Members.Contains(CurrentUser))
@@ -63,9 +61,9 @@ namespace ChatClient
                 lbCurrentDialog.Items.Add(message);
                 lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
             }
-            Database.getChatsFromDB();
+            Clienter.client.getChatsFromDB();
             chats.Clear();
-            foreach (Chat dialog in Database.Chats)
+            foreach (Chat dialog in Clienter.ConvertObjectArrArrToListChat(Clienter.client.getChats()))
             {
                 if (dialog.Members.Contains(CurrentUser))
                 {
@@ -76,15 +74,15 @@ namespace ChatClient
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            client.Disconnect(ID);
+            Clienter.client.Disconnect(ID);
         }
 
         private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
         {
-            if (client != null && CurrentUser.CurrentChat != null && tbMessage.Text != null)
+            if (Clienter.client != null && CurrentUser.CurrentChat != null && tbMessage.Text != null)
             {
-                Database.addMessageToChat(new Message(0, CurrentUser, tbMessage.Text), CurrentUser.CurrentChat);
-                client.SendMessage(tbMessage.Text, ID, CurrentUser.CurrentChat.ID);
+                Clienter.client.addMessageToChat((new Message(0, CurrentUser, tbMessage.Text)).ConvertToArrayList().ToArray(), CurrentUser.CurrentChat.ConvertToArrayList().ToArray());
+                Clienter.client.SendMessage(tbMessage.Text, ID, CurrentUser.CurrentChat.ID);
                 //uncomment when ID are registered in the database
                 //Database.getChatFromList(CurrentUser.CurrentChat.ID).Messages.Add(new Message(100, CurrentUser, tbMessage.Text));
                 tbMessage.Text = string.Empty;
@@ -152,7 +150,7 @@ namespace ChatClient
 
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)
         {
-            Database.getChatsFromDB();
+            Clienter.client.getChatsFromDB();
             lbDialogs.IsEnabled = true;
             lbChatParticipant.IsEnabled = false;
             lbProfile.IsEnabled = false;
@@ -163,7 +161,7 @@ namespace ChatClient
             bChangePassword.Visibility = Visibility.Hidden;
             lbDialogs.Items.Clear();
             chats.Clear();
-            foreach (Chat dialog in Database.Chats)
+            foreach (Chat dialog in Clienter.ConvertObjectArrArrToListChat(Clienter.client.getChats()))
             {
                 if (dialog.Members.Contains(CurrentUser))
                 {

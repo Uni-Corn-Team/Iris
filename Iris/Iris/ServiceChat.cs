@@ -117,5 +117,15 @@ namespace Iris
             return Database.Update();
         }
 
+        public List<ArrayList> getChats()
+        {
+            List<ArrayList> list = new List<ArrayList>();
+            foreach(Chat chat in Database.getChats())
+            {
+                list.Add(chat.ConvertToArrayList());
+            }
+            return list;
+        }
+
     }
 }

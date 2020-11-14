@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Iris
+namespace ChatClient.HelperClasses
 {
     [Serializable]
     public class Chat
@@ -46,7 +46,7 @@ namespace Iris
             arrayList.Add(Name);
             arrayList.Add(RootID);
             ArrayList membs = new ArrayList();
-            foreach(User member in Members)
+            foreach (User member in Members)
             {
                 membs.Add(member.ConvertToArrayList());
             }
@@ -61,24 +61,24 @@ namespace Iris
             return arrayList;
         }
 
-        public static Chat Disconvert(ArrayList list)
+        public static Chat Disconvert(object[] list)
         {
             Chat chat = new Chat();
             chat.ID = (int)list[0];
             chat.Name = (string)list[1];
             chat.RootID = (int)list[2];
             chat.Members = new List<User>();
-            foreach(ArrayList memb in (ArrayList)list[3])
+            foreach (object[] memb in (ArrayList)list[3])
             {
                 User member = new User()
                 {
-                    ID = User.Disconvert((ArrayList)memb).ID,
-                    Name = User.Disconvert((ArrayList)memb).Name,
-                    Surname = User.Disconvert((ArrayList)memb).Surname,
-                    Nickname = User.Disconvert((ArrayList)memb).Nickname,
-                    Age = User.Disconvert((ArrayList)memb).Age,
-                    Login = User.Disconvert((ArrayList)memb).Login,
-                    Password = User.Disconvert((ArrayList)memb).Password
+                    ID = User.Disconvert((object[])memb).ID,
+                    Name = User.Disconvert((object[])memb).Name,
+                    Surname = User.Disconvert((object[])memb).Surname,
+                    Nickname = User.Disconvert((object[])memb).Nickname,
+                    Age = User.Disconvert((object[])memb).Age,
+                    Login = User.Disconvert((object[])memb).Login,
+                    Password = User.Disconvert((object[])memb).Password
                 };
                 chat.Members.Add(member);
             }
@@ -90,13 +90,13 @@ namespace Iris
                     ID = (int)mes[0],
                     Sender = new User()
                     {
-                        ID = User.Disconvert((ArrayList)mes[1]).ID,
-                        Name = User.Disconvert((ArrayList)mes[1]).Name,
-                        Surname = User.Disconvert((ArrayList)mes[1]).Surname,
-                        Nickname = User.Disconvert((ArrayList)mes[1]).Nickname,
-                        Age = User.Disconvert((ArrayList)mes[1]).Age,
-                        Login = User.Disconvert((ArrayList)mes[1]).Login,
-                        Password = User.Disconvert((ArrayList)mes[1]).Password
+                        ID = User.Disconvert((object[])mes[1]).ID,
+                        Name = User.Disconvert((object[])mes[1]).Name,
+                        Surname = User.Disconvert((object[])mes[1]).Surname,
+                        Nickname = User.Disconvert((object[])mes[1]).Nickname,
+                        Age = User.Disconvert((object[])mes[1]).Age,
+                        Login = User.Disconvert((object[])mes[1]).Login,
+                        Password = User.Disconvert((object[])mes[1]).Password
                     },
                     Text = (string)mes[2],
                     HasFile = (bool)mes[3],
@@ -111,6 +111,5 @@ namespace Iris
             }
             return chat;
         }
-
     }
 }

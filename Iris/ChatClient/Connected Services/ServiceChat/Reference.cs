@@ -35,6 +35,7 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUserFromList1", ReplyAction="http://tempuri.org/IServiceChat/getUserFromList1Response")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
         object[] getUserFromList1(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUserFromList1", ReplyAction="http://tempuri.org/IServiceChat/getUserFromList1Response")]
@@ -42,6 +43,7 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUserFromList2", ReplyAction="http://tempuri.org/IServiceChat/getUserFromList2Response")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
         object[] getUserFromList2(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUserFromList2", ReplyAction="http://tempuri.org/IServiceChat/getUserFromList2Response")]
@@ -49,6 +51,7 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatFromList1", ReplyAction="http://tempuri.org/IServiceChat/getChatFromList1Response")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
         object[] getChatFromList1(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatFromList1", ReplyAction="http://tempuri.org/IServiceChat/getChatFromList1Response")]
@@ -56,6 +59,7 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatFromList2", ReplyAction="http://tempuri.org/IServiceChat/getChatFromList2Response")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
         object[] getChatFromList2(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatFromList2", ReplyAction="http://tempuri.org/IServiceChat/getChatFromList2Response")]
@@ -69,6 +73,7 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addUserToDB", ReplyAction="http://tempuri.org/IServiceChat/addUserToDBResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
         bool addUserToDB(object[] user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addUserToDB", ReplyAction="http://tempuri.org/IServiceChat/addUserToDBResponse")]
@@ -82,6 +87,7 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/changePassword", ReplyAction="http://tempuri.org/IServiceChat/changePasswordResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
         bool changePassword(object[] user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/changePassword", ReplyAction="http://tempuri.org/IServiceChat/changePasswordResponse")]
@@ -89,6 +95,7 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addMessageToChat", ReplyAction="http://tempuri.org/IServiceChat/addMessageToChatResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
         bool addMessageToChat(object[] message, object[] chat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addMessageToChat", ReplyAction="http://tempuri.org/IServiceChat/addMessageToChatResponse")]
@@ -96,6 +103,7 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addChatToDB", ReplyAction="http://tempuri.org/IServiceChat/addChatToDBResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
         bool addChatToDB(object[] chat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addChatToDB", ReplyAction="http://tempuri.org/IServiceChat/addChatToDBResponse")]
@@ -106,6 +114,14 @@ namespace ChatClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/UpdateDB", ReplyAction="http://tempuri.org/IServiceChat/UpdateDBResponse")]
         System.Threading.Tasks.Task<bool> UpdateDBAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChats", ReplyAction="http://tempuri.org/IServiceChat/getChatsResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
+        object[][] getChats();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChats", ReplyAction="http://tempuri.org/IServiceChat/getChatsResponse")]
+        System.Threading.Tasks.Task<object[][]> getChatsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -253,6 +269,14 @@ namespace ChatClient.ServiceChat {
         
         public System.Threading.Tasks.Task<bool> UpdateDBAsync() {
             return base.Channel.UpdateDBAsync();
+        }
+        
+        public object[][] getChats() {
+            return base.Channel.getChats();
+        }
+        
+        public System.Threading.Tasks.Task<object[][]> getChatsAsync() {
+            return base.Channel.getChatsAsync();
         }
     }
 }

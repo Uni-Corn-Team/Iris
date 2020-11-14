@@ -1,4 +1,5 @@
-﻿using Iris;
+﻿
+using ChatClient.HelperClasses;
 using System;
 //using System.Collections.Generic;
 //using System.Linq;
@@ -34,10 +35,10 @@ namespace ChatClient.Windows
 
         private void ButtonClickAddUserToChat(object sender, RoutedEventArgs e)
         {
-            if (Database.getUserFromList(int.Parse(tbID.Text)) != null && MainWindow.CurrentUser.CurrentChat != null)
+            if (User.Disconvert(Clienter.client.getUserFromList2(int.Parse(tbID.Text))) != null && MainWindow.CurrentUser.CurrentChat != null)
             {
-                Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(int.Parse(tbID.Text)));
-                Database.addChatToDB(Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID));
+                Chat.Disconvert(Clienter.client.getChatFromList1(MainWindow.CurrentUser.CurrentChat.ID)).Members.Add(User.Disconvert(Clienter.client.getUserFromList2(int.Parse(tbID.Text))));
+                Clienter.client.addChatToDB(Clienter.client.getChatFromList1(MainWindow.CurrentUser.CurrentChat.ID));
                 this.Close();
             }
             else

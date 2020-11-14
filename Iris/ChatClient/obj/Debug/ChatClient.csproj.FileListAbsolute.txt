@@ -219,7 +219,6 @@ C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\bin\Debug\System.Threading.
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.csprojAssemblyReference.cache
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\AddUserWindow.g.cs
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\CreateChat.g.cs
-C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\EditProfile.g.cs
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\MainWindow.g.cs
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\ProfileWindow.g.cs
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\SignInWindow.g.cs
@@ -230,7 +229,6 @@ C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient_Markup
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient_MarkupCompile.lref
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\AddUserWindow.baml
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\CreateChat.baml
-C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\EditProfile.baml
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\MainWindow.baml
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\ProfileWindow.baml
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\SignInWindow.baml
@@ -539,3 +537,4 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.csproj.CopyCo
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.exe
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\obj\Debug\ChatClient.pdb
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\ChangePasswordWindow.g.cs
+C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\ChatClient\obj\Debug\Windows\ChangePasswordWindow.baml

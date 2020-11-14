@@ -57,6 +57,8 @@ namespace Iris
         bool addChatToDB(ArrayList chat);
         [OperationContract]
         bool UpdateDB();
+        [OperationContract]
+        List<ArrayList> getChats();
     }
 
     public interface IServerChatCallback

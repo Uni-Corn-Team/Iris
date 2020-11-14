@@ -1,5 +1,4 @@
-﻿using Iris;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Data.Sqlite;
 using System.Runtime.CompilerServices;
+using System.Collections;
+using ChatClient.HelperClasses;
 
 namespace ChatClient
 {
@@ -26,8 +27,9 @@ namespace ChatClient
          private bool isShowPassword = true;
         public SignIn()
         {
+            new Clienter();
             //SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
-            Database.Update();
+            Clienter.client.UpdateDB();
             InitializeComponent();
         }
 
@@ -62,7 +64,7 @@ namespace ChatClient
         {
             /* lableLoginError.Visibility = Visibility.Visible;  это команда отображает надпись которая говорит об ошибке логина и пароля
             */
-            MainWindow.CurrentUser = Database.getUserFromList(tblogin.Text);
+            MainWindow.CurrentUser = User.Disconvert(Clienter.client.getUserFromList1(tblogin.Text));
             if (MainWindow.CurrentUser != null)
             {
                 if (MainWindow.CurrentUser.Password.Equals(tbPassword.Text))

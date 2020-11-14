@@ -35,6 +35,11 @@ namespace Iris
             Chats = new List<Chat>();
         }
 
+        public static List<Chat> getChats()
+        {
+            return Chats;
+        }
+
         public static User getUserFromList(string login)
         {
             for (int i = 0; i < Users.Count(); i++)
