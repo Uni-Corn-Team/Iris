@@ -108,5 +108,11 @@ namespace ChatClient
                 lErorrMes.Visibility = Visibility.Visible;
             }
         }
+
+        private void ButtonClickBack(object sender, EventArgs e)
+        {
+            new SignIn().Show();
+            this.Close();
+        }
     }
 }
