@@ -95,13 +95,29 @@ namespace ChatClient
 
         private void Button_Click_SignUp(object sender, RoutedEventArgs e)
         {
-            if (Database.getUserFromList(tbNickname.Text) == null)
+            if (Database.getUserFromList(tbLogin.Text) == null)
             {
-                MainWindow.CurrentUser = new User(/*Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1*/0,
-                    tbName.Text, tbSurname.Text, tbNickname.Text, int.Parse(tbAge.Text), tbLogin.Text, tbPassword.Text);
-                Database.addUserToDB(MainWindow.CurrentUser);
-                (new MainWindow()).Show();
-                this.Close();
+
+
+                try
+                {
+                    int age = Int32.Parse(tbAge.Text);
+
+
+
+                    MainWindow.CurrentUser = new User(/*Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1*/0,
+                        tbName.Text, tbSurname.Text, tbNickname.Text, age, tbLogin.Text, tbPassword.Text);
+                    Database.addUserToDB(MainWindow.CurrentUser);
+                    (new MainWindow()).Show();
+                    this.Close();
+                }
+
+                catch (FormatException exp)
+                {
+                    Console.WriteLine(exp.ToString());
+                    lAgeErorr.Visibility = Visibility.Visible;
+                    tbAge.Text = "";
+                }
             }
             else
             {

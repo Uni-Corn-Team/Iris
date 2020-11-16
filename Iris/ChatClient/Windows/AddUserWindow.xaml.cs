@@ -62,5 +62,7 @@ namespace ChatClient.Windows
         {
             new MainWindow().Show();
         }
+
+       
     }
 }

@@ -55,6 +55,12 @@ namespace ChatClient.Windows
                 Database.changePassword(MainWindow.CurrentUser);
                 this.Close();
             }
+            else
+            {
+                lableChangePassword.Visibility = Visibility.Visible;
+                tbOldPassword.Text = null;
+                tbNewPassword.Text = null;
+            }
         }
 
 

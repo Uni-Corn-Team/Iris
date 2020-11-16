@@ -48,8 +48,10 @@ namespace ChatClient
                     lbDialogs.Items.Add(dialog.Name);
                 }
             }
+        
         }
 
+       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -81,7 +83,7 @@ namespace ChatClient
 
         private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
         {
-            if (client != null && CurrentUser.CurrentChat != null && tbMessage.Text != null)
+            if (client != null && CurrentUser.CurrentChat != null && tbMessage.Text != null && tbMessage.Text != "")
             {
                 Database.addMessageToChat(new Message(0, CurrentUser, tbMessage.Text), CurrentUser.CurrentChat);
                 client.SendMessage(tbMessage.Text, ID, CurrentUser.CurrentChat.ID);
