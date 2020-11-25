@@ -1,4 +1,4 @@
-﻿using ChatClient.HelperClasses;
+﻿using Iris;
 using ChatClient.ServiceChat;
 using System;
 using System.Collections.Generic;
@@ -17,14 +17,6 @@ namespace ChatClient
             client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));
         }
 
-        public static List<Chat> ConvertObjectArrArrToListChat(object[][] mass)
-        {
-            List<Chat> list = new List<Chat>();
-            for(int i = 0; i < mass.Length; i++)
-            {
-                list.Add(Chat.Disconvert(mass[i]));
-            }
-            return list;
-        }
+
     }
 }

@@ -6,17 +6,18 @@ using System.Collections;
 namespace Iris
 {
     [Serializable]
+    [DataContract]
     public class User
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        [DataMember] public string Name { get; set; }
+        [DataMember] public string Surname { get; set; }
         /// <summary>
         /// user's name
         /// </summary>
-        public string Nickname { get; set; }
-        public int Age { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        [DataMember] public string Nickname { get; set; }
+        [DataMember] public int Age { get; set; }
+        [DataMember] public string Login { get; set; }
+        [DataMember] public string Password { get; set; }
         /// <summary>
         /// user's id
         /// </summary>
@@ -45,36 +46,6 @@ namespace Iris
         /// </summary>
         public OperationContext OperationContext { get; set; }
 
-        public ArrayList ConvertToArrayList()
-        {
-            ArrayList arrayList = new ArrayList();
-            arrayList.Add(ID);
-            arrayList.Add(Name);
-            arrayList.Add(Surname);
-            arrayList.Add(Nickname);
-            arrayList.Add(Age);
-            arrayList.Add(Login);
-            arrayList.Add(Password);
-
-            //no, will not add this
-            //hope that will work without it
-            //arrayList.Add(CurrentChat);
-            return arrayList;
-        }
-
-        public static User Disconvert(ArrayList list)
-        {
-            return new User()
-            {
-                ID = (int)list[0],
-                Name = (string)list[1],
-                Surname = (string)list[2],
-                Nickname = (string)list[3],
-                Age = (int)list[4],
-                Login = (string)list[5],
-                Password = (string)list[6]
-            };
-        }
     }
 
 

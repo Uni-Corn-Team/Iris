@@ -52,7 +52,7 @@ namespace ChatClient.Windows
             if (MainWindow.CurrentUser.Password.Equals(tbOldPassword.Text))
             {
                 MainWindow.CurrentUser.Password = tbNewPassword.Text;
-                Clienter.client.changePassword(MainWindow.CurrentUser.ConvertToArrayList().ToArray());
+                Clienter.client.changePassword(MainWindow.CurrentUser);
                 this.Close();
             }
         }

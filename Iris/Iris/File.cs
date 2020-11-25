@@ -5,34 +5,19 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ServiceModel;
+using System.Runtime.Serialization;
 
 namespace Iris
 {
     [Serializable]
+    [DataContract]
     public class File
     {
-        public string Name { get; set; }
-        public FileStream fs { get; set; }
-        public int Size { get; set; }
+        [DataMember] public string Name { get; set; }
+        [DataMember] public FileStream fs { get; set; }
+        [DataMember] public int Size { get; set; }
 
-        public ArrayList ConvertToArrayList()
-        {
-            ArrayList arrayList = new ArrayList();
-            arrayList.Add(Name);
-            arrayList.Add(fs);
-            arrayList.Add(Size);
-
-            return arrayList;
-        }
-
-        public static File Disconvert(ArrayList list)
-        {
-            return new File() 
-            { 
-                Name = (string)list[0], 
-                fs = (FileStream)list[1], 
-                Size = (int)list[2] 
-            };
-        }
+        
     }
 }

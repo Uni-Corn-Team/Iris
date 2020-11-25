@@ -14,14 +14,14 @@ using System.Windows.Shapes;
 using Microsoft.Data.Sqlite;
 using System.Runtime.CompilerServices;
 using System.Collections;
-using ChatClient.HelperClasses;
+using Iris;
 
 namespace ChatClient
 {
     /// <summary>
     /// Логика взаимодействия для SignIn.xaml
     /// </summary>
-    public partial class SignIn : Window
+    public partial class SignIn : Window, IServerChatCallback
     {
          private bool isShowLogin = true;
          private bool isShowPassword = true;
@@ -64,7 +64,7 @@ namespace ChatClient
         {
             /* lableLoginError.Visibility = Visibility.Visible;  это команда отображает надпись которая говорит об ошибке логина и пароля
             */
-            MainWindow.CurrentUser = User.Disconvert(Clienter.client.getUserFromList1(tblogin.Text));
+            MainWindow.CurrentUser = Clienter.client.getUserFromList1(tblogin.Text);
             if (MainWindow.CurrentUser != null)
             {
                 if (MainWindow.CurrentUser.Password.Equals(tbPassword.Text))
@@ -109,6 +109,16 @@ namespace ChatClient
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public void MessageCallback(string message, int chatID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DBUpdateCallback(bool isUpdated)
+        {
+            throw new NotImplementedException();
         }
     }
 }

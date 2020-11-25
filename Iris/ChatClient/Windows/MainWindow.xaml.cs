@@ -16,7 +16,7 @@ using System.Windows;
 //using System.Windows.Shapes;
 using ChatClient.ServiceChat;
 using ChatClient.Windows;
-using ChatClient.HelperClasses;
+using Iris;
 
 namespace ChatClient
 {
@@ -37,7 +37,7 @@ namespace ChatClient
             ID = Clienter.client.Connect(CurrentUser.Nickname);
             CurrentUser.CurrentChat = null;
             chats = new List<Chat>();
-            foreach (Chat dialog in Clienter.ConvertObjectArrArrToListChat(Clienter.client.getChats()))
+            foreach (Chat dialog in Clienter.client.getChats())
             {
 
                 if (dialog.Members.Contains(CurrentUser))
@@ -63,7 +63,7 @@ namespace ChatClient
             }
             Clienter.client.getChatsFromDB();
             chats.Clear();
-            foreach (Chat dialog in Clienter.ConvertObjectArrArrToListChat(Clienter.client.getChats()))
+            foreach (Chat dialog in Clienter.client.getChats())
             {
                 if (dialog.Members.Contains(CurrentUser))
                 {
@@ -81,7 +81,7 @@ namespace ChatClient
         {
             if (Clienter.client != null && CurrentUser.CurrentChat != null && tbMessage.Text != null)
             {
-                Clienter.client.addMessageToChat((new Message(0, CurrentUser, tbMessage.Text)).ConvertToArrayList().ToArray(), CurrentUser.CurrentChat.ConvertToArrayList().ToArray());
+                Clienter.client.addMessageToChat((new Message(0, CurrentUser, tbMessage.Text)), CurrentUser.CurrentChat);
                 Clienter.client.SendMessage(tbMessage.Text, ID, CurrentUser.CurrentChat.ID);
                 //uncomment when ID are registered in the database
                 //Database.getChatFromList(CurrentUser.CurrentChat.ID).Messages.Add(new Message(100, CurrentUser, tbMessage.Text));
@@ -161,7 +161,7 @@ namespace ChatClient
             bChangePassword.Visibility = Visibility.Hidden;
             lbDialogs.Items.Clear();
             chats.Clear();
-            foreach (Chat dialog in Clienter.ConvertObjectArrArrToListChat(Clienter.client.getChats()))
+            foreach (Chat dialog in Clienter.client.getChats())
             {
                 if (dialog.Members.Contains(CurrentUser))
                 {
@@ -198,6 +198,11 @@ namespace ChatClient
                     lbCurrentDialog.Items.Add(message.Date + " | " + message.Sender.Nickname + " |\n\t" + message.Text);
                 }
             //}
+        }
+
+        public void DBUpdateCallback(bool isUpdated)
+        {
+            throw new NotImplementedException();
         }
 
 

@@ -34,36 +34,28 @@ namespace ChatClient.ServiceChat {
         System.Threading.Tasks.Task SendMessageAsync(string message, int id, int chatID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUserFromList1", ReplyAction="http://tempuri.org/IServiceChat/getUserFromList1Response")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        object[] getUserFromList1(string login);
+        Iris.User getUserFromList1(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUserFromList1", ReplyAction="http://tempuri.org/IServiceChat/getUserFromList1Response")]
-        System.Threading.Tasks.Task<object[]> getUserFromList1Async(string login);
+        System.Threading.Tasks.Task<Iris.User> getUserFromList1Async(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUserFromList2", ReplyAction="http://tempuri.org/IServiceChat/getUserFromList2Response")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        object[] getUserFromList2(int id);
+        Iris.User getUserFromList2(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUserFromList2", ReplyAction="http://tempuri.org/IServiceChat/getUserFromList2Response")]
-        System.Threading.Tasks.Task<object[]> getUserFromList2Async(int id);
+        System.Threading.Tasks.Task<Iris.User> getUserFromList2Async(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatFromList1", ReplyAction="http://tempuri.org/IServiceChat/getChatFromList1Response")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        object[] getChatFromList1(int id);
+        Iris.Chat getChatFromList1(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatFromList1", ReplyAction="http://tempuri.org/IServiceChat/getChatFromList1Response")]
-        System.Threading.Tasks.Task<object[]> getChatFromList1Async(int id);
+        System.Threading.Tasks.Task<Iris.Chat> getChatFromList1Async(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatFromList2", ReplyAction="http://tempuri.org/IServiceChat/getChatFromList2Response")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        object[] getChatFromList2(string name);
+        Iris.Chat getChatFromList2(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatFromList2", ReplyAction="http://tempuri.org/IServiceChat/getChatFromList2Response")]
-        System.Threading.Tasks.Task<object[]> getChatFromList2Async(string name);
+        System.Threading.Tasks.Task<Iris.Chat> getChatFromList2Async(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getUsersFromDB", ReplyAction="http://tempuri.org/IServiceChat/getUsersFromDBResponse")]
         bool getUsersFromDB();
@@ -72,12 +64,10 @@ namespace ChatClient.ServiceChat {
         System.Threading.Tasks.Task<bool> getUsersFromDBAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addUserToDB", ReplyAction="http://tempuri.org/IServiceChat/addUserToDBResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        bool addUserToDB(object[] user);
+        bool addUserToDB(Iris.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addUserToDB", ReplyAction="http://tempuri.org/IServiceChat/addUserToDBResponse")]
-        System.Threading.Tasks.Task<bool> addUserToDBAsync(object[] user);
+        System.Threading.Tasks.Task<bool> addUserToDBAsync(Iris.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChatsFromDB", ReplyAction="http://tempuri.org/IServiceChat/getChatsFromDBResponse")]
         bool getChatsFromDB();
@@ -86,42 +76,34 @@ namespace ChatClient.ServiceChat {
         System.Threading.Tasks.Task<bool> getChatsFromDBAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/changePassword", ReplyAction="http://tempuri.org/IServiceChat/changePasswordResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        bool changePassword(object[] user);
+        bool changePassword(Iris.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/changePassword", ReplyAction="http://tempuri.org/IServiceChat/changePasswordResponse")]
-        System.Threading.Tasks.Task<bool> changePasswordAsync(object[] user);
+        System.Threading.Tasks.Task<bool> changePasswordAsync(Iris.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addMessageToChat", ReplyAction="http://tempuri.org/IServiceChat/addMessageToChatResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        bool addMessageToChat(object[] message, object[] chat);
+        bool addMessageToChat(Iris.Message message, Iris.Chat chat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addMessageToChat", ReplyAction="http://tempuri.org/IServiceChat/addMessageToChatResponse")]
-        System.Threading.Tasks.Task<bool> addMessageToChatAsync(object[] message, object[] chat);
+        System.Threading.Tasks.Task<bool> addMessageToChatAsync(Iris.Message message, Iris.Chat chat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addChatToDB", ReplyAction="http://tempuri.org/IServiceChat/addChatToDBResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        bool addChatToDB(object[] chat);
+        bool addChatToDB(Iris.Chat chat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/addChatToDB", ReplyAction="http://tempuri.org/IServiceChat/addChatToDBResponse")]
-        System.Threading.Tasks.Task<bool> addChatToDBAsync(object[] chat);
+        System.Threading.Tasks.Task<bool> addChatToDBAsync(Iris.Chat chat);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/UpdateDB", ReplyAction="http://tempuri.org/IServiceChat/UpdateDBResponse")]
-        bool UpdateDB();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/UpdateDB")]
+        void UpdateDB();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/UpdateDB", ReplyAction="http://tempuri.org/IServiceChat/UpdateDBResponse")]
-        System.Threading.Tasks.Task<bool> UpdateDBAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChats", ReplyAction="http://tempuri.org/IServiceChat/getChatsResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[][]))]
-        object[][] getChats();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/UpdateDB")]
+        System.Threading.Tasks.Task UpdateDBAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChats", ReplyAction="http://tempuri.org/IServiceChat/getChatsResponse")]
-        System.Threading.Tasks.Task<object[][]> getChatsAsync();
+        Iris.Chat[] getChats();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/getChats", ReplyAction="http://tempuri.org/IServiceChat/getChatsResponse")]
+        System.Threading.Tasks.Task<Iris.Chat[]> getChatsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -183,35 +165,35 @@ namespace ChatClient.ServiceChat {
             return base.Channel.SendMessageAsync(message, id, chatID);
         }
         
-        public object[] getUserFromList1(string login) {
+        public Iris.User getUserFromList1(string login) {
             return base.Channel.getUserFromList1(login);
         }
         
-        public System.Threading.Tasks.Task<object[]> getUserFromList1Async(string login) {
+        public System.Threading.Tasks.Task<Iris.User> getUserFromList1Async(string login) {
             return base.Channel.getUserFromList1Async(login);
         }
         
-        public object[] getUserFromList2(int id) {
+        public Iris.User getUserFromList2(int id) {
             return base.Channel.getUserFromList2(id);
         }
         
-        public System.Threading.Tasks.Task<object[]> getUserFromList2Async(int id) {
+        public System.Threading.Tasks.Task<Iris.User> getUserFromList2Async(int id) {
             return base.Channel.getUserFromList2Async(id);
         }
         
-        public object[] getChatFromList1(int id) {
+        public Iris.Chat getChatFromList1(int id) {
             return base.Channel.getChatFromList1(id);
         }
         
-        public System.Threading.Tasks.Task<object[]> getChatFromList1Async(int id) {
+        public System.Threading.Tasks.Task<Iris.Chat> getChatFromList1Async(int id) {
             return base.Channel.getChatFromList1Async(id);
         }
         
-        public object[] getChatFromList2(string name) {
+        public Iris.Chat getChatFromList2(string name) {
             return base.Channel.getChatFromList2(name);
         }
         
-        public System.Threading.Tasks.Task<object[]> getChatFromList2Async(string name) {
+        public System.Threading.Tasks.Task<Iris.Chat> getChatFromList2Async(string name) {
             return base.Channel.getChatFromList2Async(name);
         }
         
@@ -223,11 +205,11 @@ namespace ChatClient.ServiceChat {
             return base.Channel.getUsersFromDBAsync();
         }
         
-        public bool addUserToDB(object[] user) {
+        public bool addUserToDB(Iris.User user) {
             return base.Channel.addUserToDB(user);
         }
         
-        public System.Threading.Tasks.Task<bool> addUserToDBAsync(object[] user) {
+        public System.Threading.Tasks.Task<bool> addUserToDBAsync(Iris.User user) {
             return base.Channel.addUserToDBAsync(user);
         }
         
@@ -239,43 +221,43 @@ namespace ChatClient.ServiceChat {
             return base.Channel.getChatsFromDBAsync();
         }
         
-        public bool changePassword(object[] user) {
+        public bool changePassword(Iris.User user) {
             return base.Channel.changePassword(user);
         }
         
-        public System.Threading.Tasks.Task<bool> changePasswordAsync(object[] user) {
+        public System.Threading.Tasks.Task<bool> changePasswordAsync(Iris.User user) {
             return base.Channel.changePasswordAsync(user);
         }
         
-        public bool addMessageToChat(object[] message, object[] chat) {
+        public bool addMessageToChat(Iris.Message message, Iris.Chat chat) {
             return base.Channel.addMessageToChat(message, chat);
         }
         
-        public System.Threading.Tasks.Task<bool> addMessageToChatAsync(object[] message, object[] chat) {
+        public System.Threading.Tasks.Task<bool> addMessageToChatAsync(Iris.Message message, Iris.Chat chat) {
             return base.Channel.addMessageToChatAsync(message, chat);
         }
         
-        public bool addChatToDB(object[] chat) {
+        public bool addChatToDB(Iris.Chat chat) {
             return base.Channel.addChatToDB(chat);
         }
         
-        public System.Threading.Tasks.Task<bool> addChatToDBAsync(object[] chat) {
+        public System.Threading.Tasks.Task<bool> addChatToDBAsync(Iris.Chat chat) {
             return base.Channel.addChatToDBAsync(chat);
         }
         
-        public bool UpdateDB() {
-            return base.Channel.UpdateDB();
+        public void UpdateDB() {
+            base.Channel.UpdateDB();
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateDBAsync() {
+        public System.Threading.Tasks.Task UpdateDBAsync() {
             return base.Channel.UpdateDBAsync();
         }
         
-        public object[][] getChats() {
+        public Iris.Chat[] getChats() {
             return base.Channel.getChats();
         }
         
-        public System.Threading.Tasks.Task<object[][]> getChatsAsync() {
+        public System.Threading.Tasks.Task<Iris.Chat[]> getChatsAsync() {
             return base.Channel.getChatsAsync();
         }
     }

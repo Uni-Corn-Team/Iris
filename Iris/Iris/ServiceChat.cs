@@ -62,24 +62,24 @@ namespace Iris
             }
         }
 
-        public ArrayList getUserFromList1(string login)
+        public User getUserFromList1(string login)
         {
-            return Database.getUserFromList(login).ConvertToArrayList();
+            return Database.getUserFromList(login);
         }
 
-        public ArrayList getUserFromList2(int id)
+        public User getUserFromList2(int id)
         {
-            return Database.getUserFromList(id).ConvertToArrayList();
+            return Database.getUserFromList(id);
         }
 
-        public ArrayList getChatFromList1(int id)
+        public Chat getChatFromList1(int id)
         {
-            return Database.getChatFromList(id).ConvertToArrayList();
+            return Database.getChatFromList(id);
         }
 
-        public ArrayList getChatFromList2(string name)
+        public Chat getChatFromList2(string name)
         {
-            return Database.getChatFromList(name).ConvertToArrayList();
+            return Database.getChatFromList(name);
         }
 
         public bool getUsersFromDB()
@@ -87,9 +87,9 @@ namespace Iris
             return Database.getUsersFromDB();
         }
 
-        public bool addUserToDB(ArrayList user)
+        public bool addUserToDB(User user)
         {
-            return Database.addUserToDB(User.Disconvert(user));
+            return Database.addUserToDB(user);
         }
 
         public bool getChatsFromDB()
@@ -97,34 +97,33 @@ namespace Iris
             return Database.getChatsFromDB();
         }
 
-        public bool changePassword(ArrayList user)
+        public bool changePassword(User user)
         {
-            return Database.changePassword(User.Disconvert(user));
+            return Database.changePassword(user);
         }
 
-        public bool addMessageToChat(ArrayList message, ArrayList chat)
+        public bool addMessageToChat(Message message, Chat chat)
         {
-            return Database.addMessageToChat(Message.Disconvert(message), Chat.Disconvert(chat));
+            return Database.addMessageToChat(message, chat);
         }
 
-        public bool addChatToDB(ArrayList chat)
+        public bool addChatToDB(Chat chat)
         {
-            return Database.addChatToDB(Chat.Disconvert(chat));
+            return Database.addChatToDB(chat);
         }
 
-        public bool UpdateDB()
+        public void UpdateDB()
         {
-            return Database.Update();
-        }
-
-        public List<ArrayList> getChats()
-        {
-            List<ArrayList> list = new List<ArrayList>();
-            foreach(Chat chat in Database.getChats())
+            foreach (var item in users)
             {
-                list.Add(chat.ConvertToArrayList());
+                item.OperationContext.GetCallbackChannel<IServerChatCallback>().DBUpdateCallback(Database.Update());
             }
-            return list;
+            
+        }
+
+        public List<Chat> getChats()
+        {
+            return Database.getChats();
         }
 
     }

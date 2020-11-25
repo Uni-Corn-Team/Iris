@@ -36,29 +36,33 @@ namespace Iris
         void SendMessage(string message, int id, int chatID);
 
         [OperationContract]
-        ArrayList getUserFromList1(string login);
+        User getUserFromList1(string login);
         [OperationContract]
-        ArrayList getUserFromList2(int id);
+        User getUserFromList2(int id);
         [OperationContract]
-        ArrayList getChatFromList1(int id);
+        Chat getChatFromList1(int id);
         [OperationContract]
-        ArrayList getChatFromList2(string name);
+        Chat getChatFromList2(string name);
         [OperationContract]
         bool getUsersFromDB();
         [OperationContract]
-        bool addUserToDB(ArrayList user);
+        bool addUserToDB(User user);
         [OperationContract]
         bool getChatsFromDB();
         [OperationContract]
-        bool changePassword(ArrayList user);
+        bool changePassword(User user);
         [OperationContract]
-        bool addMessageToChat(ArrayList message, ArrayList chat);
+        bool addMessageToChat(Message message, Chat chat);
         [OperationContract]
-        bool addChatToDB(ArrayList chat);
+        bool addChatToDB(Chat chat);
+
+        [OperationContract(IsOneWay = true)]
+        void UpdateDB();
+
+
+
         [OperationContract]
-        bool UpdateDB();
-        [OperationContract]
-        List<ArrayList> getChats();
+        List<Chat> getChats();
     }
 
     public interface IServerChatCallback
@@ -70,6 +74,9 @@ namespace Iris
         /// /// <param name="chat">chat owner of message</param>
         [OperationContract(IsOneWay = true)]
         void MessageCallback(string message, int chatID);
+
+        [OperationContract(IsOneWay = true)]
+        void DBUpdateCallback(bool isUpdated);
     }
 
 }

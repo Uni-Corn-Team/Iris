@@ -174,10 +174,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="HelperClasses\Chat.cs" />
-    <Compile Include="HelperClasses\File.cs" />
-    <Compile Include="HelperClasses\Message.cs" />
-    <Compile Include="HelperClasses\User.cs" />
     <Compile Include="Windows\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
@@ -260,8 +256,16 @@
     <None Include="Connected Services\ServiceChat\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceChat\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceChat\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceChat\ServiceChat.wsdl" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Iris.Chat.datasource" />
+    <None Include="Properties\DataSources\Iris.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -269,9 +273,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Iris\Iris.csproj">
@@ -314,6 +315,9 @@
   <ItemGroup>
     <Resource Include="Source\addmes.png" />
     <Resource Include="Source\members.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceChat\" />

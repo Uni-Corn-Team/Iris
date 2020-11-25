@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ChatClient.HelperClasses;
+using Iris;
 using ChatClient.ServiceChat;
 
 namespace ChatClient
@@ -95,10 +95,10 @@ namespace ChatClient
 
         private void Button_Click_SignUp(object sender, RoutedEventArgs e)
         {
-            if (User.Disconvert(Clienter.client.getUserFromList1(tbNickname.Text)) == null)
+            if (Clienter.client.getUserFromList1(tbNickname.Text) == null)
             {
                 MainWindow.CurrentUser = new User(0, tbName.Text, tbSurname.Text, tbNickname.Text, int.Parse(tbAge.Text), tbLogin.Text, tbPassword.Text);
-                Clienter.client.addUserToDB(MainWindow.CurrentUser.ConvertToArrayList().ToArray());
+                Clienter.client.addUserToDB(MainWindow.CurrentUser);
                 (new MainWindow()).Show();
                 this.Close();
             }

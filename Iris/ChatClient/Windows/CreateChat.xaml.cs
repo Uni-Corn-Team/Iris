@@ -1,5 +1,5 @@
 ﻿
-using ChatClient.HelperClasses;
+using Iris;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +37,8 @@ namespace ChatClient.Windows
         {
             Chat newChat = new Chat(/*Database.Chats.Last<Chat>().ID + 1*/0, tbChatName.Text);
             newChat.Members.Add(MainWindow.CurrentUser);
-            Clienter.client.addChatToDB(newChat.ConvertToArrayList().ToArray());
-            MainWindow.CurrentUser.CurrentChat = (Clienter.ConvertObjectArrArrToListChat(Clienter.client.getChats())).Last<Chat>();
+            Clienter.client.addChatToDB(newChat);
+            MainWindow.CurrentUser.CurrentChat = Clienter.client.getChats().Last<Chat>();
             this.Close();
         }
 
