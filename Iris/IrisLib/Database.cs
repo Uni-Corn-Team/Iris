@@ -38,6 +38,17 @@ namespace IrisLib
             this.Update();
         }
 
+        public void Update(Database newDatabase)
+        {
+            Users.Clear();
+            Chats.Clear();
+            Users.AddRange(newDatabase.Users);
+            Chats.AddRange(newDatabase.Chats);
+            UsersCountAsNextID = newDatabase.UsersCountAsNextID;
+            ChatsCountAsNextID = newDatabase.ChatsCountAsNextID;
+            MessagesCountAsNextID = newDatabase.MessagesCountAsNextID;
+        }
+
         public User GetUserFromList(string login)
         {
             for (int i = 0; i < Users.Count(); i++)

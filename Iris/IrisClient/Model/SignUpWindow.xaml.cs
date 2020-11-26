@@ -13,9 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IrisClient.ServiceChat;
-using Iris;
+using IrisLib;
 
-namespace ChatClient
+namespace IrisClient
 {
     /// <summary>
     /// Логика взаимодействия для SignUpWindow.xaml
@@ -95,19 +95,15 @@ namespace ChatClient
 
         private void Button_Click_SignUp(object sender, RoutedEventArgs e)
         {
-            if (Database.getUserFromList(tbLogin.Text) == null)
+            if (ClientData.database.GetUserFromList(tbLogin.Text) == null)
             {
 
 
                 try
                 {
                     int age = Int32.Parse(tbAge.Text);
-
-
-
-                    MainWindow.CurrentUser = new User(/*Database.Users.Count == 0 ? 1 : Database.Users.Last<User>().ID + 1*/0,
-                        tbName.Text, tbSurname.Text, tbNickname.Text, age, tbLogin.Text, tbPassword.Text);
-                    Database.addUserToDB(MainWindow.CurrentUser);
+                    ClientData.CurrentUser = new User(0, tbName.Text, tbSurname.Text, tbNickname.Text, age, tbLogin.Text, tbPassword.Text);
+                    ClientData.CurrentUser.ID = ClientData.client.GetNewUser(ClientData.CurrentUser);
                     (new MainWindow()).Show();
                     this.Close();
                 }

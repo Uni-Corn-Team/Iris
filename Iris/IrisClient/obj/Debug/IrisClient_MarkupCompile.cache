@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\App.xaml
-11278781354
+62088100288
 3425689619
-6-1989239972
+12-956796061
 54178626844
-View\SignInWindow.xaml;
+View\AddUserWindow.xaml;View\ChangePasswordWindow.xaml;View\CreateChat.xaml;View\MainWindow.xaml;View\SignInWindow.xaml;View\SignUpWindow.xaml;
 
-True
+False
 

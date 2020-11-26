@@ -20,10 +20,10 @@ namespace IrisLib
         //[OperationContract]
         //void Disconnect(int id);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Connect(User user);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Disconnect(User user);
 
         [OperationContract(IsOneWay = true)]
@@ -32,14 +32,20 @@ namespace IrisLib
         [OperationContract(IsOneWay = true)]
         void GetMessageFromClient(User sender, string messageText, int chatID);
 
-        [OperationContract(IsOneWay = true)]
-        void GetNewUser(User user);
+        [OperationContract]
+        int GetNewUser(User user);
+
+        [OperationContract]
+        Database SendDatabaseFirstTime();
 
         [OperationContract(IsOneWay = true)]
         void AddUserToChat(User sender, User user, int chatID);
 
         [OperationContract(IsOneWay = true)]
-        void CreateNewChat(User sender, User user, Chat chat);
+        void CreateNewChat(User sender, Chat chat);
+
+        [OperationContract(IsOneWay = true)]
+        void ChangePassword(User user);
     }
 
 

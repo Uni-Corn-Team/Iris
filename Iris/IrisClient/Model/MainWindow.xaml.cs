@@ -14,37 +14,30 @@ using System.Windows;
 //using System.Windows.Media.Imaging;
 //using System.Windows.Navigation;
 //using System.Windows.Shapes;
-using ChatClient.ServiceChat;
-using ChatClient.Windows;
-using Iris;
+using IrisClient.ServiceChat;
+using IrisLib;
 
-namespace ChatClient
+namespace IrisClient
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IServiceChatCallback
+    public partial class MainWindow : Window, IServerChatCallback
     {
-        private bool isConnected;
+        //private bool isConnected;
         //public static User CurrentUser { get; set; }
-        public static User CurrentUser;
-        private List<Chat> chats;
-        private ServiceChatClient client;
-        int ID;
 
         public MainWindow()
         {
             InitializeComponent();
-            client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));
-            ID = client.Connect(CurrentUser.Nickname);
-            CurrentUser.CurrentChat = null;
-            chats = new List<Chat>();
-            foreach (Chat dialog in Database.Chats)
+            ClientData.client.Connect(ClientData.CurrentUser);
+            ClientData.CurrentUser.CurrentChat = null;
+            ClientData.chats = new List<Chat>();
+            foreach (Chat dialog in ClientData.database.Chats)
             {
-
-                if (dialog.Members.Contains(CurrentUser))
+                if (dialog.Members.Contains(ClientData.CurrentUser))
                 {
-                    chats.Add(dialog);
+                    ClientData.chats.Add(dialog);
                     lbDialogs.Items.Add(dialog.Name);
                 }
             }
@@ -57,38 +50,59 @@ namespace ChatClient
 
         }
 
-        public void MessageCallback(string message, int chatID)
+        private void RedrawCurrentChat()
         {
-            if(CurrentUser.CurrentChat != null)
-            if(CurrentUser.CurrentChat.ID == chatID)
+            if (ClientData.CurrentUser.CurrentChat != null)
+                lbCurrentDialog.Items.Clear();
+                foreach (Message message in ClientData.CurrentUser.CurrentChat.Messages)
+                {
+                    lbCurrentDialog.Items.Add(message);
+                    lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
+                }
+        }
+
+        public void DatabaseCallback(Database newDatabase)
+        {
+            /*
+            if(ClientData.CurrentUser.CurrentChat != null)
+            if(ClientData.CurrentUser.CurrentChat.ID == chatID)
             {
                 lbCurrentDialog.Items.Add(message);
                 lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
             }
-            Database.getChatsFromDB();
-            chats.Clear();
-            foreach (Chat dialog in Database.Chats)
+            */
+            int ID = -1;
+            if (ClientData.CurrentUser.CurrentChat != null)
             {
-                if (dialog.Members.Contains(CurrentUser))
+                ID = ClientData.CurrentUser.CurrentChat.ID;
+            }
+            ClientData.database.Update(newDatabase);
+            if (ID != -1)
+            {
+                ClientData.CurrentUser.CurrentChat = ClientData.database.GetChatFromList(ID);
+            }
+            RedrawCurrentChat();
+            /*
+            foreach (Chat dialog in ClientData.database.Chats)
+            {
+                if (dialog.Members.Contains(ClientData.CurrentUser))
                 {
-                    chats.Add(dialog);
+                    ClientData.chats.Add(dialog);
                 }
             }
+            */
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            client.Disconnect(ID);
+            ClientData.client.Disconnect(ClientData.CurrentUser);
         }
 
         private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
         {
-            if (client != null && CurrentUser.CurrentChat != null && tbMessage.Text != null && tbMessage.Text != "")
+            if (ClientData.client != null && ClientData.CurrentUser.CurrentChat != null && tbMessage.Text != null && tbMessage.Text != "")
             {
-                Database.addMessageToChat(new Message(0, CurrentUser, tbMessage.Text), CurrentUser.CurrentChat);
-                client.SendMessage(tbMessage.Text, ID, CurrentUser.CurrentChat.ID);
-                //uncomment when ID are registered in the database
-                //Database.getChatFromList(CurrentUser.CurrentChat.ID).Messages.Add(new Message(100, CurrentUser, tbMessage.Text));
+                ClientData.client.GetMessageFromClient(ClientData.CurrentUser, tbMessage.Text, ClientData.CurrentUser.CurrentChat.ID);
                 tbMessage.Text = string.Empty;
             }
         }
@@ -113,10 +127,10 @@ namespace ChatClient
             bChangePassword.Visibility = Visibility.Visible;
 
             lbProfile.Items.Clear();
-            lbProfile.Items.Add("ID:\n" + CurrentUser.ID + "\n");
-            lbProfile.Items.Add("Name:\n" + CurrentUser.Name + "\n");
-            lbProfile.Items.Add("Surname:\n" + CurrentUser.Surname + "\n");
-            lbProfile.Items.Add("Nickname:\n" + CurrentUser.Nickname + "\n");
+            lbProfile.Items.Add("ID:\n" + ClientData.CurrentUser.ID + "\n");
+            lbProfile.Items.Add("Name:\n" + ClientData.CurrentUser.Name + "\n");
+            lbProfile.Items.Add("Surname:\n" + ClientData.CurrentUser.Surname + "\n");
+            lbProfile.Items.Add("Nickname:\n" + ClientData.CurrentUser.Nickname + "\n");
             //lbProfile.Items.Add("Login:\n" + CurrentUser.Login + "\n");
         }
 
@@ -131,9 +145,9 @@ namespace ChatClient
             bChangePassword.IsEnabled = false;
             bChangePassword.Visibility = Visibility.Hidden;
             lbChatParticipant.Items.Clear();
-            if (CurrentUser.CurrentChat != null)
+            if (ClientData.CurrentUser.CurrentChat != null)
             {
-                foreach (User member in CurrentUser.CurrentChat.Members)
+                foreach (User member in ClientData.CurrentUser.CurrentChat.Members)
                 {
                     lbChatParticipant.Items.Add(member.Nickname+" "+member.ID);
                 }
@@ -154,7 +168,6 @@ namespace ChatClient
 
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)
         {
-            Database.getChatsFromDB();
             lbDialogs.IsEnabled = true;
             lbChatParticipant.IsEnabled = false;
             lbProfile.IsEnabled = false;
@@ -164,12 +177,12 @@ namespace ChatClient
             bChangePassword.IsEnabled = false;
             bChangePassword.Visibility = Visibility.Hidden;
             lbDialogs.Items.Clear();
-            chats.Clear();
-            foreach (Chat dialog in Database.Chats)
+            ClientData.chats.Clear();
+            foreach (Chat dialog in ClientData.database.Chats)
             {
-                if (dialog.Members.Contains(CurrentUser))
+                if (dialog.Members.Contains(ClientData.CurrentUser))
                 {
-                    chats.Add(dialog);
+                    ClientData.chats.Add(dialog);
                     lbDialogs.Items.Add(dialog.Name);
                 }
             }
@@ -188,16 +201,16 @@ namespace ChatClient
             //if (!((String)lbDialogs.SelectedItem).Equals(CurrentUser.CurrentChat.Name))
             //{
                 lbCurrentDialog.Items.Clear();
-                foreach (Chat dialog in chats)
+                foreach (Chat dialog in ClientData.chats)
                 {
                     if (dialog.Name.Equals((String)lbDialogs.SelectedItem))
                     {
-                        CurrentUser.CurrentChat = dialog;
-                        lCurrentChatName.Content = CurrentUser.CurrentChat.Name;
+                        ClientData.CurrentUser.CurrentChat = dialog;
+                        lCurrentChatName.Content = ClientData.CurrentUser.CurrentChat.Name;
                     }
                 }
 
-                foreach (Message message in CurrentUser.CurrentChat.Messages)
+                foreach (Message message in ClientData.CurrentUser.CurrentChat.Messages)
                 {
                     lbCurrentDialog.Items.Add(message.Date + " | " + message.Sender.Nickname + " |\n\t" + message.Text);
                 }

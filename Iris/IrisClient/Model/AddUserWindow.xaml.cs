@@ -1,4 +1,4 @@
-﻿using Iris;
+﻿using IrisLib;
 using System;
 //using System.Collections.Generic;
 //using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media;
 //using System.Windows.Media.Imaging;
 //using System.Windows.Shapes;
 
-namespace ChatClient.Windows
+namespace IrisClient
 {
     /// <summary>
     /// Логика взаимодействия для AddUserWindow.xaml
@@ -24,7 +24,6 @@ namespace ChatClient.Windows
         private bool isShowID = true;
         private void ButtonClickBack(object sender, EventArgs e)
         {
-           // new MainWindow().Show();
             this.Close();
         }
         public AddUserWindow()
@@ -34,10 +33,9 @@ namespace ChatClient.Windows
 
         private void ButtonClickAddUserToChat(object sender, RoutedEventArgs e)
         {
-            if (Database.getUserFromList(int.Parse(tbID.Text)) != null && MainWindow.CurrentUser.CurrentChat != null)
+            if (ClientData.database.GetUserFromList(int.Parse(tbID.Text)) != null && ClientData.CurrentUser.CurrentChat != null)
             {
-                Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID).Members.Add(Database.getUserFromList(int.Parse(tbID.Text)));
-                Database.addChatToDB(Database.getChatFromList(MainWindow.CurrentUser.CurrentChat.ID));
+                ClientData.client.AddUserToChat(ClientData.CurrentUser, ClientData.database.GetUserFromList(int.Parse(tbID.Text)), ClientData.CurrentUser.CurrentChat.ID);
                 this.Close();
             }
             else

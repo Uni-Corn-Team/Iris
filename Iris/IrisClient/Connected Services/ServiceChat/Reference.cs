@@ -15,16 +15,16 @@ namespace IrisClient.ServiceChat {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceChat.IServiceChat")]
     public interface IServiceChat {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/Connect", ReplyAction="http://tempuri.org/IServiceChat/ConnectResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/Connect")]
         void Connect(IrisLib.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/Connect", ReplyAction="http://tempuri.org/IServiceChat/ConnectResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/Connect")]
         System.Threading.Tasks.Task ConnectAsync(IrisLib.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/Disconnect", ReplyAction="http://tempuri.org/IServiceChat/DisconnectResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/Disconnect")]
         void Disconnect(IrisLib.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/Disconnect", ReplyAction="http://tempuri.org/IServiceChat/DisconnectResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/Disconnect")]
         System.Threading.Tasks.Task DisconnectAsync(IrisLib.User user);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendDatabaseToClients")]
@@ -39,11 +39,17 @@ namespace IrisClient.ServiceChat {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetMessageFromClient")]
         System.Threading.Tasks.Task GetMessageFromClientAsync(IrisLib.User sender, string messageText, int chatID);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetNewUser")]
-        void GetNewUser(IrisLib.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/GetNewUser", ReplyAction="http://tempuri.org/IServiceChat/GetNewUserResponse")]
+        int GetNewUser(IrisLib.User user);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetNewUser")]
-        System.Threading.Tasks.Task GetNewUserAsync(IrisLib.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/GetNewUser", ReplyAction="http://tempuri.org/IServiceChat/GetNewUserResponse")]
+        System.Threading.Tasks.Task<int> GetNewUserAsync(IrisLib.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/SendDatabaseFirstTime", ReplyAction="http://tempuri.org/IServiceChat/SendDatabaseFirstTimeResponse")]
+        IrisLib.Database SendDatabaseFirstTime();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/SendDatabaseFirstTime", ReplyAction="http://tempuri.org/IServiceChat/SendDatabaseFirstTimeResponse")]
+        System.Threading.Tasks.Task<IrisLib.Database> SendDatabaseFirstTimeAsync();
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/AddUserToChat")]
         void AddUserToChat(IrisLib.User sender, IrisLib.User user, int chatID);
@@ -52,10 +58,16 @@ namespace IrisClient.ServiceChat {
         System.Threading.Tasks.Task AddUserToChatAsync(IrisLib.User sender, IrisLib.User user, int chatID);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/CreateNewChat")]
-        void CreateNewChat(IrisLib.User sender, IrisLib.User user, IrisLib.Chat chat);
+        void CreateNewChat(IrisLib.User sender, IrisLib.Chat chat);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/CreateNewChat")]
-        System.Threading.Tasks.Task CreateNewChatAsync(IrisLib.User sender, IrisLib.User user, IrisLib.Chat chat);
+        System.Threading.Tasks.Task CreateNewChatAsync(IrisLib.User sender, IrisLib.Chat chat);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/ChangePassword")]
+        void ChangePassword(IrisLib.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/ChangePassword")]
+        System.Threading.Tasks.Task ChangePasswordAsync(IrisLib.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -66,7 +78,7 @@ namespace IrisClient.ServiceChat {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ServiceChatClient : System.ServiceModel.ClientBase<IrisClient.ServiceChat.IServiceChat>, IrisClient.ServiceChat.IServiceChat {
         
-        public ServiceChatClient() {
+        public ServiceChatClient(System.ServiceModel.InstanceContext instanceContext) {
         }
         
         public ServiceChatClient(string endpointConfigurationName) : 
@@ -117,12 +129,20 @@ namespace IrisClient.ServiceChat {
             return base.Channel.GetMessageFromClientAsync(sender, messageText, chatID);
         }
         
-        public void GetNewUser(IrisLib.User user) {
-            base.Channel.GetNewUser(user);
+        public int GetNewUser(IrisLib.User user) {
+            return base.Channel.GetNewUser(user);
         }
         
-        public System.Threading.Tasks.Task GetNewUserAsync(IrisLib.User user) {
+        public System.Threading.Tasks.Task<int> GetNewUserAsync(IrisLib.User user) {
             return base.Channel.GetNewUserAsync(user);
+        }
+        
+        public IrisLib.Database SendDatabaseFirstTime() {
+            return base.Channel.SendDatabaseFirstTime();
+        }
+        
+        public System.Threading.Tasks.Task<IrisLib.Database> SendDatabaseFirstTimeAsync() {
+            return base.Channel.SendDatabaseFirstTimeAsync();
         }
         
         public void AddUserToChat(IrisLib.User sender, IrisLib.User user, int chatID) {
@@ -133,12 +153,20 @@ namespace IrisClient.ServiceChat {
             return base.Channel.AddUserToChatAsync(sender, user, chatID);
         }
         
-        public void CreateNewChat(IrisLib.User sender, IrisLib.User user, IrisLib.Chat chat) {
-            base.Channel.CreateNewChat(sender, user, chat);
+        public void CreateNewChat(IrisLib.User sender, IrisLib.Chat chat) {
+            base.Channel.CreateNewChat(sender, chat);
         }
         
-        public System.Threading.Tasks.Task CreateNewChatAsync(IrisLib.User sender, IrisLib.User user, IrisLib.Chat chat) {
-            return base.Channel.CreateNewChatAsync(sender, user, chat);
+        public System.Threading.Tasks.Task CreateNewChatAsync(IrisLib.User sender, IrisLib.Chat chat) {
+            return base.Channel.CreateNewChatAsync(sender, chat);
+        }
+        
+        public void ChangePassword(IrisLib.User user) {
+            base.Channel.ChangePassword(user);
+        }
+        
+        public System.Threading.Tasks.Task ChangePasswordAsync(IrisLib.User user) {
+            return base.Channel.ChangePasswordAsync(user);
         }
     }
 }

@@ -13,8 +13,6 @@ namespace IrisLib
     public class ServiceChat : IServiceChat
     {
         List<User> currentlyConnectedUsers = new List<User>();
-
-        User user = new User(123, "name", "surname", "nickname", 20, "login", "password");
         /*
         public void doWork()
         {
@@ -55,6 +53,7 @@ namespace IrisLib
         public void Connect(User user)
         {
             currentlyConnectedUsers.Add(user);
+            user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
         }
 
         public void Disconnect(User user)
@@ -77,10 +76,11 @@ namespace IrisLib
             SendDatabaseToClients();
         }
 
-        public void GetNewUser(User user)
+        public int GetNewUser(User user)
         {
             database.AddUserToDB(user);
             SendDatabaseToClients();
+            return database.UsersCountAsNextID;
         }
 
         public void AddUserToChat(User sender, User user, int chatID)
@@ -89,10 +89,21 @@ namespace IrisLib
             SendDatabaseToClients();
         }
 
-        public void CreateNewChat(User sender, User user, Chat chat)
+        public void CreateNewChat(User sender, Chat chat)
         {
             database.AddChatToDB(chat);
             SendDatabaseToClients();
+        }
+
+        public void ChangePassword(User user)
+        {
+            database.ChangePassword(user);
+            SendDatabaseToClients();
+        }
+
+        public Database SendDatabaseFirstTime()
+        {
+            return database;
         }
     }
 }

@@ -8,21 +8,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ConnectResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Disconnect">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="user" nillable="true" type="q2:User" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DisconnectResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="SendDatabaseToClients">
@@ -46,11 +36,30 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetNewUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNewUserResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendDatabaseFirstTime">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendDatabaseFirstTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="SendDatabaseFirstTimeResult" nillable="true" type="q5:Database" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddUserToChat">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="sender" nillable="true" type="q5:User" />
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="user" nillable="true" type="q6:User" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="sender" nillable="true" type="q6:User" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="user" nillable="true" type="q7:User" />
         <xs:element minOccurs="0" name="chatID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -58,9 +67,15 @@
   <xs:element name="CreateNewChat">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="sender" nillable="true" type="q7:User" />
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="user" nillable="true" type="q8:User" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="sender" nillable="true" type="q8:User" />
         <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="chat" nillable="true" type="q9:Chat" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangePassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="user" nillable="true" type="q10:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

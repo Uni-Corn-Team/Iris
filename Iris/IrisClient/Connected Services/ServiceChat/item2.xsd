@@ -4,6 +4,7 @@
   <xs:complexType name="User">
     <xs:sequence>
       <xs:element minOccurs="0" name="Age" type="xs:int" />
+      <xs:element minOccurs="0" name="CurrentChat" nillable="true" type="tns:Chat" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
@@ -54,4 +55,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="File" nillable="true" type="tns:File" />
+  <xs:complexType name="Database">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Chats" nillable="true" type="tns:ArrayOfChat" />
+      <xs:element minOccurs="0" name="ChatsCountAsNextID" type="xs:int" />
+      <xs:element minOccurs="0" name="MessagesCountAsNextID" type="xs:int" />
+      <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUser" />
+      <xs:element minOccurs="0" name="UsersCountAsNextID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Database" nillable="true" type="tns:Database" />
+  <xs:complexType name="ArrayOfChat">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Chat" nillable="true" type="tns:Chat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChat" nillable="true" type="tns:ArrayOfChat" />
 </xs:schema>

@@ -1,4 +1,4 @@
-﻿using Iris;
+﻿using IrisLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ChatClient.Windows
+namespace IrisClient
 {
    
     /// <summary>
@@ -34,10 +34,10 @@ namespace ChatClient.Windows
 
         private void ButtonClickAddChat(object sender, RoutedEventArgs e)
         {
-            Chat newChat = new Chat(/*Database.Chats.Last<Chat>().ID + 1*/0, tbChatName.Text);
-            newChat.Members.Add(MainWindow.CurrentUser);
-            Database.addChatToDB(newChat);
-            MainWindow.CurrentUser.CurrentChat = Database.Chats.Last<Chat>();
+            Chat newChat = new Chat(0, tbChatName.Text);
+            newChat.Members.Add(ClientData.CurrentUser);
+            ClientData.client.CreateNewChat(ClientData.CurrentUser, newChat);
+            //возможно, нужно придумать переход на новый чат, но его еще нет в БД
             this.Close();
         }
 

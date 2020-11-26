@@ -1,4 +1,4 @@
-﻿using Iris;
+﻿using IrisLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ChatClient.Windows
+namespace IrisClient
 {
     /// <summary>
     /// Логика взаимодействия для EditProfile.xaml
@@ -49,10 +49,10 @@ namespace ChatClient.Windows
 
         private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.CurrentUser.Password.Equals(tbOldPassword.Text))
+            if (ClientData.CurrentUser.Password.Equals(tbOldPassword.Text))
             {
-                MainWindow.CurrentUser.Password = tbNewPassword.Text;
-                Database.changePassword(MainWindow.CurrentUser);
+                ClientData.CurrentUser.Password = tbNewPassword.Text;
+                ClientData.client.ChangePassword(ClientData.CurrentUser);
                 this.Close();
             }
             else

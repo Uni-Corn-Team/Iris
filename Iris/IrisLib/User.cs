@@ -26,7 +26,7 @@ namespace IrisLib
         /// </summary>
         [DataMember] public int ID { get; set; }
 
-        //public Chat CurrentChat { get; set; }
+        [DataMember] public Chat CurrentChat { get; set; }
 
         public User() { }
         public User(int id, string name, string surname, string nickname, int age, string login, string password)
