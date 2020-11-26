@@ -4,24 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using System.Runtime.Serialization;
 
 namespace IrisLib
 {
+    [Serializable]
+    [DataContract]
     public class User
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        [DataMember] public string Name { get; set; }
+        [DataMember] public string Surname { get; set; }
         /// <summary>
         /// user's name
         /// </summary>
-        public string Nickname { get; set; }
-        public int Age { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        [DataMember] public string Nickname { get; set; }
+        [DataMember] public int Age { get; set; }
+        [DataMember] public string Login { get; set; }
+        [DataMember] public string Password { get; set; }
         /// <summary>
         /// user's id
         /// </summary>
-        public int ID { get; set; }
+        [DataMember] public int ID { get; set; }
 
         //public Chat CurrentChat { get; set; }
 

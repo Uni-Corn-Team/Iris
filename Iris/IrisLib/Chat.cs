@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace IrisLib
 {
     [Serializable]
+    [DataContract]
     public class Chat
     {
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public int RootID { get; set; }
-        public List<User> Members { get; set; }
-        public List<Message> Messages { get; set; }
+        [DataMember] public string Name { get; set; }
+        [DataMember] public int ID { get; set; }
+        [DataMember] public int RootID { get; set; }
+        [DataMember] public List<User> Members { get; set; }
+        [DataMember] public List<Message> Messages { get; set; }
         public Chat(int id, string name)
         {
             this.ID = id;

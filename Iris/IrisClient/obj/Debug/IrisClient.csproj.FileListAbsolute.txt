@@ -244,3 +244,11 @@ E:\PROJECTS\UniCorn\IRIS\Iris\IrisClient\obj\Debug\IrisClient.csproj.CoreCompile
 E:\PROJECTS\UniCorn\IRIS\Iris\IrisClient\obj\Debug\IrisClient.csproj.CopyComplete
 E:\PROJECTS\UniCorn\IRIS\Iris\IrisClient\obj\Debug\IrisClient.exe
 E:\PROJECTS\UniCorn\IRIS\Iris\IrisClient\obj\Debug\IrisClient.pdb
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\IrisClient.csprojAssemblyReference.cache
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\View\AddUserWindow.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\View\ChangePasswordWindow.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\View\CreateChat.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\View\MainWindow.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\View\ProfileWindow.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\View\SignInWindow.g.cs
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\View\SignUpWindow.g.cs

@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace IrisLib
 {
     [Serializable]
+    [DataContract]
     public class Message
     {
-        public int ID { get; set; }
-        public User Sender { get; set; }
-        public string Text { get; set; }
-        public bool HasFile { get; set; }
-        public File File { get; set; }
-        public DateTime Date { get; set; }
+        [DataMember] public int ID { get; set; }
+        [DataMember] public User Sender { get; set; }
+        [DataMember] public string Text { get; set; }
+        [DataMember] public bool HasFile { get; set; }
+        [DataMember] public File File { get; set; }
+        [DataMember] public DateTime Date { get; set; }
         public Message(int id, User sender, string text)
         {
             this.ID = id;

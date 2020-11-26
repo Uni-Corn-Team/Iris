@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Microsoft.Data.Sqlite;
+using System.Runtime.Serialization;
 
 //SELECT Users.User_id, LinkUC.Chat_id, Chats.Name, Messages.Mes_id, Messages.Sender_id, Messages.Doc, Messages.text 
 //FROM Users JOIN LinkUC JOIN Chats JOIN Messages 
@@ -15,19 +16,20 @@ using Microsoft.Data.Sqlite;
 namespace IrisLib
 {
     [Serializable]
+    [DataContract]
     public class Database
     {
         //Maybe change it when will realese to new path(this path from bin\debug
-        private const string DBPath = "Data Source=..\\..\\..\\IrisLib\\Database\\database.db";
-        public List<User> Users { get; set; }
+        [DataMember] private const string DBPath = "Data Source=..\\..\\..\\IrisLib\\Database\\database.db";
+        [DataMember] public List<User> Users { get; set; }
 
-        public List<Chat> Chats { get; set; }
+        [DataMember] public List<Chat> Chats { get; set; }
 
         //we need static indexes of objects to add new objects (i suggest use count as ID; rewrite these 3 fields every time we change the database)
         //also need rewrite DB (.db file) because ID
-        public int UsersCountAsNextID;
-        public int ChatsCountAsNextID;
-        public int MessagesCountAsNextID;
+        [DataMember] public int UsersCountAsNextID;
+        [DataMember] public int ChatsCountAsNextID;
+        [DataMember] public int MessagesCountAsNextID;
 
         public Database()
         {
