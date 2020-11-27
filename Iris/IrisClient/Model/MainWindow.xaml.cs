@@ -35,13 +35,12 @@ namespace IrisClient
             ClientData.chats = new List<Chat>();
             foreach (Chat dialog in ClientData.database.Chats)
             {
-                if (dialog.Members.Contains(ClientData.CurrentUser))
+                if (dialog.IsUserInChat(ClientData.CurrentUser))
                 {
                     ClientData.chats.Add(dialog);
                     lbDialogs.Items.Add(dialog.Name);
                 }
             }
-        
         }
 
        
@@ -180,7 +179,7 @@ namespace IrisClient
             ClientData.chats.Clear();
             foreach (Chat dialog in ClientData.database.Chats)
             {
-                if (dialog.Members.Contains(ClientData.CurrentUser))
+                if (dialog.IsUserInChat(ClientData.CurrentUser))
                 {
                     ClientData.chats.Add(dialog);
                     lbDialogs.Items.Add(dialog.Name);

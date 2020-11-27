@@ -26,7 +26,6 @@ namespace IrisClient
     {
          private bool isShowLogin = true;
          private bool isShowPassword = true;
-        private ServiceChatClient client;
         public SignIn()
         {
             InitializeComponent();

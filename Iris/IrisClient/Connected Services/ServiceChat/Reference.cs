@@ -78,7 +78,7 @@ namespace IrisClient.ServiceChat {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ServiceChatClient : System.ServiceModel.ClientBase<IrisClient.ServiceChat.IServiceChat>, IrisClient.ServiceChat.IServiceChat {
         
-        public ServiceChatClient(System.ServiceModel.InstanceContext instanceContext) {
+        public ServiceChatClient() {
         }
         
         public ServiceChatClient(string endpointConfigurationName) : 

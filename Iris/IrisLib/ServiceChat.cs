@@ -9,7 +9,7 @@ using System.Text;
 
 namespace IrisLib
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, IncludeExceptionDetailInFaults = true)]
     public class ServiceChat : IServiceChat
     {
         List<User> currentlyConnectedUsers = new List<User>();

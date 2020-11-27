@@ -11,15 +11,6 @@ namespace IrisLib
     [ServiceContract]
     public interface IServiceChat
     {
-       //[OperationContract]
-        //void doWork();
-
-        //[OperationContract]
-        //int Connect(string name);
-
-        //[OperationContract]
-        //void Disconnect(int id);
-
         [OperationContract(IsOneWay = true)]
         void Connect(User user);
 
@@ -51,10 +42,6 @@ namespace IrisLib
 
     public interface IServerChatCallback
     {
-
-        //[OperationContract(IsOneWay = true)]
-        //void DoWorkCallback(MemoryStream ms);
-
         [OperationContract(IsOneWay = true)]
         void DatabaseCallback(Database database);
     }
