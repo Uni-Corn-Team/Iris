@@ -52,6 +52,7 @@ namespace IrisLib
         Database database = new Database();
         public void Connect(User user)
         {
+            user.OperationContext = OperationContext.Current;
             currentlyConnectedUsers.Add(user);
             user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
         }
@@ -82,7 +83,6 @@ namespace IrisLib
             SendDatabaseToClients();
             return database.UsersCountAsNextID;
         }
-
         public void AddUserToChat(User sender, User user, int chatID)
         {
             database.AddUserToChat(user, chatID);

@@ -8,7 +8,8 @@ using System.Text;
 
 namespace IrisLib
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IServerChatCallback))]
+    //[ServiceContract]
     public interface IServiceChat
     {
         [OperationContract(IsOneWay = true)]
