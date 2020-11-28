@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IrisClient
 {
-    class ClientData
+    class ClientData: IServiceChatCallback
     {
         public static ServiceChatClient client;
         public static User CurrentUser;
@@ -17,7 +17,13 @@ namespace IrisClient
         public ClientData()
         {
             client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));
-            database.Update(client.SendDatabaseFirstTime());
+            client.Connect(new User());
+            //database.Update(client.SendDatabaseFirstTime());
+        }
+
+        public void DatabaseCallback(Database _database)
+        {
+            database.Update(_database);
         }
     }
 }

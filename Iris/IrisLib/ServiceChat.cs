@@ -50,11 +50,16 @@ namespace IrisLib
         */
 
         Database database = new Database();
+
+        int nextId = 1;
         public void Connect(User user)
         {
+            user.ID = nextId;
+            nextId++;
             user.OperationContext = OperationContext.Current;
-            currentlyConnectedUsers.Add(user);
             user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
+            currentlyConnectedUsers.Add(user);
+            
         }
 
         public void Disconnect(User user)
