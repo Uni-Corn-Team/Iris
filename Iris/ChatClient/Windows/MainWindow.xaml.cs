@@ -6,6 +6,8 @@ using System.Collections.Generic;
 //using System.Text;
 //using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 //using System.Windows.Controls;
 //using System.Windows.Data;
 //using System.Windows.Documents;
@@ -23,6 +25,7 @@ namespace ChatClient
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    [Serializable]
     public partial class MainWindow : Window, IServiceChatCallback
     {
         private bool isConnected;
@@ -98,6 +101,38 @@ namespace ChatClient
             new CreateChat().Show();
         }
 
+
+        private void Button_Click_Send_File(object sender, RoutedEventArgs e)
+        {
+
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            //dlg.FileName = "Document"; // Default file name
+           // dlg.DefaultExt = ".txt"; // Default file extension
+            //dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+
+            
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                // Save document
+                string filename = dlg.FileName;
+            }
+
+            System.IO.StreamReader streamReader;
+          
+            streamReader = new System.IO.StreamReader(dlg.FileName);       
+            lbFile.Items.Clear();
+            lbFile.Items.Add(streamReader.ReadToEnd());
+            streamReader.Close();
+            lbDialogs.IsEnabled = false;
+            lbChatParticipant.IsEnabled = false;
+            lbProfile.IsEnabled = false;
+            lbDialogs.Visibility = Visibility.Hidden;
+            lbChatParticipant.Visibility = Visibility.Hidden;
+            lbProfile.Visibility = Visibility.Hidden;
+            lbFile.Visibility = Visibility.Visible;
+            lbFile.IsEnabled = true;
+        }
         private void Button_Click_Profile(object sender, RoutedEventArgs e)
         {
             // new ProfileWindow().Show();
@@ -111,6 +146,8 @@ namespace ChatClient
             lbProfile.Visibility = Visibility.Visible;
             bChangePassword.IsEnabled = true;
             bChangePassword.Visibility = Visibility.Visible;
+            lbFile.Visibility = Visibility.Hidden;
+            lbFile.IsEnabled = false;
 
             lbProfile.Items.Clear();
             lbProfile.Items.Add("ID:\n" + CurrentUser.ID + "\n");
@@ -130,6 +167,8 @@ namespace ChatClient
             lbChatParticipant.Visibility = Visibility.Visible;
             bChangePassword.IsEnabled = false;
             bChangePassword.Visibility = Visibility.Hidden;
+            lbFile.Visibility = Visibility.Hidden;
+            lbFile.IsEnabled = false;
             lbChatParticipant.Items.Clear();
             if (CurrentUser.CurrentChat != null)
             {

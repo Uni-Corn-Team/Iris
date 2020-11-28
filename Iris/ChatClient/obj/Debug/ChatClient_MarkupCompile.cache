@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\obj\Debug\
+C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\obj\Debug\
 ChatClient
 none
 false
 DEBUG;TRACE
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\ChatClient\App.xaml
+C:\Users\Senjor\Desktop\KPO\Iris\Iris\ChatClient\App.xaml
 7-464114331
-3949822092
+32048717179
 122026400733
-541499184375
+541084419901
 Windows\AddUserWindow.xaml;Windows\CreateChat.xaml;Windows\ChangePasswordWindow.xaml;Windows\MainWindow.xaml;Windows\ProfileWindow.xaml;Windows\SignInWindow.xaml;Windows\SignUpWindow.xaml;
 
 False
