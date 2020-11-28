@@ -21,9 +21,9 @@ namespace IrisClient
             //database.Update(client.SendDatabaseFirstTime());
         }
 
-        public void DatabaseCallback(Database _database)
+        public void DatabaseCallback(Database database)
         {
-            database.Update(_database);
+            database.Update(database);
         }
     }
 }

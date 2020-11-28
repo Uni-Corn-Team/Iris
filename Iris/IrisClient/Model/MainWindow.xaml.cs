@@ -30,7 +30,7 @@ namespace IrisClient
         public MainWindow()
         {
             InitializeComponent();
-            ClientData.client.Connect(ClientData.CurrentUser);
+            //ClientData.client.Connect(ClientData.CurrentUser);
             ClientData.CurrentUser.CurrentChat = null;
             ClientData.chats = new List<Chat>();
             foreach (Chat dialog in ClientData.database.Chats)
