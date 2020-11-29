@@ -33,9 +33,9 @@ namespace IrisClient
 
         private void ButtonClickAddUserToChat(object sender, RoutedEventArgs e)
         {
-            if (ClientData.database.GetUserFromList(int.Parse(tbID.Text)) != null && ClientData.CurrentUser.CurrentChat != null)
+            if (ClientData.database.GetUserFromList(int.Parse(tbID.Text)) != null && ClientData.CurrentUser.CurrentChatID != -1)
             {
-                ClientData.client.AddUserToChat(ClientData.CurrentUser, ClientData.database.GetUserFromList(int.Parse(tbID.Text)), ClientData.CurrentUser.CurrentChat.ID);
+                ClientData.client.AddUserToChat(ClientData.CurrentUser, ClientData.database.GetUserFromList(int.Parse(tbID.Text)), ClientData.CurrentUser.CurrentChatID);
                 this.Close();
             }
             else

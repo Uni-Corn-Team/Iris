@@ -31,7 +31,7 @@ namespace IrisClient
         {
             InitializeComponent();
             //ClientData.client.Connect(ClientData.CurrentUser);
-            ClientData.CurrentUser.CurrentChat = null;
+            ClientData.CurrentUser.CurrentChatID = -1;
             ClientData.chats = new List<Chat>();
             foreach (Chat dialog in ClientData.database.Chats)
             {
@@ -51,9 +51,9 @@ namespace IrisClient
 
         private void RedrawCurrentChat()
         {
-            if (ClientData.CurrentUser.CurrentChat != null)
+            if (ClientData.CurrentUser.CurrentChatID != -1)
                 lbCurrentDialog.Items.Clear();
-                foreach (Message message in ClientData.CurrentUser.CurrentChat.Messages)
+                foreach (Message message in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Messages) 
                 {
                     lbCurrentDialog.Items.Add(message);
                     lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
@@ -71,14 +71,14 @@ namespace IrisClient
             }
             */
             int ID = -1;
-            if (ClientData.CurrentUser.CurrentChat != null)
+            if (ClientData.CurrentUser.CurrentChatID != -1)
             {
-                ID = ClientData.CurrentUser.CurrentChat.ID;
+                ID = ClientData.CurrentUser.CurrentChatID;
             }
             ClientData.database.Update(newDatabase);
             if (ID != -1)
             {
-                ClientData.CurrentUser.CurrentChat = ClientData.database.GetChatFromList(ID);
+                ClientData.CurrentUser.CurrentChatID = ID;
             }
             RedrawCurrentChat();
             /*
@@ -99,9 +99,9 @@ namespace IrisClient
 
         private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
         {
-            if (ClientData.client != null && ClientData.CurrentUser.CurrentChat != null && tbMessage.Text != null && tbMessage.Text != "")
+            if (ClientData.client != null && ClientData.CurrentUser.CurrentChatID != -1 && tbMessage.Text != null && tbMessage.Text != "")
             {
-                ClientData.client.GetMessageFromClient(ClientData.CurrentUser, tbMessage.Text, ClientData.CurrentUser.CurrentChat.ID);
+                ClientData.client.GetMessageFromClient(ClientData.CurrentUser, tbMessage.Text, ClientData.CurrentUser.CurrentChatID);
                 tbMessage.Text = string.Empty;
             }
         }
@@ -144,9 +144,9 @@ namespace IrisClient
             bChangePassword.IsEnabled = false;
             bChangePassword.Visibility = Visibility.Hidden;
             lbChatParticipant.Items.Clear();
-            if (ClientData.CurrentUser.CurrentChat != null)
+            if (ClientData.CurrentUser.CurrentChatID != -1)
             {
-                foreach (User member in ClientData.CurrentUser.CurrentChat.Members)
+                foreach (User member in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Members)
                 {
                     lbChatParticipant.Items.Add(member.Nickname+" "+member.ID);
                 }
@@ -204,12 +204,12 @@ namespace IrisClient
                 {
                     if (dialog.Name.Equals((String)lbDialogs.SelectedItem))
                     {
-                        ClientData.CurrentUser.CurrentChat = dialog;
-                        lCurrentChatName.Content = ClientData.CurrentUser.CurrentChat.Name;
+                        ClientData.CurrentUser.CurrentChatID = dialog.ID;
+                        lCurrentChatName.Content = ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Name;
                     }
                 }
 
-                foreach (Message message in ClientData.CurrentUser.CurrentChat.Messages)
+                foreach (Message message in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Messages)
                 {
                     lbCurrentDialog.Items.Add(message.Date + " | " + message.Sender.Nickname + " |\n\t" + message.Text);
                 }

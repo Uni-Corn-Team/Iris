@@ -56,27 +56,35 @@ namespace IrisLib
         {
             user.ID = nextId;
             nextId++;
+            Console.WriteLine("Connect");
+            Console.WriteLine(user.ToString());
             user.OperationContext = OperationContext.Current;
             user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
             currentlyConnectedUsers.Add(user);
-            
         }
 
         public void Disconnect(User user)
         {
+            Console.WriteLine("Remove");
+            Console.WriteLine(user.ToString());
             currentlyConnectedUsers.Remove(user);
         }
 
         public void SendDatabaseToClients()
         {
+            Console.WriteLine("SendDatabaseToClients");
             foreach (var user in currentlyConnectedUsers)
             {
                 user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
+                Console.WriteLine(user.ToString());
             }
         }
 
         public void GetMessageFromClient(User sender, string messageText, int chatID)
         {
+            Console.WriteLine("GetMessageFromClient");
+            Console.WriteLine(sender.ToString());
+            Console.WriteLine(messageText + "Chat id: " + chatID);
             Message message = new Message(0, sender, messageText);
             database.AddMessageToChat(message, chatID);
             SendDatabaseToClients();
@@ -84,30 +92,43 @@ namespace IrisLib
 
         public int GetNewUser(User user)
         {
+            Console.WriteLine("GetNewUser");
+            Console.WriteLine(user.ToString());
             database.AddUserToDB(user);
             SendDatabaseToClients();
             return database.UsersCountAsNextID;
         }
         public void AddUserToChat(User sender, User user, int chatID)
         {
+            Console.WriteLine("AddUserToChat");
+            Console.WriteLine(sender.ToString());
+            Console.WriteLine(user.ToString());
+            Console.WriteLine("Chat id: " + chatID);
             database.AddUserToChat(user, chatID);
             SendDatabaseToClients();
+
         }
 
         public void CreateNewChat(User sender, Chat chat)
         {
+            Console.WriteLine("CreateNewChat");
+            Console.WriteLine(sender.ToString());
+            Console.WriteLine(chat.ToString());
             database.AddChatToDB(chat);
             SendDatabaseToClients();
         }
 
         public void ChangePassword(User user)
         {
+            Console.WriteLine("ChangePassword");
+            Console.WriteLine(user.ToString());
             database.ChangePassword(user);
             SendDatabaseToClients();
         }
 
         public Database SendDatabaseFirstTime()
         {
+            Console.WriteLine("SendDatabaseFirstTime");
             return database;
         }
     }
