@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IrisClient"
         mc:Ignorable="d"
-        Closing="Window_Closing"
+        Closing="WindowClosing"
         Title="CreateChat" Height="450" Width="350"
         Icon="/Source/iris_dvoynoy_kh4.png" 
         MinWidth="350" MinHeight="450" MaxHeight="450" MaxWidth="350" AutomationProperties.IsOffscreenBehavior="Offscreen" WindowStartupLocation="CenterScreen">
@@ -64,7 +64,7 @@
                   VerticalAlignment="Top" Width="200"
                  PreviewMouseDown="RemoveTextNameChat" FontFamily="Bookman Old Style"/>
 
-        <Button Content="Create chat" Click="ButtonClickAddChat" HorizontalAlignment="Left" Margin="75,198,0,0"  VerticalAlignment="Top" Width="200" RenderTransformOrigin="-0.885,-1.66" Height="25"  Foreground="White"  Background="#FF9E00F9" FontFamily="Bookman Old Style" IsDefault = "true"/>
+        <Button  Content="Create chat" Click="ButtonClickAddChat"  HorizontalAlignment="Left" Margin="75,198,0,0"  VerticalAlignment="Top" Width="200" RenderTransformOrigin="-0.885,-1.66" Height="25"  Foreground="White"  Background="#FF9E00F9" FontFamily="Bookman Old Style" IsDefault = "true"/>
         <Button  HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
             <Image>
                 <Image.Style>

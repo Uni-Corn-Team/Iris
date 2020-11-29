@@ -38,6 +38,11 @@ namespace IrisLib
             this.Update();
         }
 
+        public Database(bool eWithoutUpdate)
+        {
+            Users = new List<User>();
+            Chats = new List<Chat>();
+        }
         public void Update(Database newDatabase)
         {
             Users.Clear();

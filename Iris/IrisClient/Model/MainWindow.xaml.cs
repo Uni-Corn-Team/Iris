@@ -44,7 +44,7 @@ namespace IrisClient
         }
 
        
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void WindowLoaded(object sender, RoutedEventArgs e)
         {
 
         }
@@ -60,7 +60,7 @@ namespace IrisClient
                 }
         }
 
-        public void DatabaseCallback(Database newDatabase)
+        void IServerChatCallback.DatabaseCallback(Database newDatabase)
         {
             /*
             if(ClientData.CurrentUser.CurrentChat != null)
@@ -92,12 +92,12 @@ namespace IrisClient
             */
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ClientData.client.Disconnect(ClientData.CurrentUser);
         }
 
-        private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
+        private void ButtonClickSendMessage(object sender, RoutedEventArgs e)
         {
             if (ClientData.client != null && ClientData.CurrentUser.CurrentChatID != -1 && tbMessage.Text != null && tbMessage.Text != "")
             {
@@ -106,12 +106,12 @@ namespace IrisClient
             }
         }
 
-        private void New_Dialog(object sender, RoutedEventArgs e)
+        private void NewDialog(object sender, RoutedEventArgs e)
         {
             new CreateChat().Show();
         }
 
-        private void Button_Click_Profile(object sender, RoutedEventArgs e)
+        private void ButtonClickProfile(object sender, RoutedEventArgs e)
         {
             // new ProfileWindow().Show();
             //this.Close();
@@ -133,7 +133,7 @@ namespace IrisClient
             //lbProfile.Items.Add("Login:\n" + CurrentUser.Login + "\n");
         }
 
-        private void Button_Click_Participian(object sender, RoutedEventArgs e)
+        private void ButtonClickParticipian(object sender, RoutedEventArgs e)
         {
             lbDialogs.IsEnabled = false;
             lbChatParticipant.IsEnabled = true;
@@ -194,7 +194,7 @@ namespace IrisClient
             this.Close();
         }
 
-        private void Selection_Dialog(object sender, RoutedEventArgs e)
+        private void SelectionDialog(object sender, RoutedEventArgs e)
         {
             //todo: add exceptions (if currentChat == null will be bad)
             //if (!((String)lbDialogs.SelectedItem).Equals(CurrentUser.CurrentChat.Name))
@@ -243,7 +243,7 @@ namespace IrisClient
 
         //}
 
-        //private void Window_Loaded(object sender, RoutedEventArgs e)
+        //private void WindowLoaded(object sender, RoutedEventArgs e)
         //{
 
         //}
@@ -286,7 +286,7 @@ namespace IrisClient
 
         //}*/
 
-        //private void New_Dialog(object sender, RoutedEventArgs e)
+        //private void NewDialog(object sender, RoutedEventArgs e)
         //{
         //    new CreateChat().Show();
         //}
@@ -308,7 +308,7 @@ namespace IrisClient
         //    //this.Close();
         //}
 
-        ///*private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        ///*private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         //{
         //    DisconnectUser();
         //}*/

@@ -13,7 +13,7 @@ namespace IrisClient
         public static ServiceChatClient client;
         public static User CurrentUser;
         public static List<Chat> chats;
-        public static Database database = new Database();
+        public static Database database = new Database(true);
         public ClientData()
         {
             client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));
@@ -21,9 +21,9 @@ namespace IrisClient
             //database.Update(client.SendDatabaseFirstTime());
         }
 
-        public void DatabaseCallback(Database database)
+        public void DatabaseCallback(Database localDatabase)
         {
-            database.Update(database);
+            database.Update(localDatabase);
         }
     }
 }
