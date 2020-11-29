@@ -22,7 +22,7 @@ namespace IrisClient
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IServerChatCallback
+    public partial class MainWindow : Window, ServiceChat.IServiceChatCallback
     {
         //private bool isConnected;
         //public static User CurrentUser { get; set; }
@@ -49,48 +49,79 @@ namespace IrisClient
 
         }
 
-        private void RedrawCurrentChat()
+        public void RedrawCurrentChat()
         {
             if (ClientData.CurrentUser.CurrentChatID != -1)
+            {
                 lbCurrentDialog.Items.Clear();
-                foreach (Message message in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Messages) 
+                foreach (Message message in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Messages)
                 {
                     lbCurrentDialog.Items.Add(message);
                     lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
                 }
+            }
         }
 
-        void IServerChatCallback.DatabaseCallback(Database newDatabase)
+        public void RedrawChats()
         {
-            /*
-            if(ClientData.CurrentUser.CurrentChat != null)
-            if(ClientData.CurrentUser.CurrentChat.ID == chatID)
+            lbDialogs.Items.Clear();
+            ClientData.chats.Clear();
+            foreach (Chat dialog in ClientData.database.Chats)
             {
-                lbCurrentDialog.Items.Add(message);
-                lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
+                if (dialog.IsUserInChat(ClientData.CurrentUser))
+                {
+                    ClientData.chats.Add(dialog);
+                    lbDialogs.Items.Add(dialog.Name);
+                }
             }
-            */
+        }
+
+        public void DatabaseCallback(Database database)
+        {
             int ID = -1;
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
                 ID = ClientData.CurrentUser.CurrentChatID;
             }
-            ClientData.database.Update(newDatabase);
+            ClientData.database.Update(database);
             if (ID != -1)
             {
                 ClientData.CurrentUser.CurrentChatID = ID;
             }
             RedrawCurrentChat();
-            /*
-            foreach (Chat dialog in ClientData.database.Chats)
-            {
-                if (dialog.Members.Contains(ClientData.CurrentUser))
-                {
-                    ClientData.chats.Add(dialog);
-                }
-            }
-            */
         }
+
+        /*public void IServerChatCallback.DatabaseCallback(Database database)
+        {
+       
+//if(ClientData.CurrentUser.CurrentChat != null)
+//if(ClientData.CurrentUser.CurrentChat.ID == chatID)
+//{
+//   lbCurrentDialog.Items.Add(message);
+//   lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
+//}
+
+        int ID = -1;
+            if (ClientData.CurrentUser.CurrentChatID != -1)
+            {
+                ID = ClientData.CurrentUser.CurrentChatID;
+            }
+            ClientData.database.Update(database);
+            if (ID != -1)
+            {
+                ClientData.CurrentUser.CurrentChatID = ID;
+            }
+            RedrawCurrentChat();
+            
+            //foreach (Chat dialog in ClientData.database.Chats)
+            //{
+            //    if (dialog.Members.Contains(ClientData.CurrentUser))
+            //    {
+            //        ClientData.chats.Add(dialog);
+            //    }
+            //}
+            
+        }*/
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {

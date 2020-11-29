@@ -22,7 +22,7 @@ namespace IrisClient
     /// <summary>
     /// Логика взаимодействия для SignIn.xaml
     /// </summary>
-    public partial class SignIn : Window, IServerChatCallback
+    public partial class SignIn : Window, IrisLib.IServerChatCallback
     {
          private bool isShowLogin = true;
          private bool isShowPassword = true;
@@ -67,7 +67,8 @@ namespace IrisClient
                 if (ClientData.CurrentUser.Password.Equals(tbPassword.Text))
                 {
 
-                    (new MainWindow()).Show();
+                    //new MainWindow().Show();
+                    ClientData.ShowMainWindow();
                     this.Close();
                 }
                 else

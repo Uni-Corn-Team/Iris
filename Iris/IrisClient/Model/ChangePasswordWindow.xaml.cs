@@ -71,8 +71,9 @@ namespace IrisClient
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-              new MainWindow().Show();
-                      
+            //new MainWindow().Show();
+            ClientData.ShowMainWindow();
+
         }
     }
 }

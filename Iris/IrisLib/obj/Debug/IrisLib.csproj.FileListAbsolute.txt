@@ -286,7 +286,6 @@ C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\bin\Debug\System.Memory.xml
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CoreCompileInputs.cache
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CopyComplete
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.dll
@@ -365,3 +364,4 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CopyComplete
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.pdb
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
+C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
