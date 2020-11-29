@@ -43,6 +43,7 @@ namespace IrisLib
             Users = new List<User>();
             Chats = new List<Chat>();
         }
+
         public void Update(Database newDatabase)
         {
             Users.Clear();

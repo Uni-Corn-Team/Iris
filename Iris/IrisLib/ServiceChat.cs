@@ -98,6 +98,7 @@ namespace IrisLib
             SendDatabaseToClients();
             return database.UsersCountAsNextID;
         }
+
         public void AddUserToChat(User sender, User user, int chatID)
         {
             Console.WriteLine("AddUserToChat");
