@@ -62,19 +62,6 @@ namespace IrisClient
             }
         }
 
-        public void RedrawChats()
-        {
-            lbDialogs.Items.Clear();
-            ClientData.chats.Clear();
-            foreach (Chat dialog in ClientData.database.Chats)
-            {
-                if (dialog.IsUserInChat(ClientData.CurrentUser))
-                {
-                    ClientData.chats.Add(dialog);
-                    lbDialogs.Items.Add(dialog.Name);
-                }
-            }
-        }
 
         public void DatabaseCallback(Database database)
         {

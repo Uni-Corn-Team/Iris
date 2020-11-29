@@ -39,8 +39,9 @@ namespace IrisClient
                 {
                     ClientData.CurrentUser.CurrentChatID = ID;
                 }
+
                 mainWindow.RedrawCurrentChat();
-                //mainWindow.RedrawChats();
+
             }
             catch (Exception)
             {

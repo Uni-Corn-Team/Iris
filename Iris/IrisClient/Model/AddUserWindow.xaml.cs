@@ -19,7 +19,7 @@ namespace IrisClient
     /// <summary>
     /// Логика взаимодействия для AddUserWindow.xaml
     /// </summary>
-    public partial class AddUserWindow : Window, ServiceChat.IServiceChatCallback
+    public partial class AddUserWindow : Window
     {
         private bool isShowID = true;
         private void ButtonClickBack(object sender, EventArgs e)
@@ -62,9 +62,5 @@ namespace IrisClient
             ClientData.ShowMainWindow();
         }
 
-        public void DatabaseCallback(Database database)
-        {
-            ClientData.database.Update(database);
-        }
     }
 }
