@@ -6,20 +6,40 @@ namespace UnitTests
     [TestClass]
     public class UnitTestServiceChat
     {
-        [TestMethod]
-        public void TestDisconnect()
+        IrisLib.ServiceChat expectedServiceChat = new IrisLib.ServiceChat();
+
+        private void initServiceChat()
         {
-            //Arrange
-            IrisLib.ServiceChat expectedServiceChat = new IrisLib.ServiceChat();
+            expectedServiceChat.currentlyConnectedUsers.Clear();
             IrisLib.User user1 = new IrisLib.User(111, "Ivan", "Vinogradov", "FunnySurname", 0, "Vina", "qwerty123");
             IrisLib.User user2 = new IrisLib.User(121, "Tom", "Rifddle", "Marvolo", 53, "LordVolDeMort", "death");
-            IrisLib.User user3 = new IrisLib.User(121, "Harry", "Potter", "ChildLived", 11, "HateLordVolDeMort", "Jinny");
             expectedServiceChat.currentlyConnectedUsers.Add(user1);
             expectedServiceChat.currentlyConnectedUsers.Add(user2);
+        }
+
+        [TestMethod]
+        public void TestDisconnectExistingUser()
+        {
+            //Arrange
+            initServiceChat();
+            IrisLib.User user1 = new IrisLib.User(111, "Ivan", "Vinogradov", "FunnySurname", 0, "Vina", "qwerty123");
 
             //Act
             expectedServiceChat.Disconnect(user1);
             bool exp1 = expectedServiceChat.currentlyConnectedUsers.Contains(user1);
+            
+            //Assert
+            Assert.IsFalse(exp1);
+        }
+
+        [TestMethod]
+        public void TestDisconnectNonexistingUser()
+        {
+            //Arrange
+            initServiceChat();
+            IrisLib.User user3 = new IrisLib.User(121, "Harry", "Potter", "ChildLived", 11, "HateLordVolDeMort", "Jinny");
+
+            //Act
             bool exp2 = true;
             try
             {
@@ -30,6 +50,18 @@ namespace UnitTests
                 exp2 = false;
             }
 
+            //Assert
+            Assert.IsTrue(exp2);
+        }
+
+        [TestMethod]
+        public void TestDisconnectNull()
+        {
+            //Arrange
+            initServiceChat();
+            IrisLib.ServiceChat expectedServiceChat = new IrisLib.ServiceChat();
+
+            //Act
             bool exp3 = true;
             try
             {
@@ -41,8 +73,6 @@ namespace UnitTests
             }
 
             //Assert
-            Assert.IsFalse(exp1);
-            Assert.IsTrue(exp2);
             Assert.IsTrue(exp3);
         }
     }
