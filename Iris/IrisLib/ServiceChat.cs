@@ -12,7 +12,7 @@ namespace IrisLib
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, IncludeExceptionDetailInFaults = true)]
     public class ServiceChat : IServiceChat
     {
-        List<User> currentlyConnectedUsers = new List<User>();
+        public List<User> currentlyConnectedUsers = new List<User>();
         /*
         public void doWork()
         {
@@ -66,8 +66,11 @@ namespace IrisLib
         public void Disconnect(User user)
         {
             Console.WriteLine("Remove");
-            Console.WriteLine(user.ToString());
-            currentlyConnectedUsers.Remove(user);
+            if (user != null)
+            {
+                Console.WriteLine(user.ToString());
+                currentlyConnectedUsers.Remove(user);
+            }
         }
 
         public void SendDatabaseToClients()
