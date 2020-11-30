@@ -21,13 +21,17 @@ namespace UnitTests
                 Login = "Vina",
                 Password = "qwerty123"
             };
+            IrisLib.User expectedUser3 = new IrisLib.User(121, "Tom", "Rifddle", "Marvolo", 53, "LordVolDeMort", "death");
 
             //Act
-            bool isEquals = expectedUser1.Equals(expectedUser2);
+            bool isEquals1 = expectedUser1.Equals(expectedUser2);
+            bool isEquals2 = expectedUser1.Equals(expectedUser3);
+            bool isEquals3 = expectedUser2.Equals(expectedUser3);
 
             //Assert
-            Assert.AreEqual(isEquals, true);
-
+            Assert.IsTrue(isEquals1);
+            Assert.IsFalse(isEquals2);
+            Assert.IsFalse(isEquals3);
         }
     }
 }

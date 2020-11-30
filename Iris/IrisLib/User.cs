@@ -49,10 +49,11 @@ namespace IrisLib
         /// </summary>
         public OperationContext OperationContext { get; set; }
 
-        public bool Equals(User other)
+        public override bool Equals(Object other)
         {
-            if (other != null && this.Name == other.Name && this.Surname == other.Surname && this.Nickname == other.Nickname &&
-                this.Age == other.Age && this.Login == other.Login && this.Password == other.Password && this.ID == other.ID)
+            User user = other as User;
+            if (user != null && this.Name == user.Name && this.Surname == user.Surname && this.Nickname == user.Nickname &&
+                this.Age == user.Age && this.Login == user.Login && this.Password == user.Password && this.ID == user.ID)
             {
                 return true;
             }

@@ -28,12 +28,14 @@ namespace UnitTests
             IrisLib.User user2 = expectedDatabase.GetUserFromList(6);
             IrisLib.User user3 = expectedDatabase.GetUserFromList("Kusja");
             IrisLib.User user4 = expectedDatabase.GetUserFromList("Dusja");
+            IrisLib.User user5 = expectedDatabase.GetUserFromList(null);
 
             //Assert
             Assert.IsNotNull(user1);
             Assert.IsNull(user2);
             Assert.IsNotNull(user3);
             Assert.IsNull(user4);
+            Assert.IsNull(user5);
         }
 
         [TestMethod]
@@ -47,12 +49,14 @@ namespace UnitTests
             IrisLib.Chat chat2 = expectedDatabase.GetChatFromList(6);
             IrisLib.Chat chat3 = expectedDatabase.GetChatFromList("Violet");
             IrisLib.Chat chat4 = expectedDatabase.GetChatFromList("Galanthus");
+            IrisLib.Chat chat5 = expectedDatabase.GetChatFromList(null);
 
             //Assert
             Assert.IsNotNull(chat1);
             Assert.IsNull(chat2);
             Assert.IsNotNull(chat3);
             Assert.IsNull(chat4);
+            Assert.IsNull(chat5);
         }
 
         [TestMethod]
@@ -90,7 +94,6 @@ namespace UnitTests
             Assert.IsFalse(exp2);
             Assert.IsFalse(exp3);
         }
-
 
     }
 }

@@ -10,7 +10,8 @@ namespace UnitTests
         public void TestIsUserInChat()
         {
             //Arrange
-            IrisLib.User expectedUser = new IrisLib.User(111, "Ivan", "Vinogradov", "FunnySurname", 0, "Vina", "qwerty123");
+            IrisLib.User expectedUser1 = new IrisLib.User(111, "Ivan", "Vinogradov", "FunnySurname", 0, "Vina", "qwerty123");
+            IrisLib.User expectedUser2 = new IrisLib.User() { ID = 354};
             IrisLib.Chat expectedChat = new IrisLib.Chat(1469, "Cheboksary");
             expectedChat.Members.Add(new IrisLib.User());
             expectedChat.Members.Add(new IrisLib.User() { ID = 2 });
@@ -20,11 +21,12 @@ namespace UnitTests
             expectedChat.Members.Add(new IrisLib.User() { ID = 4 });
             expectedChat.Members.Add(new IrisLib.User() { ID = 9 });
             //Act
-            bool isUserInChat = expectedChat.IsUserInChat(expectedUser);
+            bool isUserInChat1 = expectedChat.IsUserInChat(expectedUser1);
+            bool isUserInChat2 = expectedChat.IsUserInChat(expectedUser2);
 
             //Assert
-            Assert.AreEqual(isUserInChat, true);
-
+            Assert.IsTrue(isUserInChat1);
+            Assert.IsFalse(isUserInChat2);
         }
     }
 }

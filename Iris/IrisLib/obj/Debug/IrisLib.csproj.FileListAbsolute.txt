@@ -438,3 +438,4 @@ C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CoreCompi
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CopyComplete
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisLib\obj\Debug\IrisLib.dll
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisLib\obj\Debug\IrisLib.pdb
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
