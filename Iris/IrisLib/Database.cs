@@ -46,13 +46,16 @@ namespace IrisLib
 
         public void Update(Database newDatabase)
         {
-            Users.Clear();
-            Chats.Clear();
-            Users.AddRange(newDatabase.Users);
-            Chats.AddRange(newDatabase.Chats);
-            UsersCountAsNextID = newDatabase.UsersCountAsNextID;
-            ChatsCountAsNextID = newDatabase.ChatsCountAsNextID;
-            MessagesCountAsNextID = newDatabase.MessagesCountAsNextID;
+            if (newDatabase != null)
+            {
+                Users.Clear();
+                Chats.Clear();
+                Users.AddRange(newDatabase.Users);
+                Chats.AddRange(newDatabase.Chats);
+                UsersCountAsNextID = newDatabase.UsersCountAsNextID;
+                ChatsCountAsNextID = newDatabase.ChatsCountAsNextID;
+                MessagesCountAsNextID = newDatabase.MessagesCountAsNextID;
+            }
         }
 
         public User GetUserFromList(string login)
@@ -298,8 +301,16 @@ namespace IrisLib
 
         public bool AddUserToChat(User user, int chatID)
         {
+            if (user == null)
+            {
+                return false;
+            }
             try
             {
+                if (GetChatFromList(chatID).Members.Contains(user))
+                {
+                    return false;
+                }
                 GetChatFromList(chatID).Members.Add(user);
                 AddChatToDB(GetChatFromList(chatID));
                 return true;

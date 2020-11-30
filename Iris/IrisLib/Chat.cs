@@ -26,15 +26,19 @@ namespace IrisLib
 
         public bool IsUserInChat(User user)
         {
-            for (int i = 0; i < Members.Count; i++)
+            if (user != null)
             {
-                if (user.ID == Members[i].ID)
+                for (int i = 0; i < Members.Count; i++)
                 {
-                    return true;
+                    if (user.ID == Members[i].ID)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
         }
+        
         public override string ToString()
         {
             string str = "Chat id: " + this.ID + "\nMembers:\n";
