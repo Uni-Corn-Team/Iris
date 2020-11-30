@@ -13,7 +13,8 @@ namespace IrisLib
     public class File
     {
         [DataMember] public string Name { get; set; }
-        [DataMember] public FileStream fs { get; set; }
-        [DataMember] public int Size { get; set; }
+        //[DataMember] public FileStream fs { get; set; }
+        [DataMember] public Byte[] Binary { get; set; }
+
     }
 }

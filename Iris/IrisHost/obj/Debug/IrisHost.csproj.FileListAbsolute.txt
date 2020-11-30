@@ -378,7 +378,6 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\System.Memory.xml
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\System.Numerics.Vectors.xml
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\System.Threading.Tasks.Extensions.xml
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.csprojAssemblyReference.cache
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.CoreCompileInputs.cache
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.CopyComplete
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.exe
@@ -460,3 +459,4 @@ C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.CoreCom
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.CopyComplete
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisHost\obj\Debug\IrisHost.exe
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisHost\obj\Debug\IrisHost.pdb
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.csprojAssemblyReference.cache

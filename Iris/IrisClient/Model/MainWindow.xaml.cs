@@ -6,6 +6,7 @@ using System.Collections.Generic;
 //using System.Text;
 //using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
 //using System.Windows.Controls;
 //using System.Windows.Data;
 //using System.Windows.Documents;
@@ -145,7 +146,8 @@ namespace IrisClient
             lbProfile.Visibility = Visibility.Visible;
             bChangePassword.IsEnabled = true;
             bChangePassword.Visibility = Visibility.Visible;
-
+            lbFile.Visibility = Visibility.Hidden;
+            lbFile.IsEnabled = false;
             lbProfile.Items.Clear();
             lbProfile.Items.Add("ID:\n" + ClientData.CurrentUser.ID + "\n");
             lbProfile.Items.Add("Name:\n" + ClientData.CurrentUser.Name + "\n");
@@ -164,6 +166,8 @@ namespace IrisClient
             lbChatParticipant.Visibility = Visibility.Visible;
             bChangePassword.IsEnabled = false;
             bChangePassword.Visibility = Visibility.Hidden;
+            lbFile.Visibility = Visibility.Hidden;
+            lbFile.IsEnabled = false;
             lbChatParticipant.Items.Clear();
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
@@ -247,6 +251,46 @@ namespace IrisClient
                     lbCurrentDialog.Items.Add(message.Date + " | " + message.Sender.Nickname + " |\n\t" + message.Text);
                 }
             //}
+        }
+
+        private void ButtonClickSendFile(object sender, RoutedEventArgs e)
+        {
+
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            //dlg.FileName = "Document"; // Default file name
+            // dlg.DefaultExt = ".txt"; // Default file extension
+            //dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+
+
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                // Save document
+                string filename = dlg.FileName;
+            }
+
+            System.IO.StreamReader streamReader;
+            IrisLib.File file = new IrisLib.File();
+            streamReader = new System.IO.StreamReader(dlg.FileName);
+            FileStream stream = (FileStream)dlg.OpenFile();
+            using (var memoryStream = new MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                file.Binary = memoryStream.ToArray();
+                file.Name = dlg.FileName.Split(new char[] {'\\'})[dlg.FileName.Split(new char[] { '\\' }).Length-1];
+            }
+            lbFile.Items.Clear();
+            lbFile.Items.Add(streamReader.ReadToEnd());
+            streamReader.Close();
+            ClientData.client.SendFileToHost(file);
+            lbDialogs.IsEnabled = false;
+            lbChatParticipant.IsEnabled = false;
+            lbProfile.IsEnabled = false;
+            lbDialogs.Visibility = Visibility.Hidden;
+            lbChatParticipant.Visibility = Visibility.Hidden;
+            lbProfile.Visibility = Visibility.Hidden;
+            lbFile.Visibility = Visibility.Visible;
+            lbFile.IsEnabled = true;
         }
 
 
