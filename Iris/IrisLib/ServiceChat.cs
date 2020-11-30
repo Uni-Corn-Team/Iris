@@ -66,8 +66,11 @@ namespace IrisLib
         public void Disconnect(User user)
         {
             Console.WriteLine("Remove");
-            Console.WriteLine(user.ToString());
-            currentlyConnectedUsers.Remove(user);
+            if (user != null)
+            {
+                Console.WriteLine(user.ToString());
+                currentlyConnectedUsers.Remove(user);
+            }
         }
 
         public void SendDatabaseToClients()
