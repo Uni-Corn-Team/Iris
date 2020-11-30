@@ -24,8 +24,8 @@ namespace IrisLib
         [OperationContract(IsOneWay = true)]
         void GetMessageFromClient(User sender, string messageText, int chatID);
 
-        [OperationContract]
-        int GetNewUser(User user);
+        [OperationContract(IsOneWay = true)]
+        void GetNewUser(User user);
 
         [OperationContract]
         Database SendDatabaseFirstTime();

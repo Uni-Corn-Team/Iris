@@ -39,11 +39,11 @@ namespace IrisClient.ServiceChat {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetMessageFromClient")]
         System.Threading.Tasks.Task GetMessageFromClientAsync(IrisLib.User sender, string messageText, int chatID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/GetNewUser", ReplyAction="http://tempuri.org/IServiceChat/GetNewUserResponse")]
-        int GetNewUser(IrisLib.User user);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetNewUser")]
+        void GetNewUser(IrisLib.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/GetNewUser", ReplyAction="http://tempuri.org/IServiceChat/GetNewUserResponse")]
-        System.Threading.Tasks.Task<int> GetNewUserAsync(IrisLib.User user);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetNewUser")]
+        System.Threading.Tasks.Task GetNewUserAsync(IrisLib.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceChat/SendDatabaseFirstTime", ReplyAction="http://tempuri.org/IServiceChat/SendDatabaseFirstTimeResponse")]
         IrisLib.Database SendDatabaseFirstTime();
@@ -137,11 +137,11 @@ namespace IrisClient.ServiceChat {
             return base.Channel.GetMessageFromClientAsync(sender, messageText, chatID);
         }
         
-        public int GetNewUser(IrisLib.User user) {
-            return base.Channel.GetNewUser(user);
+        public void GetNewUser(IrisLib.User user) {
+            base.Channel.GetNewUser(user);
         }
         
-        public System.Threading.Tasks.Task<int> GetNewUserAsync(IrisLib.User user) {
+        public System.Threading.Tasks.Task GetNewUserAsync(IrisLib.User user) {
             return base.Channel.GetNewUserAsync(user);
         }
         

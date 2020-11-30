@@ -102,8 +102,10 @@ namespace IrisClient
                 try
                 {
                     int age = Int32.Parse(tbAge.Text);
+                    int ID = ClientData.database.UsersCountAsNextID + 1;
                     ClientData.CurrentUser = new User(0, tbName.Text, tbSurname.Text, tbNickname.Text, age, tbLogin.Text, tbPassword.Text);
-                    ClientData.CurrentUser.ID = ClientData.client.GetNewUser(ClientData.CurrentUser);
+                    ClientData.client.GetNewUser(ClientData.CurrentUser);
+                    ClientData.CurrentUser.ID = ID;
                     //new MainWindow().Show();
                     ClientData.ShowMainWindow();
                     this.Close();

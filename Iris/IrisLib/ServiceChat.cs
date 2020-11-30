@@ -89,13 +89,12 @@ namespace IrisLib
             SendDatabaseToClients();
         }
 
-        public int GetNewUser(User user)
+        public void GetNewUser(User user)
         {
             Console.WriteLine("GetNewUser");
             Console.WriteLine(user.ToString());
             database.AddUserToDB(user);
             SendDatabaseToClients();
-            return database.UsersCountAsNextID;
         }
 
         public void AddUserToChat(User sender, User user, int chatID)
