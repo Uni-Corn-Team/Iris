@@ -363,5 +363,4 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CoreCompileI
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CopyComplete
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.pdb
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache

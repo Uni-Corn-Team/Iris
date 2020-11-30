@@ -56,7 +56,7 @@ namespace IrisClient
                 lbCurrentDialog.Items.Clear();
                 foreach (Message message in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Messages)
                 {
-                    lbCurrentDialog.Items.Add(message);
+                    lbCurrentDialog.Items.Add(message.ToShortString());
                     lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
                 }
             }

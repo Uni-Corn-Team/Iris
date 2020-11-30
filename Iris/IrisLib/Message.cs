@@ -40,5 +40,10 @@ namespace IrisLib
         {
             return "Mes Id: " + this.ID + " Text: " + this.Text + "\nSender: " + this.Sender.ToString();
         }
+
+        public string ToShortString()
+        {
+            return Date + " | " + Sender.Nickname + " |\n\t" + Text;
+        }
     }
 }

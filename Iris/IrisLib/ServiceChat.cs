@@ -83,8 +83,7 @@ namespace IrisLib
         public void GetMessageFromClient(User sender, string messageText, int chatID)
         {
             Console.WriteLine("GetMessageFromClient");
-            Console.WriteLine(sender.ToString());
-            Console.WriteLine(messageText + "Chat id: " + chatID);
+            Console.WriteLine(sender.ToString() + messageText + "\nChat id: " + chatID);
             Message message = new Message(0, sender, messageText);
             database.AddMessageToChat(message, chatID);
             SendDatabaseToClients();
@@ -102,9 +101,7 @@ namespace IrisLib
         public void AddUserToChat(User sender, User user, int chatID)
         {
             Console.WriteLine("AddUserToChat");
-            Console.WriteLine(sender.ToString());
-            Console.WriteLine(user.ToString());
-            Console.WriteLine("Chat id: " + chatID);
+            Console.WriteLine(sender.ToString() + user.ToString() + "Chat id: " + chatID);
             database.AddUserToChat(user, chatID);
             SendDatabaseToClients();
 
@@ -113,8 +110,7 @@ namespace IrisLib
         public void CreateNewChat(User sender, Chat chat)
         {
             Console.WriteLine("CreateNewChat");
-            Console.WriteLine(sender.ToString());
-            Console.WriteLine(chat.ToString());
+            Console.WriteLine(sender.ToString() + chat.ToString());
             database.AddChatToDB(chat);
             SendDatabaseToClients();
         }
