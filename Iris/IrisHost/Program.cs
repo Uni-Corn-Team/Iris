@@ -12,6 +12,7 @@ namespace IrisHost
     {
         static void Main(string[] args)
         {
+
             using (var host = new ServiceHost(typeof(IrisLib.ServiceChat)))
             {
                 host.Open();

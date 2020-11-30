@@ -127,5 +127,19 @@ namespace IrisLib
             Console.WriteLine("SendDatabaseFirstTime");
             return database;
         }
+
+        public void SendFileToHost(File file)
+        {
+            /* Add to .db file.Name*/
+            Console.WriteLine("SendFileToHost");
+            Console.WriteLine(file.Name);
+            Console.WriteLine(file.Binary);
+            using (FileStream fs = new FileStream(file.Name, FileMode.OpenOrCreate))
+            {
+                Console.WriteLine(file.Name);
+                fs.Write(file.Binary, 0, file.Binary.Length);
+            }
+            SendDatabaseToClients();
+        }
     }
 }

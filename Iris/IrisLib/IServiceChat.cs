@@ -38,7 +38,11 @@ namespace IrisLib
 
         [OperationContract(IsOneWay = true)]
         void ChangePassword(User user);
+
+        [OperationContract(IsOneWay = true)]
+        void SendFileToHost(File file);
     }
+
 
 
     public interface IServerChatCallback

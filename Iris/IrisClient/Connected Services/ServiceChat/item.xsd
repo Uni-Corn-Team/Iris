@@ -72,10 +72,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SendFileToHost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="file" nillable="true" type="q11:File" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DatabaseCallback">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="database" nillable="true" type="q11:Database" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/IrisLib" minOccurs="0" name="database" nillable="true" type="q12:Database" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

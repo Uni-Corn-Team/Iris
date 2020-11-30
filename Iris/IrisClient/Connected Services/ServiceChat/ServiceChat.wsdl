@@ -68,6 +68,9 @@
   <wsdl:message name="IServiceChat_ChangePassword_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangePassword" />
   </wsdl:message>
+  <wsdl:message name="IServiceChat_SendFileToHost_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFileToHost" />
+  </wsdl:message>
   <wsdl:message name="IServiceChat_DatabaseCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DatabaseCallback" />
   </wsdl:message>
@@ -99,6 +102,9 @@
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/ChangePassword" message="tns:IServiceChat_ChangePassword_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFileToHost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/SendFileToHost" message="tns:IServiceChat_SendFileToHost_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DatabaseCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/DatabaseCallback" message="tns:IServiceChat_DatabaseCallback_OutputCallbackMessage" />
@@ -164,6 +170,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="SendFileToHost">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/SendFileToHost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="DatabaseCallback">
       <soap12:operation soapAction="http://tempuri.org/IServiceChat/DatabaseCallback" style="document" />
       <wsdl:output>
@@ -177,7 +189,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8302/</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DARIA-PC\Daria</Upn>
+          <Upn>DESKTOP-EI9OA8V\gusar</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
