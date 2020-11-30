@@ -24,6 +24,9 @@ namespace IrisClient
     /// </summary>
     public partial class MainWindow : Window, ServiceChat.IServiceChatCallback
     {
+        public static bool isWindowOpenChangePassword = false;
+        public static bool isWindowOpenAddUSer = false;
+        public static bool isWindowOpenCreteChat = false;
         //private bool isConnected;
         //public static User CurrentUser { get; set; }
 
@@ -173,14 +176,22 @@ namespace IrisClient
 
         private void ButtonClickNewChat(object sender, RoutedEventArgs e)
         {
-            new CreateChat().Show();
-            this.Close();
+            if (!isWindowOpenCreteChat)
+            {
+                new CreateChat().Show();
+                isWindowOpenCreteChat = true;
+            }
+            //this.Close();
         }
 
         private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
         {
-            new ChangePasswordWindow().Show();
-            this.Close();
+            if(!isWindowOpenChangePassword)
+            {
+                new ChangePasswordWindow().Show();
+                isWindowOpenChangePassword = true;
+            }
+           //this.Close();
         }
 
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)
@@ -208,8 +219,12 @@ namespace IrisClient
         }
         private void ButtonClickAddUser(object sender, RoutedEventArgs e)
         {
-            new AddUserWindow().Show();
-            this.Close();
+            if (!isWindowOpenAddUSer)
+            {
+                new AddUserWindow().Show();
+               isWindowOpenAddUSer = true;
+            }
+            //this.Close();
         }
 
         private void SelectionDialog(object sender, RoutedEventArgs e)

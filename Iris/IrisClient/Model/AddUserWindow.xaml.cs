@@ -58,8 +58,9 @@ namespace IrisClient
         }
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            MainWindow.isWindowOpenAddUSer = false;
             //new MainWindow().Show();
-            ClientData.ShowMainWindow();
+            //ClientData.ShowMainWindow();
         }
 
     }

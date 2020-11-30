@@ -71,8 +71,9 @@ namespace IrisClient
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            MainWindow.isWindowOpenChangePassword = false;
             //new MainWindow().Show();
-            ClientData.ShowMainWindow();
+            //ClientData.ShowMainWindow();
 
         }
     }

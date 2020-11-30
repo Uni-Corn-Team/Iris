@@ -21,6 +21,7 @@ namespace IrisClient
     /// </summary>
     public partial class CreateChat : Window
     {
+        
         private bool isShowNameChat = true;
         public CreateChat()
         {
@@ -43,8 +44,9 @@ namespace IrisClient
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            MainWindow.isWindowOpenCreteChat= false;
             //new MainWindow().Show();
-            ClientData.ShowMainWindow();
+            // ClientData.ShowMainWindow();
 
         }
 
