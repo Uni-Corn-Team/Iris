@@ -12,7 +12,7 @@ namespace IrisLib
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, IncludeExceptionDetailInFaults = true)]
     public class ServiceChat : IServiceChat
     {
-        List<User> currentlyConnectedUsers = new List<User>();
+        public List<User> currentlyConnectedUsers = new List<User>();
         /*
         public void doWork()
         {

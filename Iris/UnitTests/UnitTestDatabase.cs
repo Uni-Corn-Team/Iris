@@ -95,5 +95,43 @@ namespace UnitTests
             Assert.IsFalse(exp3);
         }
 
+        [TestMethod]
+        public void TestUpdate()
+        {
+            //Arrange
+            initDB();
+            IrisLib.Database expectedDatabase1 = new IrisLib.Database(true);
+            expectedDatabase1.Users.Add(new IrisLib.User(111, "Ivan", "Vinogradov", "FunnySurname", 0, "Vina", "qwerty123"));
+
+            //Act
+            expectedDatabase.Update(new IrisLib.Database(true));
+            bool exp1 = expectedDatabase.Users.Count == 0;
+            bool exp2 = expectedDatabase.Chats.Count == 0;
+            bool exp3 = expectedDatabase.UsersCountAsNextID == 0;
+            bool exp4 = expectedDatabase.ChatsCountAsNextID == 0;
+            bool exp5 = expectedDatabase.MessagesCountAsNextID == 0;
+
+            expectedDatabase.Update(expectedDatabase1);
+            bool exp6 = expectedDatabase.Users.Count == 1;
+
+            bool exp7 = true;
+            try
+            {
+                expectedDatabase.Update(null);
+            }
+            catch
+            {
+                exp7 = false;
+            }
+
+            //Assert
+            Assert.IsTrue(exp1);
+            Assert.IsTrue(exp2);
+            Assert.IsTrue(exp3);
+            Assert.IsTrue(exp4);
+            Assert.IsTrue(exp5);
+            Assert.IsTrue(exp6);
+            Assert.IsTrue(exp7);
+        }
     }
 }

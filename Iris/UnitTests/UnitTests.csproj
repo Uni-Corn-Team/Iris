@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UnitTestServiceChat.cs" />
     <Compile Include="UnitTestDatabase.cs" />
     <Compile Include="UnitTestChat.cs" />
     <Compile Include="UnitTestUser.cs" />
