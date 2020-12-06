@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/IrisLib" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/IrisLib" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
   <xs:complexType name="User">
     <xs:sequence>
       <xs:element minOccurs="0" name="Age" type="xs:int" />
@@ -55,6 +54,7 @@
   <xs:complexType name="Message">
     <xs:sequence>
       <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Doc" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="File" nillable="true" type="tns:File" />
       <xs:element minOccurs="0" name="HasFile" type="xs:boolean" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
@@ -65,7 +65,7 @@
   <xs:element name="Message" nillable="true" type="tns:Message" />
   <xs:complexType name="File">
     <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.IO" minOccurs="0" name="Binary" nillable="true" type="q1:Stream" />
+      <xs:element minOccurs="0" name="Binary" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

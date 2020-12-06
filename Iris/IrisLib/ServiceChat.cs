@@ -131,13 +131,18 @@ namespace IrisLib
             return database;
         }
 
-        public void SendFileToHost(File file)
+        public void SendFileToHost(User sender, int chatId, File file)
         {
             /* Add to .db file.Name*/
             Console.WriteLine("SendFileToHost");
             Console.WriteLine(file.Name);
             Console.WriteLine(file.Binary);
-            using (FileStream fs = new FileStream(file.Name, FileMode.OpenOrCreate))
+            string textMes = sender.Name + " send file: " + file.Name;
+            Message mes = new Message(chatId, sender, textMes, DateTime.Now, file.Name);
+            database.AddMessageToChat(mes, chatId);
+            Console.WriteLine("!!!!!!!!!!" + sender.ToString());
+            Console.WriteLine("!!!!!!!!!!" + chatId);
+            using (FileStream fs = new FileStream("..\\..\\Files\\" + file.Name, FileMode.OpenOrCreate))
             {
                 Console.WriteLine(file.Name);
                 fs.Write(file.Binary, 0, file.Binary.Length);

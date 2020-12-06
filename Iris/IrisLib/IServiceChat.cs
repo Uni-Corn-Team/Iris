@@ -40,7 +40,7 @@ namespace IrisLib
         void ChangePassword(User user);
 
         [OperationContract(IsOneWay = true)]
-        void SendFileToHost(File file);
+        void SendFileToHost(User sender, int chat, File file);
     }
 
 

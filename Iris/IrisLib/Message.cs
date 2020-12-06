@@ -15,6 +15,7 @@ namespace IrisLib
         [DataMember] public User Sender { get; set; }
         [DataMember] public string Text { get; set; }
         [DataMember] public bool HasFile { get; set; }
+        [DataMember] public string Doc { get; set; }
         [DataMember] public File File { get; set; }
         [DataMember] public DateTime Date { get; set; }
         public Message(int id, User sender, string text)
@@ -24,6 +25,7 @@ namespace IrisLib
             this.Text = text;
             this.Date = DateTime.Now;
             this.HasFile = false;
+            this.Doc = null;
         }
 
         public Message(int id, User sender, string text, DateTime time)
@@ -33,8 +35,18 @@ namespace IrisLib
             this.Text = text;
             this.Date = time;
             this.HasFile = false;
+            this.Doc = null;
         }
 
+        public Message(int id, User sender, string text, DateTime time, string Doc)
+        {
+            this.ID = id;
+            this.Sender = sender;
+            this.Text = text;
+            this.Date = time;
+            this.HasFile = false;
+            this.Doc = Doc;
+        }
 
         public override string ToString()
         {

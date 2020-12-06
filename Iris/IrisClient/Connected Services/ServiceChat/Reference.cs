@@ -70,10 +70,10 @@ namespace IrisClient.ServiceChat {
         System.Threading.Tasks.Task ChangePasswordAsync(IrisLib.User user);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendFileToHost")]
-        void SendFileToHost(IrisLib.File file);
+        void SendFileToHost(IrisLib.User sender, int chat, IrisLib.File file);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendFileToHost")]
-        System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.File file);
+        System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.User sender, int chat, IrisLib.File file);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -183,12 +183,12 @@ namespace IrisClient.ServiceChat {
             return base.Channel.ChangePasswordAsync(user);
         }
         
-        public void SendFileToHost(IrisLib.File file) {
-            base.Channel.SendFileToHost(file);
+        public void SendFileToHost(IrisLib.User sender, int chat, IrisLib.File file) {
+            base.Channel.SendFileToHost(sender, chat, file);
         }
         
-        public System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.File file) {
-            return base.Channel.SendFileToHostAsync(file);
+        public System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.User sender, int chat, IrisLib.File file) {
+            return base.Channel.SendFileToHostAsync(sender, chat, file);
         }
     }
 }

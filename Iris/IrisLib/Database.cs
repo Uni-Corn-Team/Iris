@@ -370,19 +370,30 @@ namespace IrisLib
                     for (int i = 0; i < chat.Messages.Count(); i++)
                     {
                         command = connection.CreateCommand();
-                        command.CommandText =
-                        @"
+                        if (chat.Messages[i].Doc != null)
+                        {
+                            command.CommandText =
+                            @"
+                        INSERT OR IGNORE 
+                        INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text','Doc','DateTime')
+                        VALUES (@Mes_id, @Chat_id, @Sender_id, @Text,@Doc, @DateTime)
+                        ";
+                            command.Parameters.AddWithValue("@Doc", chat.Messages[i].Doc);
+                        }
+                        else
+                        {
+                            command.CommandText =
+                         @"
                         INSERT OR IGNORE 
                         INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text','DateTime')
                         VALUES (@Mes_id, @Chat_id, @Sender_id, @Text, @DateTime)
                         ";
-
+                        }
                         command.Parameters.AddWithValue("@Mes_id", chat.Messages[i].ID);
                         command.Parameters.AddWithValue("@Chat_id", chat.ID);
                         command.Parameters.AddWithValue("@Sender_id", chat.Messages[i].Sender.ID);
                         command.Parameters.AddWithValue("@Text", chat.Messages[i].Text);
                         command.Parameters.AddWithValue("@DateTime", chat.Messages[i].Date.ToString());
-
                         command.ExecuteNonQuery();
                     }
 
@@ -435,6 +446,20 @@ namespace IrisLib
                 str += Chats[i].ToString();
             }
             return str;
+        }
+
+        public bool AddFileMessageToDB()
+        {
+            try
+            {
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }

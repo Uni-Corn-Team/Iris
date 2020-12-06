@@ -53,16 +53,15 @@
     <Compile Include="UnitTestDatabase.cs" />
     <Compile Include="UnitTestChat.cs" />
     <Compile Include="UnitTestUser.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IrisLib\IrisLib.csproj">
       <Project>{2866b944-f7b2-49fe-bbaf-42d3b6c2cd49}</Project>
       <Name>IrisLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

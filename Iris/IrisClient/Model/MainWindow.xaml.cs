@@ -294,7 +294,7 @@ namespace IrisClient
             lSavedFile.Visibility = Visibility.Visible;
             lSavedFile.IsEnabled = true;
         }
-          
+
 
         private void ButtonClickSendFile(object sender, RoutedEventArgs e)
         {
@@ -320,12 +320,14 @@ namespace IrisClient
             {
                 stream.CopyTo(memoryStream);
                 file.Binary = memoryStream.ToArray();
-                file.Name = dlg.FileName.Split(new char[] {'\\'})[dlg.FileName.Split(new char[] { '\\' }).Length-1];
+                file.Name = dlg.FileName.Split(new char[] { '\\' })[dlg.FileName.Split(new char[] { '\\' }).Length - 1];
             }
             lbFile.Items.Clear();
             lbFile.Items.Add(streamReader.ReadToEnd());
             streamReader.Close();
-            ClientData.client.SendFileToHost(file);
+
+
+            ClientData.client.SendFileToHost(ClientData.CurrentUser, ClientData.CurrentUser.CurrentChatID, file);
             /*lbDialogs.IsEnabled = false;
             lbChatParticipant.IsEnabled = false;
             lbProfile.IsEnabled = false;
