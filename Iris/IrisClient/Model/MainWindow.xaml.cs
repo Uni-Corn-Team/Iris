@@ -148,6 +148,12 @@ namespace IrisClient
             bChangePassword.Visibility = Visibility.Visible;
             lbFile.Visibility = Visibility.Hidden;
             lbFile.IsEnabled = false;
+            bSaveFile.Visibility = Visibility.Hidden;
+            bSaveFile.IsEnabled = false;
+            lbFile.Visibility = Visibility.Hidden;
+            lbFile.IsEnabled = false;
+            lSavedFile.Visibility = Visibility.Hidden;
+            lSavedFile.IsEnabled = false;
             lbProfile.Items.Clear();
             lbProfile.Items.Add("ID:\n" + ClientData.CurrentUser.ID + "\n");
             lbProfile.Items.Add("Name:\n" + ClientData.CurrentUser.Name + "\n");
@@ -166,8 +172,12 @@ namespace IrisClient
             lbChatParticipant.Visibility = Visibility.Visible;
             bChangePassword.IsEnabled = false;
             bChangePassword.Visibility = Visibility.Hidden;
+            bSaveFile.Visibility = Visibility.Hidden;
+            bSaveFile.IsEnabled = false;
             lbFile.Visibility = Visibility.Hidden;
             lbFile.IsEnabled = false;
+            lSavedFile.Visibility = Visibility.Hidden;
+            lSavedFile.IsEnabled = false;
             lbChatParticipant.Items.Clear();
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
@@ -208,6 +218,12 @@ namespace IrisClient
             lbChatParticipant.Visibility = Visibility.Hidden;
             bChangePassword.IsEnabled = false;
             bChangePassword.Visibility = Visibility.Hidden;
+            bSaveFile.Visibility = Visibility.Hidden;
+            bSaveFile.IsEnabled = false;
+            lbFile.Visibility = Visibility.Hidden;
+            lbFile.IsEnabled = false;
+            lSavedFile.Visibility = Visibility.Hidden;
+            lSavedFile.IsEnabled = false;
             lbDialogs.Items.Clear();
             ClientData.chats.Clear();
             foreach (Chat dialog in ClientData.database.Chats)
@@ -253,6 +269,33 @@ namespace IrisClient
             //}
         }
 
+
+        private void ButtonClickShowFiles(object sender, RoutedEventArgs e)
+        {
+            lbChatParticipant.IsEnabled = false;
+            lbProfile.IsEnabled = false;
+            lbDialogs.IsEnabled = false;
+            bChangePassword.IsEnabled = false;
+            lbChatParticipant.Visibility = Visibility.Hidden;
+            lbProfile.Visibility = Visibility.Hidden;
+            lbDialogs.Visibility = Visibility.Hidden;
+            bChangePassword.Visibility = Visibility.Hidden;
+            lSavedFile.Visibility = Visibility.Hidden;
+            lSavedFile.IsEnabled = false;
+
+            lbFile.IsEnabled = true;
+            lbFile.Visibility = Visibility.Visible;
+            bSaveFile.Visibility = Visibility.Visible;
+            bSaveFile.IsEnabled = true;
+        }
+
+        private void ButtonClickSaveFile(object sender, RoutedEventArgs e)
+        {
+            lSavedFile.Visibility = Visibility.Visible;
+            lSavedFile.IsEnabled = true;
+        }
+          
+
         private void ButtonClickSendFile(object sender, RoutedEventArgs e)
         {
 
@@ -283,14 +326,14 @@ namespace IrisClient
             lbFile.Items.Add(streamReader.ReadToEnd());
             streamReader.Close();
             ClientData.client.SendFileToHost(file);
-            lbDialogs.IsEnabled = false;
+            /*lbDialogs.IsEnabled = false;
             lbChatParticipant.IsEnabled = false;
             lbProfile.IsEnabled = false;
             lbDialogs.Visibility = Visibility.Hidden;
             lbChatParticipant.Visibility = Visibility.Hidden;
             lbProfile.Visibility = Visibility.Hidden;
             lbFile.Visibility = Visibility.Visible;
-            lbFile.IsEnabled = true;
+            lbFile.IsEnabled = true;*/
         }
 
 
