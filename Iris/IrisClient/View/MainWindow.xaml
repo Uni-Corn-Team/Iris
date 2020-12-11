@@ -124,7 +124,7 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Button x:Name="bSendFile" Click="ButtonClickSendFile" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" BorderBrush="Black" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsDefault="True" Margin="0,0,75,0">
+        <Button x:Name="bSendFile" Click="ButtonClickSendFile" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" BorderBrush="Black" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"  Margin="0,0,75,0">
             <Button.Background>
                 <SolidColorBrush Color="#FFFFF2F2" Opacity="0.5"/>
             </Button.Background>
@@ -233,9 +233,15 @@
                     </Style>
                 </Image.Style>
             </Image>
-        </Button>
-        <Button Name="bRemoveUserFromChat" Click="ButtonClickRemoveUserFromChat" Visibility="Hidden" IsEnabled="False" HorizontalAlignment="Left" Margin="107,293,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="36">
-            <TextBlock Text="Удалить участника" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Button> 
+        <Button Name="bRemoveUserFromChat" Click="ButtonClickRemoveUserFromChat" Background="Transparent" BorderThickness="0"  Visibility="Hidden" IsEnabled="False" HorizontalAlignment="Left" Margin="110,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/trash.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
         </Button>
     </Grid>
 </Window>
