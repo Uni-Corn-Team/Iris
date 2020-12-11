@@ -67,7 +67,7 @@
                 <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <ListBox x:Name="lbFile" IsEnabled="False" Visibility="Visible"  Margin="0,0,0.4,70" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Trebuchet MS" Foreground="#FFEBEAC9" BorderThickness="0">
+        <ListBox x:Name="lbFile" IsEnabled="False" Visibility="Hidden" Margin="0,0,0.4,70" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Trebuchet MS" Foreground="#FFEBEAC9" BorderThickness="0">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </ListBox.Background>
@@ -200,6 +200,15 @@
                     </Style>
                 </Image.Style>
             </Image>
+        </Button>
+        <Button Name="bExit" Visibility="Hidden" IsEnabled="False" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="10,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/exit.png" />
+                    </Style>
+                </Image.Style>
+            </Image>      
         </Button>
     </Grid>
 </Window>

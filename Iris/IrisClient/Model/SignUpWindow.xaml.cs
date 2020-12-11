@@ -122,7 +122,7 @@ namespace IrisClient
 
         private void ButtonClickBack(object sender, EventArgs e)
         {
-            new SignIn().Show();
+            new SignInWindow().Show();
             this.Close();
         }
     }

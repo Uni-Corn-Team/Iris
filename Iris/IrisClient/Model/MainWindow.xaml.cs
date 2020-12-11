@@ -27,7 +27,8 @@ namespace IrisClient
     {
         public static bool isWindowOpenChangePassword = false;
         public static bool isWindowOpenAddUSer = false;
-        public static bool isWindowOpenCreteChat = false;
+        public static bool isWindowOpenCreateChat = false;
+        public static bool isAnotherWindowChat = false;
         //private bool isConnected;
         //public static User CurrentUser { get; set; }
 
@@ -47,7 +48,13 @@ namespace IrisClient
             }
         }
 
-       
+        private void ButtonClickExit(object sender, RoutedEventArgs e)
+        {
+            ClientData.CurrentUser = new User();
+            ClientData.chats.Clear();
+            new SignInWindow().Show();
+        }
+
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
 
@@ -65,7 +72,6 @@ namespace IrisClient
                 }
             }
         }
-
 
         public void DatabaseCallback(Database database)
         {
@@ -154,6 +160,8 @@ namespace IrisClient
             lbFile.IsEnabled = false;
             lSavedFile.Visibility = Visibility.Hidden;
             lSavedFile.IsEnabled = false;
+            bExit.Visibility = Visibility.Visible;
+            bExit.IsEnabled = true;
             lbProfile.Items.Clear();
             lbProfile.Items.Add("ID:\n" + ClientData.CurrentUser.ID + "\n");
             lbProfile.Items.Add("Name:\n" + ClientData.CurrentUser.Name + "\n");
@@ -178,6 +186,8 @@ namespace IrisClient
             lbFile.IsEnabled = false;
             lSavedFile.Visibility = Visibility.Hidden;
             lSavedFile.IsEnabled = false;
+            bExit.Visibility = Visibility.Hidden;
+            bExit.IsEnabled = false;
             lbChatParticipant.Items.Clear();
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
@@ -190,10 +200,10 @@ namespace IrisClient
 
         private void ButtonClickNewChat(object sender, RoutedEventArgs e)
         {
-            if (!isWindowOpenCreteChat)
+            if (!isWindowOpenCreateChat)
             {
                 new CreateChat().Show();
-                isWindowOpenCreteChat = true;
+                isWindowOpenCreateChat = true;
             }
             //this.Close();
         }
@@ -224,6 +234,8 @@ namespace IrisClient
             lbFile.IsEnabled = false;
             lSavedFile.Visibility = Visibility.Hidden;
             lSavedFile.IsEnabled = false;
+            bExit.Visibility = Visibility.Hidden;
+            bExit.IsEnabled = false;
             lbDialogs.Items.Clear();
             ClientData.chats.Clear();
             foreach (Chat dialog in ClientData.database.Chats)
@@ -237,6 +249,7 @@ namespace IrisClient
             lbDialogs.Visibility = Visibility.Visible;
            
         }
+        
         private void ButtonClickAddUser(object sender, RoutedEventArgs e)
         {
             if (!isWindowOpenAddUSer)
@@ -269,7 +282,6 @@ namespace IrisClient
             //}
         }
 
-
         private void ButtonClickShowFiles(object sender, RoutedEventArgs e)
         {
             lbChatParticipant.IsEnabled = false;
@@ -282,6 +294,8 @@ namespace IrisClient
             bChangePassword.Visibility = Visibility.Hidden;
             lSavedFile.Visibility = Visibility.Hidden;
             lSavedFile.IsEnabled = false;
+            bExit.Visibility = Visibility.Hidden;
+            bExit.IsEnabled = false;
 
             lbFile.IsEnabled = true;
             lbFile.Visibility = Visibility.Visible;

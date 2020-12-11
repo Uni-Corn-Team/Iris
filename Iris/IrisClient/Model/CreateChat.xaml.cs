@@ -44,7 +44,7 @@ namespace IrisClient
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MainWindow.isWindowOpenCreteChat= false;
+            MainWindow.isWindowOpenCreateChat= false;
             //new MainWindow().Show();
             // ClientData.ShowMainWindow();
 

@@ -22,11 +22,11 @@ namespace IrisClient
     /// <summary>
     /// Логика взаимодействия для SignIn.xaml
     /// </summary>
-    public partial class SignIn : Window, IrisLib.IServerChatCallback
+    public partial class SignInWindow : Window, IrisLib.IServerChatCallback
     {
          private bool isShowLogin = true;
          private bool isShowPassword = true;
-        public SignIn()
+        public SignInWindow()
         {
             InitializeComponent();
             new ClientData();
