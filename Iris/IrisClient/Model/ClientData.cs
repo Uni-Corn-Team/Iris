@@ -30,22 +30,25 @@ namespace IrisClient
             try
             {
                 int ID = -1;
-                if (ClientData.CurrentUser.CurrentChatID != -1)
+                if (CurrentUser.CurrentChatID != -1)
                 {
-                    ID = ClientData.CurrentUser.CurrentChatID;
+                    ID = CurrentUser.CurrentChatID;
+                    CurrentUser.CurrentChatID = -1;
+                    mainWindow.lCurrentChatName.Content = "";
                 }
-                ClientData.database.Update(localDatabase);
-                if (ID != -1)
+                database.Update(localDatabase);
+                if (ID != -1 && database.GetChatFromList(ID).IsUserInChat(CurrentUser))
                 {
-                    ClientData.CurrentUser.CurrentChatID = ID;
+                    CurrentUser.CurrentChatID = ID;
+                    mainWindow.lCurrentChatName.Content = database.GetChatFromList(CurrentUser.CurrentChatID).Name;
                 }
 
-                mainWindow.RedrawCurrentChat();
+                mainWindow.Redraw();
 
             }
             catch (Exception)
             {
-                ClientData.database.Update(localDatabase);
+                database.Update(localDatabase);
             }
         }
 

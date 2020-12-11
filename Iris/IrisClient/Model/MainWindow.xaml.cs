@@ -64,15 +64,39 @@ namespace IrisClient
 
         }
 
-        public void RedrawCurrentChat()
+        public void Redraw()
         {
+            lbCurrentDialog.Items.Clear();
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
-                lbCurrentDialog.Items.Clear();
+                //lbCurrentDialog.Items.Clear();
                 foreach (Message message in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Messages)
                 {
                     lbCurrentDialog.Items.Add(message.ToShortString());
                     lbCurrentDialog.ScrollIntoView(lbCurrentDialog.Items[lbCurrentDialog.Items.Count - 1]);
+                }
+            }
+
+            lbDialogs.Items.Clear();
+            ClientData.chats.Clear();
+            foreach (Chat dialog in ClientData.database.Chats)
+            {
+                if (dialog.IsUserInChat(ClientData.CurrentUser))
+                {
+                    ClientData.chats.Add(dialog);
+                    lbDialogs.Items.Add(dialog.Name);
+                }
+            }
+
+            if (ClientData.CurrentUser.CurrentChatID != -1)
+            {
+                lbChatParticipant.Items.Clear();
+                if (ClientData.CurrentUser.CurrentChatID != -1)
+                {
+                    foreach (User member in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Members)
+                    {
+                        lbChatParticipant.Items.Add(member.Nickname + " " + member.ID);
+                    }
                 }
             }
         }
@@ -89,8 +113,9 @@ namespace IrisClient
             {
                 ClientData.CurrentUser.CurrentChatID = ID;
             }
-            RedrawCurrentChat();
+            Redraw();
         }
+        
         void WindowClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if(ClientData.isClose)
@@ -173,27 +198,30 @@ namespace IrisClient
 
         private void ButtonClickParticipian(object sender, RoutedEventArgs e)
         {
-            SetButtonsHiddenAndDisabled();
-
-            if (ClientData.CurrentUser.CurrentChatID != -1 &&
-                ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).RootID == ClientData.CurrentUser.ID)
-            {
-                bRemoveUserFromChat.IsEnabled = true;
-                bRemoveUserFromChat.Visibility = Visibility.Visible;
-            }
-
-            bExitFromChat.IsEnabled = true;
-            bExitFromChat.Visibility = Visibility.Visible;
-
-            lbChatParticipant.IsEnabled = true;
-            lbChatParticipant.Visibility = Visibility.Visible;
-            
-            lbChatParticipant.Items.Clear();
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
-                foreach (User member in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Members)
+                SetButtonsHiddenAndDisabled();
+
+                if (ClientData.CurrentUser.CurrentChatID != -1 &&
+                    ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).RootID == ClientData.CurrentUser.ID)
                 {
-                    lbChatParticipant.Items.Add(member.Nickname+" "+member.ID);
+                    bRemoveUserFromChat.IsEnabled = true;
+                    bRemoveUserFromChat.Visibility = Visibility.Visible;
+                }
+
+                bExitFromChat.IsEnabled = true;
+                bExitFromChat.Visibility = Visibility.Visible;
+
+                lbChatParticipant.IsEnabled = true;
+                lbChatParticipant.Visibility = Visibility.Visible;
+
+                lbChatParticipant.Items.Clear();
+                if (ClientData.CurrentUser.CurrentChatID != -1)
+                {
+                    foreach (User member in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Members)
+                    {
+                        lbChatParticipant.Items.Add(member.Nickname + " " + member.ID);
+                    }
                 }
             }
         }
@@ -235,18 +263,19 @@ namespace IrisClient
                     lbDialogs.Items.Add(dialog.Name);
                 }
             }
-            lbDialogs.Visibility = Visibility.Visible;
            
         }
         
         private void ButtonClickAddUser(object sender, RoutedEventArgs e)
         {
-            if (!isWindowOpenAddUSer)
+            if (ClientData.CurrentUser.CurrentChatID != -1)
             {
-                new AddUserWindow().Show();
-               isWindowOpenAddUSer = true;
+                if (!isWindowOpenAddUSer)
+                {
+                    new AddUserWindow().Show();
+                    isWindowOpenAddUSer = true;
+                }
             }
-            //this.Close();
         }
 
         private void SelectionDialog(object sender, RoutedEventArgs e)
@@ -331,6 +360,9 @@ namespace IrisClient
 
         private void ButtonClickExitFromChat(object sender, RoutedEventArgs e)
         {
+            //lCurrentChatName.Content = "";
+            lbCurrentDialog.Items.Clear();
+            ButtonClickShowChats(sender, e);
             ClientData.client.RemoveUserFromChat(ClientData.CurrentUser.ID, ClientData.CurrentUser.CurrentChatID);
         }
 
