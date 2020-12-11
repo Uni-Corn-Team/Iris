@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:IrisClient"
         mc:Ignorable="d"
         Closing="WindowClosing"
-        Title="CreateChat" Height="450" Width="350"
+        Title="Создание чата" Height="450" Width="350"
         Icon="/Source/iris_dvoynoy_kh4.png" 
         MinWidth="350" MinHeight="450" MaxHeight="450" MaxWidth="350" AutomationProperties.IsOffscreenBehavior="Offscreen" WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -60,11 +60,11 @@
         <TextBox Style="{DynamicResource TextBoxStyle1}"
             Name ="tbChatName" Background="White"
                   HorizontalAlignment="Left" Height="25" Margin="75,143,0,0" 
-                  TextWrapping="Wrap" Text="Name of chat" Foreground="Gray"
+                  TextWrapping="Wrap" Text="Название чата" Foreground="Gray"
                   VerticalAlignment="Top" Width="200"
                  PreviewMouseDown="RemoveTextNameChat" FontFamily="Bookman Old Style"/>
 
-        <Button  Content="Create chat" Click="ButtonClickAddChat"  HorizontalAlignment="Left" Margin="75,198,0,0"  VerticalAlignment="Top" Width="200" RenderTransformOrigin="-0.885,-1.66" Height="25"  Foreground="White"  Background="#FF9E00F9" FontFamily="Bookman Old Style" IsDefault = "true"/>
+        <Button  Content="Создать чат" Click="ButtonClickAddChat"  HorizontalAlignment="Left" Margin="75,198,0,0"  VerticalAlignment="Top" Width="200" RenderTransformOrigin="-0.885,-1.66" Height="25"  Foreground="White"  Background="#FF9E00F9" FontFamily="Bookman Old Style" IsDefault = "true"/>
         <Button  HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
             <Image>
                 <Image.Style>

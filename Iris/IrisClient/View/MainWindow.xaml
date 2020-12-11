@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IrisClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinWidth="800" MinHeight="450" Background="#FF2F1035" AutomationProperties.IsOffscreenBehavior="Offscreen" WindowStartupLocation="CenterScreen">
+        Title="Iris" Height="450" Width="800" MinWidth="800" MinHeight="450" Background="#FF2F1035" AutomationProperties.IsOffscreenBehavior="Offscreen" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
@@ -101,7 +101,7 @@
                 <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <Button x:Name="bChangePassword" Foreground="Black" FontFamily="Bookman Old Style" Grid.Column="0" Content="Change password" Visibility="Hidden" IsEnabled="False" Margin="33,304,31.4,9" Grid.Row="1" Click="ButtonClickChangePassword"  />
+        <Button x:Name="bChangePassword" Foreground="Black" FontFamily="Bookman Old Style" Grid.Column="0" Content="Сменить пароль" Visibility="Hidden" IsEnabled="False" Margin="33,304,31.4,9" Grid.Row="1" Click="ButtonClickChangePassword"  />
         <Button x:Name="bSaveFile" Foreground="Black" FontFamily="Bookman Old Style" Grid.Column="0" Content="Save File" Visibility="Hidden" IsEnabled="False" Margin="33,304,31.4,9" Grid.Row="1" Click="ButtonClickSaveFile"  />
         <TextBox x:Name="tbMessage"  MaxLength="64" TextWrapping="Wrap" MinWidth="450" MinHeight="50" Height="52"  Width="450" Margin="0,0,150,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
         <Button x:Name="bSendMessage" BorderBrush="Black"   Click="ButtonClickSendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsDefault="True">

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:IrisClient"
         mc:Ignorable="d"
         Closing="WindowClosing"
-        Title="AddUserWindow" Height="450" Width="350"
+        Title="Добавление пользователя в чат" Height="450" Width="350"
         Icon="/Source/iris_dvoynoy_kh4.png" 
         MinWidth="350" MinHeight="450" MaxHeight="450" MaxWidth="350" AutomationProperties.IsOffscreenBehavior="Offscreen" WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -58,8 +58,9 @@
     </Window.Resources>
     <Grid Background="#FFB383FF">
         <TextBox Style="{DynamicResource TextBoxStyle1}"  Background="White" Name="tbID" HorizontalAlignment="Left" Height="25" Margin="75,125,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="200" Foreground="Gray" PreviewMouseDown="RemoveTextID" FontFamily="Bookman Old Style" />
-        <Button x:Name="bAdd" Click="ButtonClickAddUserToChat" Content="Add" HorizontalAlignment="Left" Margin="75,170,0,0" VerticalAlignment="Top" Width="200" Height="25" Foreground="White"  Background="#FF9E00F9" FontFamily="Bookman Old Style" IsDefault = "true"/>
-
+        <Button x:Name="bAdd" Click="ButtonClickAddUserToChat" Content="Добавить" HorizontalAlignment="Left" Margin="75,170,0,0" VerticalAlignment="Top" Width="200" Height="25" Foreground="White"  Background="#FF9E00F9" FontFamily="Bookman Old Style" IsDefault = "true"/>
+        <Label x:Name="lableNotAnInteger" Content="Некорректный ID" HorizontalContentAlignment="Center" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="75,212,0,0" VerticalAlignment="Top" Width="206" Visibility="Hidden" FontFamily="Bookman Old Style"/>
+        <Label x:Name="lableNonexistingUser" Content="Такого пользователя не существует" HorizontalContentAlignment="Center" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="53,212,0,0" VerticalAlignment="Top" Width="244" Visibility="Hidden" FontFamily="Bookman Old Style" Height="24"/>
         <Button  HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
             <Image>
                 <Image.Style>

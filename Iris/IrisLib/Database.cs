@@ -25,8 +25,6 @@ namespace IrisLib
 
         [DataMember] public List<Chat> Chats { get; set; }
 
-        //we need static indexes of objects to add new objects (i suggest use count as ID; rewrite these 3 fields every time we change the database)
-        //also need rewrite DB (.db file) because ID
         [DataMember] public int UsersCountAsNextID;
         [DataMember] public int ChatsCountAsNextID;
         [DataMember] public int MessagesCountAsNextID;

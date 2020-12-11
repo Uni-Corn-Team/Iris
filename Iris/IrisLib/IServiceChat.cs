@@ -41,6 +41,8 @@ namespace IrisLib
 
         [OperationContract(IsOneWay = true)]
         void SendFileToHost(User sender, int chat, File file);
+
+
     }
 
 

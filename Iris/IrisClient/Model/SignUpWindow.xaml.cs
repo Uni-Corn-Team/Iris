@@ -97,8 +97,6 @@ namespace IrisClient
         {
             if (ClientData.database.GetUserFromList(tbLogin.Text) == null)
             {
-
-
                 try
                 {
                     int age = Int32.Parse(tbAge.Text);
@@ -106,11 +104,9 @@ namespace IrisClient
                     ClientData.CurrentUser = new User(0, tbName.Text, tbSurname.Text, tbNickname.Text, age, tbLogin.Text, tbPassword.Text);
                     ClientData.client.GetNewUser(ClientData.CurrentUser);
                     ClientData.CurrentUser.ID = ID;
-                    //new MainWindow().Show();
                     ClientData.ShowMainWindow();
                     this.Close();
                 }
-
                 catch (FormatException exp)
                 {
                     Console.WriteLine(exp.ToString());

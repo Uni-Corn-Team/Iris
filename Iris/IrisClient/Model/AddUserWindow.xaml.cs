@@ -22,29 +22,37 @@ namespace IrisClient
     public partial class AddUserWindow : Window
     {
         private bool isShowID = true;
-        private void ButtonClickBack(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
         public AddUserWindow()
         {
             InitializeComponent();
         }
 
+        private void ButtonClickBack(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        
         private void ButtonClickAddUserToChat(object sender, RoutedEventArgs e)
         {
-            if (ClientData.database.GetUserFromList(int.Parse(tbID.Text)) != null && ClientData.CurrentUser.CurrentChatID != -1)
+            if (Int32.TryParse(tbID.Text, out int ID))
             {
-                ClientData.client.AddUserToChat(ClientData.CurrentUser, ClientData.database.GetUserFromList(int.Parse(tbID.Text)), ClientData.CurrentUser.CurrentChatID);
-                this.Close();
+                if (ClientData.database.GetUserFromList(ID) != null && ClientData.CurrentUser.CurrentChatID != -1)
+                {
+                    ClientData.client.AddUserToChat(ClientData.CurrentUser, ClientData.database.GetUserFromList(ID), ClientData.CurrentUser.CurrentChatID);
+                    this.Close();
+                }
+                else
+                {
+                    lableNonexistingUser.Visibility = Visibility.Visible;
+                    lableNotAnInteger.Visibility = Visibility.Hidden;
+                }
             }
             else
             {
-                //write that user isn't exists and delete next two lines
-                this.Close();
+                lableNotAnInteger.Visibility = Visibility.Visible;
+                lableNonexistingUser.Visibility = Visibility.Hidden;
             }
-
-
         }
 
         private void RemoveTextID(object sender, EventArgs e)
@@ -56,11 +64,10 @@ namespace IrisClient
                 isShowID = false;
             }
         }
+        
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow.isWindowOpenAddUSer = false;
-            //new MainWindow().Show();
-            //ClientData.ShowMainWindow();
         }
 
     }

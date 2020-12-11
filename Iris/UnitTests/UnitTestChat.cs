@@ -52,7 +52,6 @@ namespace UnitTests
         public void TestIsUserInChatByNull()
         {
             //Arrange
-            IrisLib.User expectedUser2 = new IrisLib.User() { ID = 354 };
             initChat();
 
             //Act
