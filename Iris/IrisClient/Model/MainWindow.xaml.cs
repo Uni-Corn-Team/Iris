@@ -15,7 +15,7 @@ using System.IO;
 //using System.Windows.Media.Imaging;
 //using System.Windows.Navigation;
 //using System.Windows.Shapes;
-using IrisClient.ServiceChat;
+//using IrisClient.ServiceChat;
 using IrisLib;
 
 namespace IrisClient
