@@ -459,5 +459,44 @@ namespace IrisLib
             }
 
         }
+
+        public bool RemoveUserFromChat(int userID, int chatID)
+        {
+            try
+            {
+                if (GetChatFromList(chatID).GetUserFromChat(userID) != null)
+                {
+                    GetChatFromList(chatID).Members.Remove(GetChatFromList(chatID).GetUserFromChat(userID));
+                }
+
+                Console.Out.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+                try
+                {
+                    using (var connection = new SqliteConnection(DBPath))
+                    {
+                        connection.Open();
+
+                        var command = connection.CreateCommand();
+                        command.CommandText =
+                        @"DELETE FROM LinkUC WHERE User_id = @userID AND Chat_id = @chatID";
+                        command.Parameters.AddWithValue("@userID", userID);
+                        command.Parameters.AddWithValue("@chatID", chatID);
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("{0} Exception caught.", e);
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

@@ -101,8 +101,7 @@
                 <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-
-        <Button Name="bChangePassword" Visibility="Visible" IsEnabled="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="70,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37" Click="ButtonClickChangePassword">
+        <Button Name="bChangePassword" Visibility="Hidden" IsEnabled="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="70,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37" Click="ButtonClickChangePassword">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -111,7 +110,6 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Button x:Name="bSaveFile" Foreground="Black" FontFamily="Bookman Old Style" Grid.Column="0" Content="Save File" Visibility="Hidden" IsEnabled="False" Margin="33,304,31.4,9" Grid.Row="1" Click="ButtonClickSaveFile"  />
         <TextBox x:Name="tbMessage"  MaxLength="64" TextWrapping="Wrap" MinWidth="450" MinHeight="50" Height="52"  Width="450" Margin="0,0,150,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
         <Button x:Name="bSendMessage" BorderBrush="Black"   Click="ButtonClickSendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsDefault="True">
             <Button.Background>
@@ -129,7 +127,6 @@
             <Button.Background>
                 <SolidColorBrush Color="#FFFFF2F2" Opacity="0.5"/>
             </Button.Background>
-
             <Image Height="40" Width="40">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -148,8 +145,7 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Button x:Name="bCreatchat" HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" 
-                Margin="107,15,0,0" VerticalAlignment="Top" Width="37" Height="37" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0" Click="ButtonClickNewChat">
+        <Button HorizontalAlignment="Left"  BorderThickness="0" Background="Transparent" Margin="107,15,0,0" VerticalAlignment="Top" Width="37" Height="37" RenderTransformOrigin="1.539,0.71 " Grid.Column="0" Grid.Row="0" Click="ButtonClickNewChat">
             <Image RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
@@ -195,7 +191,7 @@
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="/Source/download.png" />
+                        <Setter Property="Source" Value="/Source/files.png" />
                     </Style>
                 </Image.Style>
             </Image>
@@ -210,14 +206,35 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Button Name="bExit" Visibility="Visible" IsEnabled="False" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="10,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
+        <Button Name="bExit" Click="ButtonClickExit" Visibility="Hidden" IsEnabled="False" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="10,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Source" Value="/Source/exit.png" />
                     </Style>
                 </Image.Style>
-            </Image>      
+            </Image>
+        </Button>
+        <Button Name="bSaveFile" Click="ButtonClickSaveFile" Visibility="Hidden" IsEnabled="False" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="70,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/download.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Button>
+        <Button Name="bExitFromChat" Click="ButtonClickExitFromChat" Visibility="Hidden" IsEnabled="False" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="10,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/exitfromchat.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Button>
+        <Button Name="bRemoveUserFromChat" Click="ButtonClickRemoveUserFromChat" Visibility="Hidden" IsEnabled="False" HorizontalAlignment="Left" Margin="107,293,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="36">
+            <TextBlock Text="Удалить участника" TextWrapping="Wrap" TextAlignment="Center"/>
         </Button>
     </Grid>
 </Window>

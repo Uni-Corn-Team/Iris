@@ -36,6 +36,7 @@ namespace IrisClient
         private void ButtonClickAddChat(object sender, RoutedEventArgs e)
         {
             Chat newChat = new Chat(0, tbChatName.Text);
+            newChat.RootID = ClientData.CurrentUser.ID;
             newChat.Members.Add(ClientData.CurrentUser);
             ClientData.client.CreateNewChat(ClientData.CurrentUser, newChat);
             //возможно, нужно придумать переход на новый чат, но его еще нет в БД

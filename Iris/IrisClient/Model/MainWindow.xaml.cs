@@ -51,8 +51,10 @@ namespace IrisClient
         private void ButtonClickExit(object sender, RoutedEventArgs e)
         {
             ClientData.CurrentUser = new User();
+            ClientData.CurrentUser.ID = -1;
             ClientData.chats.Clear();
             new SignInWindow().Show();
+            this.Close();
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
@@ -144,22 +146,12 @@ namespace IrisClient
             // new ProfileWindow().Show();
             //this.Close();
             //need to do something with how it looks (now it's DISGUSTING!!!!)
-            lbDialogs.IsEnabled = false;
-            lbChatParticipant.IsEnabled = false;
+            SetButtonsHiddenAndDisabled();
+
             lbProfile.IsEnabled = true;
-            lbDialogs.Visibility = Visibility.Hidden;
-            lbChatParticipant.Visibility = Visibility.Hidden;
             lbProfile.Visibility = Visibility.Visible;
             bChangePassword.IsEnabled = true;
             bChangePassword.Visibility = Visibility.Visible;
-            lbFile.Visibility = Visibility.Hidden;
-            lbFile.IsEnabled = false;
-            bSaveFile.Visibility = Visibility.Hidden;
-            bSaveFile.IsEnabled = false;
-            lbFile.Visibility = Visibility.Hidden;
-            lbFile.IsEnabled = false;
-            lSavedFile.Visibility = Visibility.Hidden;
-            lSavedFile.IsEnabled = false;
             bExit.Visibility = Visibility.Visible;
             bExit.IsEnabled = true;
             lbProfile.Items.Clear();
@@ -172,22 +164,21 @@ namespace IrisClient
 
         private void ButtonClickParticipian(object sender, RoutedEventArgs e)
         {
-            lbDialogs.IsEnabled = false;
+            SetButtonsHiddenAndDisabled();
+
+            if (ClientData.CurrentUser.CurrentChatID != -1 &&
+                ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).RootID == ClientData.CurrentUser.ID)
+            {
+                bRemoveUserFromChat.IsEnabled = true;
+                bRemoveUserFromChat.Visibility = Visibility.Visible;
+            }
+
+            bExitFromChat.IsEnabled = true;
+            bExitFromChat.Visibility = Visibility.Visible;
+
             lbChatParticipant.IsEnabled = true;
-            lbProfile.IsEnabled = false;
-            lbDialogs.Visibility = Visibility.Hidden;
-            lbProfile.Visibility = Visibility.Hidden;
             lbChatParticipant.Visibility = Visibility.Visible;
-            bChangePassword.IsEnabled = false;
-            bChangePassword.Visibility = Visibility.Hidden;
-            bSaveFile.Visibility = Visibility.Hidden;
-            bSaveFile.IsEnabled = false;
-            lbFile.Visibility = Visibility.Hidden;
-            lbFile.IsEnabled = false;
-            lSavedFile.Visibility = Visibility.Hidden;
-            lSavedFile.IsEnabled = false;
-            bExit.Visibility = Visibility.Hidden;
-            bExit.IsEnabled = false;
+            
             lbChatParticipant.Items.Clear();
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
@@ -220,22 +211,11 @@ namespace IrisClient
 
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)
         {
+            SetButtonsHiddenAndDisabled();
+
             lbDialogs.IsEnabled = true;
-            lbChatParticipant.IsEnabled = false;
-            lbProfile.IsEnabled = false;
             lbDialogs.Visibility = Visibility.Visible;
-            lbProfile.Visibility = Visibility.Hidden;
-            lbChatParticipant.Visibility = Visibility.Hidden;
-            bChangePassword.IsEnabled = false;
-            bChangePassword.Visibility = Visibility.Hidden;
-            bSaveFile.Visibility = Visibility.Hidden;
-            bSaveFile.IsEnabled = false;
-            lbFile.Visibility = Visibility.Hidden;
-            lbFile.IsEnabled = false;
-            lSavedFile.Visibility = Visibility.Hidden;
-            lSavedFile.IsEnabled = false;
-            bExit.Visibility = Visibility.Hidden;
-            bExit.IsEnabled = false;
+            
             lbDialogs.Items.Clear();
             ClientData.chats.Clear();
             foreach (Chat dialog in ClientData.database.Chats)
@@ -284,18 +264,7 @@ namespace IrisClient
 
         private void ButtonClickShowFiles(object sender, RoutedEventArgs e)
         {
-            lbChatParticipant.IsEnabled = false;
-            lbProfile.IsEnabled = false;
-            lbDialogs.IsEnabled = false;
-            bChangePassword.IsEnabled = false;
-            lbChatParticipant.Visibility = Visibility.Hidden;
-            lbProfile.Visibility = Visibility.Hidden;
-            lbDialogs.Visibility = Visibility.Hidden;
-            bChangePassword.Visibility = Visibility.Hidden;
-            lSavedFile.Visibility = Visibility.Hidden;
-            lSavedFile.IsEnabled = false;
-            bExit.Visibility = Visibility.Hidden;
-            bExit.IsEnabled = false;
+            SetButtonsHiddenAndDisabled();
 
             lbFile.IsEnabled = true;
             lbFile.Visibility = Visibility.Visible;
@@ -308,7 +277,6 @@ namespace IrisClient
             lSavedFile.Visibility = Visibility.Visible;
             lSavedFile.IsEnabled = true;
         }
-
 
         private void ButtonClickSendFile(object sender, RoutedEventArgs e)
         {
@@ -352,6 +320,48 @@ namespace IrisClient
             lbFile.IsEnabled = true;*/
         }
 
+        private void ButtonClickExitFromChat(object sender, RoutedEventArgs e)
+        {
+            ClientData.client.RemoveUserFromChat(ClientData.CurrentUser.ID, ClientData.CurrentUser.CurrentChatID);
+        }
+
+        private void ButtonClickRemoveUserFromChat(object sender, RoutedEventArgs e)
+        {
+            new RemoveUserWindow().Show();
+        }
+
+        private void SetButtonsHiddenAndDisabled()
+        {
+            lbDialogs.IsEnabled = false;
+            lbDialogs.Visibility = Visibility.Hidden;
+
+            lbChatParticipant.IsEnabled = false;
+            lbChatParticipant.Visibility = Visibility.Hidden;
+
+            lbProfile.IsEnabled = false;
+            lbProfile.Visibility = Visibility.Hidden;
+
+            bChangePassword.IsEnabled = false;
+            bChangePassword.Visibility = Visibility.Hidden;
+
+            bSaveFile.IsEnabled = false;
+            bSaveFile.Visibility = Visibility.Hidden;
+
+            lbFile.IsEnabled = false;
+            lbFile.Visibility = Visibility.Hidden;
+
+            lSavedFile.IsEnabled = false;
+            lSavedFile.Visibility = Visibility.Hidden;
+
+            bExit.IsEnabled = false;
+            bExit.Visibility = Visibility.Hidden;
+
+            bRemoveUserFromChat.IsEnabled = false;
+            bRemoveUserFromChat.Visibility = Visibility.Hidden;
+
+            bExitFromChat.IsEnabled = false;
+            bExitFromChat.Visibility = Visibility.Hidden;
+        }
 
         /*private void tbMessage_KeyDown(object sender, KeyEventArgs e)
         {

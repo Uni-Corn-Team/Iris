@@ -42,7 +42,8 @@ namespace IrisLib
         [OperationContract(IsOneWay = true)]
         void SendFileToHost(User sender, int chat, File file);
 
-
+        [OperationContract(IsOneWay = true)]
+        void RemoveUserFromChat(int userID, int chatID);
     }
 
 

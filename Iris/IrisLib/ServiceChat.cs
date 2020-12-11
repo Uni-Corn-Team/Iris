@@ -149,5 +149,11 @@ namespace IrisLib
             }
             SendDatabaseToClients();
         }
+
+        public void RemoveUserFromChat(int userID, int chatID)
+        {
+            database.RemoveUserFromChat(userID, chatID);
+            SendDatabaseToClients();
+        }
     }
 }

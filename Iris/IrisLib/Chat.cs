@@ -38,7 +38,19 @@ namespace IrisLib
             }
             return false;
         }
-        
+
+        public User GetUserFromChat(int userID)
+        {
+            for (int i = 0; i < Members.Count; i++)
+            {
+                if (userID == Members[i].ID)
+                {
+                    return Members[i];
+                }
+            }
+            return null;
+        }
+
         public override string ToString()
         {
             string str = "Chat id: " + this.ID + "\nMembers:\n";

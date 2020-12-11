@@ -74,6 +74,12 @@ namespace IrisClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendFileToHost")]
         System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.User sender, int chat, IrisLib.File file);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/RemoveUserFromChat")]
+        void RemoveUserFromChat(int userID, int chatID);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/RemoveUserFromChat")]
+        System.Threading.Tasks.Task RemoveUserFromChatAsync(int userID, int chatID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -189,6 +195,14 @@ namespace IrisClient.ServiceChat {
         
         public System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.User sender, int chat, IrisLib.File file) {
             return base.Channel.SendFileToHostAsync(sender, chat, file);
+        }
+        
+        public void RemoveUserFromChat(int userID, int chatID) {
+            base.Channel.RemoveUserFromChat(userID, chatID);
+        }
+        
+        public System.Threading.Tasks.Task RemoveUserFromChatAsync(int userID, int chatID) {
+            return base.Channel.RemoveUserFromChatAsync(userID, chatID);
         }
     }
 }
