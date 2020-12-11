@@ -15,7 +15,7 @@ namespace IrisClient
         public static List<Chat> chats;
         public static Database database = new Database(true);
         public static MainWindow mainWindow = new MainWindow();
-
+        public static bool isClose = true;
         public ClientData()
         {
             client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));

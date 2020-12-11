@@ -28,12 +28,13 @@ namespace IrisClient
         public static bool isWindowOpenChangePassword = false;
         public static bool isWindowOpenAddUSer = false;
         public static bool isWindowOpenCreateChat = false;
-        public static bool isAnotherWindowChat = false;
+        
         //private bool isConnected;
         //public static User CurrentUser { get; set; }
 
         public MainWindow()
         {
+          
             InitializeComponent();
             //ClientData.client.Connect(ClientData.CurrentUser);
             ClientData.CurrentUser.CurrentChatID = -1;
@@ -54,6 +55,7 @@ namespace IrisClient
             ClientData.CurrentUser.ID = -1;
             ClientData.chats.Clear();
             new SignInWindow().Show();
+            ClientData.isClose = false;
             this.Close();
         }
 
@@ -88,6 +90,13 @@ namespace IrisClient
                 ClientData.CurrentUser.CurrentChatID = ID;
             }
             RedrawCurrentChat();
+        }
+        void WindowClosed(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(ClientData.isClose)
+                Application.Current.Shutdown();
+            else
+                ClientData.isClose = true;
         }
 
         /*public void IServerChatCallback.DatabaseCallback(Database database)

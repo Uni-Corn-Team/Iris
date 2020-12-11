@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IrisClient"
         mc:Ignorable="d"
+        Closing="WindowClosed"
         Title="Регистрация" Height="450" Width="350" Icon="/Source/iris_dvoynoy_kh4.png" 
         MinWidth="350" MinHeight="450" MaxHeight="450"
         MaxWidth="350" 

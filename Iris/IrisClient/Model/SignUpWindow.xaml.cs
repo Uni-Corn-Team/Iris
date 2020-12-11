@@ -26,6 +26,7 @@ namespace IrisClient
         public SignUpWindow()
         {
             InitializeComponent();
+            ClientData.isClose = true;
         }
 
         private void RemoveTextName(object sender, EventArgs e)//происходит когда элемент стает активным
@@ -105,6 +106,7 @@ namespace IrisClient
                     ClientData.client.GetNewUser(ClientData.CurrentUser);
                     ClientData.CurrentUser.ID = ID;
                     ClientData.ShowMainWindow();
+                    ClientData.isClose = false;
                     this.Close();
                 }
                 catch (FormatException exp)
@@ -121,9 +123,18 @@ namespace IrisClient
         }
 
         private void ButtonClickBack(object sender, EventArgs e)
-        {
+        {       
             new SignInWindow().Show();
+            ClientData.isClose = false;
             this.Close();
+        }
+
+        void WindowClosed(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (ClientData.isClose)
+                Application.Current.Shutdown();
+            else
+                ClientData.isClose = true;
         }
     }
 }

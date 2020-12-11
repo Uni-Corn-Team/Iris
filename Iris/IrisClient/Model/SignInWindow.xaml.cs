@@ -30,6 +30,14 @@ namespace IrisClient
         {
             InitializeComponent();
             new ClientData();
+            ClientData.isClose = true;
+        }
+        void WindowClosed(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (ClientData.isClose)
+                Application.Current.Shutdown();
+            else
+                ClientData.isClose = true;
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
@@ -69,6 +77,7 @@ namespace IrisClient
 
                     //new MainWindow().Show();
                     ClientData.ShowMainWindow();
+                    ClientData.isClose = false;
                     this.Close();
                 }
                 else
@@ -95,6 +104,7 @@ namespace IrisClient
         private void Button_Click_SignUp(object sender, RoutedEventArgs e)
         {
             (new SignUpWindow()).Show();
+            ClientData.isClose = false;
             this.Close();
         }
 
