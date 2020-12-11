@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\
+C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisClient\obj\Debug\
 IrisClient
 none
 false
 DEBUG;TRACE
-C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\App.xaml
+C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisClient\App.xaml
 62088100288
-3425689619
+3-918838330
 13-1799155428
-54178626844
+54496261883
 View\AddUserWindow.xaml;View\ChangePasswordWindow.xaml;View\CreateChat.xaml;View\MainWindow.xaml;View\SignInWindow.xaml;View\SignUpWindow.xaml;
 
 True
