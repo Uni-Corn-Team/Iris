@@ -56,23 +56,14 @@ namespace IrisClient
   
         }
 
-        private void RemoveTextPassword(object sender, EventArgs e)
-        {
-            if (isShowPassword)
-            {
-                tbPassword.Text = null;
-                tbPassword.Foreground = Brushes.Black;
-                isShowPassword = false;
-            }
-          
-        }
+        
 
         private void Button_Click_SignIn(object sender, RoutedEventArgs e)
         {
             ClientData.CurrentUser = ClientData.database.GetUserFromList(tblogin.Text);
             if (ClientData.CurrentUser != null)
             {
-                if (ClientData.CurrentUser.Password.Equals(tbPassword.Text))
+                if (ClientData.CurrentUser.Password.Equals(tbPassword.Password))
                 {
 
                     //new MainWindow().Show();
@@ -84,7 +75,7 @@ namespace IrisClient
                 {
                     lableLoginError.Visibility = Visibility.Visible;
                     tblogin.Text = null;
-                    tbPassword.Text = null;
+                    tbPassword.Password = null;
 
                 }
             }
@@ -92,7 +83,7 @@ namespace IrisClient
             {
                 lableLoginError.Visibility = Visibility.Visible;
                 tblogin.Text = null;
-                tbPassword.Text = null;
+                tbPassword.Password = null;
             }
         }
 

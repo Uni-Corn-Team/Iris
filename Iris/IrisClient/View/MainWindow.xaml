@@ -17,11 +17,11 @@
             <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
             <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -94,7 +94,14 @@
                 <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <ListBox x:Name="lbCurrentDialog" Margin="0,0,-0.4,50" Grid.Column="1"   Grid.Row="1" FontSize="14" FontFamily="Consolas" BorderThickness="0" Foreground="#FFEBEAC9"  SelectionMode="Extended" Style="{DynamicResource ListBoxStyle1}" >
+        <ListBox x:Name="lbCurrentDialog" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,-0.4,50" Grid.Column="1"   Grid.Row="1" FontSize="14" FontFamily="Consolas" BorderThickness="0"
+                 Foreground="#FFEBEAC9"  SelectionMode="Extended"
+                 Style="{DynamicResource ListBoxStyle1}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
             <ListBox.Background>
                 <SolidColorBrush Color="#FFB383FF" Opacity="0"/>
             </ListBox.Background>
@@ -111,7 +118,7 @@
                 </Image.Style>
             </Image>
         </Button>
-        <TextBox x:Name="tbMessage"  MaxLength="64" TextWrapping="Wrap" MinWidth="450" MinHeight="50" Height="52" FontSize="14" FontFamily="Consolas" Width="450" Margin="0,0,150,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
+        <TextBox x:Name="tbMessage"   TextWrapping="Wrap" MinWidth="450" MinHeight="50" Height="52" FontSize="14" FontFamily="Consolas" Width="450" Margin="0,0,150,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
         <Button x:Name="bSendMessage" BorderBrush="Black"   Click="ButtonClickSendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsDefault="True">
             <Button.Background>
                 <SolidColorBrush Color="#FFFFF2F2" Opacity="0.5"/>

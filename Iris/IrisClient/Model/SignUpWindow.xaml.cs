@@ -82,17 +82,7 @@ namespace IrisClient
         }
 
 
-        private void RemoveTextPassword(object sender, EventArgs e)//происходит когда элемент стает активным
-        {
-            if (isShowPassword)
-            {
-                tbPassword.Text = null;
-                tbPassword.Foreground = Brushes.Black;
-                isShowPassword = false;
-            }
-
-        }
-
+       
 
         private void Button_Click_SignUp(object sender, RoutedEventArgs e)
         {
@@ -102,7 +92,7 @@ namespace IrisClient
                 {
                     int age = Int32.Parse(tbAge.Text);
                     int ID = ClientData.database.UsersCountAsNextID + 1;
-                    ClientData.CurrentUser = new User(0, tbName.Text, tbSurname.Text, tbNickname.Text, age, tbLogin.Text, tbPassword.Text);
+                    ClientData.CurrentUser = new User(0, tbName.Text, tbSurname.Text, tbNickname.Text, age, tbLogin.Text, tbPassword.Password);
                     ClientData.client.GetNewUser(ClientData.CurrentUser);
                     ClientData.CurrentUser.ID = ID;
                     ClientData.ShowMainWindow();
