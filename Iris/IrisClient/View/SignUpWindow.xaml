@@ -125,8 +125,8 @@
         <TextBox Style="{DynamicResource TextBoxStyle1}" Name ="tbLogin" HorizontalAlignment="Left" Height="23" Margin="75,238,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
         <PasswordBox  Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="75,283,0,0"   VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
         <Button  Style="{DynamicResource ResourceKey =ButtonBorderStyle}" Foreground="White"  Background="#FF9E00F9" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="75,335,0,0" VerticalAlignment="Top" Width="200" Height="25" Click="Button_Click_SignUp" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault="True"/>
-        <Label x:Name="lErorrMes" Foreground="DarkRed" Content="Логин уже существует" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="75,353,0,0" VerticalAlignment="Top" Width="200" Visibility="Hidden" FontFamily="Bookman Old Style"/>
-        <Label x:Name="lAgeErorr" Foreground="DarkRed" Content="Некорректный возраст" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="75,353,0,0" VerticalAlignment="Top" Width="200" Visibility="Hidden" FontFamily="Bookman Old Style"/>
+        <Label x:Name="lErorrMes" Foreground="DarkRed" Content="Логин уже существует" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="75,365,0,0" VerticalAlignment="Top" Width="200" Visibility="Hidden" FontFamily="Bookman Old Style"/>
+        <Label x:Name="lAgeErorr" Foreground="DarkRed" Content="Некорректный возраст" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="75,365,0,0" VerticalAlignment="Top" Width="200" Visibility="Hidden" FontFamily="Bookman Old Style"/>
         <Button x:Name="Back"   HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
             <Image>
                 <Image.Style>
