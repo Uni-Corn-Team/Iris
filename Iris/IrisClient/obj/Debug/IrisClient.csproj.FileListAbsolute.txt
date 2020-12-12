@@ -546,6 +546,5 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisClient\obj\Debug\IrisClient.csproj.CoreCo
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisClient\obj\Debug\IrisClient.csproj.CopyComplete
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisClient\obj\Debug\IrisClient.exe
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisClient\obj\Debug\IrisClient.pdb
-C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\obj\Debug\View\RemoveUserWindow.baml
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisClient\obj\Debug\View\RemoveUserWindow.g.cs
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisClient\obj\Debug\View\RemoveUserWindow.baml

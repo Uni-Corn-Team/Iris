@@ -381,6 +381,15 @@ namespace IrisClient
                 ClientData.client.RemoveUserFromChat(selectedUserID, ClientData.CurrentUser.CurrentChatID);
             }
             selectedUserID = -1;
+
+            bRemoveUserFromChat.IsEnabled = false;
+            bRemoveUserFromChat.Visibility = Visibility.Hidden;
+
+            bMakeNotSilent.IsEnabled = false;
+            bMakeNotSilent.Visibility = Visibility.Hidden;
+
+            bMakeSilent.IsEnabled = false;
+            bMakeSilent.Visibility = Visibility.Hidden;
         }
 
         private void ButtonClickMakeSilentOrNot(object sender, RoutedEventArgs e)
@@ -398,6 +407,15 @@ namespace IrisClient
                 }
             }
             selectedUserID = -1;
+
+            bRemoveUserFromChat.IsEnabled = false;
+            bRemoveUserFromChat.Visibility = Visibility.Hidden;
+
+            bMakeNotSilent.IsEnabled = false;
+            bMakeNotSilent.Visibility = Visibility.Hidden;
+
+            bMakeSilent.IsEnabled = false;
+            bMakeSilent.Visibility = Visibility.Hidden;
         }
 
         private void SelectionUser(object sender, RoutedEventArgs e)
