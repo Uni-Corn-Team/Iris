@@ -467,6 +467,7 @@ namespace IrisLib
                 if (GetChatFromList(chatID).GetUserFromChat(userID) != null)
                 {
                     GetChatFromList(chatID).Members.Remove(GetChatFromList(chatID).GetUserFromChat(userID));
+                    GetChatFromList(chatID).SilentMembers.Remove(GetChatFromList(chatID).GetUserFromChat(userID));
                 }
 
                 Console.Out.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
