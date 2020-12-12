@@ -72,6 +72,12 @@
   <wsdl:message name="IServiceChat_RemoveUserFromChat_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveUserFromChat" />
   </wsdl:message>
+  <wsdl:message name="IServiceChat_MakeUserInChatSilent_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeUserInChatSilent" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_MakeUserInChatNotSilent_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeUserInChatNotSilent" />
+  </wsdl:message>
   <wsdl:message name="IServiceChat_DatabaseCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DatabaseCallback" />
   </wsdl:message>
@@ -109,6 +115,12 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveUserFromChat">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/RemoveUserFromChat" message="tns:IServiceChat_RemoveUserFromChat_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeUserInChatSilent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/MakeUserInChatSilent" message="tns:IServiceChat_MakeUserInChatSilent_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeUserInChatNotSilent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/MakeUserInChatNotSilent" message="tns:IServiceChat_MakeUserInChatNotSilent_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DatabaseCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/DatabaseCallback" message="tns:IServiceChat_DatabaseCallback_OutputCallbackMessage" />
@@ -182,6 +194,18 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveUserFromChat">
       <soap12:operation soapAction="http://tempuri.org/IServiceChat/RemoveUserFromChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="MakeUserInChatSilent">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/MakeUserInChatSilent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="MakeUserInChatNotSilent">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/MakeUserInChatNotSilent" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

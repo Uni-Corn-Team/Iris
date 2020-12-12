@@ -86,7 +86,7 @@
                 <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <ListBox x:Name="lbChatParticipant"   IsEnabled="False" Visibility="Hidden"  Margin="0,0,0.4,51" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9" BorderThickness="0" FontSize="16">
+        <ListBox x:Name="lbChatParticipant" SelectionChanged="SelectionUser" IsEnabled="False" Visibility="Hidden"  Margin="0,0,0.4,51" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9" BorderThickness="0" FontSize="16">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </ListBox.Background>
@@ -234,11 +234,29 @@
                 </Image.Style>
             </Image>
         </Button> 
-        <Button Name="bRemoveUserFromChat" Click="ButtonClickRemoveUserFromChat" Background="Transparent" BorderThickness="0"  Visibility="Hidden" IsEnabled="False" HorizontalAlignment="Left" Margin="110,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
+        <Button Name="bRemoveUserFromChat" Click="ButtonClickRemoveUserFromChat" Background="Transparent" BorderThickness="0"  Visibility="Hidden" IsEnabled="False" HorizontalAlignment="Left" Margin="130,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Source" Value="/Source/trash.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Button>
+        <Button Name="bMakeSilent" Click="ButtonClickMakeSilentOrNot" Visibility="Hidden" IsEnabled="False" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="70,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/mute.png" />
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Button>
+        <Button Name="bMakeNotSilent" Click="ButtonClickMakeSilentOrNot" Visibility="Hidden" IsEnabled="False" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="70,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Height="37">
+            <Image>
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Source/unmute.png" />
                     </Style>
                 </Image.Style>
             </Image>

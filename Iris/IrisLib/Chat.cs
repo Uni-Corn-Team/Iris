@@ -15,13 +15,56 @@ namespace IrisLib
         [DataMember] public int ID { get; set; }
         [DataMember] public int RootID { get; set; }
         [DataMember] public List<User> Members { get; set; }
+        [DataMember] public List<User> SilentMembers { get; set; }
         [DataMember] public List<Message> Messages { get; set; }
+        
         public Chat(int id, string name)
         {
             this.ID = id;
             this.Name = name;
             this.Members = new List<User>();
+            this.SilentMembers = new List<User>();
             this.Messages = new List<Message>();
+        }
+
+        public bool IsUserInChatSilent(int userID)
+        {
+            for (int i = 0; i < SilentMembers.Count; i++)
+            {
+                if (userID == SilentMembers[i].ID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool MakeUserSilent(int userID)
+        {
+            User user = GetUserFromChat(userID);
+            if (user != null)
+            {
+                if (!SilentMembers.Contains(user))
+                {
+                    SilentMembers.Add(user);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool MakeUserNotSilent(int userID)
+        {
+            User user = GetUserFromChat(userID);
+            if (user != null)
+            {
+                if (SilentMembers.Contains(user))
+                {
+                    SilentMembers.Remove(user);
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool IsUserInChat(User user)

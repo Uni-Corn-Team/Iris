@@ -44,6 +44,12 @@ namespace IrisLib
 
         [OperationContract(IsOneWay = true)]
         void RemoveUserFromChat(int userID, int chatID);
+
+        [OperationContract(IsOneWay = true)]
+        void MakeUserInChatSilent(int userID, int chatID);
+
+        [OperationContract(IsOneWay = true)]
+        void MakeUserInChatNotSilent(int userID, int chatID);
     }
 
 

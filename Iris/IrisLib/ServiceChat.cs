@@ -155,5 +155,17 @@ namespace IrisLib
             database.RemoveUserFromChat(userID, chatID);
             SendDatabaseToClients();
         }
+
+        public void MakeUserInChatSilent(int userID, int chatID)
+        {
+            database.MakeUserInChatSilent(userID, chatID);
+            SendDatabaseToClients();
+        }
+
+        public void MakeUserInChatNotSilent(int userID, int chatID)
+        {
+            database.MakeUserInChatNotSilent(userID, chatID);
+            SendDatabaseToClients();
+        }
     }
 }

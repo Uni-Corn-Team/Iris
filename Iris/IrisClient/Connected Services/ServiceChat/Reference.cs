@@ -80,6 +80,18 @@ namespace IrisClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/RemoveUserFromChat")]
         System.Threading.Tasks.Task RemoveUserFromChatAsync(int userID, int chatID);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/MakeUserInChatSilent")]
+        void MakeUserInChatSilent(int userID, int chatID);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/MakeUserInChatSilent")]
+        System.Threading.Tasks.Task MakeUserInChatSilentAsync(int userID, int chatID);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/MakeUserInChatNotSilent")]
+        void MakeUserInChatNotSilent(int userID, int chatID);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/MakeUserInChatNotSilent")]
+        System.Threading.Tasks.Task MakeUserInChatNotSilentAsync(int userID, int chatID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -203,6 +215,22 @@ namespace IrisClient.ServiceChat {
         
         public System.Threading.Tasks.Task RemoveUserFromChatAsync(int userID, int chatID) {
             return base.Channel.RemoveUserFromChatAsync(userID, chatID);
+        }
+        
+        public void MakeUserInChatSilent(int userID, int chatID) {
+            base.Channel.MakeUserInChatSilent(userID, chatID);
+        }
+        
+        public System.Threading.Tasks.Task MakeUserInChatSilentAsync(int userID, int chatID) {
+            return base.Channel.MakeUserInChatSilentAsync(userID, chatID);
+        }
+        
+        public void MakeUserInChatNotSilent(int userID, int chatID) {
+            base.Channel.MakeUserInChatNotSilent(userID, chatID);
+        }
+        
+        public System.Threading.Tasks.Task MakeUserInChatNotSilentAsync(int userID, int chatID) {
+            return base.Channel.MakeUserInChatNotSilentAsync(userID, chatID);
         }
     }
 }

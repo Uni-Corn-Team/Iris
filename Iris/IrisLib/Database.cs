@@ -498,5 +498,28 @@ namespace IrisLib
                 return false;
             }
         }
+
+
+        //дописать функцию: нужно загружать изменения и в сам файл БД тоже
+        public bool MakeUserInChatSilent(int userID, int chatID)
+        {
+            Chat chat = GetChatFromList(chatID);
+            if (chat != null)
+            {
+                return chat.MakeUserSilent(userID);
+            }
+            return false;
+        }
+
+        //дописать функцию: нужно загружать изменения и в сам файл БД тоже
+        public bool MakeUserInChatNotSilent(int userID, int chatID)
+        {
+            Chat chat = GetChatFromList(chatID);
+            if (chat != null)
+            {
+                return chat.MakeUserNotSilent(userID);
+            }
+            return false;
+        }
     }
 }

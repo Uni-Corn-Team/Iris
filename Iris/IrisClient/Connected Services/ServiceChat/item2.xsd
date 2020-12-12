@@ -36,6 +36,7 @@
       <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RootID" type="xs:int" />
+      <xs:element minOccurs="0" name="SilentMembers" nillable="true" type="tns:ArrayOfUser" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Chat" nillable="true" type="tns:Chat" />
