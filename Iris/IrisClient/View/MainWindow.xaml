@@ -12,7 +12,9 @@
         <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
         <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
+ 
         <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
+            
             <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -21,7 +23,9 @@
             <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
             <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-            
+     
+                
+         
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -36,6 +40,7 @@
                                 <Setter Property="Background" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Border}"/>
                             </Trigger>
+                           
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsGrouping" Value="true"/>
@@ -46,7 +51,9 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
+                
             </Setter>
+            
         </Style>
     </Window.Resources>
 
@@ -77,7 +84,7 @@
             </ListBox.BorderBrush>
         </ListBox>
         <Label x:Name="lSavedFile" Content="File saved in Download" Foreground="White" HorizontalAlignment="Left" Margin="26,282,0,0" VerticalAlignment="Top" Width="161" Visibility="Hidden" FontFamily="Bookman Old Style" Grid.Row="1"/>
-        <ListBox x:Name="lbProfile"   IsEnabled="False" Visibility="Hidden"
+        <ListBox x:Name="lbProfile" IsHitTestVisible="False"   Visibility="Hidden"
                  Margin="0,0,0.4,51" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9" BorderThickness="0" FontSize="16">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
