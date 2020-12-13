@@ -89,15 +89,26 @@ namespace IrisClient
                 }
             }
 
+            lbChatParticipant.Items.Clear();
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
-                lbChatParticipant.Items.Clear();
-                if (ClientData.CurrentUser.CurrentChatID != -1)
+                foreach (User member in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Members)
                 {
-                    foreach (User member in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Members)
+                    string str = "";
+                    if (ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).RootID == member.ID)
                     {
-                        lbChatParticipant.Items.Add(member.Nickname + " " + member.ID);
+                        str += "$  ";
                     }
+                    else if (ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).IsUserInChatSilent(member.ID))
+                    {
+                        str += "</ ";
+                    }
+                    else
+                    {
+                        str += "<  ";
+                    }
+                    str += member.Nickname + " #" + member.ID;
+                    lbChatParticipant.Items.Add(str);
                 }
             }
         }
@@ -232,7 +243,7 @@ namespace IrisClient
                         string str = "";
                         if(ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).RootID == member.ID)
                         {
-                            str += "♛  ";
+                            str += "$  ";
                         } 
                         else if(ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).IsUserInChatSilent(member.ID))
                         {
@@ -467,8 +478,8 @@ namespace IrisClient
                     bRemoveUserFromChat.IsEnabled = true;
                     bRemoveUserFromChat.Visibility = Visibility.Visible;
 
-                    string[] temp = lbChatParticipant.SelectedItem.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (Int32.TryParse(temp[temp.Length - 1], out selectedUserID))
+                    string[] temp = lbChatParticipant.SelectedItem.ToString().Split(new char[] { ' ', '#' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (Int32.TryParse(temp[temp.Length - 1], out selectedUserID) && selectedUserID != ClientData.CurrentUser.ID)
                     {
                         Chat currentChat = ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID);
                         if (currentChat.IsUserInChatSilent(selectedUserID))

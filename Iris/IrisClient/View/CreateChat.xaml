@@ -65,6 +65,8 @@
                  PreviewMouseDown="RemoveTextNameChat" FontFamily="Bookman Old Style"/>
 
         <Button  Content="Создать чат" Click="ButtonClickAddChat"  HorizontalAlignment="Left" Margin="75,198,0,0"  VerticalAlignment="Top" Width="200" RenderTransformOrigin="-0.885,-1.66" Height="25"  Foreground="White"  Background="#FF9E00F9" FontFamily="Bookman Old Style" IsDefault = "true"/>
+        <Label x:Name="lableExistingChat" Content="Такой чат уже существует" HorizontalContentAlignment="Center" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="53,212,0,0" VerticalAlignment="Top" Width="244" Visibility="Hidden" FontFamily="Bookman Old Style" Height="24"/>
+
         <Button  HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
             <Image>
                 <Image.Style>

@@ -37,9 +37,9 @@ namespace IrisClient
         {
             foreach(Chat chat in ClientData.database.Chats)
             {
-                if (chat.Name.Equals(tbChatName))
+                if (chat.Name.Equals(tbChatName.Text))
                 {
-                    //вывод сообщения о существовании чата
+                    lableExistingChat.Visibility = Visibility.Visible;
                     return;
                 }
             }
