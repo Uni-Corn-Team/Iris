@@ -85,7 +85,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" CornerRadius="0" BorderBrush="#FF840DE0" BorderThickness="2" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Border x:Name="border" CornerRadius="0" BorderBrush="#FF840DE0" BorderThickness="0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -117,14 +117,18 @@
 
 
     </Window.Resources>
-    <Grid Background="#FFB383FF">
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Name ="tbName" HorizontalAlignment="Left" Height="25" Margin="75,58,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Name ="tbSurname" HorizontalAlignment="Left" Height="25" Margin="75,103,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Name ="tbNickname" HorizontalAlignment="Left" Height="25" Margin="75,148,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Name ="tbAge" HorizontalAlignment="Left" Height="25" Margin="75,193,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style"/>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Name ="tbLogin" HorizontalAlignment="Left" Height="23" Margin="75,238,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
-        <PasswordBox  Name ="tbPassword" HorizontalAlignment="Left" Height="25" Margin="75,283,0,0"   VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
-        <Button  Style="{DynamicResource ResourceKey =ButtonBorderStyle}" Foreground="White"  Background="#FF9E00F9" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="75,335,0,0" VerticalAlignment="Top" Width="200" Height="25" Click="Button_Click_SignUp" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault="True"/>
+    <Grid Background="#FF2F1035">
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Background="#FFEBEAC9" Name ="tbName" HorizontalAlignment="Left" Height="25" Margin="75,58,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Background="#FFEBEAC9" Name ="tbSurname" HorizontalAlignment="Left" Height="25" Margin="75,103,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Background="#FFEBEAC9" Name ="tbNickname" HorizontalAlignment="Left" Height="25" Margin="75,148,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Background="#FFEBEAC9" Name ="tbAge" HorizontalAlignment="Left" Height="25" Margin="75,193,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Background="#FFEBEAC9" Name ="tbLogin" HorizontalAlignment="Left" Height="23" Margin="75,238,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
+        <PasswordBox  Name ="tbPassword" Background="#FFEBEAC9" HorizontalAlignment="Left" Height="25" Margin="75,283,0,0"   VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
+        <Button  Style="{DynamicResource ResourceKey =ButtonBorderStyle}" Foreground="#FFEBEAC9"   Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="75,335,0,0" VerticalAlignment="Top" Width="200" Height="25" Click="Button_Click_SignUp" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault="True">
+            <Button.Background>
+                <SolidColorBrush Color="White" Opacity="0.15"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="lErorrMes" Foreground="DarkRed" Content="Логин уже существует" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="75,365,0,0" VerticalAlignment="Top" Width="200" Visibility="Hidden" FontFamily="Bookman Old Style"/>
         <Label x:Name="lAgeErorr" Foreground="DarkRed" Content="Некорректный возраст" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="75,365,0,0" VerticalAlignment="Top" Width="200" Visibility="Hidden" FontFamily="Bookman Old Style"/>
         <Button x:Name="Back"   HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
@@ -137,12 +141,12 @@
             </Image>
 
         </Button>
-        <Label Content="Имя:" HorizontalAlignment="Left" Margin="75,38,0,0" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
-        <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="75,83,0,0" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
-        <Label Content="Ник:" HorizontalAlignment="Left" Margin="75,128,0,0" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
-        <Label Content="Возраст:" HorizontalAlignment="Left" Margin="75,173,0,0" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
-        <Label Content="Логин:" HorizontalAlignment="Left" Margin="75,218,0,0" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
-        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="75,263,0,0" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
+        <Label Content="Имя:" HorizontalAlignment="Left" Margin="75,38,0,0" Foreground="#FFEBEAC9" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
+        <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="75,83,0,0 " Foreground="#FFEBEAC9" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
+        <Label Content="Ник:" HorizontalAlignment="Left" Margin="75,128,0,0" Foreground="#FFEBEAC9" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
+        <Label Content="Возраст:" HorizontalAlignment="Left" Margin="75,173,0,0" Foreground="#FFEBEAC9" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
+        <Label Content="Логин:" HorizontalAlignment="Left" Margin="75,218,0,0" Foreground="#FFEBEAC9" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="75,263,0,0" Foreground="#FFEBEAC9" FontFamily="Bookman Old Style" VerticalAlignment="Top"/>
     </Grid>
 </Window>
 

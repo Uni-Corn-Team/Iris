@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:IrisClient"
         mc:Ignorable="d"
         Closing="WindowClosed"
+        Icon="/Source/iris_dvoynoy_kh4.png"
         Title="Iris" Height="450" Width="800" MinWidth="800" MinHeight="450" Background="#FF2F1035" AutomationProperties.IsOffscreenBehavior="Offscreen" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
@@ -67,7 +68,7 @@
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox x:Name="lbDialogs" IsEnabled="False" Visibility="Hidden" SelectionChanged="SelectionDialog" Margin="0,0,0,0" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Consolas" Foreground="#FFEBEAC9" BorderThickness="0">
+        <ListBox x:Name="lbDialogs" IsEnabled="False" Visibility="Hidden" SelectionChanged="SelectionDialog" Margin="0,0,0,0" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="16" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9" BorderThickness="0">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </ListBox.Background>
@@ -75,7 +76,7 @@
                 <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <ListBox x:Name="lbFile" IsEnabled="False" Visibility="Hidden" Margin="0,0,0.4,51" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="20" FontFamily="Trebuchet MS" Foreground="#FFEBEAC9" BorderThickness="0">
+        <ListBox x:Name="lbFile" IsEnabled="False" Visibility="Hidden" Margin="0,0,0.4,51" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontSize="16" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9" BorderThickness="0">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </ListBox.Background>
@@ -83,7 +84,9 @@
                 <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <Label x:Name="lSavedFile" Content="Файл сохранен в Downloads" Foreground="White" HorizontalAlignment="Left" Margin="26,282,0,0" VerticalAlignment="Top" Width="161" Visibility="Hidden" FontFamily="Bookman Old Style" Grid.Row="1"/>
+        <Label x:Name="lSavedFile" Foreground="#FFEBEAC9" HorizontalAlignment="Left" Margin="52,0,0,5" VerticalAlignment="Bottom" Width="130" Visibility="Hidden" FontSize="12" FontFamily="Bookman Old Style" Grid.Row="1" RenderTransformOrigin="0.59,0.884">
+            <TextBlock x:Name="tbSavedFile" Text="Файл сохранен в Downloads" TextWrapping="Wrap" Width="122"/>
+        </Label>
         <ListBox x:Name="lbProfile" IsHitTestVisible="False"   Visibility="Hidden"
                  Margin="0,0,0.4,51" RenderTransformOrigin="0.293,0.577" Grid.Row="1" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9" BorderThickness="0" FontSize="16">
             <ListBox.Background>
@@ -101,7 +104,7 @@
                 <SolidColorBrush Color="#FF929AB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <ListBox x:Name="lbCurrentDialog" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,-0.4,50" Grid.Column="1"   Grid.Row="1" FontSize="14" FontFamily="Consolas" BorderThickness="0"
+        <ListBox x:Name="lbCurrentDialog" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,-0.4,50" Grid.Column="1"   Grid.Row="1" FontSize="14" FontFamily="Bookman Old Style" BorderThickness="0"
                  Foreground="#FFEBEAC9"  SelectionMode="Extended"
                  Style="{DynamicResource ListBoxStyle1}" >
             <ListBox.ItemTemplate>
@@ -116,7 +119,7 @@
                 <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
             </ListBox.BorderBrush>
         </ListBox>
-        <Button Name="bChangePassword" Visibility="Hidden" IsEnabled="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="70,0,0,8" Grid.Row="1" VerticalAlignment="Bottom" Width="37" Height="37" Click="ButtonClickChangePassword">
+        <Button Name="bChangePassword" Visibility="Hidden" IsEnabled="True" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="70,0,0,8" Grid.Row="1" VerticalAlignment="Bottom" Width="37" Height="37" Click="ButtonClickChangePassword " FontFamily="Bookman Old Style">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -125,8 +128,8 @@
                 </Image.Style>
             </Image>
         </Button>
-        <TextBox x:Name="tbMessage"   TextWrapping="Wrap" MinWidth="450" MinHeight="50" Height="52" FontSize="14" FontFamily="Consolas" Margin="1.6,0,151.6,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
-        <Button x:Name="bSendMessage" BorderBrush="Black"   Click="ButtonClickSendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsDefault="True">
+        <TextBox x:Name="tbMessage"   TextWrapping="Wrap" MinWidth="450" MinHeight="50" Height="52" FontSize="14" FontFamily="Bookman Old Style" Margin="1.6,0,151.6,0" BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="#FFEBEAC9" VerticalAlignment="Bottom" BorderBrush="#FFA375BD"/>
+        <Button x:Name="bSendMessage"  Click="ButtonClickSendMessage" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" BorderBrush="Black" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"  Margin="0,0,0,0" >
             <Button.Background>
                 <SolidColorBrush Color="#FFFFF2F2" Opacity="0.5"/>
             </Button.Background>
@@ -138,7 +141,7 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Button x:Name="bSendFile" Click="ButtonClickSendFile" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" BorderBrush="Black" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"  Margin="0,0,75,0">
+        <Button x:Name="bSendFile" Click="ButtonClickSendFile" VerticalContentAlignment="Center" UseLayoutRounding="False" Grid.Column="1" Grid.Row="1" Padding="0" BorderThickness="2" BorderBrush="Black" Foreground="White" MaxHeight="52" MaxWidth="97.6" MinWidth="75" MinHeight="52" Height="52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"  Margin="0,0,75,0" >
             <Button.Background>
                 <SolidColorBrush Color="#FFFFF2F2" Opacity="0.5"/>
             </Button.Background>
@@ -182,7 +185,7 @@
                 <SolidColorBrush Color="Black" Opacity="0.1"/>
             </Frame.Background>
         </Frame>
-        <Button x:Name="bAddUser" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="0,15,10,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71" Grid.Column="1" Grid.Row="0" Click="ButtonClickAddUser">
+        <Button x:Name="bAddUser" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="0,15,75,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.539,0.71" Grid.Column="1" Grid.Row="0" Click="ButtonClickAddUser" Visibility="Hidden">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -211,8 +214,8 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Label x:Name="lCurrentChatName" Content="" Grid.Column="1" Margin="16,20,161,15" FontSize="20" Foreground="#FFEBEAC9"/>
-        <Button x:Name="bChatParticipant" Background="Transparent" Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,75,0" VerticalAlignment="Top" BorderThickness="0" Width="50" Height="50" Click="ButtonClickParticipian">
+        <Label x:Name="lCurrentChatName" Content="" Grid.Column="1" Margin="16,20,161,15" FontSize="20" FontFamily="Bookman Old Style" Foreground="#FFEBEAC9"/>
+        <Button x:Name="bChatParticipant" Background="Transparent" Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,10,0" VerticalAlignment="Top" BorderThickness="0" Width="50" Height="50" Click="ButtonClickParticipian">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -230,7 +233,7 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Button Name="bSaveFile" Click="ButtonClickSaveFile" Visibility="Hidden" IsEnabled="False" Background="Transparent" BorderThickness="0" Margin="70,0,0,8" Grid.Row="1" Height="37" VerticalAlignment="Bottom" RenderTransformOrigin="0.522,0.741" HorizontalAlignment="Left" Width="37">
+        <Button Name="bSaveFile" Click="ButtonClickSaveFile" Visibility="Hidden" IsEnabled="False" Background="Transparent" BorderThickness="0" Margin="5,0,0,8" Grid.Row="1" Height="37" VerticalAlignment="Bottom" RenderTransformOrigin="0.522,0.741" HorizontalAlignment="Left" Width="37">
             <Image>
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">

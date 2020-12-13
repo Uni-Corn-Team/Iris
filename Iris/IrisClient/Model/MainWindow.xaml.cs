@@ -111,6 +111,18 @@ namespace IrisClient
                     lbChatParticipant.Items.Add(str);
                 }
             }
+
+           lbFile.Items.Clear();
+            if (ClientData.CurrentUser.CurrentChatID != -1)
+            {
+                List<string> files = ClientData.database.GetFilesFromDB(ClientData.CurrentUser.CurrentChatID);
+                foreach (string file in files)
+                {
+                    lbFile.Items.Add(file);
+                }
+            }
+           
+           
         }
 
         public void DatabaseCallback(Database database)
@@ -267,6 +279,7 @@ namespace IrisClient
                 new CreateChat().Show();
                 isWindowOpenCreateChat = true;
             }
+            ButtonClickShowChats(sender, e);
             //this.Close();
         }
 
@@ -286,7 +299,9 @@ namespace IrisClient
 
             lbDialogs.IsEnabled = true;
             lbDialogs.Visibility = Visibility.Visible;
-            
+
+          
+
             lbDialogs.Items.Clear();
             ClientData.chats.Clear();
             foreach (Chat dialog in ClientData.database.Chats)
@@ -317,6 +332,7 @@ namespace IrisClient
             //todo: add exceptions (if currentChat == null will be bad)
             //if (!((String)lbDialogs.SelectedItem).Equals(CurrentUser.CurrentChat.Name))
             //{
+
                 lbCurrentDialog.Items.Clear();
                 foreach (Chat dialog in ClientData.chats)
                 {
@@ -331,6 +347,8 @@ namespace IrisClient
                 {
                     lbCurrentDialog.Items.Add(message.Date + " | " + message.Sender.Nickname + " |\n\t" + message.Text);
                 }
+            bAddUser.IsEnabled = true;
+            bAddUser.Visibility = Visibility.Visible;
             //}
         }
 
@@ -351,18 +369,29 @@ namespace IrisClient
 
         private void ButtonClickSaveFile(object sender, RoutedEventArgs e)
         {
-            lSavedFile.Visibility = Visibility.Visible;
-            lSavedFile.Content = "Файл сохранен в Dowloads";
-            lSavedFile.IsEnabled = true;
-            IrisLib.File file = new IrisLib.File();
-            file.Name = lbFile.SelectedItem.ToString();
-            ClientData.client.GetFileFromHost(file.Name, ClientData.idOnServer, ClientData.CurrentUser.CurrentChatID);
+            
+                lSavedFile.Visibility = Visibility.Visible;
+                tbSavedFile.Text = "Файл сохранен в Dowloads";
+                lSavedFile.IsEnabled = true;
+                IrisLib.File file = new IrisLib.File();
+            if (lbFile.SelectedItem != null)
+            {
+                file.Name = lbFile.SelectedItem.ToString();
+                ClientData.client.GetFileFromHost(file.Name, ClientData.idOnServer, ClientData.CurrentUser.CurrentChatID);
+            }
+            else
+            {
+                tbSavedFile.Text = "Файл не выбран";
+            }
+           
+
            
         }
 
         private void ButtonClickSendFile(object sender, RoutedEventArgs e)
         {
-            lSavedFile.Visibility = Visibility.Hidden;
+          
+           
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             //dlg.FileName = "Document"; // Default file name
             // dlg.DefaultExt = ".txt"; // Default file extension
@@ -395,13 +424,12 @@ namespace IrisClient
 
             if (ClientData.database.GetFilesFromDB(ClientData.CurrentUser.CurrentChatID).Contains(file.Name))
             {
-                lSavedFile.Content = "Файл с таким именем уже существует";
+                tbSavedFile.Text = "Файл с таким именем уже существует";
                 lSavedFile.Visibility = Visibility.Visible;
                 return;
             }
 
-            lbFile.Items.Clear();
-            lbFile.Items.Add(streamReader.ReadToEnd());
+            ButtonClickShowFiles(sender, e);
             streamReader.Close();
            
 
@@ -538,6 +566,8 @@ namespace IrisClient
 
             bMakeSilent.IsEnabled = false;
             bMakeSilent.Visibility = Visibility.Hidden;
+
+            
         }
 
         public void FileCallback(IrisLib.File file)

@@ -10,6 +10,32 @@
         Icon="/Source/iris_dvoynoy_kh4.png" 
         MinWidth="350" MinHeight="450" MaxHeight="450" MaxWidth="350" AutomationProperties.IsOffscreenBehavior="Offscreen" WindowStartupLocation="CenterScreen">
     <Window.Resources>
+        <Style x:Key="ButtonBorderStyle" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF6C20D7"/>
+                                
+                            </Trigger>
+                            
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
@@ -27,7 +53,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" CornerRadius="0" BorderBrush="#FF840DE0" BorderThickness="2" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Border x:Name="border" CornerRadius="0" BorderBrush="#FF840DE0" BorderThickness="0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -56,11 +82,15 @@
         </Style>
 
     </Window.Resources>
-    <Grid Background="#FFB383FF">
-        <TextBox Style="{DynamicResource TextBoxStyle1}"  Background="White" Name="tbID" HorizontalAlignment="Left" Height="25" Margin="75,125,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="200" Foreground="Gray" PreviewMouseDown="RemoveTextID" FontFamily="Bookman Old Style" />
-        <Button x:Name="bAdd" Click="ButtonClickAddUserToChat" Content="Добавить" HorizontalAlignment="Left" Margin="75,170,0,0" VerticalAlignment="Top" Width="200" Height="25" Foreground="White"  Background="#FF9E00F9" FontFamily="Bookman Old Style" IsDefault = "true"/>
-        <Label x:Name="lableNotAnInteger" Content="Некорректный ID" HorizontalContentAlignment="Center" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="75,212,0,0" VerticalAlignment="Top" Width="206" Visibility="Hidden" FontFamily="Bookman Old Style"/>
-        <Label x:Name="lableNonexistingUser" Content="Такого пользователя не существует" HorizontalContentAlignment="Center" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="53,212,0,0" VerticalAlignment="Top" Width="244" Visibility="Hidden" FontFamily="Bookman Old Style" Height="24"/>
+    <Grid Background="#FF2F1035">
+        <TextBox Style="{DynamicResource TextBoxStyle1}"  Background="#FFEBEAC9" Name="tbID" HorizontalAlignment="Left" Height="25" Margin="75,154,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
+        <Button x:Name="bAdd" Style="{DynamicResource ResourceKey =ButtonBorderStyle}" Click="ButtonClickAddUserToChat" Content="Добавить" HorizontalAlignment="Left" Margin="75,199,0,0" VerticalAlignment="Top" Width="200" Height="25" Foreground="White"   FontFamily="Bookman Old Style" IsDefault = "true">
+            <Button.Background>
+                <SolidColorBrush Color="White" Opacity="0.15"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="lableNotAnInteger" Content="Некорректный ID" HorizontalContentAlignment="Center" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="75,245,0,0" VerticalAlignment="Top" Width="206" Visibility="Hidden" FontFamily="Bookman Old Style"/>
+        <Label x:Name="lableNonexistingUser" Content="Такого пользователя не существует" HorizontalContentAlignment="Center" Foreground="#FFA92E1A" HorizontalAlignment="Left" Margin="53,245,0,0" VerticalAlignment="Top" Width="244" Visibility="Hidden" FontFamily="Bookman Old Style" Height="24"/>
         <Button  HorizontalAlignment="Left" Margin="25,14,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" FontFamily="Bookman Old Style" Click="ButtonClickBack">
             <Image>
                 <Image.Style>
@@ -71,5 +101,6 @@
             </Image>
 
         </Button>
+        <Label Content="ID:" Foreground="#FFEBEAC9"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,134,0,0" FontFamily="Bookman Old Style"/>
     </Grid>
 </Window>

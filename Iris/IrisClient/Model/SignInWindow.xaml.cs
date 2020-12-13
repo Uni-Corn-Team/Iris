@@ -84,6 +84,7 @@ namespace IrisClient
                 lableLoginError.Visibility = Visibility.Visible;
                 tblogin.Text = null;
                 tbPassword.Password = null;
+                ClientData.CurrentUser = new User();
             }
         }
 
