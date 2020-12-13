@@ -75,6 +75,12 @@ namespace IrisClient.ServiceChat {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/SendFileToHost")]
         System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.User sender, int chat, IrisLib.File file);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetFileFromHost")]
+        void GetFileFromHost(string filename, int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetFileFromHost")]
+        System.Threading.Tasks.Task GetFileFromHostAsync(string filename, int userId);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/RemoveUserFromChat")]
         void RemoveUserFromChat(int userID, int chatID);
         
@@ -99,6 +105,12 @@ namespace IrisClient.ServiceChat {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/DatabaseCallback")]
         void DatabaseCallback(IrisLib.Database database);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/FileCallback")]
+        void FileCallback(IrisLib.File file);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/UserIdCallback")]
+        void UserIdCallback(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -207,6 +219,14 @@ namespace IrisClient.ServiceChat {
         
         public System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.User sender, int chat, IrisLib.File file) {
             return base.Channel.SendFileToHostAsync(sender, chat, file);
+        }
+        
+        public void GetFileFromHost(string filename, int userId) {
+            base.Channel.GetFileFromHost(filename, userId);
+        }
+        
+        public System.Threading.Tasks.Task GetFileFromHostAsync(string filename, int userId) {
+            return base.Channel.GetFileFromHostAsync(filename, userId);
         }
         
         public void RemoveUserFromChat(int userID, int chatID) {

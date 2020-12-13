@@ -103,5 +103,15 @@ namespace IrisClient
         {
 
         }
+
+        public void FileCallback(IrisLib.File file)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UserIdCallback(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

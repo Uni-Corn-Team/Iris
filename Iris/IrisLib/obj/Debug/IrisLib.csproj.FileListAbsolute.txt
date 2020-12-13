@@ -364,6 +364,8 @@ C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CoreCompi
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CopyComplete
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisLib\obj\Debug\IrisLib.dll
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisLib\obj\Debug\IrisLib.pdb
+C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll
@@ -433,10 +435,7 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\bin\Debug\System.Memory.xml
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\bin\Debug\System.Numerics.Vectors.xml
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\bin\Debug\System.Threading.Tasks.Extensions.xml
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CoreCompileInputs.cache
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CopyComplete
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.pdb
-C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
-C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache

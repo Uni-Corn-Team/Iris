@@ -312,7 +312,12 @@ namespace IrisClient
         private void ButtonClickShowFiles(object sender, RoutedEventArgs e)
         {
             SetButtonsHiddenAndDisabled();
-
+            lbFile.Items.Clear();
+            List<string> files = ClientData.database.GetFilesInFromDB(ClientData.CurrentUser.CurrentChatID);
+            foreach (string file in files)
+            {
+                lbFile.Items.Add(file);
+            }
             lbFile.IsEnabled = true;
             lbFile.Visibility = Visibility.Visible;
             bSaveFile.Visibility = Visibility.Visible;
@@ -322,12 +327,17 @@ namespace IrisClient
         private void ButtonClickSaveFile(object sender, RoutedEventArgs e)
         {
             lSavedFile.Visibility = Visibility.Visible;
+            lSavedFile.Content = "Файл сохранен в Dowloads";
             lSavedFile.IsEnabled = true;
+            IrisLib.File file = new IrisLib.File();
+            file.Name = lbFile.SelectedItem.ToString();
+            ClientData.client.GetFileFromHost(file.Name, ClientData.idOnServer);
+           
         }
 
         private void ButtonClickSendFile(object sender, RoutedEventArgs e)
         {
-
+            lSavedFile.Visibility = Visibility.Hidden;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             //dlg.FileName = "Document"; // Default file name
             // dlg.DefaultExt = ".txt"; // Default file extension
@@ -339,10 +349,16 @@ namespace IrisClient
             {
                 // Save document
                 string filename = dlg.FileName;
+             
+            }
+            else
+            {
+                return;
             }
 
             System.IO.StreamReader streamReader;
             IrisLib.File file = new IrisLib.File();
+            
             streamReader = new System.IO.StreamReader(dlg.FileName);
             FileStream stream = (FileStream)dlg.OpenFile();
             using (var memoryStream = new MemoryStream())
@@ -351,10 +367,18 @@ namespace IrisClient
                 file.Binary = memoryStream.ToArray();
                 file.Name = dlg.FileName.Split(new char[] { '\\' })[dlg.FileName.Split(new char[] { '\\' }).Length - 1];
             }
+
+            if (ClientData.database.GetFilesInFromDB(ClientData.CurrentUser.CurrentChatID).Contains(file.Name))
+            {
+                lSavedFile.Content = "Файл с таким именем уже существует";
+                lSavedFile.Visibility = Visibility.Visible;
+                return;
+            }
+
             lbFile.Items.Clear();
             lbFile.Items.Add(streamReader.ReadToEnd());
             streamReader.Close();
-
+           
 
             ClientData.client.SendFileToHost(ClientData.CurrentUser, ClientData.CurrentUser.CurrentChatID, file);
             /*lbDialogs.IsEnabled = false;
@@ -366,6 +390,7 @@ namespace IrisClient
             lbFile.Visibility = Visibility.Visible;
             lbFile.IsEnabled = true;*/
         }
+
 
         private void ButtonClickExitFromChat(object sender, RoutedEventArgs e)
         {
@@ -488,6 +513,16 @@ namespace IrisClient
 
             bMakeSilent.IsEnabled = false;
             bMakeSilent.Visibility = Visibility.Hidden;
+        }
+
+        public void FileCallback(IrisLib.File file)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UserIdCallback(int id)
+        {
+            throw new NotImplementedException();
         }
 
         /*private void tbMessage_KeyDown(object sender, KeyEventArgs e)

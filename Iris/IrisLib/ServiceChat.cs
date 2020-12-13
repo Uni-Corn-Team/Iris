@@ -13,6 +13,17 @@ namespace IrisLib
     public class ServiceChat : IServiceChat
     {
         public List<User> currentlyConnectedUsers = new List<User>();
+
+        public User GetUserFromList(List<User> Users, int id)
+        {
+            for (int i = 0; i < Users.Count(); i++)
+            {
+                if (Users[i].ID == id)
+                    return Users[i];
+            }
+            return null;
+        }
+
         /*
         public void doWork()
         {
@@ -59,8 +70,12 @@ namespace IrisLib
             Console.WriteLine("Connect");
             Console.WriteLine(user.ToString());
             user.OperationContext = OperationContext.Current;
+           // Console.WriteLine(user.OperationContext);
             user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
             currentlyConnectedUsers.Add(user);
+           // Console.WriteLine(user.ID);
+            user.OperationContext.GetCallbackChannel<IServerChatCallback>().UserIdCallback(user.ID);
+            Console.WriteLine();
         }
 
         public void Disconnect(User user)
@@ -71,6 +86,7 @@ namespace IrisLib
                 Console.WriteLine(user.ToString());
                 currentlyConnectedUsers.Remove(user);
             }
+            Console.WriteLine();
         }
 
         public void SendDatabaseToClients()
@@ -81,53 +97,60 @@ namespace IrisLib
                 user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
                 Console.WriteLine(user.ToString());
             }
+            Console.WriteLine();
         }
 
         public void GetMessageFromClient(User sender, string messageText, int chatID)
         {
             Console.WriteLine("GetMessageFromClient");
-            Console.WriteLine(sender.ToString() + messageText + "\nChat id: " + chatID);
+            Console.WriteLine("Sender: " + sender.ToString() + "Message: " + messageText + "\nChat id: " + chatID);
             Message message = new Message(0, sender, messageText);
             database.AddMessageToChat(message, chatID);
             SendDatabaseToClients();
+            Console.WriteLine();
         }
 
         public void GetNewUser(User user)
         {
             Console.WriteLine("GetNewUser");
-            Console.WriteLine(user.ToString());
+            Console.WriteLine("New user: " + user.ToString());
             database.AddUserToDB(user);
             SendDatabaseToClients();
+            Console.WriteLine();
         }
 
         public void AddUserToChat(User sender, User user, int chatID)
         {
             Console.WriteLine("AddUserToChat");
-            Console.WriteLine(sender.ToString() + user.ToString() + "Chat id: " + chatID);
+            Console.WriteLine("Sender: " + sender.ToString() + user.ToString() + "Chat id: " + chatID);
             database.AddUserToChat(user, chatID);
             SendDatabaseToClients();
+            Console.WriteLine();
 
         }
 
         public void CreateNewChat(User sender, Chat chat)
         {
             Console.WriteLine("CreateNewChat");
-            Console.WriteLine(sender.ToString() + chat.ToString());
+            Console.WriteLine("Sender: " + sender.ToString() + "Chat: " + chat.ToString());
             database.AddChatToDB(chat);
             SendDatabaseToClients();
+            Console.WriteLine();
         }
 
         public void ChangePassword(User user)
         {
             Console.WriteLine("ChangePassword");
-            Console.WriteLine(user.ToString());
+            Console.WriteLine("User: " + user.ToString());
             database.ChangePassword(user);
             SendDatabaseToClients();
+            Console.WriteLine();
         }
 
         public Database SendDatabaseFirstTime()
         {
             Console.WriteLine("SendDatabaseFirstTime");
+            Console.WriteLine();
             return database;
         }
 
@@ -135,37 +158,79 @@ namespace IrisLib
         {
             /* Add to .db file.Name*/
             Console.WriteLine("SendFileToHost");
-            Console.WriteLine(file.Name);
-            Console.WriteLine(file.Binary);
             string textMes = sender.Name + " send file: " + file.Name;
             Message mes = new Message(chatId, sender, textMes, DateTime.Now, file.Name);
             database.AddMessageToChat(mes, chatId);
-            Console.WriteLine("!!!!!!!!!!" + sender.ToString());
-            Console.WriteLine("!!!!!!!!!!" + chatId);
+            Console.WriteLine("Sender: " + sender.ToString() + "Chatd id: " + chatId);
             using (FileStream fs = new FileStream("..\\..\\Files\\" + file.Name, FileMode.OpenOrCreate))
             {
-                Console.WriteLine(file.Name);
+                Console.WriteLine("Sending file: " + file.Name);
                 fs.Write(file.Binary, 0, file.Binary.Length);
             }
             SendDatabaseToClients();
+            Console.WriteLine();
+        }
+
+        public void GetFileFromHost(string filename, int userId)
+        {
+            Console.WriteLine("GetFileToHost");
+            IrisLib.File file = new File();
+            file.Name = filename;
+            try
+            {
+                using (FileStream fs = new FileStream("..\\..\\Files\\" + file.Name, FileMode.Open, FileAccess.Read))
+                {
+                    Console.WriteLine("Read file: " + file.Name);
+                    file.Binary = new Byte[fs.Length];
+                    //fs.Read(file.Binary, 0, file.Binary.Length);
+                    Console.WriteLine("Readen bytes: " + fs.Read(file.Binary, 0, (int)fs.Length));
+                }
+                Console.WriteLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+
+            //GetUserFromList(currentlyConnectedUsers, userId).OperationContext.GetCallbackChannel<IServerChatCallback>().FileCallback(file);
+            Console.WriteLine(GetUserFromList(currentlyConnectedUsers, userId).ToString());
+            try
+            {
+                Console.WriteLine("User: " + GetUserFromList(currentlyConnectedUsers, userId).ToString());
+                Console.WriteLine("User: " +  GetUserFromList(currentlyConnectedUsers, userId).OperationContext);
+                GetUserFromList(currentlyConnectedUsers, userId).OperationContext.GetCallbackChannel<IServerChatCallback>().FileCallback(file);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
         }
 
         public void RemoveUserFromChat(int userID, int chatID)
         {
-            database.RemoveUserFromChat(userID, chatID);
+            Console.WriteLine("RemoveUserFromChat");
+            Console.WriteLine("User id: " + userID + " Chat id: " + chatID);
+           database.RemoveUserFromChat(userID, chatID);
             SendDatabaseToClients();
+            Console.WriteLine();
         }
 
         public void MakeUserInChatSilent(int userID, int chatID)
         {
+            Console.WriteLine("MakeUserInChatSilent");
+            Console.WriteLine("User id: " + userID + " Chat id: " + chatID);
             database.MakeUserInChatSilent(userID, chatID);
             SendDatabaseToClients();
+            Console.WriteLine();
         }
 
         public void MakeUserInChatNotSilent(int userID, int chatID)
         {
+            Console.WriteLine("MakeUserInChatNotSilent");
+            Console.WriteLine("User id: " + userID + " Chat id: " + chatID);
             database.MakeUserInChatNotSilent(userID, chatID);
             SendDatabaseToClients();
+            Console.WriteLine();
         }
     }
 }

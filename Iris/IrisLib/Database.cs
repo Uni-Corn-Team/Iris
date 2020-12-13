@@ -20,7 +20,7 @@ namespace IrisLib
     public class Database
     {
         //Maybe change it when will realese to new path(this path from bin\debug
-        [DataMember] private const string DBPath = "Data Source=..\\..\\..\\IrisLib\\Database\\database.db";
+        [DataMember] private const string DBPath = "Data Source=..\\..\\..\\IrisHost\\Database\\database.db";
         [DataMember] public List<User> Users { get; set; }
 
         [DataMember] public List<Chat> Chats { get; set; }
@@ -138,6 +138,45 @@ namespace IrisLib
             }
         }
 
+        public List<string> GetFilesInFromDB(int ChatId)
+        {
+            List<string> files = new List<string>();
+            Console.Out.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+            try
+            {
+                using (var connection = new SqliteConnection(DBPath))
+                {
+                    connection.Open();
+
+                    var command = connection.CreateCommand();
+                    command.CommandText =
+                    @"
+                    SELECT DOC 
+                    FROM Messages
+                    WHERE DOC NOT NULL
+                    AND Chat_id = @chat_id
+                    ";
+                    command.Parameters.AddWithValue("@chat_id", ChatId);
+                    Users.Clear();
+                    
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            files.Add(reader.GetString(0));
+                        }
+                    }
+                    connection.Close();
+                }
+                return files;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("{0} Exception caught.", e);
+                return null;
+            }
+        }
+
         public bool AddUserToDB(User user)
         {
             Users.Add(user);
@@ -241,6 +280,25 @@ namespace IrisLib
                             {
                                 int tmp = reader.GetInt32(0);
                                 Chats[i].Members.Add(GetUserFromList(tmp));
+                                if (reader.GetString(2).Equals("root"))
+                                    Chats[i].RootID = tmp;
+                            }
+                        }
+                        command = connection.CreateCommand();
+                        command.CommandText =
+                        @"
+                         SELECT *
+                         FROM LinkUC
+                         WHERE Chat_id LIKE @id
+                         AND Muted = 1
+                        ";
+                        command.Parameters.AddWithValue("@id", Chats[i].ID);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int tmp = reader.GetInt32(0);
+                                Chats[i].SilentMembers.Add(GetUserFromList(tmp));
                                 if (reader.GetString(2).Equals("root"))
                                     Chats[i].RootID = tmp;
                             }
@@ -401,12 +459,31 @@ namespace IrisLib
                         command.CommandText =
                         @"
                         INSERT OR IGNORE 
-                        INTO 'LinkUC'('User_id','Chat_id', 'Rights')
-                        VALUES (@User_id, @Chat_id, @Rights)
+                        INTO 'LinkUC'('User_id','Chat_id', 'Rights', 'Muted')
+                        VALUES (@User_id, @Chat_id, @Rights, 0)
                         ";
                         command.Parameters.AddWithValue("@User_id", chat.Members[i].ID);
                         command.Parameters.AddWithValue("@Chat_id", chat.ID);
                         if (chat.RootID != chat.Members[i].ID)
+                            command.Parameters.AddWithValue("@Rights", "user");
+                        else
+                            command.Parameters.AddWithValue("@Rights", "root");
+                        command.ExecuteNonQuery();
+                    }
+
+
+                    for (int i = 0; i < chat.SilentMembers.Count(); i++)
+                    {
+                        command = connection.CreateCommand();
+                        command.CommandText =
+                        @"
+                        INSERT OR IGNORE 
+                        INTO 'LinkUC'('User_id','Chat_id', 'Rights', 'Muted')
+                        VALUES (@User_id, @Chat_id, @Rights, 1)
+                        ";
+                        command.Parameters.AddWithValue("@User_id", chat.SilentMembers[i].ID);
+                        command.Parameters.AddWithValue("@Chat_id", chat.ID);
+                        if (chat.RootID != chat.SilentMembers[i].ID)
                             command.Parameters.AddWithValue("@Rights", "user");
                         else
                             command.Parameters.AddWithValue("@Rights", "root");
@@ -507,7 +584,34 @@ namespace IrisLib
             Chat chat = GetChatFromList(chatID);
             if (chat != null)
             {
-                return chat.MakeUserSilent(userID);
+                bool res = chat.MakeUserSilent(userID);
+                try
+                {
+                    using (var connection = new SqliteConnection(DBPath))
+                    {
+
+                        connection.Open();
+
+                        var command = connection.CreateCommand();
+                        command.CommandText =
+                        @"
+                        UPDATE LinkUC
+                        SET Muted = 1
+                        WHERE User_id LIKE @user_id
+                        AND Chat_id LIKE @chat_id
+                        ";
+                        command.Parameters.AddWithValue("@user_id", userID);
+                        command.Parameters.AddWithValue("@chat_id", chatID);
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    return true && res;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("{0} Exception caught.", e);
+                    return false;
+                }
             }
             return false;
         }
@@ -518,7 +622,35 @@ namespace IrisLib
             Chat chat = GetChatFromList(chatID);
             if (chat != null)
             {
-                return chat.MakeUserNotSilent(userID);
+                bool res = chat.MakeUserNotSilent(userID);
+                try
+                {
+                    using (var connection = new SqliteConnection(DBPath))
+                    {
+
+                        connection.Open();
+
+                        var command = connection.CreateCommand();
+                        command.CommandText =
+                        @"
+                        UPDATE LinkUC
+                        SET Muted = 0
+                        WHERE User_id LIKE @user_id
+                        AND Chat_id LIKE @chat_id
+                        ";
+                        command.Parameters.AddWithValue("@user_id", userID);
+                        command.Parameters.AddWithValue("@chat_id", chatID);
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    return true && res;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("{0} Exception caught.", e);
+                    return false;
+                }
+            
             }
             return false;
         }

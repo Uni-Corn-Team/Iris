@@ -41,6 +41,8 @@ namespace IrisLib
 
         [OperationContract(IsOneWay = true)]
         void SendFileToHost(User sender, int chat, File file);
+        [OperationContract(IsOneWay = true)]
+        void GetFileFromHost(string filename, int userId);
 
         [OperationContract(IsOneWay = true)]
         void RemoveUserFromChat(int userID, int chatID);
@@ -58,5 +60,9 @@ namespace IrisLib
     {
         [OperationContract(IsOneWay = true)]
         void DatabaseCallback(Database database);
+        [OperationContract(IsOneWay = true)]
+        void FileCallback(IrisLib.File file);
+        [OperationContract(IsOneWay = true)]
+        void UserIdCallback(int id);
     }
 }

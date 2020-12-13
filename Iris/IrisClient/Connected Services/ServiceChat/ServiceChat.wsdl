@@ -69,6 +69,9 @@
   <wsdl:message name="IServiceChat_SendFileToHost_InputMessage">
     <wsdl:part name="parameters" element="tns:SendFileToHost" />
   </wsdl:message>
+  <wsdl:message name="IServiceChat_GetFileFromHost_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileFromHost" />
+  </wsdl:message>
   <wsdl:message name="IServiceChat_RemoveUserFromChat_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveUserFromChat" />
   </wsdl:message>
@@ -80,6 +83,12 @@
   </wsdl:message>
   <wsdl:message name="IServiceChat_DatabaseCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DatabaseCallback" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_FileCallback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:FileCallback" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_UserIdCallback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UserIdCallback" />
   </wsdl:message>
   <wsdl:portType name="IServiceChat">
     <wsdl:operation name="Connect">
@@ -113,6 +122,9 @@
     <wsdl:operation name="SendFileToHost">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/SendFileToHost" message="tns:IServiceChat_SendFileToHost_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetFileFromHost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/GetFileFromHost" message="tns:IServiceChat_GetFileFromHost_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RemoveUserFromChat">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/RemoveUserFromChat" message="tns:IServiceChat_RemoveUserFromChat_InputMessage" />
     </wsdl:operation>
@@ -124,6 +136,12 @@
     </wsdl:operation>
     <wsdl:operation name="DatabaseCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/DatabaseCallback" message="tns:IServiceChat_DatabaseCallback_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FileCallback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/FileCallback" message="tns:IServiceChat_FileCallback_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIdCallback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/UserIdCallback" message="tns:IServiceChat_UserIdCallback_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IServiceChat" type="tns:IServiceChat">
@@ -192,6 +210,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="GetFileFromHost">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/GetFileFromHost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RemoveUserFromChat">
       <soap12:operation soapAction="http://tempuri.org/IServiceChat/RemoveUserFromChat" style="document" />
       <wsdl:input>
@@ -216,6 +240,18 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="FileCallback">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/FileCallback" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIdCallback">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/UserIdCallback" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ServiceChat">
     <wsdl:port name="NetTcpBinding_IServiceChat" binding="tns:NetTcpBinding_IServiceChat">
@@ -223,7 +259,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8302/</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DARIA-PC\Daria</Upn>
+          <Upn>DESKTOP-EI9OA8V\gusar</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
