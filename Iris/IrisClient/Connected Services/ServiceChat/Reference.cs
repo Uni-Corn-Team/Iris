@@ -82,10 +82,10 @@ namespace IrisClient.ServiceChat {
         System.Threading.Tasks.Task GetFileFromHostAsync(string filename, int userId, int chatID);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/RemoveUserFromChat")]
-        void RemoveUserFromChat(int userID, int chatID);
+        void RemoveUserFromChat(int userID, int chatID, bool isKicked);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/RemoveUserFromChat")]
-        System.Threading.Tasks.Task RemoveUserFromChatAsync(int userID, int chatID);
+        System.Threading.Tasks.Task RemoveUserFromChatAsync(int userID, int chatID, bool isKicked);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/MakeUserInChatSilent")]
         void MakeUserInChatSilent(int userID, int chatID);
@@ -229,12 +229,12 @@ namespace IrisClient.ServiceChat {
             return base.Channel.GetFileFromHostAsync(filename, userId, chatID);
         }
         
-        public void RemoveUserFromChat(int userID, int chatID) {
-            base.Channel.RemoveUserFromChat(userID, chatID);
+        public void RemoveUserFromChat(int userID, int chatID, bool isKicked) {
+            base.Channel.RemoveUserFromChat(userID, chatID, isKicked);
         }
         
-        public System.Threading.Tasks.Task RemoveUserFromChatAsync(int userID, int chatID) {
-            return base.Channel.RemoveUserFromChatAsync(userID, chatID);
+        public System.Threading.Tasks.Task RemoveUserFromChatAsync(int userID, int chatID, bool isKicked) {
+            return base.Channel.RemoveUserFromChatAsync(userID, chatID, isKicked);
         }
         
         public void MakeUserInChatSilent(int userID, int chatID) {

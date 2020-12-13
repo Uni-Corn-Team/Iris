@@ -229,7 +229,21 @@ namespace IrisClient
                 {
                     foreach (User member in ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).Members)
                     {
-                        lbChatParticipant.Items.Add(member.Nickname + " " + member.ID);
+                        string str = "";
+                        if(ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).RootID == member.ID)
+                        {
+                            str += "♛  ";
+                        } 
+                        else if(ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).IsUserInChatSilent(member.ID))
+                        {
+                            str += "</ ";
+                        }
+                        else
+                        {
+                            str += "<  ";
+                        }
+                        str += member.Nickname + " #" + member.ID;
+                        lbChatParticipant.Items.Add(str);
                     }
                 }
             }
@@ -313,7 +327,7 @@ namespace IrisClient
         {
             SetButtonsHiddenAndDisabled();
             lbFile.Items.Clear();
-            List<string> files = ClientData.database.GetFilesInFromDB(ClientData.CurrentUser.CurrentChatID);
+            List<string> files = ClientData.database.GetFilesFromDB(ClientData.CurrentUser.CurrentChatID);
             foreach (string file in files)
             {
                 lbFile.Items.Add(file);
@@ -368,7 +382,7 @@ namespace IrisClient
                 file.Name = dlg.FileName.Split(new char[] { '\\' })[dlg.FileName.Split(new char[] { '\\' }).Length - 1];
             }
 
-            if (ClientData.database.GetFilesInFromDB(ClientData.CurrentUser.CurrentChatID).Contains(file.Name))
+            if (ClientData.database.GetFilesFromDB(ClientData.CurrentUser.CurrentChatID).Contains(file.Name))
             {
                 lSavedFile.Content = "Файл с таким именем уже существует";
                 lSavedFile.Visibility = Visibility.Visible;
@@ -396,14 +410,14 @@ namespace IrisClient
         {
             lbCurrentDialog.Items.Clear();
             ButtonClickShowChats(sender, e);
-            ClientData.client.RemoveUserFromChat(ClientData.CurrentUser.ID, ClientData.CurrentUser.CurrentChatID);
+            ClientData.client.RemoveUserFromChat(ClientData.CurrentUser.ID, ClientData.CurrentUser.CurrentChatID, false);
         }
 
         private void ButtonClickRemoveUserFromChat(object sender, RoutedEventArgs e)
         {
             if (selectedUserID != -1 && ClientData.CurrentUser.ID != selectedUserID)
             {
-                ClientData.client.RemoveUserFromChat(selectedUserID, ClientData.CurrentUser.CurrentChatID);
+                ClientData.client.RemoveUserFromChat(selectedUserID, ClientData.CurrentUser.CurrentChatID, true);
             }
             selectedUserID = -1;
 

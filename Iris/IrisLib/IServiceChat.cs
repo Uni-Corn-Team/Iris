@@ -45,7 +45,7 @@ namespace IrisLib
         void GetFileFromHost(string filename, int userId, int chatID);
 
         [OperationContract(IsOneWay = true)]
-        void RemoveUserFromChat(int userID, int chatID);
+        void RemoveUserFromChat(int userID, int chatID, bool isKicked);
 
         [OperationContract(IsOneWay = true)]
         void MakeUserInChatSilent(int userID, int chatID);

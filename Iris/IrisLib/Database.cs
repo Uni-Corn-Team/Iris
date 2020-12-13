@@ -138,7 +138,7 @@ namespace IrisLib
             }
         }
 
-        public List<string> GetFilesInFromDB(int ChatId)
+        public List<string> GetFilesFromDB(int ChatId)
         {
             List<string> files = new List<string>();
             Console.Out.WriteLine(AppDomain.CurrentDomain.BaseDirectory);

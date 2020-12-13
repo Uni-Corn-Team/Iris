@@ -123,6 +123,12 @@ namespace IrisLib
         {
             Console.WriteLine("AddUserToChat");
             Console.WriteLine("Sender: " + sender.ToString() + user.ToString() + "Chat id: " + chatID);
+
+            string textMes = user.Nickname + " теперь с нами";
+            Message mes = new Message(chatID, user, textMes, DateTime.Now);
+            database.AddMessageToChat(mes, chatID);
+
+
             database.AddUserToChat(user, chatID);
             SendDatabaseToClients();
             Console.WriteLine();
@@ -197,7 +203,6 @@ namespace IrisLib
             try
             {
                 Console.WriteLine("User: " + GetUserFromList(currentlyConnectedUsers, userId).ToString());
-                Console.WriteLine("User: " +  GetUserFromList(currentlyConnectedUsers, userId).OperationContext);
                 GetUserFromList(currentlyConnectedUsers, userId).OperationContext.GetCallbackChannel<IServerChatCallback>().FileCallback(file);
             }
             catch (Exception e)
@@ -206,11 +211,24 @@ namespace IrisLib
             }
         }
 
-        public void RemoveUserFromChat(int userID, int chatID)
+        public void RemoveUserFromChat(int userID, int chatID, bool isKicked)
         {
             Console.WriteLine("RemoveUserFromChat");
             Console.WriteLine("User id: " + userID + " Chat id: " + chatID);
-           database.RemoveUserFromChat(userID, chatID);
+
+            string textMes;
+            if (isKicked)
+            {
+                textMes = database.GetUserFromList(userID).Nickname + " был изгнан";
+            }
+            else
+            {
+                textMes = database.GetUserFromList(userID).Nickname + "покинул нас";
+            }
+            Message mes = new Message(chatID, database.GetUserFromList(userID), textMes, DateTime.Now);
+            database.AddMessageToChat(mes, chatID);
+
+            database.RemoveUserFromChat(userID, chatID);
             SendDatabaseToClients();
             Console.WriteLine();
         }
@@ -219,6 +237,11 @@ namespace IrisLib
         {
             Console.WriteLine("MakeUserInChatSilent");
             Console.WriteLine("User id: " + userID + " Chat id: " + chatID);
+
+            string textMes = database.GetUserFromList(userID).Nickname + " теперь молчит";
+            Message mes = new Message(chatID, database.GetUserFromList(userID), textMes, DateTime.Now);
+            database.AddMessageToChat(mes, chatID);
+
             database.MakeUserInChatSilent(userID, chatID);
             SendDatabaseToClients();
             Console.WriteLine();
@@ -228,6 +251,11 @@ namespace IrisLib
         {
             Console.WriteLine("MakeUserInChatNotSilent");
             Console.WriteLine("User id: " + userID + " Chat id: " + chatID);
+
+            string textMes = database.GetUserFromList(userID).Nickname + " снова заговорит";
+            Message mes = new Message(chatID, database.GetUserFromList(userID), textMes, DateTime.Now);
+            database.AddMessageToChat(mes, chatID);
+
             database.MakeUserInChatNotSilent(userID, chatID);
             SendDatabaseToClients();
             Console.WriteLine();
