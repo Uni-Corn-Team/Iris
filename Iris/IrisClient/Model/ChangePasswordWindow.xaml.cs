@@ -27,39 +27,24 @@ namespace IrisClient
             InitializeComponent();
         }
          
-        private void RemoveTextOldPassword(object sender, RoutedEventArgs e)
-        {
-            if(isShowOldPassword)
-            {
-                tbOldPassword.Text = null;
-                tbOldPassword.Foreground = Brushes.Black;
-                isShowOldPassword = false;
-            }
-        }
+       
 
-        private void RemoveTextNewPassword(object sender, RoutedEventArgs e)
-        {
-            if (isShowNewPassword)
-            {
-                tbNewPassword.Text = null;
-                tbNewPassword.Foreground = Brushes.Black;
-                isShowNewPassword = false;
-            }
-        }
+       
 
         private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
         {
-            if (ClientData.CurrentUser.Password.Equals(tbOldPassword.Text))
+            if (ClientData.CurrentUser.Password.Equals(tbOldPassword.Password) && tbNewPassword.Password == tbConfirmPassword.Password)
             {
-                ClientData.CurrentUser.Password = tbNewPassword.Text;
+                ClientData.CurrentUser.Password = tbNewPassword.Password;
                 ClientData.client.ChangePassword(ClientData.CurrentUser);
                 this.Close();
             }
             else
             {
                 lableChangePassword.Visibility = Visibility.Visible;
-                tbOldPassword.Text = null;
-                tbNewPassword.Text = null;
+                tbOldPassword.Password = null;
+                tbNewPassword.Password = null;
+                tbConfirmPassword.Password = null;
             }
         }
 
