@@ -76,10 +76,10 @@ namespace IrisClient.ServiceChat {
         System.Threading.Tasks.Task SendFileToHostAsync(IrisLib.User sender, int chat, IrisLib.File file);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetFileFromHost")]
-        void GetFileFromHost(string filename, int userId);
+        void GetFileFromHost(string filename, int userId, int chatID);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/GetFileFromHost")]
-        System.Threading.Tasks.Task GetFileFromHostAsync(string filename, int userId);
+        System.Threading.Tasks.Task GetFileFromHostAsync(string filename, int userId, int chatID);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/RemoveUserFromChat")]
         void RemoveUserFromChat(int userID, int chatID);
@@ -221,12 +221,12 @@ namespace IrisClient.ServiceChat {
             return base.Channel.SendFileToHostAsync(sender, chat, file);
         }
         
-        public void GetFileFromHost(string filename, int userId) {
-            base.Channel.GetFileFromHost(filename, userId);
+        public void GetFileFromHost(string filename, int userId, int chatID) {
+            base.Channel.GetFileFromHost(filename, userId, chatID);
         }
         
-        public System.Threading.Tasks.Task GetFileFromHostAsync(string filename, int userId) {
-            return base.Channel.GetFileFromHostAsync(filename, userId);
+        public System.Threading.Tasks.Task GetFileFromHostAsync(string filename, int userId, int chatID) {
+            return base.Channel.GetFileFromHostAsync(filename, userId, chatID);
         }
         
         public void RemoveUserFromChat(int userID, int chatID) {

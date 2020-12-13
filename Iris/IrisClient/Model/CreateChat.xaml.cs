@@ -35,6 +35,14 @@ namespace IrisClient
 
         private void ButtonClickAddChat(object sender, RoutedEventArgs e)
         {
+            foreach(Chat chat in ClientData.database.Chats)
+            {
+                if (chat.Name.Equals(tbChatName))
+                {
+                    //вывод сообщения о существовании чата
+                    return;
+                }
+            }
             Chat newChat = new Chat(0, tbChatName.Text);
             newChat.RootID = ClientData.CurrentUser.ID;
             newChat.Members.Add(ClientData.CurrentUser);

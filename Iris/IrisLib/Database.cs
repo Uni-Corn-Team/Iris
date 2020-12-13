@@ -408,7 +408,6 @@ namespace IrisLib
                         Chats.Add(chat);
                     }
 
-
                     connection.Open();
 
                     var command = connection.CreateCommand();
@@ -422,6 +421,8 @@ namespace IrisLib
                     command.Parameters.AddWithValue("@name", chat.Name);
 
                     command.ExecuteNonQuery();
+
+                    Directory.CreateDirectory("..\\..\\..\\IrisHost\\Files\\" + chat.Name);
 
                     for (int i = 0; i < chat.Messages.Count(); i++)
                     {

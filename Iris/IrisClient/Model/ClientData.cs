@@ -63,11 +63,21 @@ namespace IrisClient
 
         public void FileCallback(IrisLib.File file)
         {
-
-            using (FileStream fs = new FileStream("..\\..\\Downloads\\" + file.Name, FileMode.OpenOrCreate))
+            try
             {
-                Console.WriteLine(file.Name);
-                fs.Write(file.Binary, 0, file.Binary.Length);
+                if (!Directory.Exists("..\\..\\Downloads\\" + database.GetChatFromList(CurrentUser.CurrentChatID).Name))
+                {
+                    Directory.CreateDirectory("..\\..\\Downloads\\" + database.GetChatFromList(CurrentUser.CurrentChatID).Name);
+                }
+                using (FileStream fs = new FileStream("..\\..\\Downloads\\" + database.GetChatFromList(CurrentUser.CurrentChatID).Name + "\\" + file.Name, FileMode.OpenOrCreate))
+                {
+                    Console.WriteLine(file.Name);
+                    fs.Write(file.Binary, 0, file.Binary.Length);
+                }
+            }
+            catch
+            {
+
             }
         }
 

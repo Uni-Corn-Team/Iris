@@ -331,7 +331,7 @@ namespace IrisClient
             lSavedFile.IsEnabled = true;
             IrisLib.File file = new IrisLib.File();
             file.Name = lbFile.SelectedItem.ToString();
-            ClientData.client.GetFileFromHost(file.Name, ClientData.idOnServer);
+            ClientData.client.GetFileFromHost(file.Name, ClientData.idOnServer, ClientData.CurrentUser.CurrentChatID);
            
         }
 

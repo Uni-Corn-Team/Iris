@@ -162,7 +162,7 @@ namespace IrisLib
             Message mes = new Message(chatId, sender, textMes, DateTime.Now, file.Name);
             database.AddMessageToChat(mes, chatId);
             Console.WriteLine("Sender: " + sender.ToString() + "Chatd id: " + chatId);
-            using (FileStream fs = new FileStream("..\\..\\Files\\" + file.Name, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("..\\..\\Files\\" + database.GetChatFromList(chatId).Name + "\\" + file.Name, FileMode.OpenOrCreate))
             {
                 Console.WriteLine("Sending file: " + file.Name);
                 fs.Write(file.Binary, 0, file.Binary.Length);
@@ -171,14 +171,14 @@ namespace IrisLib
             Console.WriteLine();
         }
 
-        public void GetFileFromHost(string filename, int userId)
+        public void GetFileFromHost(string filename, int userId, int chatID)
         {
             Console.WriteLine("GetFileToHost");
             IrisLib.File file = new File();
             file.Name = filename;
             try
             {
-                using (FileStream fs = new FileStream("..\\..\\Files\\" + file.Name, FileMode.Open, FileAccess.Read))
+                using (FileStream fs = new FileStream("..\\..\\Files\\" + database.GetChatFromList(chatID).Name + "\\" + file.Name, FileMode.Open, FileAccess.Read))
                 {
                     Console.WriteLine("Read file: " + file.Name);
                     file.Binary = new Byte[fs.Length];

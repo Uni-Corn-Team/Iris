@@ -1,0 +1,26 @@
+.globl __start
+.text
+__start:
+	addi x1, x0, -4						#read a
+	addi x2, x0, -4						#read b
+	addi x3, x0, 0						#i - counter
+	addi x4, x0, 0						#temp res
+    blt x2, x0, b_negative				#if b < 0 goto b_negative
+    b_positive:
+    j compare_p							#goto compare_p
+    if_p:
+		addi x3, x3, 1					#i++
+		add x4, x4, x1					#res+=a;
+        compare_p:
+        	blt x3, x2, if_p			#if i < b goto if_p
+		j result						#goto result
+    b_negative:
+    j compare_n							#goto compare_n
+    if_n:
+		addi x3, x3, -1					#i--
+		sub x4, x4, x1					#res-=a;
+        compare_n:
+        	blt x2, x3, if_n			#if b < i goto if_n
+        j result						#goto result
+    result:
+	addi x5, x4, 0						#write a*b
