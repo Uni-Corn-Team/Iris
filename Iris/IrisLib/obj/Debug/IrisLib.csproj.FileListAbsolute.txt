@@ -438,3 +438,5 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CoreCom
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.csproj.CopyComplete
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.dll
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.pdb
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\bin\Debug\IrisLib.xml
+C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache

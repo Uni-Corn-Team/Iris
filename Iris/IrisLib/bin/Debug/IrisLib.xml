@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IrisLib</name>
+    </assembly>
+    <members>
+        <member name="T:IrisLib.Chat">
+            <summary>
+            Класс для описания объекта "Чат".
+            </summary>
+        </member>
+        <member name="P:IrisLib.Chat.Name">
+            <summary>
+            Название чата.
+            </summary>
+        </member>
+        <member name="P:IrisLib.Chat.ID">
+            <summary>
+            Идентификатор чата.
+            </summary>
+        </member>
+        <member name="P:IrisLib.Chat.RootID">
+            <summary>
+            Идентификатор создателя чата.
+            </summary>
+        </member>
+        <member name="P:IrisLib.Chat.Members">
+            <summary>
+            Список участников чата.
+            </summary>
+        </member>
+        <member name="P:IrisLib.Chat.SilentMembers">
+            <summary>
+            Список заглушенных участников чата (не имеют возможности отправлять сообщения).
+            </summary>
+        </member>
+        <member name="P:IrisLib.Chat.Messages">
+            <summary>
+            Список сообщений в чате.
+            </summary>
+        </member>
+        <member name="M:IrisLib.Chat.#ctor(System.Int32,System.String)">
+            <summary>
+            Конструктор с параметрами для объекта типа "Чат".
+            </summary>
+            <param name="id"> идентификатор чата </param>
+            <param name="name"> название чата </param>
+        </member>
+        <member name="M:IrisLib.Chat.IsUserInChatSilent(System.Int32)">
+            <summary>
+            Метод, проверяющий, заглушен ли конкретный пользователь в чате.
+            </summary>
+            <param name="userID"> идентификатор проверяемого пользователя </param>
+            <returns> true (если пользователь заглушен) и false (если пользователь не заглушен) </returns>
+        </member>
+        <member name="M:IrisLib.Chat.MakeUserSilent(System.Int32)">
+            <summary>
+            Метод, заглушающий конкретного пользователя в чате.
+            Добавляет пользователя в список заглушенных участников.
+            </summary>
+            <param name="userID"> идентификатор заглушаемого пользователя </param>
+            <returns> true (если пользователь успешно заглушен) и false (если пользователь не заглушен) </returns>
+        </member>
+        <member name="M:IrisLib.Chat.MakeUserNotSilent(System.Int32)">
+            <summary>
+            Метод, снимающий заглушку с конкретного пользователя в чате.
+            Убирает пользователя из списока заглушенных участников.
+            </summary>
+            <param name="userID"> идентификатор пользователя </param>
+            <returns> true (если заглушка успешно снята) и false (если заглушка не снята) </returns>
+        </member>
+        <member name="M:IrisLib.Chat.IsUserInChat(IrisLib.User)">
+            <summary>
+            Метод, проверяющий наличие конкретного пользователя в чате.
+            </summary>
+            <param name="user"> идентификатор проверяемого пользователя </param>
+            <returns> true (если пользователь присутствует в чате) и false (если пользователь не присутствует в чате) </returns>
+        </member>
+        <member name="M:IrisLib.Chat.GetUserFromChat(System.Int32)">
+            <summary>
+            Метод получения пользователя из чата по идентификатору.
+            </summary>
+            <param name="userID"> идентификатор искомого пользователя </param>
+            <returns> объект класса User (если пользователь присутствует в чате) либо null (если пользователь отсутствует в чате) </returns>
+        </member>
+        <member name="M:IrisLib.Chat.ToString">
+            <summary>
+            Перегруженный метод преобразования объекта класса Чат в строковое представление.
+            Возвращает строку, состоящую из идентификатора чата, списков участников и сообщений.
+            </summary>
+            <returns> строковое представление объекта класса Чат </returns>
+        </member>
+        <member name="T:IrisLib.Database">
+            <summary>
+            Класс для описания объекта базы данных.
+            </summary>
+        </member>
+        <member name="F:IrisLib.Database.DBPath">
+            <summary>
+            Путь до файла с базой данных.
+            </summary>
+        </member>
+        <member name="P:IrisLib.Database.Users">
+            <summary>
+            Список пользователей.
+            </summary>
+        </member>
+        <member name="P:IrisLib.Database.Chats">
+            <summary>
+            Список чатов.
+            </summary>
+        </member>
+        <member name="F:IrisLib.Database.UsersCountAsNextID">
+            <summary>
+            Идентификатор для следующего добавляемого пользователя.
+            </summary>
+        </member>
+        <member name="F:IrisLib.Database.ChatsCountAsNextID">
+            <summary>
+            Идентификатор для следующего добавляемого чата.
+            </summary>
+        </member>
+        <member name="F:IrisLib.Database.MessagesCountAsNextID">
+            <summary>
+            Идентификатор для следующего добавляемого сообщения.
+            </summary>
+        </member>
+        <member name="M:IrisLib.Database.#ctor">
+            <summary>
+            Конструктор по умолчанию.
+            Аллокация памяти для списков пользователей и чатов.
+            Инициирует загрузку данных из файла базы данных.
+            </summary>
+        </member>
+        <member name="M:IrisLib.Database.#ctor(System.Boolean)">
+            <summary>
+            Конструктор по умолчанию.
+            Аллокация памяти для списков пользователей и чатов.
+            Не инициирует загрузку данных из файла базы данных.
+            </summary>
+            <param name="eWithoutUpdate"></param>
+        </member>
+        <member name="M:IrisLib.Database.Update(IrisLib.Database)">
+            <summary>
+            Метод, обновляющий базу данных данными другого объекта этого же класса.
+            Заменяет значения полей вызывающего объекта на значения параметра.
+            </summary>
+            <param name="newDatabase"> база данных, данные из которой будут загружены в вызывающую </param>
+        </member>
+        <member name="M:IrisLib.Database.GetUserFromList(System.String)">
+            <summary>
+            Метод для получения пользователя из списка пользователей по логину.
+            </summary>
+            <param name="login"> логин искомого пользователя </param>
+            <returns> объект класса User (если такой пользователь существует) либо null (если такого пользователя не существует) </returns>
+        </member>
+        <member name="M:IrisLib.Database.GetUserFromList(System.Int32)">
+            <summary>
+            Метод для получения пользователя из списка пользователей по логину.
+            </summary>
+            <param name="id"> идентификатор искомого пользователя </param>
+            <returns> объект класса User (если такой пользователь существует) либо null (если такого пользователя не существует) </returns>
+        </member>
+        <member name="M:IrisLib.Database.GetChatFromList(System.Int32)">
+            <summary>
+            Метод для получения чата из списка чатов по логину.
+            </summary>
+            <param name="id"> идентификатор искомого чата </param>
+            <returns> объект класса Chat (если такой чат существует) либо null (если такого чата не существует) </returns>
+        </member>
+        <member name="M:IrisLib.Database.GetChatFromList(System.String)">
+            <summary>
+            Метод для получения чата из списка чатов по названию.
+            </summary>
+            <param name="name"> название искомого чата </param>
+            <returns> объект класса Chat (если такой чат существует) либо null (если такого чата не существует) </returns>
+        </member>
+        <member name="M:IrisLib.Database.GetUsersFromDB">
+            <summary>
+            Метод для получения (загрузки) пользователей из файла базы данных.
+            </summary>
+            <returns> true(в случае успешной загрузки) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.GetFilesFromDB(System.Int32)">
+            <summary>
+            Метод для выгрузки списка названий файлов конкретного чата по идентификатору чата.
+            </summary>
+            <param name="ChatId"> идентификатор чата, из которого нужно выгрузить названия файлов </param>
+            <returns> список названий файлов конкретного чата </returns>
+        </member>
+        <member name="M:IrisLib.Database.AddUserToDB(IrisLib.User)">
+            <summary>
+            Метод добавления пользователя в файл базы данных.
+            </summary>
+            <param name="user"> добавляемый пользователь </param>
+            <returns> true(в случае успешного добавления) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.GetChatsFromDB">
+            <summary>
+            Метод для получения (загрузки) чатов из файла базы данных.
+            </summary>
+            <returns> true(в случае успешной загрузки) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.ChangePassword(IrisLib.User)">
+            <summary>
+            Метод для изменения пароля пользователя.
+            Ищет пользователя по идентификатору и меняет его пароль на новый.
+            </summary>
+            <param name="user"> пользователь, пароль которого меняется </param>
+            <returns> true(в случае успешного изменения) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.AddUserToChat(IrisLib.User,System.Int32)">
+            <summary>
+            Метод для добавления пользователя в чат.
+            Инициирует вызов обновления (добавления) чата в файле базы данных.
+            </summary>
+            <param name="user"> добавляемый пользователь </param>
+            <param name="chatID"> идентификатор чата, в который производится добавление </param>
+            <returns> true(в случае успешного добавления) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.AddMessageToChat(IrisLib.Message,System.Int32)">
+            <summary>
+            Метод для добавления сообщения в чат.
+            </summary>
+            <param name="message"> добавляемое сообщение </param>
+            <param name="chatID"> идентификатор чата, в который производится добавление </param>
+            <returns> true(в случае успешного добавления) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.AddChatToDB(IrisLib.Chat)">
+            <summary>
+            Метод для добавления (обновления) чата в файл базы данных.
+            </summary>
+            <param name="chat"> добавляемый (обновляемый) чат </param>
+            <returns> true(в случае успешного добавления) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.Update">
+            <summary>
+            Обновление базы данных (данными из файла базы данных).
+            Инициирует методы для получения списков пользователей и чатов.
+            </summary>
+            <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.ToString">
+            <summary>
+            Перегруженный метод преобразования объекта класса База данных в строковое представление.
+            Возвращает строку, состоящую из строковых представлений списков пользователей и чатов.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IrisLib.Database.RemoveUserFromChat(System.Int32,System.Int32)">
+            <summary>
+            Метод для удаления пользователя из чата.
+            </summary>
+            <param name="userID"> удаляемый из чата пользователь </param>
+            <param name="chatID"> идентификатор чата </param>
+            <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.MakeUserInChatSilent(System.Int32,System.Int32)">
+            <summary>
+            Метод, заглушающий конкретного пользователя в  конкретном чате.
+            Добавляет пользователя в чате в список заглушенных участников.
+            </summary>
+            <param name="userID"> идентификатор заглушаемого пользователя </param>
+            <param name="chatID"> идентификатор чата </param>
+            <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="M:IrisLib.Database.MakeUserInChatNotSilent(System.Int32,System.Int32)">
+            <summary>
+            Метод, снимающий заглушку с конкретного пользователя в конкретном чате.
+            Убирает пользователя из списока заглушенных участников.
+            </summary>
+            <param name="userID"> идентификатор пользователя </param>
+            <param name="chatID"> идентификатор чата </param>
+            <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
+        </member>
+        <member name="P:IrisLib.User.Nickname">
+            <summary>
+            user's name
+            </summary>
+        </member>
+        <member name="P:IrisLib.User.ID">
+            <summary>
+            user's id
+            </summary>
+        </member>
+        <member name="P:IrisLib.User.OperationContext">
+            <summary>
+            information about connection user to server
+            </summary>
+        </member>
+    </members>
+</doc>

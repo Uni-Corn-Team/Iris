@@ -7,19 +7,48 @@ using System.Runtime.Serialization;
 
 namespace IrisLib
 {
+    /// <summary>
+    /// Класс для описания объекта базы данных.
+    /// </summary>
     [Serializable]
     [DataContract]
     public class Database
     {
+        /// <summary>
+        /// Путь до файла с базой данных.
+        /// </summary>
         [DataMember] private const string DBPath = "Data Source=..\\..\\..\\IrisHost\\Database\\database.db";
-        [DataMember] public List<User> Users { get; set; }
 
+        /// <summary>
+        /// Список пользователей.
+        /// </summary>
+        [DataMember] public List<User> Users { get; set; }
+        
+        /// <summary>
+        /// Список чатов.
+        /// </summary>
         [DataMember] public List<Chat> Chats { get; set; }
 
+        /// <summary>
+        /// Идентификатор для следующего добавляемого пользователя.
+        /// </summary>
         [DataMember] public int UsersCountAsNextID;
+
+        /// <summary>
+        /// Идентификатор для следующего добавляемого чата.
+        /// </summary>
         [DataMember] public int ChatsCountAsNextID;
+
+        /// <summary>
+        /// Идентификатор для следующего добавляемого сообщения.
+        /// </summary>
         [DataMember] public int MessagesCountAsNextID;
 
+        /// <summary>
+        /// Конструктор по умолчанию.
+        /// Аллокация памяти для списков пользователей и чатов.
+        /// Инициирует загрузку данных из файла базы данных.
+        /// </summary>
         public Database()
         {
             Users = new List<User>();
@@ -27,12 +56,23 @@ namespace IrisLib
             this.Update();
         }
 
+        /// <summary>
+        /// Конструктор по умолчанию.
+        /// Аллокация памяти для списков пользователей и чатов.
+        /// Не инициирует загрузку данных из файла базы данных.
+        /// </summary>
+        /// <param name="eWithoutUpdate"></param>
         public Database(bool eWithoutUpdate)
         {
             Users = new List<User>();
             Chats = new List<Chat>();
         }
 
+        /// <summary>
+        /// Метод, обновляющий базу данных данными другого объекта этого же класса.
+        /// Заменяет значения полей вызывающего объекта на значения параметра.
+        /// </summary>
+        /// <param name="newDatabase"> база данных, данные из которой будут загружены в вызывающую </param>
         public void Update(Database newDatabase)
         {
             if (newDatabase != null)
@@ -47,6 +87,11 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод для получения пользователя из списка пользователей по логину.
+        /// </summary>
+        /// <param name="login"> логин искомого пользователя </param>
+        /// <returns> объект класса User (если такой пользователь существует) либо null (если такого пользователя не существует) </returns>
         public User GetUserFromList(string login)
         {
             for (int i = 0; i < Users.Count(); i++)
@@ -59,6 +104,11 @@ namespace IrisLib
             return null;
         }
 
+        /// <summary>
+        /// Метод для получения пользователя из списка пользователей по логину.
+        /// </summary>
+        /// <param name="id"> идентификатор искомого пользователя </param>
+        /// <returns> объект класса User (если такой пользователь существует) либо null (если такого пользователя не существует) </returns>
         public User GetUserFromList(int id)
         {
             for (int i = 0; i < Users.Count(); i++)
@@ -69,6 +119,11 @@ namespace IrisLib
             return null;
         }
 
+        /// <summary>
+        /// Метод для получения чата из списка чатов по логину.
+        /// </summary>
+        /// <param name="id"> идентификатор искомого чата </param>
+        /// <returns> объект класса Chat (если такой чат существует) либо null (если такого чата не существует) </returns>
         public Chat GetChatFromList(int id)
         {
             for (int i = 0; i < Chats.Count(); i++)
@@ -79,6 +134,11 @@ namespace IrisLib
             return null;
         }
 
+        /// <summary>
+        /// Метод для получения чата из списка чатов по названию.
+        /// </summary>
+        /// <param name="name"> название искомого чата </param>
+        /// <returns> объект класса Chat (если такой чат существует) либо null (если такого чата не существует) </returns>
         public Chat GetChatFromList(string name)
         {
             for (int i = 0; i < Chats.Count(); i++)
@@ -89,6 +149,10 @@ namespace IrisLib
             return null;
         }
 
+        /// <summary>
+        /// Метод для получения (загрузки) пользователей из файла базы данных.
+        /// </summary>
+        /// <returns> true(в случае успешной загрузки) либо false(в случае возникновения ошибок) </returns>
         public bool GetUsersFromDB()
         {
             Console.Out.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
@@ -129,6 +193,11 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод для выгрузки списка названий файлов конкретного чата по идентификатору чата.
+        /// </summary>
+        /// <param name="ChatId"> идентификатор чата, из которого нужно выгрузить названия файлов </param>
+        /// <returns> список названий файлов конкретного чата </returns>
         public List<string> GetFilesFromDB(int ChatId)
         {
             List<string> files = new List<string>();
@@ -168,6 +237,11 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод добавления пользователя в файл базы данных.
+        /// </summary>
+        /// <param name="user"> добавляемый пользователь </param>
+        /// <returns> true(в случае успешного добавления) либо false(в случае возникновения ошибок) </returns>
         public bool AddUserToDB(User user)
         {
             Users.Add(user);
@@ -209,6 +283,10 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод для получения (загрузки) чатов из файла базы данных.
+        /// </summary>
+        /// <returns> true(в случае успешной загрузки) либо false(в случае возникновения ошибок) </returns>
         public bool GetChatsFromDB()
         {
             try
@@ -310,6 +388,12 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод для изменения пароля пользователя.
+        /// Ищет пользователя по идентификатору и меняет его пароль на новый.
+        /// </summary>
+        /// <param name="user"> пользователь, пароль которого меняется </param>
+        /// <returns> true(в случае успешного изменения) либо false(в случае возникновения ошибок) </returns>
         public bool ChangePassword(User user)
         {
             for (int i = 0; i < Users.Count; i++)
@@ -347,6 +431,13 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод для добавления пользователя в чат.
+        /// Инициирует вызов обновления (добавления) чата в файле базы данных.
+        /// </summary>
+        /// <param name="user"> добавляемый пользователь </param>
+        /// <param name="chatID"> идентификатор чата, в который производится добавление </param>
+        /// <returns> true(в случае успешного добавления) либо false(в случае возникновения ошибок) </returns>
         public bool AddUserToChat(User user, int chatID)
         {
             if (user == null)
@@ -369,6 +460,12 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод для добавления сообщения в чат.
+        /// </summary>
+        /// <param name="message"> добавляемое сообщение </param>
+        /// <param name="chatID"> идентификатор чата, в который производится добавление </param>
+        /// <returns> true(в случае успешного добавления) либо false(в случае возникновения ошибок) </returns>
         public bool AddMessageToChat(Message message, int chatID)
         {
             try
@@ -385,6 +482,11 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод для добавления (обновления) чата в файл базы данных.
+        /// </summary>
+        /// <param name="chat"> добавляемый (обновляемый) чат </param>
+        /// <returns> true(в случае успешного добавления) либо false(в случае возникновения ошибок) </returns>
         public bool AddChatToDB(Chat chat)
         {
             try
@@ -492,6 +594,11 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Обновление базы данных (данными из файла базы данных).
+        /// Инициирует методы для получения списков пользователей и чатов.
+        /// </summary>
+        /// <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
         public bool Update()
         {
             if (GetUsersFromDB() && GetChatsFromDB())
@@ -501,6 +608,11 @@ namespace IrisLib
             return false;
         }
 
+        /// <summary>
+        /// Перегруженный метод преобразования объекта класса База данных в строковое представление.
+        /// Возвращает строку, состоящую из строковых представлений списков пользователей и чатов.
+        /// </summary>
+        /// <returns></returns>
         public new string ToString()
         {
             string str = "Users: \n";
@@ -516,19 +628,12 @@ namespace IrisLib
             return str;
         }
 
-        public bool AddFileMessageToDB()
-        {
-            try
-            {
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
-        }
-
+        /// <summary>
+        /// Метод для удаления пользователя из чата.
+        /// </summary>
+        /// <param name="userID"> удаляемый из чата пользователь </param>
+        /// <param name="chatID"> идентификатор чата </param>
+        /// <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
         public bool RemoveUserFromChat(int userID, int chatID)
         {
             try
@@ -569,6 +674,13 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод, заглушающий конкретного пользователя в  конкретном чате.
+        /// Добавляет пользователя в чате в список заглушенных участников.
+        /// </summary>
+        /// <param name="userID"> идентификатор заглушаемого пользователя </param>
+        /// <param name="chatID"> идентификатор чата </param>
+        /// <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
         public bool MakeUserInChatSilent(int userID, int chatID)
         {
             Chat chat = GetChatFromList(chatID);
@@ -604,6 +716,13 @@ namespace IrisLib
             return false;
         }
 
+        /// <summary>
+        /// Метод, снимающий заглушку с конкретного пользователя в конкретном чате.
+        /// Убирает пользователя из списока заглушенных участников.
+        /// </summary>
+        /// <param name="userID"> идентификатор пользователя </param>
+        /// <param name="chatID"> идентификатор чата </param>
+        /// <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
         public bool MakeUserInChatNotSilent(int userID, int chatID)
         {
             Chat chat = GetChatFromList(chatID);
