@@ -327,6 +327,13 @@ namespace IrisLib
 
         public bool ChangePassword(User user)
         {
+            for (int i = 0; i < Users.Count; i++)
+            {
+                if (user.ID == Users[i].ID)
+                {
+                    Users[i].Password = user.Password;
+                }
+            }
             try
             {
                 using (var connection = new SqliteConnection(DBPath))
