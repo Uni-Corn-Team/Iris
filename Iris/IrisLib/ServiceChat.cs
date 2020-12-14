@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.ServiceModel;
-using System.Text;
 
 namespace IrisLib
 {
@@ -24,45 +21,10 @@ namespace IrisLib
             return null;
         }
 
-        /*
-        public void doWork()
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                bf.Serialize(ms, user);
-
-            }
-        }
-
-        public int Connect(string name)
-        {
-            User user = new User()
-            {
-                ID = 1,
-                Nickname = name,
-                OperationContext = OperationContext.Current
-            };
-
-            //SendMessage(user.Nickname + " подключился к чату!", 0, 0);
-            currentlyConnectedUsers.Add(user);
-            return user.ID;
-        }
-
-        public void Disconnect(int id)
-        {
-            var user = currentlyConnectedUsers.FirstOrDefault(i => i.ID == id);
-            if (user != null)
-            {
-                currentlyConnectedUsers.Remove(user);
-                //SendMessage(user.Nickname + " покинул чат!", 0, 0);
-            }
-        }
-        */
-
         Database database = new Database();
 
         int nextId = 1;
+
         public void Connect(User user)
         {
             user.ID = nextId;
@@ -70,10 +32,8 @@ namespace IrisLib
             Console.WriteLine("Connect");
             Console.WriteLine(user.ToString());
             user.OperationContext = OperationContext.Current;
-           // Console.WriteLine(user.OperationContext);
             user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
             currentlyConnectedUsers.Add(user);
-           // Console.WriteLine(user.ID);
             user.OperationContext.GetCallbackChannel<IServerChatCallback>().UserIdCallback(user.ID);
             Console.WriteLine();
         }
@@ -162,7 +122,6 @@ namespace IrisLib
 
         public void SendFileToHost(User sender, int chatId, File file)
         {
-            /* Add to .db file.Name*/
             Console.WriteLine("SendFileToHost");
             string textMes = sender.Name + " send file: " + file.Name;
             Message mes = new Message(chatId, sender, textMes, DateTime.Now, file.Name);
@@ -188,7 +147,6 @@ namespace IrisLib
                 {
                     Console.WriteLine("Read file: " + file.Name);
                     file.Binary = new Byte[fs.Length];
-                    //fs.Read(file.Binary, 0, file.Binary.Length);
                     Console.WriteLine("Readen bytes: " + fs.Read(file.Binary, 0, (int)fs.Length));
                 }
                 Console.WriteLine();
@@ -197,8 +155,7 @@ namespace IrisLib
             {
                 Console.WriteLine("Error: " + e.Message);
             }
-
-            //GetUserFromList(currentlyConnectedUsers, userId).OperationContext.GetCallbackChannel<IServerChatCallback>().FileCallback(file);
+            
             Console.WriteLine(GetUserFromList(currentlyConnectedUsers, userId).ToString());
             try
             {
@@ -223,7 +180,7 @@ namespace IrisLib
             }
             else
             {
-                textMes = database.GetUserFromList(userID).Nickname + "покинул нас";
+                textMes = database.GetUserFromList(userID).Nickname + " покинул нас";
             }
             Message mes = new Message(chatID, database.GetUserFromList(userID), textMes, DateTime.Now);
             database.AddMessageToChat(mes, chatID);

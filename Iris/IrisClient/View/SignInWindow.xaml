@@ -118,12 +118,12 @@
     <Grid Background="#FF2F1035">
 
 
-        <Button x:Name="bSignIn" Style="{DynamicResource ResourceKey =ButtonBorderStyle}"  Foreground="#FFEBEAC9"  Content="Войти" Click="Button_Click_SignIn" HorizontalAlignment="Left" Height="30" Margin="50,229,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault = "true">
+        <Button x:Name="bSignIn" Style="{DynamicResource ResourceKey =ButtonBorderStyle}"  Foreground="#FFEBEAC9"  Content="Войти" Click="ButtonClickSignIn" HorizontalAlignment="Left" Height="30" Margin="50,229,0,0" VerticalAlignment="Top" Width="250" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault = "true">
             <Button.Background>
                 <SolidColorBrush Color="White" Opacity="0.15"/>
             </Button.Background>
         </Button>
-        <Button x:Name="bSignUp" Style="{DynamicResource ResourceKey =ButtonBorderStyle}"  Foreground="#FFEBEAC9"   Content="Зарегистрироваться" Click="Button_Click_SignUp" HorizontalAlignment="Left" Height="30" Margin="50,276,0,0" VerticalAlignment="Top" Width="250" FontFamily="Bookman Old Style">
+        <Button x:Name="bSignUp" Style="{DynamicResource ResourceKey =ButtonBorderStyle}"  Foreground="#FFEBEAC9"   Content="Зарегистрироваться" Click="ButtonClickSignUp" HorizontalAlignment="Left" Height="30" Margin="50,276,0,0" VerticalAlignment="Top" Width="250" FontFamily="Bookman Old Style">
             <Button.Background>
                 <SolidColorBrush Color="White" Opacity="0.15"/>
             </Button.Background>

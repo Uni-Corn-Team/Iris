@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Runtime.Serialization;
 
@@ -14,6 +10,7 @@ namespace IrisLib
     {
         [DataMember] public string Name { get; set; }
         [DataMember] public string Surname { get; set; }
+
         /// <summary>
         /// user's name
         /// </summary>
@@ -21,6 +18,7 @@ namespace IrisLib
         [DataMember] public int Age { get; set; }
         [DataMember] public string Login { get; set; }
         [DataMember] public string Password { get; set; }
+
         /// <summary>
         /// user's id
         /// </summary>
@@ -48,6 +46,7 @@ namespace IrisLib
         {
             return "User Id: " + this.ID + " Name: " + this.Name + " Surname: " + this.Surname + " Nickname: " + this.Nickname + " Login: " + this.Login + " Password: " + this.Password + "\n";
         }
+
         /// <summary>
         /// information about connection user to server
         /// </summary>

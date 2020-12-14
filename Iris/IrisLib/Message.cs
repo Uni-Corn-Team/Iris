@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
 namespace IrisLib
@@ -18,6 +14,7 @@ namespace IrisLib
         [DataMember] public string Doc { get; set; }
         [DataMember] public File File { get; set; }
         [DataMember] public DateTime Date { get; set; }
+        
         public Message(int id, User sender, string text)
         {
             this.ID = id;

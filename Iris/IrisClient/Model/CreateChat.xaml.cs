@@ -1,17 +1,6 @@
 ﻿using IrisLib;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace IrisClient
 {
@@ -21,8 +10,6 @@ namespace IrisClient
     /// </summary>
     public partial class CreateChat : Window
     {
-        
-        private bool isShowNameChat = true;
         public CreateChat()
         {
             InitializeComponent();
@@ -47,26 +34,12 @@ namespace IrisClient
             newChat.RootID = ClientData.CurrentUser.ID;
             newChat.Members.Add(ClientData.CurrentUser);
             ClientData.client.CreateNewChat(ClientData.CurrentUser, newChat);
-            //возможно, нужно придумать переход на новый чат, но его еще нет в БД
             this.Close();
         }
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MainWindow.isWindowOpenCreateChat= false;
-            //new MainWindow().Show();
-            // ClientData.ShowMainWindow();
-
-        }
-
-        private void RemoveTextNameChat(object sender, RoutedEventArgs e)
-        {
-            if(isShowNameChat)
-            {
-                tbChatName.Text = null;
-                tbChatName.Foreground = Brushes.Black;
-                isShowNameChat = false;
-            }
+            MainWindow.isWindowOpenCreateChat = false;
         }
     }
 }

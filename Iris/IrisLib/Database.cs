@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ServiceModel;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Microsoft.Data.Sqlite;
 using System.Runtime.Serialization;
-
-//SELECT Users.User_id, LinkUC.Chat_id, Chats.Name, Messages.Mes_id, Messages.Sender_id, Messages.Doc, Messages.text 
-//FROM Users JOIN LinkUC JOIN Chats JOIN Messages 
-//ON Users.User_id = 1 AND Users.User_id = LinkUC.User_id AND LinkUC.Chat_id = Chats.Chat_id AND Chats.Chat_id = Messages.Chat_id
 
 namespace IrisLib
 {
@@ -19,7 +11,6 @@ namespace IrisLib
     [DataContract]
     public class Database
     {
-        //Maybe change it when will realese to new path(this path from bin\debug
         [DataMember] private const string DBPath = "Data Source=..\\..\\..\\IrisHost\\Database\\database.db";
         [DataMember] public List<User> Users { get; set; }
 
@@ -190,7 +181,6 @@ namespace IrisLib
                         user.ID = UsersCountAsNextID;
                     }
 
-
                     connection.Open();
 
                     var command = connection.CreateCommand();
@@ -225,7 +215,6 @@ namespace IrisLib
             {
                 using (var connection = new SqliteConnection(DBPath))
                 {
-
                     connection.Open();
 
                     var command = connection.CreateCommand();
@@ -256,7 +245,6 @@ namespace IrisLib
                          WHERE Chat_id LIKE @id
                         ";
                         command.Parameters.AddWithValue("@id", Chats[i].ID);
-
 
                         using (var reader = command.ExecuteReader())
                         {
@@ -305,17 +293,14 @@ namespace IrisLib
                         }
 
                     }
-
                     connection.Close();
                 }
-
                 ChatsCountAsNextID = Chats.Count;
                 MessagesCountAsNextID = 0;
                 foreach (Chat chat in Chats)
                 {
                     MessagesCountAsNextID += chat.Messages.Count;
                 }
-
                 return true;
             }
             catch (Exception e)
@@ -382,7 +367,6 @@ namespace IrisLib
             {
                 return false;
             }
-
         }
 
         public bool AddMessageToChat(Message message, int chatID)
@@ -399,7 +383,6 @@ namespace IrisLib
             {
                 return false;
             }
-
         }
 
         public bool AddChatToDB(Chat chat)
@@ -438,20 +421,20 @@ namespace IrisLib
                         {
                             command.CommandText =
                             @"
-                        INSERT OR IGNORE 
-                        INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text','Doc','DateTime')
-                        VALUES (@Mes_id, @Chat_id, @Sender_id, @Text,@Doc, @DateTime)
-                        ";
+                            INSERT OR IGNORE 
+                            INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text','Doc','DateTime')
+                            VALUES (@Mes_id, @Chat_id, @Sender_id, @Text,@Doc, @DateTime)
+                            ";
                             command.Parameters.AddWithValue("@Doc", chat.Messages[i].Doc);
                         }
                         else
                         {
                             command.CommandText =
-                         @"
-                        INSERT OR IGNORE 
-                        INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text','DateTime')
-                        VALUES (@Mes_id, @Chat_id, @Sender_id, @Text, @DateTime)
-                        ";
+                            @"
+                            INSERT OR IGNORE 
+                            INTO 'Messages'('Mes_id','Chat_id', 'Sender_id', 'Text','DateTime')
+                            VALUES (@Mes_id, @Chat_id, @Sender_id, @Text, @DateTime)
+                            ";
                         }
                         command.Parameters.AddWithValue("@Mes_id", chat.Messages[i].ID);
                         command.Parameters.AddWithValue("@Chat_id", chat.ID);
@@ -465,11 +448,11 @@ namespace IrisLib
                     {
                         command = connection.CreateCommand();
                         command.CommandText =
-                        @"
-                        INSERT OR IGNORE 
-                        INTO 'LinkUC'('User_id','Chat_id', 'Rights', 'Muted')
-                        VALUES (@User_id, @Chat_id, @Rights, 0)
-                        ";
+                            @"
+                            INSERT OR IGNORE 
+                            INTO 'LinkUC'('User_id','Chat_id', 'Rights', 'Muted')
+                            VALUES (@User_id, @Chat_id, @Rights, 0)
+                            ";
                         command.Parameters.AddWithValue("@User_id", chat.Members[i].ID);
                         command.Parameters.AddWithValue("@Chat_id", chat.ID);
                         if (chat.RootID != chat.Members[i].ID)
@@ -484,11 +467,11 @@ namespace IrisLib
                     {
                         command = connection.CreateCommand();
                         command.CommandText =
-                        @"
-                        INSERT OR IGNORE 
-                        INTO 'LinkUC'('User_id','Chat_id', 'Rights', 'Muted')
-                        VALUES (@User_id, @Chat_id, @Rights, 1)
-                        ";
+                            @"
+                            INSERT OR IGNORE 
+                            INTO 'LinkUC'('User_id','Chat_id', 'Rights', 'Muted')
+                            VALUES (@User_id, @Chat_id, @Rights, 1)
+                            ";
                         command.Parameters.AddWithValue("@User_id", chat.SilentMembers[i].ID);
                         command.Parameters.AddWithValue("@Chat_id", chat.ID);
                         if (chat.RootID != chat.SilentMembers[i].ID)
@@ -512,7 +495,9 @@ namespace IrisLib
         public bool Update()
         {
             if (GetUsersFromDB() && GetChatsFromDB())
+            {
                 return true;
+            }
             return false;
         }
 
@@ -535,7 +520,6 @@ namespace IrisLib
         {
             try
             {
-
                 return true;
             }
             catch
@@ -585,8 +569,6 @@ namespace IrisLib
             }
         }
 
-
-        //дописать функцию: нужно загружать изменения и в сам файл БД тоже
         public bool MakeUserInChatSilent(int userID, int chatID)
         {
             Chat chat = GetChatFromList(chatID);
@@ -597,9 +579,7 @@ namespace IrisLib
                 {
                     using (var connection = new SqliteConnection(DBPath))
                     {
-
                         connection.Open();
-
                         var command = connection.CreateCommand();
                         command.CommandText =
                         @"
@@ -624,7 +604,6 @@ namespace IrisLib
             return false;
         }
 
-        //дописать функцию: нужно загружать изменения и в сам файл БД тоже
         public bool MakeUserInChatNotSilent(int userID, int chatID)
         {
             Chat chat = GetChatFromList(chatID);
@@ -635,7 +614,6 @@ namespace IrisLib
                 {
                     using (var connection = new SqliteConnection(DBPath))
                     {
-
                         connection.Open();
 
                         var command = connection.CreateCommand();

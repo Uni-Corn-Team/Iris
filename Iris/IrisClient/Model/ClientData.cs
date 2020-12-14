@@ -2,9 +2,6 @@
 using IrisClient.ServiceChat;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace IrisClient
@@ -18,18 +15,15 @@ namespace IrisClient
         public static MainWindow mainWindow = new MainWindow();
         public static bool isClose = true;
         public static int idOnServer = -1;
+        
         public ClientData()
         {
             client = new ServiceChatClient(new System.ServiceModel.InstanceContext(this));
-            // idOnServer = client.Connect(new User());
             client.Connect(new User());
-            //database.Update(client.SendDatabaseFirstTime());
         }
 
         public void DatabaseCallback(Database localDatabase)
         {
-            //database.Update(localDatabase);
-
             try
             {
                 int ID = -1;
@@ -45,9 +39,7 @@ namespace IrisClient
                     CurrentUser.CurrentChatID = ID;
                     mainWindow.lCurrentChatName.Content = database.GetChatFromList(CurrentUser.CurrentChatID).Name;
                 }
-
                 mainWindow.Redraw();
-
             }
             catch (Exception)
             {
@@ -75,10 +67,7 @@ namespace IrisClient
                     fs.Write(file.Binary, 0, file.Binary.Length);
                 }
             }
-            catch
-            {
-
-            }
+            catch { }
         }
 
         public void UserIdCallback(int id)

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+﻿using System.ServiceModel;
 
 namespace IrisLib
 {
     [ServiceContract(CallbackContract = typeof(IServerChatCallback))]
-    //[ServiceContract]
     public interface IServiceChat
     {
         [OperationContract(IsOneWay = true)]
@@ -53,8 +46,6 @@ namespace IrisLib
         [OperationContract(IsOneWay = true)]
         void MakeUserInChatNotSilent(int userID, int chatID);
     }
-
-
 
     public interface IServerChatCallback
     {

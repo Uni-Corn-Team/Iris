@@ -1,18 +1,5 @@
-﻿using IrisLib;
-using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
-using System.Windows.Media;
-//using System.Windows.Controls;
-//using System.Windows.Data;
-//using System.Windows.Documents;
-//using System.Windows.Input;
-//using System.Windows.Media;
-//using System.Windows.Media.Imaging;
-//using System.Windows.Shapes;
 
 namespace IrisClient
 {
@@ -21,8 +8,6 @@ namespace IrisClient
     /// </summary>
     public partial class AddUserWindow : Window
     {
-        private bool isShowID = true;
-        
         public AddUserWindow()
         {
             InitializeComponent();
@@ -55,20 +40,9 @@ namespace IrisClient
             }
         }
 
-        private void RemoveTextID(object sender, EventArgs e)
-        {
-            if(isShowID)
-            {
-                tbID.Text = null;
-                tbID.Foreground = Brushes.Black;
-                isShowID = false;
-            }
-        }
-        
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow.isWindowOpenAddUSer = false;
         }
-
     }
 }

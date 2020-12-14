@@ -124,7 +124,7 @@
         <TextBox Style="{DynamicResource TextBoxStyle1}" Background="#FFEBEAC9" Name ="tbAge" HorizontalAlignment="Left" Height="25" Margin="75,193,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style"/>
         <TextBox Style="{DynamicResource TextBoxStyle1}" Background="#FFEBEAC9" Name ="tbLogin" HorizontalAlignment="Left" Height="23" Margin="75,238,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
         <PasswordBox  Name ="tbPassword" Background="#FFEBEAC9" HorizontalAlignment="Left" Height="25" Margin="75,283,0,0"   VerticalAlignment="Top" Width="200" FontFamily="Bookman Old Style" />
-        <Button  Style="{DynamicResource ResourceKey =ButtonBorderStyle}" Foreground="#FFEBEAC9"   Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="75,335,0,0" VerticalAlignment="Top" Width="200" Height="25" Click="Button_Click_SignUp" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault="True">
+        <Button  Style="{DynamicResource ResourceKey =ButtonBorderStyle}" Foreground="#FFEBEAC9"   Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="75,335,0,0" VerticalAlignment="Top" Width="200" Height="25" Click="ButtonClickSignUp" BorderThickness="0" FontFamily="Bookman Old Style" IsDefault="True">
             <Button.Background>
                 <SolidColorBrush Color="White" Opacity="0.15"/>
             </Button.Background>
