@@ -217,7 +217,6 @@ namespace IrisLib
                     AND Chat_id = @chat_id
                     ";
                     command.Parameters.AddWithValue("@chat_id", ChatId);
-                    Users.Clear();
                     
                     using (var reader = command.ExecuteReader())
                     {
