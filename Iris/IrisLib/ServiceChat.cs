@@ -6,11 +6,23 @@ using System.ServiceModel;
 
 namespace IrisLib
 {
+    /// <summary>
+    /// Класс, реализующий интерфейс IServiceChat для описания работы сервера.
+    /// </summary>
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, IncludeExceptionDetailInFaults = true)]
     public class ServiceChat : IServiceChat
     {
+        /// <summary>
+        /// Список подключенных к серверу пользователей.
+        /// </summary>
         public List<User> currentlyConnectedUsers = new List<User>();
 
+        /// <summary>
+        /// Метод для получения пользователя из списка подключенных пользователей.
+        /// </summary>
+        /// <param name="Users"> список подключенных пользователей </param>
+        /// <param name="id"> идентификатор искомого пользователя </param>
+        /// <returns></returns>
         public User GetUserFromList(List<User> Users, int id)
         {
             for (int i = 0; i < Users.Count(); i++)
@@ -21,10 +33,20 @@ namespace IrisLib
             return null;
         }
 
+        /// <summary>
+        /// Объект базы данных.
+        /// </summary>
         Database database = new Database();
 
+        /// <summary>
+        /// Идентификатор для следующего подключаемого пользователя.
+        /// </summary>
         int nextId = 1;
 
+        /// <summary>
+        /// Метод соединения пользователя с сервером.
+        /// </summary>
+        /// <param name="user"> подключаемый пользователь </param>
         public void Connect(User user)
         {
             user.ID = nextId;
@@ -38,6 +60,10 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод отключения пользователя от сервера.
+        /// </summary>
+        /// <param name="user"> отключаемый пользователь </param>
         public void Disconnect(User user)
         {
             Console.WriteLine("Remove");
@@ -49,6 +75,9 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод отправки базы данных всем клиентам.
+        /// </summary>
         public void SendDatabaseToClients()
         {
             Console.WriteLine("SendDatabaseToClients");
@@ -60,6 +89,12 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод получения сервером сообщения от клиента.
+        /// </summary>
+        /// <param name="sender"> отправитель сообщения </param>
+        /// <param name="messageText"> текст сообщения </param>
+        /// <param name="chatID"> идентификатор чата, в который отправлено сообщение </param>
         public void GetMessageFromClient(User sender, string messageText, int chatID)
         {
             Console.WriteLine("GetMessageFromClient");
@@ -70,6 +105,10 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод получения (регитрации) нового пользователя.
+        /// </summary>
+        /// <param name="user"> регистрируемый пользователь </param>
         public void GetNewUser(User user)
         {
             Console.WriteLine("GetNewUser");
@@ -79,6 +118,12 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод для добавления пользователя в чат.
+        /// </summary>
+        /// <param name="sender"> администратор чата </param>
+        /// <param name="user"> добавляемый пользователь </param>
+        /// <param name="chatID"> идентификатор чата, в который происходит добавление </param>
         public void AddUserToChat(User sender, User user, int chatID)
         {
             Console.WriteLine("AddUserToChat");
@@ -95,6 +140,11 @@ namespace IrisLib
 
         }
 
+        /// <summary>
+        /// Метод для осздания нового чата.
+        /// </summary>
+        /// <param name="sender"> создатель (администратор) чата </param>
+        /// <param name="chat"> создаваемый чат </param>
         public void CreateNewChat(User sender, Chat chat)
         {
             Console.WriteLine("CreateNewChat");
@@ -104,6 +154,10 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод для изменения пароля пользователя.
+        /// </summary>
+        /// <param name="user"> редактируемый пользователь </param>
         public void ChangePassword(User user)
         {
             Console.WriteLine("ChangePassword");
@@ -113,6 +167,10 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод для первой отправке базы данных клиенту.
+        /// </summary>
+        /// <returns></returns>
         public Database SendDatabaseFirstTime()
         {
             Console.WriteLine("SendDatabaseFirstTime");
@@ -120,6 +178,12 @@ namespace IrisLib
             return database;
         }
 
+        /// <summary>
+        /// Метод для отправки файла на сервер.
+        /// </summary>
+        /// <param name="sender"> отправитель </param>
+        /// <param name="chatId"> чат, в котором отправили файл </param>
+        /// <param name="file"> отправляемый файл </param>
         public void SendFileToHost(User sender, int chatId, File file)
         {
             Console.WriteLine("SendFileToHost");
@@ -136,6 +200,12 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод для отправки файла с сервера.
+        /// </summary>
+        /// <param name="filename"> имя отправляемого файла </param>
+        /// <param name="userId"> идентификатор пользователя, запросившего файл </param>
+        /// <param name="chatID"> идентификатор чата, в котором находится файл </param>
         public void GetFileFromHost(string filename, int userId, int chatID)
         {
             Console.WriteLine("GetFileToHost");
@@ -168,6 +238,12 @@ namespace IrisLib
             }
         }
 
+        /// <summary>
+        /// Метод для удаления пользователя из чата.
+        /// </summary>
+        /// <param name="userID"> идентификатор удаляемого пользователя </param>
+        /// <param name="chatID"> идентификатор чата, из которого удаляется пользователь </param>
+        /// <param name="isKicked"> флаг, был пользователь удален кем-то или самостоятельно </param>
         public void RemoveUserFromChat(int userID, int chatID, bool isKicked)
         {
             Console.WriteLine("RemoveUserFromChat");
@@ -190,6 +266,11 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод для блокировки отправки сообщений пользователем в конкретный чат.
+        /// </summary>
+        /// <param name="userID"> идентификатор блокируемого пользователя </param>
+        /// <param name="chatID"> идентификатор чата, в котором пользователя блокируют </param>
         public void MakeUserInChatSilent(int userID, int chatID)
         {
             Console.WriteLine("MakeUserInChatSilent");
@@ -204,6 +285,11 @@ namespace IrisLib
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Метод для разблокировки отправки сообщений пользователем в конкретный чат.
+        /// </summary>
+        /// <param name="userID"> идентификатор пользователя </param>
+        /// <param name="chatID"> идентификатор чата, в котором пользователя разблокируют </param>
         public void MakeUserInChatNotSilent(int userID, int chatID)
         {
             Console.WriteLine("MakeUserInChatNotSilent");

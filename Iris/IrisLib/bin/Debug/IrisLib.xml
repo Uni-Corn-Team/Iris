@@ -273,20 +273,351 @@
             <param name="chatID"> идентификатор чата </param>
             <returns> true(в случае успеха) либо false(в случае возникновения ошибок) </returns>
         </member>
+        <member name="T:IrisLib.File">
+            <summary>
+            Класс для описания объекта "Файл".
+            </summary>
+        </member>
+        <member name="P:IrisLib.File.Name">
+            <summary>
+            Название файла.
+            </summary>
+        </member>
+        <member name="P:IrisLib.File.Binary">
+            <summary>
+            Бинарное представление файла.
+            </summary>
+        </member>
+        <member name="T:IrisLib.IServiceChat">
+            <summary>
+            Интерфейс, описывающий работу сервера.
+            </summary>
+        </member>
+        <member name="M:IrisLib.IServiceChat.Connect(IrisLib.User)">
+            <summary>
+            Метод соединения пользователя с сервером.
+            </summary>
+            <param name="user"> подключаемый пользователь </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.Disconnect(IrisLib.User)">
+            <summary>
+            Метод отключения пользователя от сервера.
+            </summary>
+            <param name="user"> отключаемый пользователь </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.SendDatabaseToClients">
+            <summary>
+            Метод отправки базы данных всем клиентам.
+            </summary>
+        </member>
+        <member name="M:IrisLib.IServiceChat.GetMessageFromClient(IrisLib.User,System.String,System.Int32)">
+            <summary>
+            Метод получения сервером сообщения от клиента.
+            </summary>
+            <param name="sender"> отправитель сообщения </param>
+            <param name="messageText"> текст сообщения </param>
+            <param name="chatID"> идентификатор чата, в который отправлено сообщение </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.GetNewUser(IrisLib.User)">
+            <summary>
+            Метод получения (регитрации) нового пользователя.
+            </summary>
+            <param name="user"> регистрируемый пользователь </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.SendDatabaseFirstTime">
+            <summary>
+            Метод для первой отправке базы данных клиенту.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IrisLib.IServiceChat.AddUserToChat(IrisLib.User,IrisLib.User,System.Int32)">
+            <summary>
+            Метод для добавления пользователя в чат.
+            </summary>
+            <param name="sender"> администратор чата </param>
+            <param name="user"> добавляемый пользователь </param>
+            <param name="chatID"> идентификатор чата, в который происходит добавление </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.CreateNewChat(IrisLib.User,IrisLib.Chat)">
+            <summary>
+            Метод для осздания нового чата.
+            </summary>
+            <param name="sender"> создатель (администратор) чата </param>
+            <param name="chat"> создаваемый чат </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.ChangePassword(IrisLib.User)">
+            <summary>
+            Метод для изменения пароля пользователя.
+            </summary>
+            <param name="user"> редактируемый пользователь </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.SendFileToHost(IrisLib.User,System.Int32,IrisLib.File)">
+            <summary>
+            Метод для отправки файла на сервер.
+            </summary>
+            <param name="sender"> отправитель </param>
+            <param name="chat"> чат, в котором отправили файл </param>
+            <param name="file"> отправляемый файл </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.GetFileFromHost(System.String,System.Int32,System.Int32)">
+            <summary>
+            Метод для отправки файла с сервера.
+            </summary>
+            <param name="filename"> имя отправляемого файла </param>
+            <param name="userId"> идентификатор пользователя, запросившего файл </param>
+            <param name="chatID"> идентификатор чата, в котором находится файл </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.RemoveUserFromChat(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Метод для удаления пользователя из чата.
+            </summary>
+            <param name="userID"> идентификатор удаляемого пользователя </param>
+            <param name="chatID"> идентификатор чата, из которого удаляется пользователь </param>
+            <param name="isKicked"> флаг, был пользователь удален кем-то или самостоятельно </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.MakeUserInChatSilent(System.Int32,System.Int32)">
+            <summary>
+            Метод для блокировки отправки сообщений пользователем в конкретный чат.
+            </summary>
+            <param name="userID"> идентификатор блокируемого пользователя </param>
+            <param name="chatID"> идентификатор чата, в котором пользователя блокируют </param>
+        </member>
+        <member name="M:IrisLib.IServiceChat.MakeUserInChatNotSilent(System.Int32,System.Int32)">
+            <summary>
+            Метод для разблокировки отправки сообщений пользователем в конкретный чат.
+            </summary>
+            <param name="userID"> идентификатор пользователя </param>
+            <param name="chatID"> идентификатор чата, в котором пользователя разблокируют </param>
+        </member>
+        <member name="T:IrisLib.IServerChatCallback">
+            <summary>
+            Интерфейс, описывающий работу клиента.
+            </summary>
+        </member>
+        <member name="M:IrisLib.IServerChatCallback.DatabaseCallback(IrisLib.Database)">
+            <summary>
+            Метод для получения базы данных от сервера.
+            </summary>
+            <param name="database"> получаемая база данных </param>
+        </member>
+        <member name="M:IrisLib.IServerChatCallback.FileCallback(IrisLib.File)">
+            <summary>
+            Метод для получения файла с сервера.
+            </summary>
+            <param name="file"> получаемый файл </param>
+        </member>
+        <member name="M:IrisLib.IServerChatCallback.UserIdCallback(System.Int32)">
+            <summary>
+            Метод для получения идентификатора пользователя от сервера.
+            </summary>
+            <param name="id"> получаемый идентификатор пользователя </param>
+        </member>
+        <member name="T:IrisLib.ServiceChat">
+            <summary>
+            Класс, реализующий интерфейс IServiceChat для описания работы сервера.
+            </summary>
+        </member>
+        <member name="F:IrisLib.ServiceChat.currentlyConnectedUsers">
+            <summary>
+            Список подключенных к серверу пользователей.
+            </summary>
+        </member>
+        <member name="M:IrisLib.ServiceChat.GetUserFromList(System.Collections.Generic.List{IrisLib.User},System.Int32)">
+            <summary>
+            Метод для получения пользователя из списка подключенных пользователей.
+            </summary>
+            <param name="Users"> список подключенных пользователей </param>
+            <param name="id"> идентификатор искомого пользователя </param>
+            <returns></returns>
+        </member>
+        <member name="F:IrisLib.ServiceChat.database">
+            <summary>
+            Объект базы данных.
+            </summary>
+        </member>
+        <member name="F:IrisLib.ServiceChat.nextId">
+            <summary>
+            Идентификатор для следующего подключаемого пользователя.
+            </summary>
+        </member>
+        <member name="M:IrisLib.ServiceChat.Connect(IrisLib.User)">
+            <summary>
+            Метод соединения пользователя с сервером.
+            </summary>
+            <param name="user"> подключаемый пользователь </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.Disconnect(IrisLib.User)">
+            <summary>
+            Метод отключения пользователя от сервера.
+            </summary>
+            <param name="user"> отключаемый пользователь </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.SendDatabaseToClients">
+            <summary>
+            Метод отправки базы данных всем клиентам.
+            </summary>
+        </member>
+        <member name="M:IrisLib.ServiceChat.GetMessageFromClient(IrisLib.User,System.String,System.Int32)">
+            <summary>
+            Метод получения сервером сообщения от клиента.
+            </summary>
+            <param name="sender"> отправитель сообщения </param>
+            <param name="messageText"> текст сообщения </param>
+            <param name="chatID"> идентификатор чата, в который отправлено сообщение </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.GetNewUser(IrisLib.User)">
+            <summary>
+            Метод получения (регитрации) нового пользователя.
+            </summary>
+            <param name="user"> регистрируемый пользователь </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.AddUserToChat(IrisLib.User,IrisLib.User,System.Int32)">
+            <summary>
+            Метод для добавления пользователя в чат.
+            </summary>
+            <param name="sender"> администратор чата </param>
+            <param name="user"> добавляемый пользователь </param>
+            <param name="chatID"> идентификатор чата, в который происходит добавление </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.CreateNewChat(IrisLib.User,IrisLib.Chat)">
+            <summary>
+            Метод для осздания нового чата.
+            </summary>
+            <param name="sender"> создатель (администратор) чата </param>
+            <param name="chat"> создаваемый чат </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.ChangePassword(IrisLib.User)">
+            <summary>
+            Метод для изменения пароля пользователя.
+            </summary>
+            <param name="user"> редактируемый пользователь </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.SendDatabaseFirstTime">
+            <summary>
+            Метод для первой отправке базы данных клиенту.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IrisLib.ServiceChat.SendFileToHost(IrisLib.User,System.Int32,IrisLib.File)">
+            <summary>
+            Метод для отправки файла на сервер.
+            </summary>
+            <param name="sender"> отправитель </param>
+            <param name="chatId"> чат, в котором отправили файл </param>
+            <param name="file"> отправляемый файл </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.GetFileFromHost(System.String,System.Int32,System.Int32)">
+            <summary>
+            Метод для отправки файла с сервера.
+            </summary>
+            <param name="filename"> имя отправляемого файла </param>
+            <param name="userId"> идентификатор пользователя, запросившего файл </param>
+            <param name="chatID"> идентификатор чата, в котором находится файл </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.RemoveUserFromChat(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Метод для удаления пользователя из чата.
+            </summary>
+            <param name="userID"> идентификатор удаляемого пользователя </param>
+            <param name="chatID"> идентификатор чата, из которого удаляется пользователь </param>
+            <param name="isKicked"> флаг, был пользователь удален кем-то или самостоятельно </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.MakeUserInChatSilent(System.Int32,System.Int32)">
+            <summary>
+            Метод для блокировки отправки сообщений пользователем в конкретный чат.
+            </summary>
+            <param name="userID"> идентификатор блокируемого пользователя </param>
+            <param name="chatID"> идентификатор чата, в котором пользователя блокируют </param>
+        </member>
+        <member name="M:IrisLib.ServiceChat.MakeUserInChatNotSilent(System.Int32,System.Int32)">
+            <summary>
+            Метод для разблокировки отправки сообщений пользователем в конкретный чат.
+            </summary>
+            <param name="userID"> идентификатор пользователя </param>
+            <param name="chatID"> идентификатор чата, в котором пользователя разблокируют </param>
+        </member>
+        <member name="T:IrisLib.User">
+            <summary>
+            Класс для описания объекта "Пользователь".
+            </summary>
+        </member>
+        <member name="P:IrisLib.User.Name">
+            <summary>
+            Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:IrisLib.User.Surname">
+            <summary>
+            Фамилия пользователя.
+            </summary>
+        </member>
         <member name="P:IrisLib.User.Nickname">
             <summary>
-            user's name
+            Никнейм (псевдоним) пользователя.
+            </summary>
+        </member>
+        <member name="P:IrisLib.User.Age">
+            <summary>
+            Возраст пользователя.
+            </summary>
+        </member>
+        <member name="P:IrisLib.User.Login">
+            <summary>
+            Логин пользователя.
+            </summary>
+        </member>
+        <member name="P:IrisLib.User.Password">
+            <summary>
+            Пароль пользователя.
             </summary>
         </member>
         <member name="P:IrisLib.User.ID">
             <summary>
-            user's id
+            Идентификатор пользователя.
             </summary>
+        </member>
+        <member name="P:IrisLib.User.CurrentChatID">
+            <summary>
+            Идентификатор открытого у пользователя на данный момент чата.
+            </summary>
+        </member>
+        <member name="M:IrisLib.User.#ctor">
+            <summary>
+            Конструктор по умолчанию.
+            Инициализирует CurrentChatID значением -1.
+            </summary>
+        </member>
+        <member name="M:IrisLib.User.#ctor(System.Int32,System.String,System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            Конструктор с параметрами.
+            </summary>
+            <param name="id"> идентификатор пользователя </param>
+            <param name="name"> имя пользователя </param>
+            <param name="surname"> фамилия пользователя </param>
+            <param name="nickname"> никнейм (псевдоним) пользователя </param>
+            <param name="age"> возраст пользователя </param>
+            <param name="login"> логин пользователя </param>
+            <param name="password"> пароль пользователя </param>
+        </member>
+        <member name="M:IrisLib.User.ToString">
+            <summary>
+            Перегруженный метод преобразования объекта пользователя к строке.
+            Строка содержит полную информацию о пользователе.
+            </summary>
+            <returns></returns>
         </member>
         <member name="P:IrisLib.User.OperationContext">
             <summary>
-            information about connection user to server
+            Информачия о соединении клиента с сервером.
             </summary>
+        </member>
+        <member name="M:IrisLib.User.Equals(System.Object)">
+            <summary>
+            Перегруженный метод для определения эквивалентности пользователей.
+            Сравнивает по значениям всех полей.
+            </summary>
+            <param name="other"> пользователь, с которым проводится сравнение </param>
+            <returns> true(если объекты эквивалентны) либо false(если объекты не эквивалентны) </returns>
         </member>
     </members>
 </doc>

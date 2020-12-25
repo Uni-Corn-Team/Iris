@@ -4,33 +4,72 @@ using System.Runtime.Serialization;
 
 namespace IrisLib
 {
+    /// <summary>
+    /// Класс для описания объекта "Пользователь".
+    /// </summary>
     [Serializable]
     [DataContract]
     public class User
     {
+        /// <summary>
+        /// Имя пользователя.
+        /// </summary>
         [DataMember] public string Name { get; set; }
+
+        /// <summary>
+        /// Фамилия пользователя.
+        /// </summary>
         [DataMember] public string Surname { get; set; }
 
         /// <summary>
-        /// user's name
+        /// Никнейм (псевдоним) пользователя.
         /// </summary>
         [DataMember] public string Nickname { get; set; }
+
+        /// <summary>
+        /// Возраст пользователя.
+        /// </summary>
         [DataMember] public int Age { get; set; }
+
+        /// <summary>
+        /// Логин пользователя.
+        /// </summary>
         [DataMember] public string Login { get; set; }
+
+        /// <summary>
+        /// Пароль пользователя.
+        /// </summary>
         [DataMember] public string Password { get; set; }
 
         /// <summary>
-        /// user's id
+        /// Идентификатор пользователя.
         /// </summary>
         [DataMember] public int ID { get; set; }
 
+        /// <summary>
+        /// Идентификатор открытого у пользователя на данный момент чата.
+        /// </summary>
         [DataMember] public int CurrentChatID { get; set; }
 
+        /// <summary>
+        /// Конструктор по умолчанию.
+        /// Инициализирует CurrentChatID значением -1.
+        /// </summary>
         public User()
         {
             CurrentChatID = -1;
         }
-        
+
+        /// <summary>
+        /// Конструктор с параметрами.
+        /// </summary>
+        /// <param name="id"> идентификатор пользователя </param>
+        /// <param name="name"> имя пользователя </param>
+        /// <param name="surname"> фамилия пользователя </param>
+        /// <param name="nickname"> никнейм (псевдоним) пользователя </param>
+        /// <param name="age"> возраст пользователя </param>
+        /// <param name="login"> логин пользователя </param>
+        /// <param name="password"> пароль пользователя </param>
         public User(int id, string name, string surname, string nickname, int age, string login, string password)
         {
             this.ID = id;
@@ -42,16 +81,27 @@ namespace IrisLib
             this.Password = password;
         }
 
+        /// <summary>
+        /// Перегруженный метод преобразования объекта пользователя к строке.
+        /// Строка содержит полную информацию о пользователе.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return "User Id: " + this.ID + " Name: " + this.Name + " Surname: " + this.Surname + " Nickname: " + this.Nickname + " Login: " + this.Login + " Password: " + this.Password + "\n";
         }
 
         /// <summary>
-        /// information about connection user to server
+        /// Информачия о соединении клиента с сервером.
         /// </summary>
         public OperationContext OperationContext { get; set; }
 
+        /// <summary>
+        /// Перегруженный метод для определения эквивалентности пользователей.
+        /// Сравнивает по значениям всех полей.
+        /// </summary>
+        /// <param name="other"> пользователь, с которым проводится сравнение </param>
+        /// <returns> true(если объекты эквивалентны) либо false(если объекты не эквивалентны) </returns>
         public override bool Equals(Object other)
         {
             User user = other as User;
