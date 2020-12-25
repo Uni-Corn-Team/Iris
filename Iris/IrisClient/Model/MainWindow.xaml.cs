@@ -11,11 +11,29 @@ namespace IrisClient
     /// </summary>
     public partial class MainWindow : Window, ServiceChat.IServiceChatCallback
     {
+        /// <summary>
+        /// Флаг наличия открытого окна ChangePassword.
+        /// </summary>
         public static bool isWindowOpenChangePassword = false;
-        public static bool isWindowOpenAddUSer = false;
+
+        /// <summary>
+        /// Флаг наличия открытого окна AddUser.
+        /// </summary>
+        public static bool isWindowOpenAddUser = false;
+
+        /// <summary>
+        /// Флаг наличия открытого окна CreateChat.
+        /// </summary>
         public static bool isWindowOpenCreateChat = false;
+
+        /// <summary>
+        /// Индекс выбранного в списке пользователя.
+        /// </summary>
         private int selectedUserID = -1;
 
+        /// <summary>
+        /// Конструктор по умолчанию.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +49,11 @@ namespace IrisClient
             }
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Выход".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickExit(object sender, RoutedEventArgs e)
         {
             ClientData.CurrentUser = new User();
@@ -41,8 +64,11 @@ namespace IrisClient
             this.Close();
         }
 
-        private void WindowLoaded(object sender, RoutedEventArgs e){}
-
+        /// <summary>
+        /// Метод переотрисовки окна.
+        /// Нужен для обновления списков чатов, сообщений, участников чата.
+        /// Вызывается после получения новой базы данных от сервера.
+        /// </summary>
         public void Redraw()
         {
             lbCurrentDialog.Items.Clear();
@@ -100,6 +126,10 @@ namespace IrisClient
             }
         }
 
+        /// <summary>
+        /// Метод для получения базы данных от сервера.
+        /// </summary>
+        /// <param name="database"></param>
         public void DatabaseCallback(Database database)
         {
             int ID = -1;
@@ -115,6 +145,11 @@ namespace IrisClient
             Redraw();
         }
 
+        /// <summary>
+        /// Метод для обработки события закрытия окна.
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         public void WindowClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (ClientData.isClose)
@@ -127,11 +162,11 @@ namespace IrisClient
             }
         }
 
-        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            ClientData.client.Disconnect(ClientData.CurrentUser);
-        }
-
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Отправить сообщение".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickSendMessage(object sender, RoutedEventArgs e)
         {
             if (ClientData.client != null && ClientData.CurrentUser.CurrentChatID != -1 && tbMessage.Text != null && tbMessage.Text != "")
@@ -144,6 +179,11 @@ namespace IrisClient
             }
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Профиль".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickProfile(object sender, RoutedEventArgs e)
         {
             SetButtonsHiddenAndDisabled();
@@ -161,6 +201,11 @@ namespace IrisClient
             lbProfile.Items.Add("Nickname:\n" + ClientData.CurrentUser.Nickname + "\n");
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Участники чата".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickParticipian(object sender, RoutedEventArgs e)
         {
             if (ClientData.CurrentUser.CurrentChatID != -1)
@@ -198,6 +243,11 @@ namespace IrisClient
             }
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Создать чат".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickNewChat(object sender, RoutedEventArgs e)
         {
             if (!isWindowOpenCreateChat)
@@ -208,6 +258,11 @@ namespace IrisClient
             ButtonClickShowChats(sender, e);
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Изменить пароль".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickChangePassword(object sender, RoutedEventArgs e)
         {
             if (!isWindowOpenChangePassword)
@@ -217,6 +272,11 @@ namespace IrisClient
             }
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Список чатов".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickShowChats(object sender, RoutedEventArgs e)
         {
             SetButtonsHiddenAndDisabled();
@@ -237,18 +297,28 @@ namespace IrisClient
 
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Добавить пользователя".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickAddUser(object sender, RoutedEventArgs e)
         {
             if (ClientData.CurrentUser.CurrentChatID != -1)
             {
-                if (!isWindowOpenAddUSer)
+                if (!isWindowOpenAddUser)
                 {
                     new AddUserWindow().Show();
-                    isWindowOpenAddUSer = true;
+                    isWindowOpenAddUser = true;
                 }
             }
         }
 
+        /// <summary>
+        /// Метод для обработки события выбора чата в списке чатов.
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void SelectionDialog(object sender, RoutedEventArgs e)
         {
             lbCurrentDialog.Items.Clear();
@@ -269,6 +339,11 @@ namespace IrisClient
             bAddUser.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Показать файлы".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickShowFiles(object sender, RoutedEventArgs e)
         {
             SetButtonsHiddenAndDisabled();
@@ -284,6 +359,11 @@ namespace IrisClient
             bSaveFile.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Сохранить файл".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickSaveFile(object sender, RoutedEventArgs e)
         {
             lSavedFile.Visibility = Visibility.Visible;
@@ -301,6 +381,11 @@ namespace IrisClient
             }
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Отправить файл".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickSendFile(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -340,6 +425,11 @@ namespace IrisClient
             ClientData.client.SendFileToHost(ClientData.CurrentUser, ClientData.CurrentUser.CurrentChatID, file);
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Покинуть чат".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickExitFromChat(object sender, RoutedEventArgs e)
         {
             lbCurrentDialog.Items.Clear();
@@ -347,6 +437,11 @@ namespace IrisClient
             ClientData.client.RemoveUserFromChat(ClientData.CurrentUser.ID, ClientData.CurrentUser.CurrentChatID, false);
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Удалить пользователя из чата".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickRemoveUserFromChat(object sender, RoutedEventArgs e)
         {
             if (selectedUserID != -1 && ClientData.CurrentUser.ID != selectedUserID)
@@ -365,6 +460,11 @@ namespace IrisClient
             bMakeSilent.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Заблокировать/разблокировать пользователя".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickMakeSilentOrNot(object sender, RoutedEventArgs e)
         {
             if (selectedUserID != -1 && ClientData.CurrentUser.ID != selectedUserID)
@@ -391,6 +491,11 @@ namespace IrisClient
             bMakeSilent.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Метод для обработки события выбора пользователя в списке участников чата.
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void SelectionUser(object sender, RoutedEventArgs e)
         {
             if (lbChatParticipant.SelectedItem != null)
@@ -424,6 +529,9 @@ namespace IrisClient
             }
         }
 
+        /// <summary>
+        /// Метод для сокрытия и дезактивации всех кнопок окна.
+        /// </summary>
         private void SetButtonsHiddenAndDisabled()
         {
             lbDialogs.IsEnabled = false;
@@ -463,11 +571,19 @@ namespace IrisClient
             bMakeSilent.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Метод для получения файла с сервера.
+        /// </summary>
+        /// <param name="file"></param>
         public void FileCallback(IrisLib.File file)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Метод для получения идентификатора пользователя от сервера.
+        /// </summary>
+        /// <param name="id"></param>
         public void UserIdCallback(int id)
         {
             throw new NotImplementedException();

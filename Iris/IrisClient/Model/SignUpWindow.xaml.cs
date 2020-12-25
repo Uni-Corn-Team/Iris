@@ -9,12 +9,20 @@ namespace IrisClient
     /// </summary>
     public partial class SignUpWindow : Window
     {
+        /// <summary>
+        /// Конструктор по умолчанию.
+        /// </summary>
         public SignUpWindow()
         {
             InitializeComponent();
             ClientData.isClose = true;
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Зарегистрироваться".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickSignUp(object sender, RoutedEventArgs e)
         {
             if (ClientData.database.GetUserFromList(tbLogin.Text) == null)
@@ -43,6 +51,11 @@ namespace IrisClient
             }
         }
 
+        /// <summary>
+        /// Метод для обработки события нажания на кнопку "Назад".
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickBack(object sender, EventArgs e)
         {       
             new SignInWindow().Show();
@@ -50,6 +63,11 @@ namespace IrisClient
             this.Close();
         }
 
+        /// <summary>
+        /// Метод для обработки события закрытия окна.
+        /// </summary>
+        /// <param name="sender"> объект, инициировавший событие </param>
+        /// <param name="e"> аргумент, хранящий информацию о событии </param>
         void WindowClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (ClientData.isClose)
