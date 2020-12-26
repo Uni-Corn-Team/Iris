@@ -85,6 +85,7 @@ namespace IrisLib
             {
                 user.OperationContext.GetCallbackChannel<IServerChatCallback>().DatabaseCallback(database);
                 Console.WriteLine(user.ToString());
+//                Console.WriteLine(database.ToString());
             }
             Console.WriteLine();
         }
