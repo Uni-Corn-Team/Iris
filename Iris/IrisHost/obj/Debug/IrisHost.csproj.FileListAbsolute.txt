@@ -461,3 +461,4 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.CopyC
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisHost\obj\Debug\IrisHost.exe
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisHost\obj\Debug\IrisHost.pdb
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisHost\bin\Debug\IrisLib.xml
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\IrisLib.xml

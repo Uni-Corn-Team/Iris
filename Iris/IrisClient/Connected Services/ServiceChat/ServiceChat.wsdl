@@ -259,7 +259,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8302/</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-MFNAUQT\maksi</Upn>
+          <Upn>DESKTOP-EI9OA8V\gusar</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

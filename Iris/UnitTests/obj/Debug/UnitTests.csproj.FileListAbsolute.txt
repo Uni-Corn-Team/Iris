@@ -92,3 +92,4 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\UnitTests\obj\Debug\UnitTests.csproj.Cor
 C:\Users\Daria\Desktop\КПО\Iris\Iris\UnitTests\obj\Debug\UnitTests.csproj.CopyComplete
 C:\Users\Daria\Desktop\КПО\Iris\Iris\UnitTests\obj\Debug\UnitTests.dll
 C:\Users\Daria\Desktop\КПО\Iris\Iris\UnitTests\obj\Debug\UnitTests.pdb
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\IrisLib.xml

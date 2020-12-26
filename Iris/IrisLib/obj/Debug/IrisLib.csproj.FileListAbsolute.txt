@@ -440,3 +440,5 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.dll
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.pdb
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\bin\Debug\IrisLib.xml
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\bin\Debug\IrisLib.xml
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Debug\IrisLib.csprojAssemblyReference.cache

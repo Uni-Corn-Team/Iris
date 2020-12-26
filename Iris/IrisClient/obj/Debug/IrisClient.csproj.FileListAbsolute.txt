@@ -547,3 +547,4 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisClient\obj\Debug\IrisClient.csproj.CopyCo
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisClient\obj\Debug\IrisClient.exe
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisClient\obj\Debug\IrisClient.pdb
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisClient\bin\Debug\IrisLib.xml
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisClient\bin\Debug\IrisLib.xml
