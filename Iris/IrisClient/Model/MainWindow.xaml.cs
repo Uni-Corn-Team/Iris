@@ -388,41 +388,47 @@ namespace IrisClient
         /// <param name="e"> аргумент, хранящий информацию о событии </param>
         private void ButtonClickSendFile(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-            Nullable<bool> result = dlg.ShowDialog();
-            if (result == true)
+            if (ClientData.client != null && ClientData.CurrentUser.CurrentChatID != -1)
             {
-                string filename = dlg.FileName;
+                if (!ClientData.database.GetChatFromList(ClientData.CurrentUser.CurrentChatID).IsUserInChatSilent(ClientData.CurrentUser.ID))
+                {
+                    Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+                    Nullable<bool> result = dlg.ShowDialog();
+                    if (result == true)
+                    {
+                        string filename = dlg.FileName;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    System.IO.StreamReader streamReader;
+                    IrisLib.File file = new IrisLib.File();
+
+                    streamReader = new System.IO.StreamReader(dlg.FileName);
+                    FileStream stream = (FileStream)dlg.OpenFile();
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        stream.CopyTo(memoryStream);
+                        file.Binary = memoryStream.ToArray();
+                        file.Name = dlg.FileName.Split(new char[] { '\\' })[dlg.FileName.Split(new char[] { '\\' }).Length - 1];
+                    }
+
+                    if (ClientData.database.GetFilesFromDB(ClientData.CurrentUser.CurrentChatID).Contains(file.Name))
+                    {
+                        tbSavedFile.Text = "Файл с таким именем уже существует";
+                        lSavedFile.Visibility = Visibility.Visible;
+                        return;
+                    }
+
+                    ButtonClickShowFiles(sender, e);
+                    streamReader.Close();
+
+                    ClientData.client.SendFileToHost(ClientData.CurrentUser, ClientData.CurrentUser.CurrentChatID, file);
+                }
             }
-            else
-            {
-                return;
-            }
-
-            System.IO.StreamReader streamReader;
-            IrisLib.File file = new IrisLib.File();
-
-            streamReader = new System.IO.StreamReader(dlg.FileName);
-            FileStream stream = (FileStream)dlg.OpenFile();
-            using (var memoryStream = new MemoryStream())
-            {
-                stream.CopyTo(memoryStream);
-                file.Binary = memoryStream.ToArray();
-                file.Name = dlg.FileName.Split(new char[] { '\\' })[dlg.FileName.Split(new char[] { '\\' }).Length - 1];
-            }
-
-            if (ClientData.database.GetFilesFromDB(ClientData.CurrentUser.CurrentChatID).Contains(file.Name))
-            {
-                tbSavedFile.Text = "Файл с таким именем уже существует";
-                lSavedFile.Visibility = Visibility.Visible;
-                return;
-            }
-
-            ButtonClickShowFiles(sender, e);
-            streamReader.Close();
-
-            ClientData.client.SendFileToHost(ClientData.CurrentUser, ClientData.CurrentUser.CurrentChatID, file);
         }
 
         /// <summary>
