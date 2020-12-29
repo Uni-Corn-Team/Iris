@@ -229,7 +229,6 @@ C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.Cor
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.CopyComplete
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.exe
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisHost\obj\Debug\IrisHost.pdb
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\IrisHost.exe
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\IrisLib.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\Microsoft.Data.Sqlite.dll
@@ -316,8 +315,6 @@ C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.CoreCom
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisHost\obj\Debug\IrisHost.csproj.CopyComplete
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisHost\obj\Debug\IrisHost.exe
 C:\Users\Senjor\Desktop\KPO\Iris\Iris\IrisHost\obj\Debug\IrisHost.pdb
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\IrisHost.exe.config
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\IrisHost.pdb
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
@@ -462,3 +459,6 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisHost\obj\Debug\IrisHost.exe
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisHost\obj\Debug\IrisHost.pdb
 C:\Users\Daria\Desktop\КПО\Iris\Iris\IrisHost\bin\Debug\IrisLib.xml
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\IrisLib.xml
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisHost\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll

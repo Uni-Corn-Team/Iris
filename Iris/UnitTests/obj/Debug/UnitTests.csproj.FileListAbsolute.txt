@@ -2,9 +2,6 @@ E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\obj\Debug\UnitTests.csprojAssemblyR
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\obj\Debug\UnitTests.csproj.CoreCompileInputs.cache
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\obj\Debug\UnitTests.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\obj\Debug\UnitTests.pdb
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
-E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -93,3 +90,6 @@ C:\Users\Daria\Desktop\КПО\Iris\Iris\UnitTests\obj\Debug\UnitTests.csproj.Cop
 C:\Users\Daria\Desktop\КПО\Iris\Iris\UnitTests\obj\Debug\UnitTests.dll
 C:\Users\Daria\Desktop\КПО\Iris\Iris\UnitTests\obj\Debug\UnitTests.pdb
 E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\IrisLib.xml
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\UnitTests\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll

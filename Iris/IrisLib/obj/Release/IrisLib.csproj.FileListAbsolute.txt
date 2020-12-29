@@ -145,3 +145,4 @@ C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Release\IrisLib.csproj.Cor
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Release\IrisLib.csproj.CopyComplete
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Release\IrisLib.dll
 C:\Users\maksi\Desktop\KPO_IRIS\Iris\Iris\IrisLib\obj\Release\IrisLib.pdb
+E:\PROJECTS\UniCorn\IRIS\Iris\Iris\IrisLib\obj\Release\IrisLib.csprojAssemblyReference.cache
