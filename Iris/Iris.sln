@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iris", "Iris\Iris.csproj", "{46546A63-ED10-4982-9BCE-4DB1C0F27B93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisClient", "IrisClient\IrisClient.csproj", "{B4424ECE-8715-486E-B548-C913C2779546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatHost", "ChatHost\ChatHost.csproj", "{A7428780-17BD-49B3-986C-5CE18C2F47DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisHost", "IrisHost\IrisHost.csproj", "{FB969DE6-8989-4E89-AD66-3E193CC08CA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClient", "ChatClient\ChatClient.csproj", "{BBEB5224-D855-43BE-A701-D104171D83A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisLib", "IrisLib\IrisLib.csproj", "{2866B944-F7B2-49FE-BBAF-42D3B6C2CD49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{431B80E9-AC91-45F3-B6F8-B1B1EB21016D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{46546A63-ED10-4982-9BCE-4DB1C0F27B93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46546A63-ED10-4982-9BCE-4DB1C0F27B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46546A63-ED10-4982-9BCE-4DB1C0F27B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46546A63-ED10-4982-9BCE-4DB1C0F27B93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7428780-17BD-49B3-986C-5CE18C2F47DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7428780-17BD-49B3-986C-5CE18C2F47DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7428780-17BD-49B3-986C-5CE18C2F47DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7428780-17BD-49B3-986C-5CE18C2F47DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBEB5224-D855-43BE-A701-D104171D83A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBEB5224-D855-43BE-A701-D104171D83A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBEB5224-D855-43BE-A701-D104171D83A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBEB5224-D855-43BE-A701-D104171D83A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4424ECE-8715-486E-B548-C913C2779546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4424ECE-8715-486E-B548-C913C2779546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4424ECE-8715-486E-B548-C913C2779546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4424ECE-8715-486E-B548-C913C2779546}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB969DE6-8989-4E89-AD66-3E193CC08CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB969DE6-8989-4E89-AD66-3E193CC08CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB969DE6-8989-4E89-AD66-3E193CC08CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB969DE6-8989-4E89-AD66-3E193CC08CA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2866B944-F7B2-49FE-BBAF-42D3B6C2CD49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2866B944-F7B2-49FE-BBAF-42D3B6C2CD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2866B944-F7B2-49FE-BBAF-42D3B6C2CD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2866B944-F7B2-49FE-BBAF-42D3B6C2CD49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{431B80E9-AC91-45F3-B6F8-B1B1EB21016D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{431B80E9-AC91-45F3-B6F8-B1B1EB21016D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{431B80E9-AC91-45F3-B6F8-B1B1EB21016D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{431B80E9-AC91-45F3-B6F8-B1B1EB21016D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
